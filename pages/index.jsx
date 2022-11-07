@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import eliaschen from '../public/eliaschen.jpg'
-
+import Link from 'next/link'
 export default function HomePage() {
     return (
         <container>
@@ -15,7 +15,7 @@ export default function HomePage() {
                         Taiwan.
                     </p>
                 </div>
-                <div className="w-[130px] sm:w-[210px] relative sm:my-[25px] my-[-15px] sm:mx-0 mx-[-10px] ">
+                <div className="w-[130px] sm:w-[180px] relative sm:my-[25px] my-[-15px] sm:mx-0 mx-[-10px] ">
                     <Image src={eliaschen} alt="eliaschen" className="w-auto rounded-full grayscale" />
                 </div>
             </div>

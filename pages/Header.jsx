@@ -25,7 +25,7 @@ const Header = () => {
         <header className="fixed w-full pq2 p-4 z-20 flex dark:bg-[rgba(17, 17, 17,0.29)] bg-[rgba(249, 250, 251,0.30)] backdrop-blur-xl">
             <nav className="flex items-center gap-3 text-base">
                 <Link href="/" className="group">
-                    <h2 className=" font-bold text-xl flex tracking-tighter items-center">
+                    <h2 className=" font-bold text-2xl flex tracking-tighter items-center">
                         <span className=" text-3xl duration-150 group-hover:rotate-[17.5deg]">
                             <FaSlackHash />
                         </span>

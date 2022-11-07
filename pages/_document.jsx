@@ -1,6 +1,7 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
+import Footer from './Footer'
+import Header from './Header'
+import Link from 'next/link'
 export default function Document() {
     return (
         <Html>
@@ -10,13 +11,9 @@ export default function Document() {
                     rel="stylesheet"
                 ></link>
             </Head>
-            <body className="mx-auto max-w-3xl ">
-                <Header />
-                <main className="!pt-20 px-7 ">
+            <body className="mx-auto max-w-4xl">
                     <Main />
                     <NextScript />
-                    <Footer />
-                </main>
             </body>
         </Html>
     )
