@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 export default function search() {
     const [inputv, setinputv] = React.useState('')
+
     const Navlinks = [
         {
             title: 'Blog',

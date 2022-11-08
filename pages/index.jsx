@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import eliaschen from '../public/eliaschen.jpg'
 import Link from 'next/link'
+
 export default function HomePage() {
     return (
         <container>
