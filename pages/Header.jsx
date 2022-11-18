@@ -1,25 +1,25 @@
 import React from 'react'
 import { FaSlackHash } from 'react-icons/fa'
 import Link from 'next/link'
+const Navlinks = [
+    {
+        title: 'Blog',
+        link: '/blog',
+    },
+    {
+        title: 'Works',
+        link: '/works',
+    },
+    {
+        title: 'About',
+        link: '/about',
+    },
+    {
+        title: 'Links',
+        link: '/links',
+    },
+]
 const Header = () => {
-    const Navlinks = [
-        {
-            title: 'Blog',
-            link: '/blog',
-        },
-        {
-            title: 'Works',
-            link: '/works',
-        },
-        {
-            title: 'About',
-            link: '/about',
-        },
-        {
-            title: 'Links',
-            link: '/links',
-        },
-    ]
 
     return (
         <header className="fixed w-full pq2 p-4 z-20 flex dark:bg-[rgba(17, 17, 17,0.29)] bg-[rgba(249, 250, 251,0.30)] backdrop-blur-xl">
