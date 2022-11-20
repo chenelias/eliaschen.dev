@@ -17,6 +17,7 @@ export default function HomePage() {
                         Learning about coding and creating something useful for every developers and user
                     </p>
                 </div>
+                <div className="flex-1"></div>
                 <div className="w-[130px] sm:w-[140px] relative sm:my-[25px] my-[-15px] sm:mx-0 mx-[-10px] ">
                     <Image src={eliaschen} alt="eliaschen" className="w-auto rounded-full grayscale" />
                 </div>
