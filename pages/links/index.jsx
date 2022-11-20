@@ -6,6 +6,7 @@ const LinksPage = () => {
             <Head>
                 <title>EliasChen - Links</title>
             </Head>
+            
         </main>
     )
 }

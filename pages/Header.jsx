@@ -2,7 +2,8 @@ import React from 'react'
 import { FaSlackHash } from 'react-icons/fa'
 import Link from 'next/link'
 import ColorModeToggle from '/components/ColorModeToggle'
-const Header = () => {
+import NavlinkDropMenu from '../components/NavlinkDropMenu'
+const Header = ({ children, href }) => {
     const NavLinks = [
         {
             title: 'Blog',
@@ -23,7 +24,7 @@ const Header = () => {
     ]
     return (
         <header class="fixed w-full pq2 z-30 dark:bg-[rgba(17, 17, 17,0.29)] bg-[rgba(249, 250, 251,0.30)] backdrop-blur-md">
-            <div class="mx-auto max-w-4xl">
+            <div class="mx-auto max-w-3xl">
                 <nav class="flex items-center gap-3 text-base m-3">
                     <Link href="/" className="group">
                         <h2 className=" font-bold text-xl flex tracking-tighter items-center">
@@ -47,6 +48,9 @@ const Header = () => {
                     <div class="flex-1"></div>
                     <div className="items-center">
                         <ColorModeToggle />
+                    </div>
+                    <div className="">
+                        <NavlinkDropMenu/>
                     </div>
                 </nav>
             </div>
