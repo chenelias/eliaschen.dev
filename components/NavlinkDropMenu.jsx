@@ -1,5 +1,7 @@
 import { Menu, Transition } from '@headlessui/react'
 import { IoMenu } from 'react-icons/io5'
+import { NavLinks } from './data/Navlinks'
+import Link from 'next/link'
 export default function NavlinkDropMenu() {
     return (
         <Menu as="div" className="text-left relative block xs:hidden">
@@ -23,9 +25,15 @@ export default function NavlinkDropMenu() {
                     <div className="py-1 ">
                         <div className="px-3 py-1 uppercase font-mplus font-bold text-xs">Navigation</div>
                     </div>
-                    {/* {NavLinks.map((links) => (
-                        <DropdownMenuItem href={links.url}>{links.title}</DropdownMenuItem>
-                    ))} */}
+                    {NavLinks.map((links) => (
+                        <Link
+                            key={links.link}
+                            href={links.link}
+                            className="text-md block py-2 px-3 hover:bg-gray-300 dark:hover:bg-zinc-500 rounded-[3px]"
+                        >
+                            {links.title}
+                        </Link>
+                    ))}
                 </Menu.Items>
             </Transition>
         </Menu>

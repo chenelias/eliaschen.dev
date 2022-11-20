@@ -8,7 +8,7 @@ module.exports = {
             fontFamily: {
                 ibm: ["'IBM Plex Sans'", 'sans-serif'],
                 mplus: ["'M PLUS Rounded 1c'", 'sans-serif'],
-                code: ["'Space Mono', 'monospace'"],
+                code: ["'Source Code Pro', 'monospace'"],
             },
             screens: {
                 xs: '540px',

@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
+    "@reacticons/ionicons": "^6.0.4",
+    "astro-icon": "^0.8.0",
+    "ionicons": "^6.0.4",
     "next": "13.0.3",
     "nextjs-progressbar": "^0.0.16",
     "react": "18.2.0",
