@@ -1,10 +1,20 @@
 import '../styles/globals.css'
 import Footer from './Footer'
 import Header from './Header'
-import Head from 'next/head'
+import NextNProgress from 'nextjs-progressbar'
 function MyApp({ Component, pageProps }) {
     return (
         <main className="">
+            <NextNProgress
+                options={{
+                    showSpinner: false,
+                }}
+                color="#a855f7"
+                startPosition={0.1}
+                stopDelayMs={100}
+                height={3}
+                showOnShallow={false}
+            />
             <Header />
             <main className="pt-20 px-[25px] mx-auto max-w-4xl">
                 <Component {...pageProps} />
