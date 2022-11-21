@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@headlessui/react": "^1.7.4",
     "@reacticons/ionicons": "^6.0.4",
     "astro-icon": "^0.8.0",
@@ -17,7 +20,8 @@
     "nextjs-progressbar": "^0.0.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.6.0"
+    "react-icons": "^4.6.0",
+    "react-loading-skeleton": "^3.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

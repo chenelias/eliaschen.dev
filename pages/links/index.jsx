@@ -24,7 +24,7 @@ const LinksPage = () => {
                         </p>
                         <div class="flex-1" />
                         <div class="pr-1 items-center">
-                            <IonIcon className=" !text-[23px] items-center mt-[4px]" name={links.icon} />
+                            <IonIcon className=" !text-[22px] items-center mt-[2px]" name={links.icon} />
                         </div>
                     </a>
                 ))}
