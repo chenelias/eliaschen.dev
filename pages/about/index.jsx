@@ -2,7 +2,9 @@ import React from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { AboutImage } from '../../components/data/AboutImage'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 const AboutPage = () => {
     return (
         <main>
@@ -20,18 +22,30 @@ const AboutPage = () => {
             <div className="mt-10">
                 <p className="text-3xl font-bold">Headshots</p>
                 <div className="mt-2 xs:inline-flex block">
-                    <SkeletonTheme baseColor="#202020" highlightColor="#444">
+                    {(
                         <Image
                             className="rounded-xl mr-3 mb-3 !h-[250px] !w-auto"
                             src={require('/public/about/eliaschen.jpg')}
                             alt="EliasChen"
                         />
+                    ) || (
+                        <Skeleton
+                            baseColor="#202020"
+                            className="rounded-xl !h-[250px] !w-[250px]"
+                            highlightColor="#444"
+                        />
+                    )}
+                    <Skeleton baseColor="#202020" className="rounded-xl !h-[250px] !w-[250px]" highlightColor="#444" />
+                    {/* {(
                         <Image
-                            className="rounded-xl !h-[250px] !w-auto"
-                            src={require('/public/about/eliaschen-origin.jpg')}
+                            className="rounded-xl mr-3 mb-3 !h-[250px] !w-auto"
+                            src={require('/public/about/eliaschen.jpg')}
                             alt="EliasChen"
                         />
-                    </SkeletonTheme>
+                    ) || <Skeleton baseColor="#202020" highlightColor="#444" />}
+                    {<Image className="rounded-xl !h-[250px] !w-auto" src="" alt="EliasChen" /> || (
+                        <Skeleton baseColor="#202020" className="h-[250px]" highlightColor="#444" />
+                    )} */}
                 </div>
             </div>
         </main>
