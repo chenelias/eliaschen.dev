@@ -1,12 +1,15 @@
 import Image from 'next/image'
-import eliaschen from '../public/eliaschen.jpg'
+import eliaschen from '/public/eliaschen.jpg'
 import Head from 'next/head'
+import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 export default function HomePage() {
     return (
         <container>
-        <Head>
-            <title>EliasChen - Home</title>
-        </Head>
+            <Head>
+                <title>EliasChen - Home</title>
+            </Head>
             <div className="flex flex-col-reverse sm:flex-row items-start my-5">
                 <div className="flex flex-col pr-8">
                     <h1 className="font-extrabold mt-6 text-4xl md:text-5xl tracking-tight">Elias Chen</h1>
@@ -19,7 +22,9 @@ export default function HomePage() {
                 </div>
                 <div className="flex-1"></div>
                 <div className="w-[130px] sm:w-[140px] relative sm:my-[25px] my-[-15px] sm:mx-0 mx-[-10px] ">
-                    <Image src={eliaschen} alt="eliaschen" className="w-auto rounded-full grayscale" />
+                    {<Image src={eliaschen} alt="eliaschen" className="w-auto rounded-full grayscale" /> || (
+                        <Skeleton circle baseColor="#202020" highlightColor="#444" />
+                    )}
                 </div>
             </div>
             <div className="mt-[-40px]">

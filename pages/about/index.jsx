@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { AboutImage } from '../../components/data/AboutImage'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 const AboutPage = () => {
     return (
         <main>
@@ -18,21 +19,19 @@ const AboutPage = () => {
             </div>
             <div className="mt-10">
                 <p className="text-3xl font-bold">Headshots</p>
-                <div className="mt-2 inline-flex">
-                    <Image
-                        className="rounded-xl mr-3 "
-                        src={require('/public/about/eliaschen.jpg')}
-                        alt="EliasChen"
-                        width={250}
-                        height={250}
-                    />
-                    <Image
-                        className="rounded-xl"
-                        src={require('/public/about/eliaschen-origin.jpg')}
-                        alt="EliasChen"
-                        width={250}
-                        height={250}
-                    />
+                <div className="mt-2 xs:inline-flex block">
+                    <SkeletonTheme baseColor="#202020" highlightColor="#444">
+                        <Image
+                            className="rounded-xl mr-3 mb-3 !h-[250px] !w-auto"
+                            src={require('/public/about/eliaschen.jpg')}
+                            alt="EliasChen"
+                        />
+                        <Image
+                            className="rounded-xl !h-[250px] !w-auto"
+                            src={require('/public/about/eliaschen-origin.jpg')}
+                            alt="EliasChen"
+                        />
+                    </SkeletonTheme>
                 </div>
             </div>
         </main>
