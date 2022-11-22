@@ -22,30 +22,18 @@ const AboutPage = () => {
             <div className="mt-10">
                 <p className="text-3xl font-bold">Headshots</p>
                 <div className="mt-2 xs:inline-flex block">
-                    {(
-                        <Image
-                            className="rounded-xl mr-3 mb-3 !h-[250px] !w-auto"
-                            src={require('/public/about/eliaschen.jpg')}
-                            alt="EliasChen"
-                        />
-                    ) || (
-                        <Skeleton
-                            baseColor="#202020"
-                            className="rounded-xl !h-[250px] !w-[250px]"
-                            highlightColor="#444"
-                        />
-                    )}
-                    <Skeleton baseColor="#202020" className="rounded-xl !h-[250px] !w-[250px]" highlightColor="#444" />
-                    {/* {(
-                        <Image
-                            className="rounded-xl mr-3 mb-3 !h-[250px] !w-auto"
-                            src={require('/public/about/eliaschen.jpg')}
-                            alt="EliasChen"
-                        />
-                    ) || <Skeleton baseColor="#202020" highlightColor="#444" />}
-                    {<Image className="rounded-xl !h-[250px] !w-auto" src="" alt="EliasChen" /> || (
-                        <Skeleton baseColor="#202020" className="h-[250px]" highlightColor="#444" />
-                    )} */}
+                    <Image
+                        className="rounded-xl mr-3 mb-3 !h-[250px] !w-auto"
+                        src={require('/public/about/eliaschen.jpg')}
+                        alt="EliasChen"
+                        placeholder="blur"
+                    />
+                    <Image
+                        className="rounded-xl mr-3 mb-3 !h-[250px] !w-auto"
+                        src={require('/public/about/eliaschen-origin.jpg')}
+                        alt="EliasChen"
+                        placeholder="blur"
+                    />
                 </div>
             </div>
         </main>
