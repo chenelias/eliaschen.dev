@@ -5,6 +5,7 @@ export async function getServerSideProps(context) {
     const data = await res.json()
     return {
         props: { data },
+        revalidate: 10,
     }
 }
 export const hello = [
@@ -25,9 +26,8 @@ const index = ({ data }) => {
             <h1 className="font-extrabold text-6xl tracking-tight">Projects</h1>
             <input
                 onChange={(x) => setRepoSearch(x.target.value)}
-                
                 name="reposearch"
-                className="mt-6 text-xl p-2 rounded-md bg-slate-800"
+                className="mt-6 text-xl p-2 rounded-md bg-slate-300 dark:bg-slate-900"
             />
             <div className="mt-5">
                 {/* {data.map((repos)=>(
