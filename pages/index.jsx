@@ -3,6 +3,7 @@ import eliaschen from '/public/eliaschen.jpg'
 import Head from 'next/head'
 import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component'
 import Skeleton from 'react-loading-skeleton'
+import ProjectContainer from './ProjectContainer'
 import 'react-loading-skeleton/dist/skeleton.css'
 export default function HomePage() {
     return (
@@ -39,6 +40,9 @@ export default function HomePage() {
             <div className="mt-[20px]">
                 <h1 className="text-3xl font-bold mb-1">Hobby</h1>
                 <p className="text-md">&emsp;Develop, Art, Photography, English</p>
+            </div>
+            <div className="mt-[20px]">
+                <ProjectContainer />
             </div>
         </container>
     )
