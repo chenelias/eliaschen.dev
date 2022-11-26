@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { AiFillGithub } from 'react-icons/ai'
 import { MdOutlineFavoriteBorder, MdLanguage } from 'react-icons/md'
 import { HiOutlineTrash } from 'react-icons/hi'
 import { TbGitFork } from 'react-icons/tb'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 export async function getServerSideProps(context) {
     const res = await fetch('https://api.github.com/users/chenelias/repos', {
         headers: {
@@ -24,10 +26,43 @@ export async function getServerSideProps(context) {
         props: { data, user },
     }
 }
-const index = ({ data, user }) => {
+const index = ({ user }) => {
     const [focusSearch, setFocusSearch] = useState(false)
     const [repoSearch, setRepoSearch] = useState('')
     const [searchvalue, setsearchvalue] = useState()
+    const [data, setData] = useState(null)
+    const [isLoading, setLoading] = useState(false)
+
+    useEffect(() => {
+        setLoading(true)
+        fetch('https://api.github.com/users/chenelias/repos', {
+            headers: {
+                Authorization:
+                    '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',
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setData(data)
+                setLoading(false)
+            })
+    }, [])
+
+    if (isLoading)
+        return (
+            <main>
+                <Head>
+                    <title>EliasChen - Projects</title>
+                </Head>
+                <Skeleton baseColor="#202020" className="w-[50px]" highlightColor="#444" />
+                <Skeleton baseColor="#202020" className="w-full" highlightColor="#444" />
+
+                <div className="mt-10">
+                    <Skeleton className="h-[140px] w-full" baseColor="#202020" highlightColor="#444" />
+                </div>
+            </main>
+        )
+    if (!data) return <p className="text-center font-bold text-3xl">No profile data</p>
     function InputonChange(x) {
         setRepoSearch(x)
         setFocusSearch(x != '' ? true : false)
@@ -103,7 +138,7 @@ const index = ({ data, user }) => {
                         .filter(
                             (repo) =>
                                 repo.name.toUpperCase().includes(repoSearch) ||
-                                repo.name.toLowerCase().includes(repoSearch) 
+                                repo.name.toLowerCase().includes(repoSearch)
                         )
                         .map((repo) => (
                             <Link className="group cursor-pointer block" target="_blank" href={repo.html_url}>
