@@ -5,10 +5,10 @@ import { AiFillGithub } from 'react-icons/ai'
 import { MdOutlineFavoriteBorder } from 'react-icons/md'
 import { TbGitFork } from 'react-icons/tb'
 export async function getServerSideProps(context) {
-    const headers = {
-        Authorization: 'Token ' + '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',
-    }
-    const res = await fetch('https://api.github.com/users/chenelias/repos', { headers: headers })
+
+    const res = await fetch('https://api.github.com/users/chenelias/repos', {
+        headers: { Authorization: 'Bearer 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' },
+    })
     const data = await res.json()
     return {
         props: { data },
