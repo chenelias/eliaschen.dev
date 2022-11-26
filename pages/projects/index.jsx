@@ -9,7 +9,7 @@ export async function getServerSideProps(context) {
     const res = await fetch('https://api.github.com/users/chenelias/repos', {
         headers: {
             Authorization:
-                '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y',
+                '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',
         },
     })
     const data = await res.json()
