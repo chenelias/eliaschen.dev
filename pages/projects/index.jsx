@@ -9,13 +9,13 @@ export async function getServerSideProps(context) {
     const res = await fetch('https://api.github.com/users/chenelias/repos', {
         headers: {
             Authorization:
-                'token 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',
+                'token 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',
         },
     })
     const usr = await fetch('https://api.github.com/users/chenelias', {
         headers: {
             Authorization:
-                'token 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',
+                'token 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',
         },
     })
     const data = await res.json()
