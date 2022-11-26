@@ -7,17 +7,16 @@ import { HiOutlineTrash } from 'react-icons/hi'
 import { TbGitFork } from 'react-icons/tb'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+const tokenkey = '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'
 export async function getServerSideProps(context) {
     const res = await fetch('https://api.github.com/users/chenelias/repos', {
         headers: {
-            Authorization:
-                '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',
+            Authorization: { tokenkey },
         },
     })
     const usr = await fetch('https://api.github.com/users/chenelias', {
         headers: {
-            Authorization:
-                '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',
+            Authorization: { tokenkey },
         },
     })
     const data = await res.json()
@@ -37,8 +36,7 @@ const index = ({ user }) => {
         setLoading(true)
         fetch('https://api.github.com/users/chenelias/repos', {
             headers: {
-                Authorization:
-                    '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',
+                Authorization: { tokenkey },
             },
         })
             .then((res) => res.json())
