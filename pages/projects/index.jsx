@@ -8,7 +8,7 @@ import { TbGitFork } from 'react-icons/tb'
 export async function getServerSideProps(context) {
     const res = await fetch('https://api.github.com/users/chenelias/repos', {
         headers: {
-            Authorization: 'token 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',
+            Authorization: 'token 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',
         },
     })
     const usr = await fetch('https://api.github.com/users/chenelias', {
