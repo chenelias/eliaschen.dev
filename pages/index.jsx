@@ -25,7 +25,7 @@ export default function HomePage() {
                 <div className="w-[130px] sm:w-[140px] relative sm:my-[25px] my-[-15px] sm:mx-0 mx-[-10px] ">
                     <Image
                         placeholder="blur"
-                        src={eliaschen}
+                        src={require('/public/eliaschen.jpg')}
                         alt="eliaschen"
                         className="w-auto rounded-full grayscale"
                     />
