@@ -8,7 +8,8 @@ import { TbGitFork } from 'react-icons/tb'
 export async function getServerSideProps(context) {
     const res = await fetch('https://api.github.com/users/chenelias/repos', {
         headers: {
-            Authorization: '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',
+            Authorization:
+                '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',
         },
     })
     const data = await res.json()
@@ -24,6 +25,10 @@ const index = ({ data }) => {
         setRepoSearch(x)
         setFocusSearch(x != '' ? true : false)
     }
+    function clearicon() {
+        setRepoSearch('')
+        document.querySelector('.RepoSearchInput').value = ''
+    }
     return (
         <main>
             <Head>
@@ -38,11 +43,11 @@ const index = ({ data }) => {
                     placeholder="Search projects"
                     className="RepoSearchInput block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
                 />
-                <div className="absolute right-0 top-0 py-[9px] rounded-md flex items-center">
-                    {repoSearch!=='' ? (
+                <div className=" absolute right-0 h-[41px] top-0 py-[8px] rounded-md flex items-center">
+                    {repoSearch !== '' ? (
                         <button
-                            className="mr-2 text-red-600  text-[27px] dark:hover:bg-slate-700 rounded-md hover:bg-slate-200 transition-all"
-                            onClick={() => (document.querySelector('.RepoSearchInput').value = '')}
+                            className="mr-[4px] text-red-600 p-[1px] text-[27px] dark:hover:bg-slate-700 rounded-md hover:bg-slate-200 transition-all"
+                            onClick={() => clearicon()}
                         >
                             <span className="">
                                 <HiOutlineTrash />
@@ -67,7 +72,7 @@ const index = ({ data }) => {
                     </svg>
                 </div>
             </div>
-            <div className="mt-8">
+            <div className="mt-10">
                 {/* <h1 className="text-3xl ">Recent Update</h1> */}
                 <div>
                     {data
