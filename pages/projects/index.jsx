@@ -8,16 +8,21 @@ import { TbGitFork } from 'react-icons/tb'
 export async function getServerSideProps(context) {
     const res = await fetch('https://api.github.com/users/chenelias/repos', {
         headers: {
-            Authorization:
-                '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',
+            Authorization: 'token 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',
+        },
+    })
+    const usr = await fetch('https://api.github.com/users/chenelias', {
+        headers: {
+            Authorization: 'token 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',
         },
     })
     const data = await res.json()
+    const user = await usr.json()
     return {
-        props: { data },
+        props: { data, user },
     }
 }
-const index = ({ data }) => {
+const index = ({ data, user }) => {
     const [focusSearch, setFocusSearch] = useState(false)
     const [repoSearch, setRepoSearch] = useState('')
     const [searchvalue, setsearchvalue] = useState()
@@ -34,7 +39,23 @@ const index = ({ data }) => {
             <Head>
                 <title>EliasChen - Projects</title>
             </Head>
-            <h1 className="font-extrabold text-6xl tracking-tight">Projects</h1>
+            <div className=" items-center">
+                <h1 className="font-extrabold text-6xl tracking-tight">Projects</h1>
+                <div className="flex items-center mt-4">
+                    <p className="text-lg ">
+                        <span className="font-bold">{data.length}</span>&thinsp;/&thinsp;Project
+                    </p>
+                    <span>&ensp;&bull;&ensp;</span>
+                    <p className="flex items-center text-lg">
+                        <AiFillGithub />
+                        Follower&thinsp;/&thinsp;<span>{user.followers}</span>
+                    </p>
+                </div>
+                {/* <div className="flex-1"></div>
+                <div className="flex">
+                    <button></button><button></button>
+                </div> */}
+            </div>
             <div class="relative w-full mt-6">
                 <input
                     onChange={(x) => InputonChange(x.target.value)}
@@ -76,10 +97,11 @@ const index = ({ data }) => {
                 {/* <h1 className="text-3xl ">Recent Update</h1> */}
                 <div>
                     {data
+                        .sort((a, b) => (a.pushed_at < b.pushed_at ? 1 : -1))
                         .filter(
                             (repo) =>
                                 repo.name.toUpperCase().includes(repoSearch) ||
-                                repo.name.toLowerCase().includes(repoSearch)
+                                repo.name.toLowerCase().includes(repoSearch) 
                         )
                         .map((repo) => (
                             <Link className="group cursor-pointer block" target="_blank" href={repo.html_url}>
