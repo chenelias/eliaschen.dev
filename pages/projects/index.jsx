@@ -6,7 +6,7 @@ import { MdOutlineFavoriteBorder } from 'react-icons/md'
 import { TbGitFork } from 'react-icons/tb'
 export async function getServerSideProps(context) {
     const headers = {
-        Authorization: 'Token ' + process.env.GITHUB_KEY,
+        Authorization: 'Token ' + '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',
     }
     const res = await fetch('https://api.github.com/users/chenelias/repos', { headers: headers })
     const data = await res.json()
