@@ -7,6 +7,7 @@ import { HiOutlineTrash } from 'react-icons/hi'
 import { TbGitFork } from 'react-icons/tb'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import useDarkMode from '/components/useDarkMode'
 const tokenkey = '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'
 // export async function getServerSideProps(context) {
 //     const usr = await fetch('https://api.github.com/users/chenelias', {
@@ -20,12 +21,26 @@ const tokenkey = 'github_pat_11ASIP4DI0alVtELbR911t_xmuqXtOACbgIPreBu9mzhjlyzVdD
 //     }
 // }
 const index = () => {
+    const [colorTheme, setTheme] = useDarkMode()
     const [focusSearch, setFocusSearch] = useState(false)
     const [repoSearch, setRepoSearch] = useState('')
     const [searchvalue, setsearchvalue] = useState()
     const [data, setData] = useState(null)
     const [isLoading, setLoading] = useState(false)
     const [user, setuser] = useState(null)
+    const loadingdisplay = (
+        <main>
+            <Head>
+                <title>EliasChen - Projects</title>
+            </Head>
+            <Skeleton baseColor="#202020" width="330px" highlightColor="#444" />
+            <Skeleton baseColor="#202020" width="180px" highlightColor="#444" />
+            <Skeleton baseColor="#202020" highlightColor="#444" />
+            <div className="mt-10">
+                <Skeleton height="120px" count="3" className="w-full my-2" baseColor="#202020" highlightColor="#444" />
+            </div>
+        </main>
+    )
     useEffect(() => {
         setLoading(true)
         fetch('https://api.github.com/users/chenelias', {
@@ -50,21 +65,8 @@ const index = () => {
             })
     }, [])
 
-    if (isLoading)
-        return (
-            <main>
-                <Head>
-                    <title>EliasChen - Projects</title>
-                </Head>
-                <Skeleton baseColor="#202020" className="w-[50px]" highlightColor="#444" />
-                <Skeleton baseColor="#202020" className="w-full" highlightColor="#444" />
-
-                <div className="mt-10">
-                    <Skeleton className="h-[140px] w-full" baseColor="#202020" highlightColor="#444" />
-                </div>
-            </main>
-        )
-    if (!data) return <p className="text-center font-bold text-3xl">No profile data</p>
+    if (isLoading) return loadingdisplay
+    if (!data) return loadingdisplay
     function InputonChange(x) {
         setRepoSearch(x)
         setFocusSearch(x != '' ? true : false)
