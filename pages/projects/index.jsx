@@ -8,7 +8,6 @@ import { TbGitFork } from 'react-icons/tb'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import useDarkMode from '/components/useDarkMode'
-import tokenkey from '/components/api/tokenkey'
 
 // export async function getServerSideProps(context) {
 //     const usr = await fetch('https://api.github.com/users/chenelias', {
@@ -22,6 +21,7 @@ import tokenkey from '/components/api/tokenkey'
 //     }
 // }
 const index = () => {
+    const tokenkey = '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'
     const [colorTheme, setTheme] = useDarkMode()
     const [focusSearch, setFocusSearch] = useState(false)
     const [repoSearch, setRepoSearch] = useState('')
