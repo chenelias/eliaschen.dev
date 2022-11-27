@@ -1,28 +1,29 @@
-import React from 'react'
-export async function getServerSideProps(context) {
-    const res = await fetch('https://api.github.com/users/chenelias/repos', {
-        headers: {
-            Authorization:
-                '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',
-        },
-    })
-    const usr = await fetch('https://api.github.com/users/chenelias', {
-        headers: {
-            Authorization:
-                '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',
-        },
-    })
-    const data = await res.json()
-    const user = await usr.json()
-    return {
-        props: { data, user },
-    }
-}
-
+import React, { useEffect, useState } from 'react'
+import tokenkey from '/components/api/tokenkey'
 const ProjectContainer = () => {
+    const [data, setData] = useState(null)
+    const [isLoading, setLoading] = useState(false)
+    const loadingdisplay = <div></div>
+    // --------------------------------------------
+    useEffect(() => {
+        setLoading(true)
+        fetch('https://api.github.com/users/chenelias/repos', {
+            headers: {
+                Authorization: { tokenkey },
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setData(data)
+                setLoading(false)
+            })
+    }, [])
     return (
         <container>
             <p className="text-4xl font-bold">Top Projects</p>
+            <div>
+                
+            </div>
         </container>
     )
 }

@@ -8,7 +8,8 @@ import { TbGitFork } from 'react-icons/tb'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import useDarkMode from '/components/useDarkMode'
-const tokenkey = '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'
+import tokenkey from '/components/api/tokenkey'
+
 // export async function getServerSideProps(context) {
 //     const usr = await fetch('https://api.github.com/users/chenelias', {
 //         headers: {
@@ -28,6 +29,7 @@ const index = () => {
     const [data, setData] = useState(null)
     const [isLoading, setLoading] = useState(false)
     const [user, setuser] = useState(null)
+    // ---------------------------------------------------
     const loadingdisplay = (
         <main>
             <Head>
@@ -41,11 +43,13 @@ const index = () => {
             </div>
         </main>
     )
+    // ---------------------------------------------------
     useEffect(() => {
         setLoading(true)
         fetch('https://api.github.com/users/chenelias', {
             headers: {
-                Authorization: { tokenkey },
+                Authorization:
+                    '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',
             },
         })
             .then((rrs) => rrs.json())
@@ -64,7 +68,6 @@ const index = () => {
                 setLoading(false)
             })
     }, [])
-
     if (isLoading) return loadingdisplay
     if (!data) return loadingdisplay
     function InputonChange(x) {
@@ -89,7 +92,7 @@ const index = () => {
                     <span>&ensp;&bull;&ensp;</span>
                     <p className="flex items-center text-lg">
                         <AiFillGithub />
-                        Follower&thinsp;/&thinsp;<span>{user.followers}</span>
+                        Follower&thinsp;/&thinsp;<span className="font-bold">{user.followers}</span>
                     </p>
                 </div>
                 {/* <div className="flex-1"></div>
