@@ -30,6 +30,7 @@ const index = () => {
     const [isLoading, setLoading] = useState(false)
     const [user, setuser] = useState(null)
     // ---------------------------------------------------
+    
     const loadingdisplay = (
         <main>
             <Head>
