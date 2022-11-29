@@ -83,13 +83,14 @@ const index = () => {
             <div className=" items-center">
                 <h1 className="font-extrabold text-6xl tracking-tight">Projects</h1>
                 <div className="flex items-center mt-4">
-                    <p className="text-lg ">
+                    <p className="text-lg flex items-center">
+                        <AiFillGithub />
+                        &thinsp;
                         <span className="font-bold">{data.length}</span>&thinsp;/&thinsp;Project
                     </p>
                     <span>&ensp;&bull;&ensp;</span>
                     <p className="flex items-center text-lg">
-                        <AiFillGithub />
-                        Follower&thinsp;/&thinsp;<span>{user.followers}</span>
+                        Follower&thinsp;/&thinsp;<span className="font-bold">{user.followers}</span>
                     </p>
                 </div>
                 {/* <div className="flex-1"></div>
