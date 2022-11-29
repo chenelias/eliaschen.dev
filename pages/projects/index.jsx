@@ -88,10 +88,10 @@ const index = () => {
                         &thinsp;
                         <span className="font-bold">{data.length}</span>&thinsp;/&thinsp;Project
                     </p>
-                    <span>&ensp;&bull;&ensp;</span>
-                    <p className="flex items-center text-lg">
+                    {/* <span>&ensp;&bull;&ensp;</span> */}
+                    {/* <p className="flex items-center text-lg">
                         Follower&thinsp;/&thinsp;<span className="font-bold">{user.followers}</span>
-                    </p>
+                    </p> */}
                 </div>
                 {/* <div className="flex-1"></div>
                 <div className="flex">
