@@ -20,8 +20,7 @@ const tokenkey = 'github_pat_11ASIP4DI0alVtELbR911t_xmuqXtOACbgIPreBu9mzhjlyzVdD
 //         props: { data, user },
 //     }
 // }
-const index = () => {
-    const [colorTheme, setTheme] = useDarkMode()
+const index = ({ repodata }) => {
     const [focusSearch, setFocusSearch] = useState(false)
     const [repoSearch, setRepoSearch] = useState('')
     const [searchvalue, setsearchvalue] = useState()
@@ -33,11 +32,19 @@ const index = () => {
             <Head>
                 <title>EliasChen - Projects</title>
             </Head>
-            <Skeleton baseColor="#202020" width="330px" highlightColor="#444" />
-            <Skeleton baseColor="#202020" width="180px" highlightColor="#444" />
-            <Skeleton baseColor="#202020" highlightColor="#444" />
+            <Skeleton baseColor="#202020" width="340px" height="60px" highlightColor="#444" />
+            <div className="mt-[10px]"></div>
+            <Skeleton baseColor="#202020" width="100px" highlightColor="#444" />
+            <div className="mt-[40px]"></div>
+            <Skeleton baseColor="#202020" height="42px" clasName="rounded-lg" highlightColor="#444" />
             <div className="mt-10">
-                <Skeleton height="120px" count="3" className="w-full my-2" baseColor="#202020" highlightColor="#444" />
+                <Skeleton
+                    height="122px"
+                    count="3"
+                    className="w-full my-2 rounded-lg"
+                    baseColor="#202020"
+                    highlightColor="#444"
+                />
             </div>
         </main>
     )

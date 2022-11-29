@@ -19,30 +19,53 @@ const ProjectContainer = () => {
                 setLoading(false)
             })
     }, [])
+
     return (
-        <container>
-            <p className="text-4xl font-bold">Top Projects</p>
-            {/* <div>
-                {data.map((repo) => (
-                    <a
-                        href={repo.html_url}
-                        class="bg-gradient-to-r from-zinc-400 to-orange-500 w-full p-[6px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-2xl hover:scale-[103%] dark:hover:shadow-zinc-200/25 hover:shadow-black/25 duration-300"
-                    >
-                        <div class="flex flex-col cursor-pointer justify-between gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
-                            <div>
-                                <h1 class="dark:text-zinc-300 text-zinc-900 mb-6 font-bold w-full tracking-tight m-0 text-xl">
-                                    {repo.naem}
-                                </h1>
+        <div>
+            {' '}
+            {/* {data
+                .filter(
+                    (repo) =>
+                        repo.name.toUpperCase().includes(repoSearch) || repo.name.toLowerCase().includes(repoSearch)
+                )
+                .sort((a, b) => (a.pushed_at < b.pushed_at ? 1 : -1))
+
+                .map((repo) => (
+                    <Link className="group cursor-pointer block" target="_blank" href={repo.html_url}>
+                        <div className="border flex transform hover:scale-[1.01] transition-all w-full w-max-xl p-3 my-4 rounded-lg bg-gradient-to-r dark:from-gray-800 dark:to-slate-600 from-slate-300 to-gray-400 break-words">
+                            <div className="block">
+                                <div className="flex">
+                                    <p className="items-center text-xl flex mr-1">
+                                        <AiFillGithub />
+                                    </p>
+                                    <h1 className="font-light text-md">{repo.full_name}</h1>
+                                </div>
+                                <h1 className="font-bold !block text-3xl group-hover:underline">{repo.name}</h1>
+                                <p className="text-md font-light">{repo.description}</p>
+                                <div className="flex p-1 items-center">
+                                    <p className="items-center mr-3 font-bold text-lg flex">
+                                        <TbGitFork />
+                                        &thinsp;{repo.forks_count}
+                                    </p>
+                                    <p className="items-center mr-3 font-bold text-lg flex">
+                                        <MdOutlineFavoriteBorder />
+                                        &thinsp;{repo.stargazers_count}
+                                    </p>
+                                    {repo.language && (
+                                        <p className=" items-center font-bold text-md flex">
+                                            <MdLanguage />
+                                            &thinsp;
+                                            {repo.language}
+                                        </p>
+                                    )}
+                                </div>
                             </div>
-                            <div class=" dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold">
-                                <p class="m-0 inline-flex items-center">{repo.name}</p>
-                            </div>
+                            <div className="flex-1"></div>
+                            <div className="items-center block"></div>
                         </div>
-                    </a>
-                ))}
-            </div> */}
-        </container>
+                    </Link>
+                ))} */}
+        </div>
     )
 }
-
 export default ProjectContainer
