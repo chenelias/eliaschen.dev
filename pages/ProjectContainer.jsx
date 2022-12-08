@@ -22,13 +22,13 @@ const ProjectContainer = () => {
 
     return (
         <container>
-            <div>
+            {/* <div>
                 {repo.map((data) => (
                     <div>
                         <h1>{data.naem}</h1>
                     </div>
                 ))}
-            </div>
+            </div> */}
         </container>
     )
 }
