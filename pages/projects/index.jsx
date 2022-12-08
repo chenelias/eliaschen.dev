@@ -82,6 +82,49 @@ const index = ({ repodata }) => {
         setRepoSearch('')
         document.querySelector('.RepoSearchInput').value = ''
     }
+    if (data.length === 0) {
+        console.log('No items found')
+    } else {
+        console.log(data)
+    }
+    var searchresult = data
+        .sort((a, b) => (a.pushed_at < b.pushed_at ? 1 : -1))
+        .filter((repo) => repo.name.toUpperCase().includes(repoSearch) || repo.name.toLowerCase().includes(repoSearch))
+        .map((repo) => (
+            <Link className="group cursor-pointer block" target="_blank" href={repo.html_url}>
+                <div className="border flex transform hover:scale-[1.01] transition-all w-full w-max-xl p-3 my-4 rounded-lg bg-gradient-to-r dark:from-gray-800 dark:to-slate-600 from-slate-300 to-gray-400 break-words">
+                    <div className="block">
+                        <div className="flex">
+                            <p className="items-center text-xl flex mr-1">
+                                <AiFillGithub />
+                            </p>
+                            <h1 className="font-light text-md">{repo.full_name}</h1>
+                        </div>
+                        <h1 className="font-bold !block text-3xl group-hover:underline">{repo.name}</h1>
+                        <p className="text-md font-light">{repo.description}</p>
+                        <div className="flex p-1 items-center">
+                            <p className="items-center mr-3 font-bold text-lg flex">
+                                <TbGitFork />
+                                &thinsp;{repo.forks_count}
+                            </p>
+                            <p className="items-center mr-3 font-bold text-lg flex">
+                                <MdOutlineFavoriteBorder />
+                                &thinsp;{repo.stargazers_count}
+                            </p>
+                            {repo.language && (
+                                <p className=" items-center font-bold text-md flex">
+                                    <MdLanguage />
+                                    &thinsp;
+                                    {repo.language}
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                    <div className="flex-1"></div>
+                    <div className="items-center block"></div>
+                </div>
+            </Link>
+        ))
     return (
         <main>
             <Head>
@@ -143,50 +186,13 @@ const index = ({ repodata }) => {
                 </div>
             </div>
             <div className="mt-10">
-                {/* <h1 className="text-3xl ">Recent Update</h1> */}
                 <div>
-                    {data
-                        .sort((a, b) => (a.pushed_at < b.pushed_at ? 1 : -1))
-                        .filter(
-                            (repo) =>
-                                repo.name.toUpperCase().includes(repoSearch) ||
-                                repo.name.toLowerCase().includes(repoSearch)
-                        )
-                        .map((repo) => (
-                            <Link className="group cursor-pointer block" target="_blank" href={repo.html_url}>
-                                <div className="border flex transform hover:scale-[1.01] transition-all w-full w-max-xl p-3 my-4 rounded-lg bg-gradient-to-r dark:from-gray-800 dark:to-slate-600 from-slate-300 to-gray-400 break-words">
-                                    <div className="block">
-                                        <div className="flex">
-                                            <p className="items-center text-xl flex mr-1">
-                                                <AiFillGithub />
-                                            </p>
-                                            <h1 className="font-light text-md">{repo.full_name}</h1>
-                                        </div>
-                                        <h1 className="font-bold !block text-3xl group-hover:underline">{repo.name}</h1>
-                                        <p className="text-md font-light">{repo.description}</p>
-                                        <div className="flex p-1 items-center">
-                                            <p className="items-center mr-3 font-bold text-lg flex">
-                                                <TbGitFork />
-                                                &thinsp;{repo.forks_count}
-                                            </p>
-                                            <p className="items-center mr-3 font-bold text-lg flex">
-                                                <MdOutlineFavoriteBorder />
-                                                &thinsp;{repo.stargazers_count}
-                                            </p>
-                                            {repo.language && (
-                                                <p className=" items-center font-bold text-md flex">
-                                                    <MdLanguage />
-                                                    &thinsp;
-                                                    {repo.language}
-                                                </p>
-                                            )}
-                                        </div>
-                                    </div>
-                                    <div className="flex-1"></div>
-                                    <div className="items-center block"></div>
-                                </div>
-                            </Link>
-                        ))}
+                    {searchresult}
+                    {searchresult.length === 0 ? (
+                        <h1 className=" text-2xl font-bold">No projects found.</h1>
+                    ) : (
+                        ''
+                    )}
                 </div>
             </div>
         </main>
