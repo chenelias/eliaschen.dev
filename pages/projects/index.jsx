@@ -189,7 +189,7 @@ const index = ({ repodata }) => {
                 <div>
                     {searchresult}
                     {searchresult.length === 0 ? (
-                        <h1 className=" text-2xl font-bold">No projects found.</h1>
+                        <h1 className=" text-2xl font-bold text-center">No projects found.</h1>
                     ) : (
                         ''
                     )}
