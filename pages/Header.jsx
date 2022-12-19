@@ -6,9 +6,9 @@ import NavlinkDropMenu from '../components/NavlinkDropMenu'
 import { NavLinks } from '/components/data/Navlinks'
 const Header = ({ children, href }) => {
     return (
-        <header class="fixed w-full pq2 z-30 dark:bg-[rgba(17, 17, 17,0.29)] bg-[rgba(249, 250, 251,0.30)] backdrop-blur-lg">
-            <div class="mx-auto max-w-3xl">
-                <nav class="flex items-center gap-3 text-base m-3">
+        <header className="fixed w-full pq2 z-30 dark:bg-[rgba(17, 17, 17,0.29)] bg-[rgba(249, 250, 251,0.30)] backdrop-blur-lg">
+            <div className="mx-auto max-w-3xl">
+                <nav className="flex items-center gap-3 text-base m-3">
                     <Link href="/" className="group">
                         <h2 className=" font-bold text-xl flex tracking-tighter items-center">
                             <span className=" text-3xl duration-150 group-hover:rotate-[17.5deg]">

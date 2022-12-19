@@ -42,7 +42,7 @@ export default function HomePage() {
                 <p className="text-md">&emsp;Develop, Art, Photography, English</p>
             </div>
             <div className="mt-[20px]">
-                {/* <ProjectContainer /> */}
+                <ProjectContainer />
             </div>
         </container>
     )
