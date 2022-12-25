@@ -14,6 +14,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@headlessui/react": "^1.7.4",
     "@reacticons/ionicons": "^6.0.4",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "astro-icon": "^0.8.0",
     "ionicons": "^6.0.4",
     "kbar": "^0.1.0-beta.38",
