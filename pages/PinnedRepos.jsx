@@ -65,7 +65,7 @@ const PinnedRepos = () => {
         <main>
             <div className="mt-10">
                 <h1 className="font-bold text-4xl mb-6">Repos</h1>
-                <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 w-full gap-6 mt-4">{searchresult}</div>
+                <div className="grid grid-cols-1 lg:grid-cols-3  w-full gap-6 mt-4">{searchresult}</div>
             </div>
         </main>
     )
