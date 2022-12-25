@@ -12,8 +12,8 @@
 }
 
 *::selection {
-  background-color: #fed7aa;
-  color: #ae58ff;
+  background-color: #ff9100;
+  /* color: #fff; */
 }
 
 span::selection {

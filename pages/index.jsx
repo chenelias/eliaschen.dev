@@ -1,10 +1,7 @@
 import Image from 'next/image'
-import eliaschen from '/public/eliaschen.jpg'
 import Head from 'next/head'
-import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component'
-import Skeleton from 'react-loading-skeleton'
-import ProjectContainer from './ProjectContainer'
 import 'react-loading-skeleton/dist/skeleton.css'
+import PinnedRepos from './PinnedRepos'
 export default function HomePage() {
     return (
         <container>
@@ -14,9 +11,7 @@ export default function HomePage() {
             <div className="flex flex-col-reverse sm:flex-row items-start my-5">
                 <div className="flex flex-col pr-8">
                     <h1 className="font-extrabold mt-6 text-4xl md:text-5xl tracking-tight">Elias Chen</h1>
-                    <h2 className="text-gray-700 dark:text-gray-200 mb-1 mt-[-0.1px]">
-                        Developer&ensp;//&ensp;Learner&nbsp;&bull;&nbsp;Taiwan
-                    </h2>
+                    <h2 className="text-gray-700 dark:text-gray-200 mb-1 mt-[-0.1px]">Developer&ensp;//&ensp;Taiwan</h2>
                     <p className="text-gray-600 dark:text-gray-400 mb-16">
                         Learning about coding and creating something useful for every developers and user
                     </p>
@@ -42,7 +37,7 @@ export default function HomePage() {
                 <p className="text-md">&emsp;Develop, Art, Photography, English</p>
             </div>
             <div className="mt-[20px]">
-                <ProjectContainer />
+                <PinnedRepos />
             </div>
         </container>
     )

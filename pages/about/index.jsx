@@ -1,9 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import { AboutImage } from '../../components/data/AboutImage'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
-import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 const AboutPage = () => {
     return (

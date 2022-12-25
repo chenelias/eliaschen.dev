@@ -10,7 +10,7 @@ const Header = ({ children, href }) => {
             <div className="mx-auto max-w-3xl">
                 <nav className="flex items-center gap-3 text-base m-3">
                     <Link href="/" className="group">
-                        <h2 className=" font-bold text-xl flex tracking-tighter items-center">
+                        <h2 className=" font-bold text-xl font-mplus flex tracking-tighter items-center">
                             <span className=" text-3xl duration-150 group-hover:rotate-[17.5deg]">
                                 <FaSlackHash />
                             </span>
