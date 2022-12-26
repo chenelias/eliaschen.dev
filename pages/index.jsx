@@ -37,6 +37,7 @@ export default function HomePage() {
                 <p className="text-md">&emsp;Develop, Art, Photography, English</p>
             </div>
             <div className="mt-[20px]">
+                <h1 className="tracking-tighter  text-5xl mb-6 font-extrabold">Top projects</h1>
                 <PinnedRepos />
             </div>
         </container>

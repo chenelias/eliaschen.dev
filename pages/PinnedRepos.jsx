@@ -101,8 +101,7 @@ const PinnedRepos = () => {
     ))
     return (
         <main>
-            <div className="mt-10">
-                <h1 className="tracking-tighter  text-5xl mb-6 font-extrabold">Top projects</h1>
+            <div className="">
                 <div className="grid grid-cols-1 lg:grid-cols-3  w-full gap-6 mt-4">{searchresult}</div>
 
                 <Link href="/projects" className="group float-right mt-5 p-1">
