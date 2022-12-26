@@ -92,7 +92,7 @@ const index = ({ repodata }) => {
         .filter((repo) => repo.name.toUpperCase().includes(repoSearch) || repo.name.toLowerCase().includes(repoSearch))
         .map((repo) => (
             <Link className="group cursor-pointer block" target="_blank" href={repo.html_url}>
-                <div className="border flex transform hover:scale-[1.01] transition-all w-full w-max-xl p-3 my-4 rounded-lg bg-gradient-to-r dark:from-gray-800 dark:to-slate-600 from-slate-300 to-gray-400 break-words">
+                <div className=" flex transform hover:scale-[1.01] transition-all w-full w-max-xl p-3 my-4 rounded-lg bg-gradient-to-r dark:bg-zinc-800 bg-slate-200 break-words">
                     <div className="block">
                         <div className="flex">
                             <p className="items-center text-xl flex mr-1">
@@ -136,24 +136,16 @@ const index = ({ repodata }) => {
                     <p className="text-lg flex items-center">
                         <AiFillGithub />
                         &thinsp;
-                        <span className="font-bold">{data.length}</span>&thinsp;/&thinsp;Project
+                        <span className="font-bold">{data.length}</span>&thinsp;/&thinsp;Repos
                     </p>
-                    {/* <span>&ensp;&bull;&ensp;</span> */}
-                    {/* <p className="flex items-center text-lg">
-                        Follower&thinsp;/&thinsp;<span className="font-bold">{user.followers}</span>
-                    </p> */}
                 </div>
-                {/* <div className="flex-1"></div>
-                <div className="flex">
-                    <button></button><button></button>
-                </div> */}
             </div>
             <div class="relative w-full mt-6">
                 <input
                     onChange={(x) => InputonChange(x.target.value)}
-                    aria-label="Search projects"
+                    aria-label="Search repos"
                     type="text"
-                    placeholder="Search projects"
+                    placeholder="Search repos"
                     className="RepoSearchInput block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
                 />
                 <div className=" absolute right-0 h-[41px] top-0 py-[8px] rounded-md flex items-center">

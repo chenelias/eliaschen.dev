@@ -9,9 +9,11 @@ const PinnedRepos = () => {
     const [isLoading, setLoading] = useState(false)
     const [user, setuser] = useState(null)
     const loadingdisplay = (
-        <main>
-            <Skeleton baseColor="#202020" width="340px" height="60px" highlightColor="#444" />
-        </main>
+        <div className="flex mt-2">
+            <Skeleton className="mx-2 rounded-lg" baseColor="#202020" width="223px" height="280px" highlightColor="#444" />
+            <Skeleton className="mx-2 rounded-lg" baseColor="#202020" width="223px" height="280px" highlightColor="#444" />
+            <Skeleton className="mx-2 rounded-lg" baseColor="#202020" width="223px" height="280px" highlightColor="#444" />
+        </div>
     )
     useEffect(() => {
         setLoading(true)
@@ -27,7 +29,7 @@ const PinnedRepos = () => {
     if (!data) return loadingdisplay
     var searchresult = data.map((repo) => (
         <Link className="group cursor-pointer block" target="_blank" href={repo.link}>
-            <div className="lg:h-[280px] bg-gradient-to-r from-purple-400 to-orange-500 dark:from-purple-500 dark:to-orange-700 w-full p-[6px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-2xl hover:scale-[103%] dark:hover:shadow-zinc-200/25 hover:shadow-black/25 duration-300">
+            <div className="lg:h-[280px] bg-gradient-to-r from-purple-400 to-orange-500 dark:from-purple-500 dark:to-orange-700 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-2xl hover:scale-[103%] dark:hover:shadow-zinc-200/25 hover:shadow-black/25 duration-300">
                 <div class="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
                     <div>
                         <h1 class="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">
