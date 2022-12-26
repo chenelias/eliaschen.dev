@@ -7,12 +7,47 @@ import { BiGitRepoForked } from 'react-icons/bi'
 const PinnedRepos = () => {
     const [data, setData] = useState(null)
     const [isLoading, setLoading] = useState(false)
-    const [user, setuser] = useState(null)
+    const LoadingSkeleton = (
+        <div className="lg:h-[280px] bg-gradient-to-r from-purple-400 to-orange-500 dark:from-purple-500 dark:to-orange-700 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 duration-300">
+            <div class="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
+                <div>
+                    <h1 class="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">
+                        <Skeleton className="rounded-lg" baseColor="#202020" count="1" highlightColor="#444" />
+                    </h1>
+                </div>
+                <div class=" lg:h-[140px]">
+                    <p className="line-clamp-5 ">
+                        {' '}
+                        <Skeleton className="rounded-lg" count="3" baseColor="#202020" highlightColor="#444" />
+                    </p>
+                </div>
+                <div class="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block">
+                    <Skeleton
+                        className="rounded-lg"
+                        baseColor="#202020"
+                        width="130px"
+                        count="1"
+                        highlightColor="#444"
+                    />
+                    <Skeleton
+                        className="rounded-lg"
+                        baseColor="#202020"
+                        count="1"
+                        width="100px"
+                        highlightColor="#444"
+                    />
+                </div>
+            </div>
+        </div>
+    )
     const loadingdisplay = (
-        <div className="flex mt-2">
-            <Skeleton className="mx-2 rounded-lg" baseColor="#202020" width="223px" height="280px" highlightColor="#444" />
-            <Skeleton className="mx-2 rounded-lg" baseColor="#202020" width="223px" height="280px" highlightColor="#444" />
-            <Skeleton className="mx-2 rounded-lg" baseColor="#202020" width="223px" height="280px" highlightColor="#444" />
+        <div className="grid grid-cols-1 lg:grid-cols-3  w-full gap-6 mt-4">
+            {LoadingSkeleton}
+            {LoadingSkeleton}
+            {LoadingSkeleton}
+            {LoadingSkeleton}
+            {LoadingSkeleton}
+            {LoadingSkeleton}
         </div>
     )
     useEffect(() => {
@@ -24,7 +59,6 @@ const PinnedRepos = () => {
                 setLoading(false)
             })
     }, [])
-
     if (isLoading) return loadingdisplay
     if (!data) return loadingdisplay
     var searchresult = data.map((repo) => (
@@ -45,7 +79,8 @@ const PinnedRepos = () => {
                             <p className="items-center flex text-lg font-bold">
                                 <MdOutlineFavoriteBorder />
                                 &thinsp;{repo.stars}
-                            </p>&ensp;
+                            </p>
+                            &ensp;
                             <p className="items-center flex text-lg font-bold">
                                 <BiGitRepoForked />
                                 &thinsp;{repo.forks}
