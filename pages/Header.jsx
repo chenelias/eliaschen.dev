@@ -4,24 +4,28 @@ import Link from 'next/link'
 import ColorModeToggle from '/components/ColorModeToggle'
 import NavlinkDropMenu from '../components/NavlinkDropMenu'
 import { NavLinks } from '/components/data/Navlinks'
-const Header = ({ children, href }) => {
+import { useRouter } from 'next/router'
+const Header = () => {
+    const router = useRouter()
     return (
         <header className="fixed w-full pq2 z-30 dark:bg-[rgba(17, 17, 17,0.29)] bg-[rgba(249, 250, 251,0.30)] backdrop-blur-lg">
-            <div className="mx-auto max-w-3xl">
+            <div className="mx-auto max-w-4xl">
                 <nav className="flex items-center gap-3 text-base m-3">
                     <Link href="/" className="group">
-                        <h2 className=" font-bold text-xl font-mplus flex tracking-tighter items-center">
-                            <span className=" text-3xl duration-150 group-hover:rotate-[17.5deg]">
+                        <h2 className=" font-bold text-2xl flex tracking-tighter items-center">
+                            <span className=" text-4xl !mt-[2px] duration-150 group-hover:rotate-[17.5deg]">
                                 <FaSlackHash />
                             </span>
                             EliasChen.dev
                         </h2>
                     </Link>
-                    <div className="headernav ml-1 text-lg hidden xs:inline-flex">
+                    <div className="headernav ml-1 text-xl hidden xs:inline-flex">
                         {NavLinks.map((links) => (
                             <Link
                                 key={links.link}
-                                className="px-2 hover:underline underline-offset-[6px]"
+                                className={`px-2 hover:underline underline-offset-[8px] ${
+                                    router.pathname == links.link ? 'font-bold' : 'font-normal'
+                                }`}
                                 href={links.link}
                             >
                                 {links.title}

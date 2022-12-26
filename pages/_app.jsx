@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
                 showOnShallow={false}
             />
             <Header />
-            <main className="pt-20 px-[25px] mx-auto max-w-3xl">
+            <main className="pt-20 px-[25px] mx-auto max-w-4xl">
                 <Component {...pageProps} />
                 <Footer />
             </main>

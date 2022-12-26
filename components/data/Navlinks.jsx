@@ -2,18 +2,18 @@ import React from 'react'
 export const NavLinks = [
     {
         title: 'Blog',
-        link: '/blog/',
+        link: '/blog',
     },
     {
         title: 'Project',
-        link: '/projects/',
+        link: '/projects',
     },
     {
         title: 'About',
-        link: '/about/',
+        link: '/about',
     },
     {
         title: 'Links',
-        link: '/links/',
+        link: '/links',
     },
 ]
