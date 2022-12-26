@@ -7,19 +7,7 @@ import { HiOutlineTrash } from 'react-icons/hi'
 import { TbGitFork } from 'react-icons/tb'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import useDarkMode from '/components/useDarkMode'
 const tokenkey = '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'
-// export async function getServerSideProps(context) {
-//     const usr = await fetch('https://api.github.com/users/chenelias', {
-//         headers: {
-//             Authorization: { tokenkey },
-//         },
-//     })
-//     const user = await usr.json()
-//     return {
-//         props: { data, user },
-//     }
-// }
 const index = ({ repodata }) => {
     const [focusSearch, setFocusSearch] = useState(false)
     const [repoSearch, setRepoSearch] = useState('')
@@ -92,7 +80,7 @@ const index = ({ repodata }) => {
         .filter((repo) => repo.name.toUpperCase().includes(repoSearch) || repo.name.toLowerCase().includes(repoSearch))
         .map((repo) => (
             <Link className="group cursor-pointer block" target="_blank" href={repo.html_url}>
-                <div className=" flex transform hover:scale-[1.01] transition-all w-full w-max-xl p-3 my-4 rounded-lg bg-gradient-to-r dark:bg-zinc-800 bg-slate-200 break-words">
+                <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 flex transform hover:scale-[1.01] transition-all w-full w-max-xl p-3 my-5 rounded-lg bg-gradient-to-r dark:bg-zinc-800 bg-slate-200 break-words">
                     <div className="block">
                         <div className="flex">
                             <p className="items-center text-xl flex mr-1">
@@ -143,9 +131,9 @@ const index = ({ repodata }) => {
             <div class="relative w-full mt-6">
                 <input
                     onChange={(x) => InputonChange(x.target.value)}
-                    aria-label="Search repos"
+                    aria-label="Search projects"
                     type="text"
-                    placeholder="Search repos"
+                    placeholder="Search projects"
                     className="RepoSearchInput block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
                 />
                 <div className=" absolute right-0 h-[41px] top-0 py-[8px] rounded-md flex items-center">

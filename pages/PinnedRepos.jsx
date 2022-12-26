@@ -4,6 +4,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { MdOutlineFavoriteBorder } from 'react-icons/md'
 import { BiGitRepoForked } from 'react-icons/bi'
+import { BsArrowRight } from 'react-icons/bs'
 const PinnedRepos = () => {
     const [data, setData] = useState(null)
     const [isLoading, setLoading] = useState(false)
@@ -63,7 +64,7 @@ const PinnedRepos = () => {
     if (!data) return loadingdisplay
     var searchresult = data.map((repo) => (
         <Link className="group cursor-pointer block" target="_blank" href={repo.link}>
-            <div className="lg:h-[280px] bg-gradient-to-r from-purple-400 to-orange-500 dark:from-purple-500 dark:to-orange-700 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-2xl hover:scale-[103%] dark:hover:shadow-zinc-200/25 hover:shadow-black/25 duration-300">
+            <div className="lg:h-[280px] bg-gradient-to-r from-purple-400 to-orange-500 dark:from-purple-500 dark:to-orange-700 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-xl hover:scale-[103%] dark:hover:shadow-zinc-200/20 hover:shadow-black/20 duration-300">
                 <div class="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
                     <div>
                         <h1 class="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">
@@ -101,8 +102,17 @@ const PinnedRepos = () => {
     return (
         <main>
             <div className="mt-10">
-                <h1 className="font-bold text-4xl mb-6">Repos</h1>
+                <h1 className="tracking-tighter  text-5xl mb-6 font-extrabold">Top projects</h1>
                 <div className="grid grid-cols-1 lg:grid-cols-3  w-full gap-6 mt-4">{searchresult}</div>
+
+                <Link href="/projects" className="group float-right mt-5 p-1">
+                    <div className="items-center flex w-[210px] text-xl">
+                        <p className="float-left">View all my projects</p>
+                        <div className="ml-1 group-hover:ml-3 duration-100">
+                            <BsArrowRight />
+                        </div>
+                    </div>
+                </Link>
             </div>
         </main>
     )
