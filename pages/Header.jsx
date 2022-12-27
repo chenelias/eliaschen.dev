@@ -12,14 +12,14 @@ const Header = () => {
             <div className="mx-auto max-w-4xl">
                 <nav className="flex items-center gap-3 text-base m-3">
                     <Link href="/" className="group">
-                        <h2 className=" font-bold text-2xl flex tracking-tighter items-center">
-                            <span className=" text-4xl !mt-[2px] duration-150 group-hover:rotate-[17.5deg]">
+                        <h2 className=" font-bold text-xl flex tracking-tighter items-center">
+                            <span className=" text-3xl !mt-[2px] duration-150 group-hover:rotate-[17.5deg]">
                                 <FaSlackHash />
                             </span>
                             EliasChen.dev
                         </h2>
                     </Link>
-                    <div className="headernav ml-1 text-xl hidden xs:inline-flex">
+                    <div className="headernav ml-1 text-lg hidden xs:inline-flex">
                         {NavLinks.map((links) => (
                             <Link
                                 key={links.link}

@@ -23,18 +23,21 @@ export default function NavlinkDropMenu() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                {({ close }) => (
+                {({ active }) => (
                     <Menu.Items
                         onClick={() => close}
                         className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md border border-zinc-400 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800 shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none divide-zinc-400 dark:divide-zinc-700`}
+                        
                     >
                         <div className="py-1 ">
                             <div className="px-3 py-1 uppercase font-mplus font-bold text-xs">Navigation</div>
                         </div>
+
                         {NavLinks.map((links) => (
                             <Link
                                 key={links.link}
                                 href={links.link}
+                                
                                 className="text-md block py-2 px-3 hover:bg-gray-300 dark:hover:bg-zinc-500 rounded-[3px]"
                             >
                                 {links.title}
