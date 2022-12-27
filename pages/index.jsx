@@ -29,7 +29,7 @@ export default function HomePage() {
             <div className="mt-[-40px]">
                 <h1 className="text-3xl font-bold mb-1">Develop skills</h1>
                 <p className="text-md">
-                    &emsp;Web ( React / Next / Astro ), Mobile (ReactNative), Desktop (Electron), Python, C++
+                    &emsp;Web ( React / Next / Astro ), Mobile (ReactNative), Desktop (Electron), C++
                 </p>
             </div>
             <div className="mt-[20px]">
@@ -37,7 +37,7 @@ export default function HomePage() {
                 <p className="text-md">&emsp;Develop, Art, Photography, English</p>
             </div>
             <div className="mt-[40px]">
-                <h1 className="tracking-tighter  text-5xl mb-6 font-extrabold">Top projects</h1>
+                <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">Top projects</h1>
                 <PinnedRepos />
             </div>
         </container>

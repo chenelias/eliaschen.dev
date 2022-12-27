@@ -3,8 +3,11 @@ import { IoMenu } from 'react-icons/io5'
 import { NavLinks } from './data/Navlinks'
 import Link from 'next/link'
 import React from 'react'
+import { useRouter } from 'next/router'
 
 export default function NavlinkDropMenu() {
+    const router = useRouter()
+
     return (
         <Menu as="div" className="text-left relative block xs:hidden">
             <div>
@@ -27,7 +30,6 @@ export default function NavlinkDropMenu() {
                     <Menu.Items
                         onClick={() => close}
                         className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md border border-zinc-400 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800 shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none divide-zinc-400 dark:divide-zinc-700`}
-                        
                     >
                         <div className="py-1 ">
                             <div className="px-3 py-1 uppercase font-mplus font-bold text-xs">Navigation</div>
@@ -37,8 +39,11 @@ export default function NavlinkDropMenu() {
                             <Link
                                 key={links.link}
                                 href={links.link}
-                                
-                                className="text-md block py-2 px-3 hover:bg-gray-300 dark:hover:bg-zinc-500 rounded-[3px]"
+                                className={`text-md block py-2 px-3 hover:bg-gray-300 dark:hover:bg-zinc-500 rounded-[3px] ${
+                                    router.pathname == links.link
+                                        ? 'font-bold underline underline-offset-[6px]'
+                                        : 'font-normal'
+                                }`}
                             >
                                 {links.title}
                             </Link>

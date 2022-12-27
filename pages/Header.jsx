@@ -24,7 +24,7 @@ const Header = () => {
                             <Link
                                 key={links.link}
                                 className={`px-2 hover:underline underline-offset-[8px] ${
-                                    router.pathname == links.link ? 'font-bold' : 'font-normal'
+                                    router.pathname == links.link ? 'font-extrabold text-purple-500' : 'font-normal'
                                 }`}
                                 href={links.link}
                             >
