@@ -1,13 +1,10 @@
 import React from 'react'
-import Head from 'next/head'
+import Body from '/components/Body.tsx'
 const index = () => {
     return (
-        <main>
-            <Head>
-                <title>EliasChen - Blog</title>
-            </Head>
+        <Body title="Blog">
             <div>blog</div>
-        </main>
+        </Body>
     )
 }
 

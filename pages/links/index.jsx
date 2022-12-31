@@ -1,13 +1,10 @@
 import React from 'react'
-import Head from 'next/head'
+import Body from '/components/Body.tsx'
 import { MediaLinks } from '/components/data/MediaLinks'
 import IonIcon from '@reacticons/ionicons'
 const LinksPage = () => {
     return (
-        <main className="pb-[30px]">
-            <Head>
-                <title>EliasChen - Links</title>
-            </Head>
+        <Body title="Links">
             <h1 className="font-extrabold text-6xl tracking-tight">Links</h1>
             <p className="text-lg">All my profile links to find me on the web.</p>
             <div class="mt-8">
@@ -29,7 +26,7 @@ const LinksPage = () => {
                     </a>
                 ))}
             </div>
-        </main>
+        </Body>
     )
 }
 

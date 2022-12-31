@@ -1,13 +1,10 @@
 import React from 'react'
-import Head from 'next/head'
+import Body from '/components/Body.tsx'
 import Image from 'next/image'
 import 'react-loading-skeleton/dist/skeleton.css'
 const AboutPage = () => {
     return (
-        <main>
-            <Head>
-                <title>EliasChen - About</title>
-            </Head>
+        <Body title="About">
             <h1 className="font-extrabold text-6xl tracking-tight">About Me</h1>
             <div className="mt-5">
                 <p className="font-bold text-xl">Short, 3rd Person</p>
@@ -33,7 +30,7 @@ const AboutPage = () => {
                     />
                 </div>
             </div>
-        </main>
+        </Body>
     )
 }
 

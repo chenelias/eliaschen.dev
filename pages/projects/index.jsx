@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import Head from 'next/head'
+import Body from '/components/Body.tsx'
 import Link from 'next/link'
 import { AiFillGithub } from 'react-icons/ai'
 import { MdOutlineFavoriteBorder, MdLanguage } from 'react-icons/md'
 import { HiOutlineTrash } from 'react-icons/hi'
 import { TbGitFork } from 'react-icons/tb'
 import Skeleton from 'react-loading-skeleton'
+
 import 'react-loading-skeleton/dist/skeleton.css'
 const tokenkey = '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'
 const index = ({ repodata }) => {
@@ -16,10 +17,7 @@ const index = ({ repodata }) => {
     const [isLoading, setLoading] = useState(false)
     const [user, setuser] = useState(null)
     const loadingdisplay = (
-        <main>
-            <Head>
-                <title>EliasChen - Projects</title>
-            </Head>
+        <Body title="Projects">
             <Skeleton baseColor="#202020" width="340px" height="60px" highlightColor="#444" />
             <div className="mt-[10px]"></div>
             <Skeleton baseColor="#202020" width="100px" highlightColor="#444" />
@@ -34,7 +32,7 @@ const index = ({ repodata }) => {
                     highlightColor="#444"
                 />
             </div>
-        </main>
+        </Body>
     )
     useEffect(() => {
         setLoading(true)
@@ -114,10 +112,7 @@ const index = ({ repodata }) => {
             </Link>
         ))
     return (
-        <main>
-            <Head>
-                <title>EliasChen - Projects</title>
-            </Head>
+        <Body title="Projects">
             <div className=" items-center">
                 <h1 className="font-extrabold text-6xl tracking-tight">Projects</h1>
                 <div className="flex items-center mt-4">
@@ -175,7 +170,7 @@ const index = ({ repodata }) => {
                     )}
                 </div>
             </div>
-        </main>
+        </Body>
     )
 }
 

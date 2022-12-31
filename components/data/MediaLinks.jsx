@@ -9,7 +9,7 @@ export const MediaLinks = [
     {
         name: 'DEV Community',
         username: 'eliaschen',
-        url: 'https://dev.to/',
+        url: 'https://dev.to/eliaschen/',
         icon: 'code-outline',
     },
     {
@@ -30,10 +30,10 @@ export const MediaLinks = [
         url: 'https://www.instagram.com/codechen9810/',
         icon: 'logo-instagram',
     },
-    {
-        name: 'Discord',
-        username: 'rubychen5555#7854',
-        url: 'https://discord.com/channels/rubychen5555#7854',
-        icon: 'logo-discord',
-    },
+    // {
+    //     name: 'Discord',
+    //     username: 'rubychen5555#7854',
+    //     url: 'https://discord.com/channels/rubychen5555#7854',
+    //     icon: 'logo-discord',
+    // },
 ]
