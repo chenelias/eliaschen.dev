@@ -6,13 +6,11 @@ import { MdOutlineFavoriteBorder, MdLanguage } from 'react-icons/md'
 import { HiOutlineTrash } from 'react-icons/hi'
 import { TbGitFork } from 'react-icons/tb'
 import Skeleton from 'react-loading-skeleton'
-
 import 'react-loading-skeleton/dist/skeleton.css'
-const tokenkey = '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'
+const tokenkey = process.env.GITHUB_TOKEN
 const index = ({ repodata }) => {
     const [focusSearch, setFocusSearch] = useState(false)
     const [repoSearch, setRepoSearch] = useState('')
-    const [searchvalue, setsearchvalue] = useState()
     const [data, setData] = useState(null)
     const [isLoading, setLoading] = useState(false)
     const [user, setuser] = useState(null)
