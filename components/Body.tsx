@@ -3,11 +3,11 @@ import React from 'react'
 
 export default function Body(props) {
     return (
-        <main>
+        <body>
             <Head>
                 <title>{'EliasChen - ' + props.title}</title>
             </Head>
             {props.children}
-        </main>
+        </body>
     )
 }
