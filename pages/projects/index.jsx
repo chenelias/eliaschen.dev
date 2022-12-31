@@ -18,18 +18,18 @@ const index = ({ repodata }) => {
     const [user, setuser] = useState(null)
     const loadingdisplay = (
         <Body title="Projects">
-            <Skeleton baseColor="#202020" width="340px" height="60px" highlightColor="#444" />
+            <Skeleton baseColor="#202020" width="340px" height="60px" highlightColor="#666" />
             <div className="mt-[10px]"></div>
-            <Skeleton baseColor="#202020" width="100px" highlightColor="#444" />
+            <Skeleton baseColor="#202020" width="100px" highlightColor="#666" />
             <div className="mt-[40px]"></div>
-            <Skeleton baseColor="#202020" height="42px" clasName="rounded-lg" highlightColor="#444" />
+            <Skeleton baseColor="#202020" height="42px" clasName="rounded-lg" highlightColor="#666" />
             <div className="mt-10">
                 <Skeleton
                     height="122px"
                     count="3"
                     className="w-full my-2 rounded-lg"
                     baseColor="#202020"
-                    highlightColor="#444"
+                    highlightColor="#666"
                 />
             </div>
         </Body>

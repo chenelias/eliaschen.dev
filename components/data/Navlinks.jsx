@@ -16,4 +16,8 @@ export const NavLinks = [
         title: 'Links',
         link: '/links',
     },
+    {
+        title: '',
+        link: '/'
+    }
 ]
