@@ -18,10 +18,10 @@ export default function Document() {
                 ></link>
                 <meta name="description" content="Persional home page of EliasChen" />
                 {/* meta:og */}
-                <meta property="og:image" content="../public/eliaschen.jpg" />
+                <meta property="og:image" content="/public/eliaschen.jpg" />
                 <meta property="og:type" content="blog" />
                 <meta property="og:url" content="https://www.eliaschen.dev" />
-                <meta property="og:title" content="EliasChen/Home" />
+                <meta property="og:title" content="EliasChen - devloper" />
                 <meta property="og:description" content="Persional home page of EliasChen" />
             </Head>
             <body className="dark:bg-[#111111] bg-[#f9fafb] dark:text-white duration-75">
