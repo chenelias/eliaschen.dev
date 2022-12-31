@@ -18,7 +18,10 @@ export default function Document() {
                 ></link>
                 <meta name="description" content="Persional home page of EliasChen" />
                 {/* meta:og */}
-                <meta property="og:image" content="/public/eliaschen.jpg" />
+                <meta
+                    property="og:image"
+                    content="https://tech.inthepocket.com/api/og-image?name=Next.js&stage=adopt"
+                />
                 <meta property="og:type" content="blog" />
                 <meta property="og:url" content="https://www.eliaschen.dev" />
                 <meta property="og:title" content="EliasChen - devloper" />

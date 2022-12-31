@@ -12,10 +12,10 @@ export default function Footer() {
                     <Link
                         class=" text-gray-500 hover:text-gray-900 dark:hover:text-white transition items-center inline-flex"
                         target="_blank"
-                        href="https://github.com/chenelias/eliaschen.dev"
+                        href="https://github.com/chenelias/"
                     >
                         <BsGithub />
-                        &thinsp;Source
+                        &thinsp;GitHub
                     </Link>
                 </ul>
             </div>
