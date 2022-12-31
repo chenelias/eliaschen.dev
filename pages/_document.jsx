@@ -3,24 +3,39 @@ import Footer from './Footer'
 import Header from './Header'
 import Link from 'next/link'
 export default function Document() {
+    const headdata = [
+        {
+            image: 'https://preview.eliaschen.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Feliaschen.d614d9a1.jpg&w=640&q=75',
+            url: 'https://www.eliaschen.dev/',
+            description: 'Learning about coding and creating something useful for every developers and user',
+            title: 'EliasChen - Developer',
+        },
+    ]
     return (
         <Html>
             <Head>
-                <meta name="theme-color" content="#da532c"></meta>
+                <meta charset="utf-8" />
+                <meta name="theme-color" content="#a855f7" />
                 <link
                     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
                     rel="stylesheet"
                 ></link>
-                <meta name="description" content="Persional home page of EliasChen" />
-                {/* meta:og */}
                 <meta
-                    property="og:image"
-                    content="https://preview.eliaschen.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Feliaschen.d614d9a1.jpg&w=640&q=75"
+                    name="description"
+                    content="Learning about coding and creating something useful for every developers and user"
                 />
-                <meta property="og:type" content="blog" />
-                <meta property="og:url" content="https://www.eliaschen.dev" />
-                <meta property="og:title" content="EliasChen - Developer" />
-                <meta property="og:description" content="Persional home page of EliasChen" />
+                {/* og: */}
+                <meta property="og:image" content={headdata.image} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={headdata.url} />
+                <meta property="og:title" content={headdata.title} />
+                <meta property="og:description" content={headdata.description} />
+                {/* twitter: */}
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content={headdata.url} />
+                <meta property="twitter:title" content={title} />
+                <meta property="twitter:description" content={description} />
+                <meta property="twitter:image" content={headdata.image} />
             </Head>
             <body className="dark:bg-[#111111] bg-[#f9fafb] dark:text-white duration-75">
                 <Main />
