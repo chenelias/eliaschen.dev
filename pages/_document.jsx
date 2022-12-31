@@ -3,11 +3,6 @@ import Footer from './Footer'
 import Header from './Header'
 import Link from 'next/link'
 export default function Document() {
-    const headdata = [
-        {
-            description: 'Persional home page of EliasChen',
-        },
-    ]
     return (
         <Html>
             <Head>
@@ -20,11 +15,11 @@ export default function Document() {
                 {/* meta:og */}
                 <meta
                     property="og:image"
-                    content="https://tech.inthepocket.com/api/og-image?name=Next.js&stage=adopt"
+                    content="https://preview.eliaschen.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Feliaschen.d614d9a1.jpg&w=640&q=75"
                 />
                 <meta property="og:type" content="blog" />
                 <meta property="og:url" content="https://www.eliaschen.dev" />
-                <meta property="og:title" content="EliasChen - devloper" />
+                <meta property="og:title" content="EliasChen - Developer" />
                 <meta property="og:description" content="Persional home page of EliasChen" />
             </Head>
             <body className="dark:bg-[#111111] bg-[#f9fafb] dark:text-white duration-75">
