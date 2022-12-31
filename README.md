@@ -6,6 +6,7 @@ My persional site made with Nextjs, Tailwindcss\
 ![eliaschen photoshot](public/eliaschen.jpg)
 
 ## Package
+
 -   [Nextjs](https://nextjs.org/) **(build faster website)**
 -   [Tailwindcss](https://tailwindcss.com/) **(Edit css with simple and faster way)**
 -   [react-icon](https://react-icons.github.io/react-icons/) **(Easy way to import icons from many icons provider)**
@@ -19,8 +20,14 @@ My persional site made with Nextjs, Tailwindcss\
 -   Github rest API **(Data of my github public repos)**
 
 ## Setup
+
+run `npm install` and `yarn install`
+
 ```jsx
 - const tokenkey = process.env.GITHUB_TOKEN
 + const tokenkey = "YOUR OWN GITHUB TOKEN"
 ```
+
+run `yarn dev`
+
 ### MIT License 🔨 EliasChen

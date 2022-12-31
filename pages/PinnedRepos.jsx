@@ -13,13 +13,13 @@ const PinnedRepos = () => {
             <div class="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
                 <div>
                     <h1 class="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">
-                        <Skeleton className="rounded-lg" baseColor="#202020" count="1" highlightColor="#fff" />
+                        <Skeleton className="rounded-lg" baseColor="#202020" count="1" highlightColor="#666" />
                     </h1>
                 </div>
                 <div class=" lg:h-[140px]">
                     <p className="line-clamp-5 ">
                         {' '}
-                        <Skeleton className="rounded-lg" count="3" baseColor="#202020" highlightColor="#555" />
+                        <Skeleton className="rounded-lg" count="3" baseColor="#202020" highlightColor="#666" />
                     </p>
                 </div>
                 <div class="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block">
@@ -28,14 +28,14 @@ const PinnedRepos = () => {
                         baseColor="#202020"
                         width="130px"
                         count="1"
-                        highlightColor="#555"
+                        highlightColor="#666"
                     />
                     <Skeleton
                         className="rounded-lg"
                         baseColor="#202020"
                         count="1"
                         width="100px"
-                        highlightColor="#555"
+                        highlightColor="#666"
                     />
                 </div>
             </div>
