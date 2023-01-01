@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import Footer from './Footer'
 import Header from './Header'
 import NextNProgress from 'nextjs-progressbar'
-// import { KBarProvider, KBarPortal, KBarPositioner, KBarAnimator, KBarSearch, useMatches, NO_GROUP } from 'kbar'
+import '/styles/globals.css'
 function MyApp({ Component, pageProps }) {
     return (
         <main className="">

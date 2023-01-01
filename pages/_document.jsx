@@ -1,7 +1,4 @@
 import { Html, Main, Head, NextScript } from 'next/document'
-import Footer from './Footer'
-import Header from './Header'
-import Link from 'next/link'
 export default function Document() {
     const headdata = [
         {
@@ -33,8 +30,8 @@ export default function Document() {
                 {/* twitter: */}
                 <meta property="twitter:card" content="summary_large_image" />
                 <meta property="twitter:url" content={headdata.url} />
-                <meta property="twitter:title" content={title} />
-                <meta property="twitter:description" content={description} />
+                <meta property="twitter:title" content={headdata.title} />
+                <meta property="twitter:description" content={headdata.description} />
                 <meta property="twitter:image" content={headdata.image} />
             </Head>
             <body className="dark:bg-[#111111] bg-[#f9fafb] dark:text-white duration-75">
