@@ -23,7 +23,7 @@ export default function Document() {
                     content="Learning about coding and creating something useful for every developers and user"
                 />
                 {/* og: */}
-                <meta property="og:image" href="/eliaschenog.jpg" />
+                <meta property="og:image" href="/ogimage.jpg" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content={headdata.url} />
                 <meta property="og:title" content={headdata.title} />
@@ -33,7 +33,7 @@ export default function Document() {
                 <meta property="twitter:url" content={headdata.url} />
                 <meta property="twitter:title" content={headdata.title} />
                 <meta property="twitter:description" content={headdata.description} />
-                <meta property="twitter:image" content="/eliaschenog.jpg" />
+                <meta property="twitter:image" content="/ogimage.jpg" />
             </Head>
             <body className="dark:bg-[#111111] bg-[#f9fafb] dark:text-white duration-75">
                 <Main />
