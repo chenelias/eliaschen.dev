@@ -23,7 +23,7 @@ export default function Document() {
                     content="Learning about coding and creating something useful for every developers and user"
                 />
                 {/* og: */}
-                <meta property="og:image" href="/ogimage.jpg" />
+                <meta property="og:image" content="/ogimage.jpg" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content={headdata.url} />
                 <meta property="og:title" content={headdata.title} />
