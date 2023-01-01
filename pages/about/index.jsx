@@ -18,13 +18,13 @@ const AboutPage = () => {
                 <div className="mt-2 xs:inline-flex block">
                     <Image
                         className="rounded-xl mr-3 mb-3 !h-[250px] !w-auto"
-                        src={require('/public/about/eliaschen.jpg')}
+                        src={require('/public/eliaschen.jpg')}
                         alt="EliasChen"
                         placeholder="blur"
                     />
                     <Image
                         className="rounded-xl mr-3 mb-3 !h-[250px] !w-auto"
-                        src={require('/public/about/eliaschen-origin.jpg')}
+                        src={require('/public/eliaschen-origin.jpg')}
                         alt="EliasChen"
                         placeholder="blur"
                     />
