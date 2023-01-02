@@ -2,6 +2,7 @@ import Image from 'next/image'
 import 'react-loading-skeleton/dist/skeleton.css'
 import PinnedRepos from './PinnedRepos'
 import Body from '../components/Body'
+import RecentlyBlog from './RecentlyBlog'
 export default function HomePage() {
     return (
         <Body title="Home">
@@ -33,7 +34,11 @@ export default function HomePage() {
                 <h1 className="text-3xl font-bold mb-1">Hobby</h1>
                 <p className="text-md">&emsp;Develop, Art, Photography, English</p>
             </div>
-            <div className="mt-[40px]">
+            <div className='mt-[40px]'>
+                <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">Recently Blog</h1>
+                <RecentlyBlog/>
+            </div>
+            <div className="mt-[70px]">
                 <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">Top projects</h1>
                 <PinnedRepos />
             </div>
