@@ -10,19 +10,19 @@ const PinnedRepos = () => {
     const [isLoading, setLoading] = useState(false)
     const LoadingSkeleton = (
         <div className="lg:h-[280px] bg-gradient-to-r from-purple-400 to-orange-500 dark:from-purple-500 dark:to-orange-700 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 duration-300">
-            <div class="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
+            <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
                 <div>
-                    <h1 class="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">
+                    <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">
                         <Skeleton className="rounded-lg" baseColor="#202020" count="1" highlightColor="#666" />
                     </h1>
                 </div>
-                <div class=" lg:h-[140px]">
+                <div className=" lg:h-[140px]">
                     <p className="line-clamp-5 ">
                         {' '}
                         <Skeleton className="rounded-lg" count="3" baseColor="#202020" highlightColor="#666" />
                     </p>
                 </div>
-                <div class="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block">
+                <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block">
                     <Skeleton
                         className="rounded-lg"
                         baseColor="#202020"
@@ -65,17 +65,17 @@ const PinnedRepos = () => {
     var searchresult = data.map((repo) => (
         <Link className="group cursor-pointer block" target="_blank" href={repo.link}>
             <div className="lg:h-[250px] bg-gradient-to-r from-purple-400 to-orange-500 dark:from-purple-500 dark:to-orange-700 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-xl hover:scale-[103%] dark:hover:shadow-zinc-200/20 hover:shadow-black/20 duration-300">
-                <div class="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
+                <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
                     <div>
-                        <h1 class="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">
+                        <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">
                             {repo.repo}
                         </h1>
                     </div>
-                    <div class=" lg:h-[130px]">
+                    <div className=" lg:h-[130px]">
                         <p className="line-clamp-4 ">{repo.description}</p>
                     </div>
 
-                    <div class="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block">
+                    <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block">
                         <div className="flex">
                             <p className="items-center flex text-lg font-bold">
                                 <MdOutlineFavoriteBorder />
@@ -87,12 +87,12 @@ const PinnedRepos = () => {
                                 &thinsp;{repo.forks}
                             </p>
                         </div>
-                        <div class="flex gap-2 items-center">
+                        <div className="flex gap-2 items-center">
                             <div
                                 style={{ backgroundColor: repo.languageColor }}
                                 className={` rounded-full h-[15px] w-[15px] border-1`}
                             ></div>
-                            <p class=" inline-flex items-center">{repo.language}</p>
+                            <p className=" inline-flex items-center">{repo.language}</p>
                         </div>
                     </div>
                 </div>

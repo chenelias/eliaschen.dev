@@ -17,7 +17,7 @@ const index = ({ repodata }) => {
     const [user, setuser] = useState(null)
     const loadingdisplay = (
         <Body title="Projects">
-            <Skeleton baseColor="#202020" width="340px" height="60px" highlightColor="#666" />
+            <h1 className="font-extrabold text-6xl tracking-tight">Projects</h1>
             <div className="mt-[10px]"></div>
             <Skeleton baseColor="#202020" width="100px" highlightColor="#666" />
             <div className="mt-[40px]"></div>

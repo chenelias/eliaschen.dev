@@ -3,14 +3,14 @@ import { BsGithub } from 'react-icons/bs'
 export default function Footer() {
     return (
         <footer>
-            <div class="mb-10 my-[70px] mt-[100px]  block minxs:flex max-w-full">
-                <p class="text-md">
+            <div className="mb-10 my-[70px] mt-[100px]  block minxs:flex max-w-full">
+                <p className="text-md">
                     &copy;&ensp;{new Date().getFullYear()}&thinsp;EliasChen.&thinsp;All rights reserved.
                 </p>
-                <div class="flex-1"></div>
-                <ul class="text-md">
+                <div className="flex-1"></div>
+                <ul className="text-md">
                     <Link
-                        class=" text-gray-500 hover:text-gray-900 dark:hover:text-white transition items-center inline-flex"
+                        className=" text-gray-500 hover:text-gray-900 dark:hover:text-white transition items-center inline-flex"
                         target="_blank"
                         href="https://github.com/chenelias/"
                     >

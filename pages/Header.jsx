@@ -32,7 +32,7 @@ const Header = () => {
                             </Link>
                         ))}
                     </div>
-                    <div class="flex-1"></div>
+                    <div className="flex-1"></div>
                     <div className="items-center">
                         <ColorModeToggle />
                     </div>

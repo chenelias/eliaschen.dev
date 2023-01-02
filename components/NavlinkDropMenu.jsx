@@ -38,7 +38,7 @@ export default function NavlinkDropMenu() {
                                     <div className="px-3 py-1 uppercase font-mplus font-bold text-xs">Navigation</div>
                                 </div>
                                 {NavLinks.map((links) => (
-                                    <Menu.Items>
+                                    <Menu.Items key={links.link}>
                                         <Link
                                             key={links.link}
                                             href={links.link}
