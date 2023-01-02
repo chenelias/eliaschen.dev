@@ -28,6 +28,7 @@ const index = ({ repodata }) => {
                     count="3"
                     className="w-full my-2 rounded-lg"
                     baseColor="#202020"
+                    borderRadius="10px"
                     highlightColor="#666"
                 />
             </div>
