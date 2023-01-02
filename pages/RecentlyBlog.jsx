@@ -92,18 +92,8 @@ const PinnedRepos = () => {
                                 </p>
                                 &ensp;
                                 <p className="items-center flex text-lg font-bold">
-                                    <BiTimeFive />
-                                    &thinsp;{blog.readable_publish_date}
-                                </p>
-                                &ensp;
-                                <p className="items-center flex text-lg font-bold">
                                     <AiOutlineComment />
                                     &thinsp;{blog.comments_count}
-                                </p>
-                                &ensp;
-                                <p className="items-center flex text-lg font-bold">
-                                    <AiFillRead />
-                                    &thinsp;{blog.reading_time_minutes}&thinsp;min
                                 </p>
                             </div>
                         </div>
