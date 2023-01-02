@@ -42,6 +42,62 @@ const index = () => {
                 setLoad(false)
             })
     }, [])
+    var blogdisplay =
+        load || !articles
+            ? LoadDisplay
+            : articles
+                  .filter(
+                      (data) =>
+                          data.title.toUpperCase().includes(search) ||
+                          data.title.toLowerCase().includes(search) ||
+                          data.tags.toLowerCase().includes(search) ||
+                          data.tags.toUpperCase().includes(search)
+                  )
+                  .map((data) => (
+                      <Link key={data.id} className={`cursor-pointer block`} href={data.url}>
+                          <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform  transition-all w-full w-max-xl p-5 my-2 rounded-lg bg-gradient-to-r dark:bg-zinc-800 bg-slate-200">
+                              <p className="text-md items-center flex  text-zinc-500">
+                                  <p className="mr-1">#{data.tag_list[0]}</p>
+                                  <p className="mr-1">#{data.tag_list[1]}</p>
+                                  <p className="mr-1">#{data.tag_list[2]}</p>
+                                  <p className="mr-1">#{data.tag_list[3]}</p>
+                              </p>
+                              <p className="font-extrabold text-4xl">{data.title}</p>
+                              <div className="flex items-center mt-1">
+                                  <dir className="flex-1"></dir>
+                                  <div className="flex">
+                                      <p className="text-xl flex items-center ml-3 ">
+                                          <p className="text-lg">
+                                              <MdFavorite />
+                                          </p>
+                                          {data.public_reactions_count}
+                                      </p>
+                                      <p className="text-xl flex items-center ml-3">
+                                          <p className="text-lg">
+                                              <AiOutlineComment />
+                                          </p>
+                                          {data.comments_count}
+                                      </p>
+
+                                      <p className="text-xl flex items-center ml-3 whitespace-nowrap">
+                                          <p className="text-lg">
+                                              <AiFillRead />
+                                          </p>
+                                          &thinsp;
+                                          {data.reading_time_minutes}&thinsp;min
+                                      </p>
+                                      <p className="text-lg flex items-center ml-3 whitespace-nowrap">
+                                          <p className="text-lg">
+                                              <BiTimeFive />
+                                          </p>
+                                          &thinsp;
+                                          <p className="">{data.readable_publish_date}</p>
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
+                      </Link>
+                  ))
     return (
         <Body title="Blog">
             <div>
@@ -84,61 +140,12 @@ const index = () => {
                     </div>
                 </div>
                 <div className="mt-10">
-                    {load || !articles
-                        ? LoadDisplay
-                        : articles
-                              .filter(
-                                  (data) =>
-                                      data.title.toUpperCase().includes(search) ||
-                                      data.title.toLowerCase().includes(search) ||
-                                      data.tags.toLowerCase().includes(search) ||
-                                      data.tags.toUpperCase().includes(search)
-                              )
-                              .map((data) => (
-                                  <Link key={data.id} className={`cursor-pointer block`} href={data.url}>
-                                      <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform  transition-all w-full w-max-xl p-5 my-2 rounded-lg bg-gradient-to-r dark:bg-zinc-800 bg-slate-200">
-                                              <p className="text-md items-center flex  text-zinc-500">
-                                                  <p className="mr-1">#{data.tag_list[0]}</p>
-                                                  <p className="mr-1">#{data.tag_list[1]}</p>
-                                                  <p className="mr-1">#{data.tag_list[2]}</p>
-                                                  <p className="mr-1">#{data.tag_list[3]}</p>
-                                              </p>
-                                          <p className="font-extrabold text-4xl">{data.title}</p>
-                                          <div className="flex items-center mt-1">
-                                              <dir className="flex-1"></dir>
-                                              <div className="flex">
-                                                  <p className="text-xl flex items-center ml-3 ">
-                                                      <p className="text-lg">
-                                                          <MdFavorite />
-                                                      </p>
-                                                      {data.public_reactions_count}
-                                                  </p>
-                                                  <p className="text-xl flex items-center ml-3">
-                                                      <p className="text-lg">
-                                                          <AiOutlineComment />
-                                                      </p>
-                                                      {data.comments_count}
-                                                  </p>
-
-                                                  <p className="text-xl flex items-center ml-3 whitespace-nowrap">
-                                                      <p className="text-lg">
-                                                          <AiFillRead />
-                                                      </p>
-                                                      &thinsp;
-                                                      {data.reading_time_minutes}&thinsp;min
-                                                  </p>
-                                                  <p className="text-lg flex items-center ml-3 whitespace-nowrap">
-                                                      <p className="text-lg">
-                                                          <BiTimeFive />
-                                                      </p>
-                                                      &thinsp;
-                                                      <p className="">{data.readable_publish_date}</p>
-                                                  </p>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </Link>
-                              ))}
+                    {blogdisplay.length === 0 ? (
+                        <h1 className=" text-2xl font-bold text-center">No article found.</h1>
+                    ) : (
+                        ''
+                    )}
+                    {blogdisplay}
                 </div>
             </div>
         </Body>
