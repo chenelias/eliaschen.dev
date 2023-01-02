@@ -12,17 +12,17 @@ const index = () => {
     const [articles, setArticles] = React.useState(null)
     const [load, setLoad] = React.useState(true)
     const [focusSearch, setFocusSearch] = React.useState()
-    const [resultnone,setresultnone] =React.useState(false)
+    const [resultnone, setresultnone] = React.useState(false)
     const LoadDisplay = (
         <div className="p-5 ">
             <Skeleton
-                    height="122px"
-                    count="3"
-                    className="w-full my-2 rounded-lg"
-                    baseColor="#202020"
-                    borderRadius="10px"
-                    highlightColor="#666"
-                />
+                height="122px"
+                count="3"
+                className="w-full my-2 rounded-lg"
+                baseColor="#202020"
+                borderRadius="10px"
+                highlightColor="#666"
+            />
         </div>
     )
     function InputonChange(x) {
@@ -99,12 +99,11 @@ const index = () => {
                                       <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform  transition-all w-full w-max-xl p-5 my-2 rounded-lg bg-gradient-to-r dark:bg-zinc-800 bg-slate-200">
                                           <p className="font-extrabold text-4xl">{data.title}</p>
                                           <div className="flex flex-nowrap items-center mt-1">
-                                              <p className="text-lg items-center flex">
-                                                  <p className="text-2xl mt-1 mr-2 xs:mr-0">
-                                                      <AiFillTags />
-                                                  </p>
-                                                  &thinsp;
-                                                  {data.tags}
+                                              <p className="text-lg items-center flex text-zinc-500">
+                                                  <p className="mr-1">#{data.tag_list[0]}</p>
+                                                  <p className="mr-1">#{data.tag_list[1]}</p>
+                                                  <p className="mr-1">#{data.tag_list[2]}</p>
+                                                  <p className="mr-1">#{data.tag_list[3]}</p>
                                               </p>
                                               <dir className="flex-1"></dir>
                                               <p className="text-xl flex items-center ml-3">
