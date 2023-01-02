@@ -18,7 +18,7 @@ const index = ({ repodata }) => {
     const loadingdisplay = (
         <Body title="Projects">
             <h1 className="font-extrabold text-6xl tracking-tight">Projects</h1>
-            <div className="mt-[10px]"></div>
+            <div className="mt-[20px]"></div>
             <Skeleton baseColor="#202020" width="100px" highlightColor="#666" />
             <div className="mt-[40px]"></div>
             <Skeleton baseColor="#202020" height="42px" clasName="rounded-lg" highlightColor="#666" />
