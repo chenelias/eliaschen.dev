@@ -141,7 +141,7 @@ const index = () => {
                 </div>
                 <div className="mt-10">
                     {blogdisplay.length === 0 ? (
-                        <h1 className=" text-2xl font-bold text-center">No article found.</h1>
+                        <h1 className=" text-2xl font-bold text-center">No articles found.</h1>
                     ) : (
                         ''
                     )}
