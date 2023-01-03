@@ -11,7 +11,12 @@
   text-rendering: optimizeLegibility;
   overflow-wrap: break-word;
 }
-
+*:focus-visible{
+  outline: dashed 3px #ce9dff;
+  /* border: #ce9dff 3px solid; */
+  border-radius: 5px;
+  /* padding: 1px; */
+}
 *::selection {
   background-color: #ce9dff;
   /* color: #fff; */
