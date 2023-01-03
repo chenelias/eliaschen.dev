@@ -15,6 +15,7 @@ export default function NavlinkDropMenu() {
                     <div>
                         <span>
                             <Menu.Button
+                                alt="dropdown menu button"
                                 className="cursor-pointer p-2 rounded-lg bg-[#d1d5db] hover:ring-[2px] ring-black dark:ring-white  dark:bg-[#444444] transition-all"
                                 aria-label="menu"
                                 data-headlessui-state="close"
