@@ -12,7 +12,7 @@
   overflow-wrap: break-word;
 }
 *:focus-visible{
-  outline: 3px #ce9dff;
+  outline: solid 3px #ce9dff;
   /* border: #ce9dff 3px solid; */
   border-radius: 5px;
   /* padding: 1px; */
