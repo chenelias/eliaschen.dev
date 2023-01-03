@@ -35,11 +35,11 @@ export default function HomePage() {
                 <p className="text-md">&emsp;Develop, Art, Photography, English</p>
             </div>
             <div className='mt-[40px]'>
-                <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">Recently Blog</h1>
+                <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">Recent Blogs</h1>
                 <RecentlyBlog/>
             </div>
             <div className="mt-[70px]">
-                <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">Top projects</h1>
+                <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">Top Projects</h1>
                 <PinnedRepos />
             </div>
         </Body>

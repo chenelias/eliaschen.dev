@@ -1,9 +1,9 @@
 # [eliaschen - Home](https://www.eliaschen.dev)
 
-My persional site made with Nextjs, Tailwindcss\
+My personal site made with Nextjs, Tailwindcss\
 [https://www.eliaschen.dev](https://www.eliaschen.dev)
 
-![eliaschen photoshot](public/eliaschen.jpg)
+[![eliaschen photoshot](public/eliaschen.jpg)](https://www.eliaschen.dev)
 
 ## Package
 
