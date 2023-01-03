@@ -10,7 +10,7 @@ export default function NavlinkDropMenu() {
 
     return (
         <div>
-            <Menu as="div" className="text-left relative block xs:hidden">
+            <Menu as="div" className="text-left relative block md:hidden">
                 {({ open }) => (
                     <div>
                         <span>

@@ -19,7 +19,7 @@ const Header = () => {
                             EliasChen.dev
                         </h2>
                     </Link>
-                    <div className="headernav ml-1 text-lg hidden xs:inline-flex">
+                    <div className="headernav ml-1 text-lg hidden md:inline-flex">
                         {NavLinks.map((links) => (
                             <Link
                                 key={links.link}

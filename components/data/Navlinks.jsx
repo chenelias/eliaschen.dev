@@ -17,6 +17,10 @@ export const NavLinks = [
         link: '/links',
     },
     {
+        title: 'Music',
+        link: '/music',
+    },
+    {
         title: '',
         link: '/'
     }
