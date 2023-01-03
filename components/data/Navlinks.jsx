@@ -9,16 +9,16 @@ export const NavLinks = [
         link: '/projects',
     },
     {
-        title: 'About',
-        link: '/about',
-    },
-    {
         title: 'Links',
         link: '/links',
     },
     {
         title: 'Music',
         link: '/music',
+    },
+    {
+        title: 'About',
+        link: '/about',
     },
     {
         title: '',
