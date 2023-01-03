@@ -63,7 +63,12 @@ const PinnedRepos = () => {
     if (isLoading) return loadingdisplay
     if (!data) return loadingdisplay
     var searchresult = data.map((repo) => (
-        <Link className="group cursor-pointer block" target="_blank" href={repo.link}>
+        <Link
+            className="group cursor-pointer block"
+            target="_blank"
+            href={repo.link}
+            aria-label={'github repository ' + repo.repo}
+        >
             <div className="lg:h-[250px] bg-gradient-to-r from-purple-400 to-orange-500 dark:from-purple-500 dark:to-orange-700 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-xl hover:scale-[101%] dark:hover:shadow-zinc-200/20 hover:shadow-black/20 duration-300">
                 <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
                     <div>

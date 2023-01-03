@@ -104,7 +104,6 @@ const index = () => {
                 <h1 className="font-extrabold text-6xl tracking-tight">Blog</h1>
                 <div class="relative w-full mt-6">
                     <input
-                        alt="Search articles"
                         onChange={(x) => InputonChange(x.target.value)}
                         aria-label="Search articles"
                         type="text"
@@ -114,7 +113,7 @@ const index = () => {
                     <div className=" absolute right-0 h-[41px] top-0 py-[8px] rounded-md flex items-center">
                         {search !== '' ? (
                             <button
-                                alt="delete input box value"
+                                aria-label="delete input box value"
                                 className="mr-[4px] text-red-600 p-[1px] text-[27px] dark:hover:bg-slate-700 rounded-md hover:bg-slate-200 transition-all"
                                 onClick={() => clearicon()}
                             >

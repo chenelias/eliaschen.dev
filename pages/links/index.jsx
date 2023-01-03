@@ -11,7 +11,7 @@ const LinksPage = () => {
                 {MediaLinks.map((links) => (
                     <a
                         href={links.url}
-                        alt={"Link of eliaschen's " + links.name}
+                        aria-label={"Link of eliaschen's " + links.name}
                         target="_blank"
                         class="dark:bg-[#1d1d20] hover:-translate-y-1 duration-150 flex bg-[#e2e8f0] rounded-lg shadow-lg cursor-pointer  pl-3 items-center my-4 p-1"
                     >

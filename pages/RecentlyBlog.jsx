@@ -65,7 +65,13 @@ const PinnedRepos = () => {
     var searchresult = data
         .filter((item, index) => index < 3)
         .map((blog) => (
-            <Link key={blog.data} className="group cursor-pointer block" target="_blank" href={blog.url}>
+            <Link
+                key={blog.data}
+                aria-label={'link of article ' + blog.title}
+                className="group cursor-pointer block"
+                target="_blank"
+                href={blog.url}
+            >
                 <div className="lg:h-[390px] bg-gradient-to-r from-gray-400 to-black dark:from-gray-400 dark:to-zinc-600 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-xl hover:scale-[101%] dark:hover:shadow-zinc-200/20 hover:shadow-black/20 duration-300">
                     <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
                         <div>
@@ -104,9 +110,7 @@ const PinnedRepos = () => {
     return (
         <main>
             <div className="">
-                <div className="grid grid-cols-1 lg:grid-cols-3  w-full gap-6 mt-4">
-                  {searchresult}
-                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-3  w-full gap-6 mt-4">{searchresult}</div>
 
                 <Link href="/blog" className="group float-right mt-5 p-1">
                     <div className="items-center flex w-[200px]  text-xl">
