@@ -24,7 +24,7 @@ const Header = () => {
                             <Link
                                 key={links.link}
                                 aria-label={links.title}
-                                className={`${links.title===''?'hidden':''} px-2 hover:underline underline-offset-[8px] ${
+                                className={`${links.title   ===''?'hidden':''} px-2 hover:underline underline-offset-[8px] ${
                                     router.pathname == links.link ? 'font-extrabold text-purple-500' : 'font-normal'
                                 }`}
                                 href={links.link}
