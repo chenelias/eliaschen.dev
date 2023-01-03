@@ -78,7 +78,7 @@ const index = ({ repodata }) => {
         .filter((repo) => repo.name.toUpperCase().includes(repoSearch) || repo.name.toLowerCase().includes(repoSearch))
         .map((repo) => (
             <Link className="group cursor-pointer block" target="_blank" href={repo.html_url}>
-                <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 flex transform hover:scale-[1.01] transition-all w-full w-max-xl p-3 my-5 rounded-lg bg-gradient-to-r dark:bg-zinc-800 bg-slate-200 break-words">
+                <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 flex transform transition-all w-full w-max-xl p-3 my-5 rounded-lg bg-gradient-to-r dark:bg-zinc-800 bg-slate-200 break-words">
                     <div className="block">
                         <div className="flex">
                             <p className="items-center text-xl flex mr-1">
@@ -86,7 +86,7 @@ const index = ({ repodata }) => {
                             </p>
                             <h1 className="font-light text-md">{repo.full_name}</h1>
                         </div>
-                        <h1 className="font-bold !block text-3xl group-hover:underline">{repo.name}</h1>
+                        <h1 className="font-bold !block text-3xl">{repo.name}</h1>
                         <p className="text-md font-light">{repo.description}</p>
                         <div className="flex p-1 items-center">
                             <p className="items-center mr-3 font-bold text-lg flex">
