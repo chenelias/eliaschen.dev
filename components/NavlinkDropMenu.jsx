@@ -40,6 +40,7 @@ export default function NavlinkDropMenu() {
                                 {NavLinks.map((links) => (
                                     <Menu.Items key={links.link}>
                                         <Link
+                                            alt={links.title}
                                             key={links.link}
                                             href={links.link}
                                             className={`text-md block py-2 px-3 hover:bg-gray-300 dark:hover:bg-zinc-500 rounded-[3px] ${

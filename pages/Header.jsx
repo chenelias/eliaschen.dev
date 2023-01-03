@@ -23,6 +23,7 @@ const Header = () => {
                         {NavLinks.map((links) => (
                             <Link
                                 key={links.link}
+                                alt={links.title}
                                 className={`px-2 hover:underline underline-offset-[8px] ${
                                     router.pathname == links.link ? 'font-extrabold text-purple-500' : 'font-normal'
                                 }`}

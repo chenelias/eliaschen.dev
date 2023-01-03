@@ -125,6 +125,7 @@ const index = ({ repodata }) => {
             </div>
             <div class="relative w-full mt-6">
                 <input
+                    alt="Search projects"
                     onChange={(x) => InputonChange(x.target.value)}
                     aria-label="Search projects"
                     type="text"
@@ -134,6 +135,7 @@ const index = ({ repodata }) => {
                 <div className=" absolute right-0 h-[41px] top-0 py-[8px] rounded-md flex items-center">
                     {repoSearch !== '' ? (
                         <button
+                            alt="delete input box value"
                             className="mr-[4px] text-red-600 p-[1px] text-[27px] dark:hover:bg-slate-700 rounded-md hover:bg-slate-200 transition-all"
                             onClick={() => clearicon()}
                         >
@@ -164,7 +166,7 @@ const index = ({ repodata }) => {
                 <div>
                     {searchresult}
                     {searchresult.length === 0 ? (
-                        <h1 className=" text-2xl font-bold text-center">No projects found.</h1>
+                        <h1 className="text-2xl font-bold text-center">No projects found.</h1>
                     ) : (
                         ''
                     )}

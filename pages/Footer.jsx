@@ -10,6 +10,7 @@ export default function Footer() {
                 <div className="flex-1"></div>
                 <div className="text-md">
                     <Link
+                        alt="Link of eliaschen's github home page (open in new tab)"
                         className=" text-gray-500 hover:text-gray-900 dark:hover:text-white transition items-center inline-flex"
                         target="_blank"
                         href="https://github.com/chenelias/"
