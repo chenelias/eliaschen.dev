@@ -8,7 +8,7 @@ export default function Footer() {
                     &copy;&ensp;{new Date().getFullYear()}&thinsp;EliasChen.&thinsp;All rights reserved.
                 </p>
                 <div className="flex-1"></div>
-                <ul className="text-md">
+                <div className="text-md">
                     <Link
                         className=" text-gray-500 hover:text-gray-900 dark:hover:text-white transition items-center inline-flex"
                         target="_blank"
@@ -17,7 +17,7 @@ export default function Footer() {
                         <BsGithub />
                         &thinsp;GitHub
                     </Link>
-                </ul>
+                </div>
             </div>
         </footer>
     )

@@ -9,7 +9,7 @@ export default function Document() {
         },
     ]
     return (
-        <Html>
+        <Html lang="en">
             <Head>
                 <meta charSet="utf-8" />
                 <meta name="theme-color" content="#a855f7" />
