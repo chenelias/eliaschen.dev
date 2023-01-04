@@ -4,7 +4,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Image from 'next/image'
 import { BsPlayFill } from 'react-icons/bs'
-import {SiYoutubemusic} from 'react-icons/si'
+import { SiYoutubemusic } from 'react-icons/si'
 import Link from 'next/link'
 const index = () => {
     const [loading, setLoading] = React.useState(true)
@@ -35,6 +35,7 @@ const index = () => {
             />
         </div>
     )
+    const sizeimg="90px"
     return (
         <Body title="Music">
             <div>
@@ -65,15 +66,24 @@ const index = () => {
                                   items.snippet.playlistId
                               }
                           >
-                              <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all duration-100 flex bg-zinc-200 dark:bg-zinc-800 py-3 pr-3 rounded-lg my-5 items-center">
+                              <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all duration-100  bg-zinc-200 dark:bg-zinc-800 py-2 pr-2 rounded-lg my-5 items-center flex">
                                   <p className="text-xl mx-5">{items.snippet.position + 1}</p>
                                   <div className="block">
                                       <h1 className="font-bold text-xl">{items.snippet.title}</h1>
-                                      <p className="text-xs flex ">
-                                          {items.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}
+                                      <p className="text-xs ">
+                                          {items.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, null)}
                                       </p>
                                   </div>
                                   <div className="flex-1"></div>
+                                  <div
+                                      className={`overflow-hidden rounded-lg block !h-[100px] !w-[100px] shrink-0 ml-1`}
+                                  >
+                                      <img
+                                          className="musicalbumimg !w-auto !h-[100px]"
+                                          src={items.snippet.thumbnails.medium.url}
+                                          alt=""
+                                      />
+                                  </div>
                               </div>
                           </Link>
                       ))}

@@ -11,12 +11,14 @@
   text-rendering: optimizeLegibility;
   overflow-wrap: break-word;
 }
-*:focus-visible{
+
+*:focus-visible {
   outline: solid 3px #ce9dff;
   /* border: #ce9dff 3px solid; */
   border-radius: 5px;
   /* padding: 1px; */
 }
+
 *::selection {
   background-color: #ae5dff;
   /* color: #fff; */
@@ -64,4 +66,9 @@ img::selection {
 * {
   box-sizing: border-box;
   margin: 0;
+}
+
+.musicalbumimg {
+object-fit: cover;
+
 }
