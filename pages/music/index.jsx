@@ -71,7 +71,7 @@ const index = () => {
                                   <div className="block">
                                       <h1 className="font-bold text-xl">{items.snippet.title}</h1>
                                       <p className="text-xs ">
-                                          {items.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, null)}
+                                          {items.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}
                                       </p>
                                   </div>
                                   <div className="flex-1"></div>
