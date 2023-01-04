@@ -52,7 +52,7 @@ const index = () => {
                     &thinsp;Play all&nbsp;{playListo}&nbsp;songs
                 </Link>
             </button>
-            <div className="mt-6">
+            <div className="mt-7 mb-[-40px]">
                 {loading || !playList
                     ? LoadDisplay
                     : playList.map((items) => (
@@ -66,7 +66,7 @@ const index = () => {
                                   items.snippet.playlistId
                               }
                           >
-                              <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all duration-100  bg-zinc-100 dark:bg-zinc-800 py-2 pr-2 rounded-lg my-5 items-center flex">
+                              <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all duration-100  bg-zinc-100 dark:bg-zinc-800 py-2 pr-2 rounded-lg mt-5 items-center flex">
                                   <p className="text-xl mx-5">{items.snippet.position + 1}</p>
                                   <div className="block">
                                       <h1 className="font-bold text-xl">{items.snippet.title}</h1>
