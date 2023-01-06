@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
-import Body from '/components/Body'
+import React, { useEffect, useState } from 'react'
+// import Body from '/components/Body'
+import Head from 'next/head'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Image from 'next/image'
@@ -7,9 +8,8 @@ import { BsPlayFill, BsPauseFill, BsSkipEndFill, BsFillSkipStartFill } from 'rea
 import { SiYoutubemusic } from 'react-icons/si'
 import Link from 'next/link'
 import YouTube, { YouTubePlayer } from 'react-youtube'
-
-const ytapikey = process.env.YOUTUBE_API_KEY
-
+// import Musicplayer from './musicplayer'
+let videoElement: YouTubePlayer = null
 const index = () => {
     const [loading, setLoading] = React.useState(true)
     const [playList, setPlaylist] = React.useState(null)
@@ -17,13 +17,14 @@ const index = () => {
     // Player
     const [playerload, setplayerload] = React.useState(true)
     const [playeritems, setPlayerItems] = React.useState(null)
+    const [isPaused, setIsPaused] = useState(false)
+    const [time, setvtime] = useState(null)
     function scrollToTop() {
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
         })
     }
-
     useEffect(() => {
         setplayerload(true)
     }, [playeritems && playeritems])
@@ -45,7 +46,7 @@ const index = () => {
         <div>
             <Skeleton
                 className="my-2"
-                count="5"
+                count={5}
                 borderRadius="10px"
                 height="80px"
                 baseColor="#202020"
@@ -64,9 +65,19 @@ const index = () => {
             autoplay: 1,
         },
     }
-    function playover() {}
+
+    const _onReady = (event: YouTubePlayer) => {
+        videoElement = event
+        setplayerload(false)
+        setIsPaused(false)
+        videoElement.target.setVolume(100)
+    }
+
     return (
-        <Body title="Music">
+        <main>
+            <Head>
+                <title>EliasChen - Music</title>
+            </Head>
             <div>
                 <h1 className="font-extrabold text-6xl tracking-tight">Music</h1>
                 <p className="text-lg mt-1">YoutubeMusic playlist of my favorite songs.</p>
@@ -91,9 +102,7 @@ const index = () => {
                     <YouTube
                         videoId={playeritems.snippet.resourceId.videoId}
                         opts={opts}
-                        onReady={() => {
-                            setplayerload(false)
-                        }}
+                        onReady={_onReady}
                         onStateChange={() => {}}
                         onEnd={() => {
                             musicplayersetup(
@@ -132,40 +141,58 @@ const index = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="music:ml-[-10px] mt-2 items-center">
+                            {/* <Musicplayer
+                                playList={playList}
+                                playeritems={playeritems}
+                                playListo={playListo}
+                                setPlayerItems={setPlayerItems}
+                                playerload={playerload}
+                            /> */}
+                            <div className="music:ml-[-10px] mt-4 music:mt-2 items-center">
                                 <button
-                                    onClick={() =>
-                                        musicplayersetup(
+                                    onClick={() => {
+                                        scrollToTop()
+                                        setPlayerItems(
                                             playList[
                                                 playeritems.snippet.position === 0
                                                     ? playListo - 1
                                                     : playeritems.snippet.position - 1
                                             ]
                                         )
-                                    }
+                                    }}
                                     className="text-4xl p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg"
                                 >
                                     <BsFillSkipStartFill />
                                 </button>
-                                <button className="text-4xl p-1 items-center hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg music:mx-[30px] mx-[45px]">
+                                <button
+                                    onClick={() => setIsPaused(!isPaused)}
+                                    className="text-4xl p-1 items-center hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg music:mx-[30px] mx-[50px]"
+                                >
                                     {playerload ? (
                                         <div className="spinner-container">
                                             <div className="loading-spinner !h-[37px] w-[37px]"></div>
                                         </div>
+                                    ) : isPaused ? (
+                                        <p onClick={() => videoElement.target.playVideo()}>
+                                            <BsPlayFill />
+                                        </p>
                                     ) : (
-                                        <BsPauseFill />
+                                        <p onClick={() => videoElement.target.pauseVideo()}>
+                                            <BsPauseFill />
+                                        </p>
                                     )}
                                 </button>
                                 <button
-                                    onClick={() =>
-                                        musicplayersetup(
+                                    onClick={() => {
+                                        scrollToTop()
+                                        setPlayerItems(
                                             playList[
                                                 playeritems.snippet.position === playListo - 1
                                                     ? 0
                                                     : playeritems.snippet.position + 1
                                             ]
                                         )
-                                    }
+                                    }}
                                     className="text-4xl p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg"
                                 >
                                     <BsSkipEndFill />
@@ -238,7 +265,7 @@ const index = () => {
                           </button>
                       ))}
             </div>
-        </Body>
+        </main>
     )
 }
 export default index

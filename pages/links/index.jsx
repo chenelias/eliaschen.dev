@@ -17,7 +17,7 @@ const LinksPage = () => {
                     >
                         <p class="font-bold !m-0">{links.name}&thinsp;</p>
                         <p class="text-[#797979]">//</p>
-                        <p class="font-ibm">
+                        <p class="font-code">
                             &thinsp;@<span class="font-code">{links.username}</span>
                         </p>
                         <div class="flex-1" />
