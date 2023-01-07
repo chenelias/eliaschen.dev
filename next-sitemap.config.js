@@ -1,2 +1,2 @@
-const siteUrl = 'http://preview.eliaschen.dev'
+const siteUrl = 'http:/eliaschen.dev'
 module.exports = { siteUrl }
