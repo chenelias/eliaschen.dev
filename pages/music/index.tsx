@@ -275,7 +275,7 @@ const index = () => {
                               key={items.id}
                               className="cursor-pointer group shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg w-full dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all duration-100  bg-zinc-100 dark:bg-zinc-800 py-2 pr-2 rounded-lg mt-4 items-center flex"
                           >
-                              <div className="flex w-[30px] items-center px-5 py-1 mr-1 h-auto ">
+                              <div className="flex w-[25px] items-center px-5 py-1 mr-1 h-auto ml-2">
                                   <p className="text-xl block group-hover:hidden ml-[-11px]">
                                       {items.snippet.position + 1}
                                   </p>
