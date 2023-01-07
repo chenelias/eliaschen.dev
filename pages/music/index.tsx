@@ -19,6 +19,7 @@ const index = () => {
     const [playeritems, setPlayerItems] = React.useState(null)
     const [isPaused, setIsPaused] = useState(false)
     const [time, setvtime] = useState(null)
+    const [videoduration, setvideoduration] = useState(null)
     function scrollToTop() {
         window.scrollTo({
             top: 0,
@@ -70,8 +71,31 @@ const index = () => {
         videoElement = event
         setplayerload(false)
         setIsPaused(false)
+        setvtime(0)
         videoElement.target.setVolume(100)
+        setvideoduration(videoElement.target.getDuration())
     }
+    function secondsToHms(d) {
+        d = Number(d)
+        var h = Math.floor(d / 3600)
+        var m = Math.floor((d % 3600) / 60)
+        var s = Math.floor((d % 3600) % 60)
+        var hDisplay = h > 0 ? h + ':' : ''
+        var mDisplay = m >= 0 ? (m < 10 ? '0' + m + ':' : m + ':') : '0:'
+        var sDisplay = s >= 0 ? (s < 10 ? '0' + s : +s) : ''
+        return hDisplay + mDisplay + sDisplay
+    }
+    useEffect(() => {
+        const interval = setInterval(async () => {
+            if (videoElement) {
+                let videoseconds = Math.floor(videoElement.target.getCurrentTime())
+                setvtime(secondsToHms(videoseconds))
+            }
+        }, 50)
+        return () => {
+            clearInterval(interval)
+        }
+    }, [])
 
     return (
         <main>
@@ -198,14 +222,23 @@ const index = () => {
                                     <BsSkipEndFill />
                                 </button>
                             </div>
-                            <div>
-                                <input
-                                    type="range"
-                                    className="mt-5 bg-zinc-500 music:w-[500px] w-[300px]"
-                                    name=""
-                                    id=""
-                                />
-                            </div>
+
+                            {<div className="flex items-center mt-3  music:mx-0 mx-4">
+                                <p className="!flex">
+                                    <p>{time}</p>&thinsp;/&thinsp;
+                                    <p>
+                                        {(Math.floor(videoduration / 60) < 10
+                                            ? '0' + Math.floor(videoduration / 60)
+                                            : Math.floor(videoduration / 60)) +
+                                            ':' +
+                                            (Math.floor(videoduration % 60) < 10
+                                                ? '0' + Math.floor(videoduration % 60)
+                                                : Math.floor(videoduration % 60))}
+                                    </p>
+                                </p>
+                                &nbsp;
+                                <input min="0" max="100" step="1" type="range" className="w-[410px]"/>
+                            </div>}
                         </div>
                     )}
                 </div>
@@ -242,9 +275,11 @@ const index = () => {
                               key={items.id}
                               className="cursor-pointer group shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg w-full dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all duration-100  bg-zinc-100 dark:bg-zinc-800 py-2 pr-2 rounded-lg mt-4 items-center flex"
                           >
-                              <div className="flex w-[50px] items-center px-5 py-1 mr-3 h-auto">
-                                  <p className="text-xl block group-hover:hidden">{items.snippet.position + 1}</p>
-                                  <p className="text-3xl hidden group-hover:block">
+                              <div className="flex w-[30px] items-center px-5 py-1 mr-1 h-auto ">
+                                  <p className="text-xl block group-hover:hidden ml-[-11px]">
+                                      {items.snippet.position + 1}
+                                  </p>
+                                  <p className="text-3xl mr-[5px] ml-[-14px] hidden group-hover:block">
                                       <BsPlayFill />
                                   </p>
                               </div>

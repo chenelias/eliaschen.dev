@@ -19,7 +19,7 @@ export default function Document() {
                 ></link>
                 <link rel="shortcut icon" href="https://www.eliaschen.dev/eliaschen-png-500x500.png" />
                 <meta
-                    name="description"
+                    property="description"
                     content="Learning about coding and creating something useful for every developers and user"
                 />
                 {/* og: */}
