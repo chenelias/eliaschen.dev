@@ -91,7 +91,7 @@ const index = () => {
                 let videoseconds = Math.floor(videoElement.target.getCurrentTime())
                 setvtime(secondsToHms(videoseconds))
             }
-        }, 50)
+        }, 10)
         return () => {
             clearInterval(interval)
         }
@@ -117,7 +117,7 @@ const index = () => {
                 </Link>
             </button>
             <div
-                className={`music:flex block bg-purple-50 dark:bg-neutral-800 shadow-xl rounded-lg mt-5 w-full music:h-[250px] h-auto overflow-hidden duration-100 transition-all items-center relative  ${
+                className={`music:flex block bg-purple-50 dark:bg-neutral-800 shadow-xl rounded-lg mt-5 w-full music:h-[220px] h-auto overflow-hidden duration-100 transition-all items-center relative  ${
                     !playeritems ? '!hidden ' : 'block'
                 } px-[10px] py-[10px]`}
                 id="musictop"
@@ -142,10 +142,10 @@ const index = () => {
                 )}
                 {playeritems && (
                     <div
-                        className={`overflow-hidden !rounded-lg block !h-[230px] !w-[230px] shrink-0 items-center music:mx-0 mx-auto bg-red-200`}
+                        className={`overflow-hidden !rounded-lg block !h-[200px] !w-[200px] shrink-0 items-center music:mx-0 mx-auto bg-red-200`}
                     >
                         <img
-                            className="dragnone musicalbumimg !w-auto !h-[308px] mt-[-39px]"
+                            className="dragnone musicalbumimg !w-auto !h-[268px] mt-[-34px]"
                             src={playeritems.snippet.thumbnails.standard.url}
                             alt=""
                         />
@@ -223,22 +223,47 @@ const index = () => {
                                 </button>
                             </div>
 
-                            {<div className="flex items-center mt-3  music:mx-0 mx-4">
-                                <p className="!flex">
-                                    <p>{time}</p>&thinsp;/&thinsp;
-                                    <p>
-                                        {(Math.floor(videoduration / 60) < 10
-                                            ? '0' + Math.floor(videoduration / 60)
-                                            : Math.floor(videoduration / 60)) +
-                                            ':' +
-                                            (Math.floor(videoduration % 60) < 10
-                                                ? '0' + Math.floor(videoduration % 60)
-                                                : Math.floor(videoduration % 60))}
+                            {
+                                <div className="block items-center mt-0  music:mx-0 mx-4">
+                                    <p className="music:!hidden !inline-flex text-center mr-3 ">
+                                        <p>{time}</p>&thinsp;/&thinsp;
+                                        <p>
+                                            {(Math.floor(videoduration / 60) < 10
+                                                ? '0' + Math.floor(videoduration / 60)
+                                                : Math.floor(videoduration / 60)) +
+                                                ':' +
+                                                (Math.floor(videoduration % 60) < 10
+                                                    ? '0' + Math.floor(videoduration % 60)
+                                                    : Math.floor(videoduration % 60))}
+                                        </p>
                                     </p>
-                                </p>
-                                &nbsp;
-                                <input min="0" max="100" step="1" type="range" className="w-[410px]"/>
-                            </div>}
+                                    <p className="text-[1px]"><br /></p>
+                                    {/* <br /> */}
+                                    <input
+                                        min="0"
+                                        max={videoduration}
+                                        onChange={(x) => {
+                                            setvtime(x.target.value)
+                                            videoElement.target.seekTo(x.target.value)
+                                        }}
+                                        step="1"
+                                        type="range"
+                                        className="music:w-[500px] w-[300px] ml-[-5px]"
+                                    />
+                                    <p className="music:!flex !hidden">
+                                        <p>{time}</p>&thinsp;/&thinsp;
+                                        <p>
+                                            {(Math.floor(videoduration / 60) < 10
+                                                ? '0' + Math.floor(videoduration / 60)
+                                                : Math.floor(videoduration / 60)) +
+                                                ':' +
+                                                (Math.floor(videoduration % 60) < 10
+                                                    ? '0' + Math.floor(videoduration % 60)
+                                                    : Math.floor(videoduration % 60))}
+                                        </p>
+                                    </p>
+                                </div>
+                            }
                         </div>
                     )}
                 </div>
