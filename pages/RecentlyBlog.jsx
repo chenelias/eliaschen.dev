@@ -75,7 +75,7 @@ const PinnedRepos = () => {
                 <div className="lg:h-[390px] bg-gradient-to-r from-gray-400 to-black dark:from-gray-400 dark:to-zinc-600 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-xl hover:scale-[101%] dark:hover:shadow-zinc-200/20 hover:shadow-black/20 duration-300">
                     <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
                         <div>
-                            <p className="text-zinc-400 text-xs uppercase ml-[2px]">{blog.type_of}</p>
+                            <p className="text-zinc-400 text-xs uppercase ml-[2px] notranslate">{blog.type_of}</p>
                             <h1 className="dark:text-zinc-300 text-zinc-900 font-extrabold w-full tracking-tight text-3xl">
                                 {blog.title}
                             </h1>

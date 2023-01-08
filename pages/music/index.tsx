@@ -165,7 +165,7 @@ const index = () => {
                                         {playeritems.snippet.position + 1}
                                     </p> */}
                                     <div className="block">
-                                        <h1 className="font-bold text-2xl">{playeritems.snippet.title}</h1>
+                                        <h1 className="font-bold text-2xl notranslate">{playeritems.snippet.title}</h1>
                                         <p>{playeritems.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}</p>
                                     </div>
                                 </div>
@@ -316,7 +316,7 @@ const index = () => {
                                   </p>
                               </div>
                               <div className="block text-left">
-                                  <h1 className="font-bold text-xl">{items.snippet.title}</h1>
+                                  <h1 className="font-bold text-xl notranslate">{items.snippet.title}</h1>
                                   <p className="text-xs ">
                                       {items.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}
                                   </p>
@@ -332,7 +332,7 @@ const index = () => {
                           </button>
                       ))}
                 <div className="float-right">
-                    <p className="inline-flex mt-3 text-md items-center">
+                    <p className="inline-flex mt-3 text-md items-center notranslate">
                         Power by&nbsp;
                         <Link href={'https://www.youtube.com/'} target="_blank" area-aria-label="link to youtube.com">
                             <span className="text-5xl mt-1">
