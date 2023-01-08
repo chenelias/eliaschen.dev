@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 // import Body from '/components/Body'
 import Head from 'next/head'
 import Skeleton from 'react-loading-skeleton'
@@ -15,11 +15,13 @@ const index = () => {
     const [playList, setPlaylist] = React.useState(null)
     const [playListo, setPlaylisto] = React.useState(null)
     // Player
+    const playerRef = useRef(null)
     const [playerload, setplayerload] = React.useState(true)
     const [playeritems, setPlayerItems] = React.useState(null)
     const [isPaused, setIsPaused] = useState(false)
     const [time, setvtime] = useState(null)
     const [videoduration, setvideoduration] = useState(null)
+    const [currentseconds, setcurrentseconds] = useState(null)
     function scrollToTop() {
         window.scrollTo({
             top: 0,
@@ -72,6 +74,7 @@ const index = () => {
         setplayerload(false)
         setIsPaused(false)
         setvtime(0)
+        videoElement.target.playVideo()
         videoElement.target.setVolume(100)
         setvideoduration(videoElement.target.getDuration())
     }
@@ -90,6 +93,7 @@ const index = () => {
             if (videoElement) {
                 let videoseconds = Math.floor(videoElement.target.getCurrentTime())
                 setvtime(secondsToHms(videoseconds))
+                setcurrentseconds(videoseconds)
             }
         }, 10)
         return () => {
@@ -222,10 +226,25 @@ const index = () => {
                                     <BsSkipEndFill />
                                 </button>
                             </div>
-
                             {
                                 <div className="block items-center mt-0  music:mx-0 mx-4">
-                                    <p className="music:!hidden !inline-flex text-center mr-3 ">
+                                    {/* <br /> */}
+                                    <input
+                                        value={currentseconds}
+                                        min="0"
+                                        max={videoduration}
+                                        onChange={(x) => {
+                                            setvtime(x.target.value)
+                                            videoElement.target.seekTo(x.target.value)
+                                        }}
+                                        step="1"
+                                        type="range"
+                                        className="musicplayerrange music:w-[500px] w-[300px] ml-0 music:ml-[-5px] "
+                                    />
+                                    {/* <p className="text-[1px] !flex music:!hidden">
+                                        <br />
+                                    </p> */}
+                                    <p className="music:!hidden !inline-flex text-center mr-3">
                                         <p>{time}</p>&thinsp;/&thinsp;
                                         <p>
                                             {(Math.floor(videoduration / 60) < 10
@@ -237,20 +256,7 @@ const index = () => {
                                                     : Math.floor(videoduration % 60))}
                                         </p>
                                     </p>
-                                    <p className="text-[1px]"><br /></p>
-                                    {/* <br /> */}
-                                    <input
-                                        min="0"
-                                        max={videoduration}
-                                        onChange={(x) => {
-                                            setvtime(x.target.value)
-                                            videoElement.target.seekTo(x.target.value)
-                                        }}
-                                        step="1"
-                                        type="range"
-                                        className="music:w-[500px] w-[300px] ml-[-5px]"
-                                    />
-                                    <p className="music:!flex !hidden">
+                                    <p className="music:!flex !hidden !mt-[-7px]">
                                         <p>{time}</p>&thinsp;/&thinsp;
                                         <p>
                                             {(Math.floor(videoduration / 60) < 10
