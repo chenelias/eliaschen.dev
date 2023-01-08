@@ -23,6 +23,7 @@ const index = () => {
     const [time, setvtime] = useState(null)
     const [videoduration, setvideoduration] = useState(null)
     const [currentseconds, setcurrentseconds] = useState(null)
+    const [videostatus, setvideostatus] = useState(null)
     function scrollToTop() {
         window.scrollTo({
             top: 0,
@@ -69,14 +70,21 @@ const index = () => {
             autoplay: 1,
         },
     }
+    useEffect(() => {
+        if (videostatus === 3) {
+            setplayerload(true)
+        }if(videostatus !==3){
+            setplayerload(false)
 
+        }
+    }, [videostatus])
     const _onReady = (event: YouTubePlayer) => {
         videoElement = event
-        setplayerload(false)
+        // setplayerload(false)
         setIsPaused(false)
         setvtime(0)
         videoElement.target.playVideo()
-        videoElement.target.setVolume(100)
+        videoElement.target.setVolume(100) // todo remove it in new mind
         setvideoduration(videoElement.target.getDuration())
     }
     function secondsToHms(d) {
@@ -95,8 +103,9 @@ const index = () => {
                 let videoseconds = Math.floor(videoElement.target.getCurrentTime())
                 setvtime(secondsToHms(videoseconds))
                 setcurrentseconds(videoseconds)
+                setvideostatus(videoElement.target.getPlayerState())
             }
-        }, 10)
+        }, 0)
         return () => {
             clearInterval(interval)
         }
