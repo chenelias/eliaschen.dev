@@ -131,23 +131,23 @@ const index = () => {
                     <p className="text-2xl">
                         <BsPlayFill />
                     </p>
-                    &thinsp;Play random {playListo} songs
+                    &thinsp;Play random in {playListo} song
                 </button>
-                <button className="smallsize:ml-3" aria-label="Play all songs">
-                    <Link
-                        href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
-                        className="flex items-center rounded-xl bg-red-200 text-left px-3 h-[52px] mt-2 font-bold duration-100 hover:bg-red-300 dark:bg-red-400 dark:hover:bg-red-500"
-                        target={'_blank'}
-                    >
-                        <p className="text-3xl">
-                            <MdPlaylistPlay />
-                        </p>
-                        <div className="block ml-1">
-                            <p className="text-lg">View playlist</p>
-                            <p className="text-xs ml-[2px]">YoutubeMusic</p>
-                        </div>
-                    </Link>
-                </button>
+
+                <Link
+                    aria-label="View playlist on youtubemusic"
+                    href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
+                    className="smallsize:ml-3 flex items-center rounded-xl bg-red-200 text-left px-3 h-[52px] mt-2 font-bold duration-100 hover:bg-red-300 dark:bg-red-400 dark:hover:bg-red-500"
+                    target={'_blank'}
+                >
+                    <p className="text-3xl">
+                        <MdPlaylistPlay />
+                    </p>
+                    <div className="block ml-1">
+                        <p className="text-lg">View playlist</p>
+                        <p className="text-xs ml-[2px]">YoutubeMusic</p>
+                    </div>
+                </Link>
             </div>
             <div
                 className={`music:flex block bg-purple-50 dark:bg-neutral-800 shadow-xl rounded-lg mt-5 w-full music:h-[220px] h-auto overflow-hidden duration-100 transition-all items-center relative  ${
@@ -200,7 +200,7 @@ const index = () => {
                                                 'https://music.youtube.com/channel/' +
                                                 playeritems.snippet.videoOwnerChannelId
                                             }
-                                            className="hover:opacity-80 duration-75"
+                                            className="hover:opacity-70 duration-75"
                                         >
                                             <p>
                                                 {playeritems.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}
@@ -312,26 +312,26 @@ const index = () => {
 
             <div>
                 {playeritems && (
-                   <div className="flex">
-                     <Link
-                         target={'_blank'}
-                         href={
-                             'https://music.youtube.com/watch?v=' +
-                             playeritems.snippet.resourceId.videoId +
-                             '&list=' +
-                             playeritems.snippet.playlistId
-                         }
-                         className={`flex bg-red-100 mt-4 dark:hover:bg-neutral-700 hover:bg-red-200 duration-100  text-zinc-700 dark:text-zinc-300 text-xl dark:bg-neutral-800 rounded-lg py-4 px-3 font-bold items-center w-full ${
-                             !playeritems ? '!hidden ' : 'block'
-                         }`}
-                     >
-                         <p className="text-2xl ">
-                             <SiYoutubemusic />
-                         </p>
-                         &nbsp;
-                         <p>Listen on youtube music</p>
-                     </Link>
-                   </div>
+                    <div className="flex">
+                        <Link
+                            target={'_blank'}
+                            href={
+                                'https://music.youtube.com/watch?v=' +
+                                playeritems.snippet.resourceId.videoId +
+                                '&list=' +
+                                playeritems.snippet.playlistId
+                            }
+                            className={`flex bg-red-100 mt-4 dark:hover:bg-neutral-700 hover:bg-red-200 duration-100  text-zinc-700 dark:text-zinc-300 text-xl dark:bg-neutral-800 rounded-lg py-4 px-3 font-bold items-center w-full ${
+                                !playeritems ? '!hidden ' : 'block'
+                            }`}
+                        >
+                            <p className="text-2xl ">
+                                <SiYoutubemusic />
+                            </p>
+                            &nbsp;
+                            <p>Listen on youtube music</p>
+                        </Link>
+                    </div>
                 )}
             </div>
             {/* // todo: list start here */}
@@ -346,7 +346,7 @@ const index = () => {
                               key={items.id}
                               className="cursor-pointer group shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg w-full dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all duration-100  bg-zinc-100 dark:bg-zinc-800 py-2 pr-2 rounded-lg mt-4 items-center flex"
                           >
-                              <div className="flex w-[25px] items-center px-5 py-1 mr-1 h-auto ml-2">
+                              <div className="flex w-[25px] items-center px-5 py-1 mr-1 h-auto ml-2 notranslate">
                                   {playeritems &&
                                       (playeritems.id === items.id ? (
                                           <p key={items.id} className="text-2xl mr-[5px] ml-[-14px] group-hover:block">
