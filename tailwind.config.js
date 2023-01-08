@@ -14,6 +14,7 @@ module.exports = {
                 xs: '540px',
                 minxs: '430px',
                 music: '880px',
+                xss: '400px',
             },
         },
     },

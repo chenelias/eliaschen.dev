@@ -228,7 +228,7 @@ const index = () => {
                                 </button>
                             </div>
                             {
-                                <div className="block items-center mt-0  music:mx-0 mx-4">
+                                <div className="block items-center music:mx-0 mx-4 music:mt-0 mt-1">
                                     {/* <br /> */}
                                     <input
                                         value={currentseconds}
@@ -240,11 +240,12 @@ const index = () => {
                                         }}
                                         step="1"
                                         type="range"
-                                        className="musicplayerrange music:w-[500px] w-[300px] ml-0 music:ml-[-5px] "
+                                        className="musicplayerrange xss:w-[300px] music:w-[500px] w-[300px] ml-0 music:ml-[-5px] "
                                     />
-                                    {/* <p className="text-[1px] !flex music:!hidden">
+                                    <p className="text-[0.5px] !flex music:!hidden mt-[-5px]">
                                         <br />
-                                    </p> */}
+                                    </p>
+                                    {/* TODO moble controler*/}
                                     <p className="music:!hidden !inline-flex text-center mr-3">
                                         <p>{time}</p>&thinsp;/&thinsp;
                                         <p>
@@ -257,6 +258,7 @@ const index = () => {
                                                     : Math.floor(videoduration % 60))}
                                         </p>
                                     </p>
+                                    {/* TODO esktop controler */}
                                     <p className="music:!flex !hidden !mt-[-7px]">
                                         <p>{time}</p>&thinsp;/&thinsp;
                                         <p>
