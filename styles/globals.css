@@ -101,16 +101,3 @@ img::selection {
   justify-content: center;
   align-items: center;
 }
-
-input[type="range"]::-webkit-slider-thumb:before,
-input[type="range"]::-webkit-slider-thumb:after {
-  position: absolute;
-  top: 3px;
-  width: 2000px;
-  /* 長度很長沒關係，因為剛剛有用 overflow:hidden 了 */
-  height: 4px;
-  content: "";
-  pointer-events: none;
-  /* 讓滑鼠可以點擊穿透偽元素，不然會點不到下面 */
-  transition: .2s;
-}

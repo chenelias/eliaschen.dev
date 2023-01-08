@@ -9,6 +9,8 @@ import { SiYoutubemusic } from 'react-icons/si'
 import Link from 'next/link'
 import YouTube, { YouTubePlayer } from 'react-youtube'
 import { ImYoutube2 } from 'react-icons/im'
+import { MdPlaylistPlay } from 'react-icons/md'
+import { HiVolumeUp } from 'react-icons/hi'
 // import Musicplayer from './musicplayer'
 let videoElement: YouTubePlayer = null
 const index = () => {
@@ -16,7 +18,6 @@ const index = () => {
     const [playList, setPlaylist] = React.useState(null)
     const [playListo, setPlaylisto] = React.useState(null)
     // Player
-    const playerRef = useRef(null)
     const [playerload, setplayerload] = React.useState(true)
     const [playeritems, setPlayerItems] = React.useState(null)
     const [isPaused, setIsPaused] = useState(false)
@@ -26,7 +27,7 @@ const index = () => {
     const [videostatus, setvideostatus] = useState(null)
     function scrollToTop() {
         window.scrollTo({
-            top: 0,
+            top: 115,
             behavior: 'smooth',
         })
     }
@@ -73,9 +74,9 @@ const index = () => {
     useEffect(() => {
         if (videostatus === 3) {
             setplayerload(true)
-        }if(videostatus !==3){
+        }
+        if (videostatus !== 3) {
             setplayerload(false)
-
         }
     }, [videostatus])
     const _onReady = (event: YouTubePlayer) => {
@@ -118,18 +119,35 @@ const index = () => {
             </Head>
             <div>
                 <h1 className="font-extrabold text-6xl tracking-tight">Music</h1>
-                <p className="text-lg mt-1">YoutubeMusic playlist of my favorite songs.</p>
+                <p className="text-lg mt-1">List of my favorite songs.</p>
             </div>
-            <button aria-label="Play all songs">
-                <Link
-                    href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
-                    className="flex items-center rounded-xl bg-[#ce9dff] p-3 mt-2 text-xl font-bold duration-100 hover:bg-[#c081ff] dark:bg-[#9900ff] dark:hover:bg-[#9900ffb2]"
-                    target={'_blank'}
+            <div className="smallsize:flex block">
+                <button
+                    aria-label="Play all songs"
+                    onClick={() => musicplayersetup(playList[Math.floor(Math.random() * playListo+1)])}
+                    className="flex items-center rounded-xl bg-[#ce9dff] p-3 mt-2 text-xl text-left font-bold duration-100 hover:bg-[#c081ff] dark:bg-[#9900ff] dark:hover:bg-[#9900ffb2]"
                 >
-                    <BsPlayFill />
-                    &thinsp;Play all&nbsp;{playListo}&nbsp;songs
-                </Link>
-            </button>
+                    <p className="text-2xl">
+                        <BsPlayFill />
+                    </p>
+                    &thinsp;Play random {playListo} songs
+                </button>
+                <button className="smallsize:ml-3" aria-label="Play all songs">
+                    <Link
+                        href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
+                        className="flex items-center rounded-xl bg-red-200 text-left px-3 h-[52px] mt-2 font-bold duration-100 hover:bg-red-300 dark:bg-red-400 dark:hover:bg-red-500"
+                        target={'_blank'}
+                    >
+                        <p className="text-3xl">
+                            <MdPlaylistPlay />
+                        </p>
+                        <div className="block ml-1">
+                            <p className="text-lg">View playlist</p>
+                            <p className="text-xs ml-[2px]">YoutubeMusic</p>
+                        </div>
+                    </Link>
+                </button>
+            </div>
             <div
                 className={`music:flex block bg-purple-50 dark:bg-neutral-800 shadow-xl rounded-lg mt-5 w-full music:h-[220px] h-auto overflow-hidden duration-100 transition-all items-center relative  ${
                     !playeritems ? '!hidden ' : 'block'
@@ -174,7 +192,9 @@ const index = () => {
                                         {playeritems.snippet.position + 1}
                                     </p> */}
                                     <div className="block">
-                                        <h1 className="font-bold text-2xl notranslate">{playeritems.snippet.title}</h1>
+                                        <h1 className="font-bold text-2xl notranslate">
+                                            {playeritems.snippet.title.split(/[[:(]/)[0]}
+                                        </h1>
                                         <p>{playeritems.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}</p>
                                     </div>
                                 </div>
@@ -237,7 +257,7 @@ const index = () => {
                                 </button>
                             </div>
                             {
-                                <div className="block items-center music:mx-0 mx-4 music:mt-0 mt-1">
+                                <div className="block items-center music:mx-0 mx-4 music:mt-2 mt-2">
                                     {/* <br /> */}
                                     <input
                                         value={currentseconds}
@@ -319,15 +339,39 @@ const index = () => {
                               className="cursor-pointer group shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg w-full dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all duration-100  bg-zinc-100 dark:bg-zinc-800 py-2 pr-2 rounded-lg mt-4 items-center flex"
                           >
                               <div className="flex w-[25px] items-center px-5 py-1 mr-1 h-auto ml-2">
-                                  <p className="text-xl block group-hover:hidden ml-[-11px]">
-                                      {items.snippet.position + 1}
-                                  </p>
-                                  <p className="text-3xl mr-[5px] ml-[-14px] hidden group-hover:block">
-                                      <BsPlayFill />
-                                  </p>
+                                  {playeritems &&
+                                      (playeritems.id === items.id ? (
+                                          <p key={items.id} className="text-2xl mr-[5px] ml-[-14px] group-hover:block">
+                                              <HiVolumeUp />
+                                          </p>
+                                      ) : (
+                                          <div key={items.id}>
+                                              <p className="text-xl block group-hover:hidden ml-[-11px]">
+                                                  {items.snippet.position + 1}
+                                              </p>
+                                              <p className="text-3xl mr-[5px] ml-[-14px] hidden group-hover:block">
+                                                  <BsPlayFill />
+                                              </p>
+                                          </div>
+                                      ))}
+
+                                  {!playeritems ? (
+                                      <div>
+                                          <p className="text-xl block group-hover:hidden ml-[-11px]">
+                                              {items.snippet.position + 1}
+                                          </p>
+                                          <p className="text-3xl mr-[5px] ml-[-14px] hidden group-hover:block">
+                                              <BsPlayFill />
+                                          </p>
+                                      </div>
+                                  ) : (
+                                      ''
+                                  )}
                               </div>
                               <div className="block text-left">
-                                  <h1 className="font-bold text-xl notranslate">{items.snippet.title}</h1>
+                                  <h1 className="font-bold text-xl notranslate">
+                                      {items.snippet.title.split(/[[:(]/)[0]}
+                                  </h1>
                                   <p className="text-xs ">
                                       {items.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}
                                   </p>
