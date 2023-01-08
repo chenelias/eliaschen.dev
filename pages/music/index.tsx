@@ -121,10 +121,11 @@ const index = () => {
                 <h1 className="font-extrabold text-6xl tracking-tight">Music</h1>
                 <p className="text-lg mt-1">List of my favorite songs.</p>
             </div>
+            {/* // todo: play and viewlist btn start here  */}
             <div className="smallsize:flex block">
                 <button
                     aria-label="Play all songs"
-                    onClick={() => musicplayersetup(playList[Math.floor(Math.random() * playListo+1)])}
+                    onClick={() => musicplayersetup(playList[Math.floor(Math.random() * playListo + 1)])}
                     className="flex items-center rounded-xl bg-[#ce9dff] p-3 mt-2 text-xl text-left font-bold duration-100 hover:bg-[#c081ff] dark:bg-[#9900ff] dark:hover:bg-[#9900ffb2]"
                 >
                     <p className="text-2xl">
@@ -183,29 +184,31 @@ const index = () => {
                         />
                     </div>
                 )}
+                {/* // todo: musicplayer start here */}
                 <div className="block">
                     {playeritems && (
                         <div className="music:text-left text-center shrink-0 block items-center py-auto music:ml-[50px] mt-2 music:mt-0">
                             <div className="flex">
                                 <div className="items-center max-w-[525px] music:mx-0 mx-auto flex">
-                                    {/* <p className="ml-[-55px] p-4 text-xl music:block hidden">   
-                                        {playeritems.snippet.position + 1}
-                                    </p> */}
                                     <div className="block">
                                         <h1 className="font-bold text-2xl notranslate">
                                             {playeritems.snippet.title.split(/[[:(]/)[0]}
                                         </h1>
-                                        <p>{playeritems.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}</p>
+                                        <Link
+                                            target={'_blank'}
+                                            href={
+                                                'https://music.youtube.com/channel/' +
+                                                playeritems.snippet.videoOwnerChannelId
+                                            }
+                                            className="hover:opacity-80 duration-75"
+                                        >
+                                            <p>
+                                                {playeritems.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}
+                                            </p>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
-                            {/* <Musicplayer
-                                playList={playList}
-                                playeritems={playeritems}
-                                playListo={playListo}
-                                setPlayerItems={setPlayerItems}
-                                playerload={playerload}
-                            /> */}
                             <div className="music:ml-[-10px] mt-4 music:mt-2 items-center">
                                 <button
                                     onClick={() => {
@@ -257,7 +260,7 @@ const index = () => {
                                 </button>
                             </div>
                             {
-                                <div className="block items-center music:mx-0 mx-4 music:mt-2 mt-2">
+                                <div className="block items-center music:mx-0 mx-4 music:mt-2 mt-3">
                                     {/* <br /> */}
                                     <input
                                         value={currentseconds}
@@ -307,26 +310,31 @@ const index = () => {
                 </div>
             </div>
 
-            {playeritems && (
-                <Link
-                    target={'_blank'}
-                    href={
-                        'https://music.youtube.com/watch?v=' +
-                        playeritems.snippet.resourceId.videoId +
-                        '&list=' +
-                        playeritems.snippet.playlistId
-                    }
-                    className={`flex bg-red-100 mt-4 dark:hover:bg-neutral-700 hover:bg-red-200 duration-100  text-zinc-700 dark:text-zinc-300 text-xl dark:bg-neutral-800 rounded-lg py-4 px-3 font-bold items-center w-full ${
-                        !playeritems ? '!hidden ' : 'block'
-                    }`}
-                >
-                    <p className="text-2xl ">
-                        <SiYoutubemusic />
-                    </p>
-                    &nbsp;
-                    <p>Listen on youtube music</p>
-                </Link>
-            )}
+            <div>
+                {playeritems && (
+                   <div className="flex">
+                     <Link
+                         target={'_blank'}
+                         href={
+                             'https://music.youtube.com/watch?v=' +
+                             playeritems.snippet.resourceId.videoId +
+                             '&list=' +
+                             playeritems.snippet.playlistId
+                         }
+                         className={`flex bg-red-100 mt-4 dark:hover:bg-neutral-700 hover:bg-red-200 duration-100  text-zinc-700 dark:text-zinc-300 text-xl dark:bg-neutral-800 rounded-lg py-4 px-3 font-bold items-center w-full ${
+                             !playeritems ? '!hidden ' : 'block'
+                         }`}
+                     >
+                         <p className="text-2xl ">
+                             <SiYoutubemusic />
+                         </p>
+                         &nbsp;
+                         <p>Listen on youtube music</p>
+                     </Link>
+                   </div>
+                )}
+            </div>
+            {/* // todo: list start here */}
             <div className="mt-7 mb-[-40px]">
                 {loading || !playList
                     ? LoadDisplay
@@ -402,18 +410,3 @@ const index = () => {
     )
 }
 export default index
-{
-    /* <Link
-                             
-                              target={'_blank'}
-                              href={
-                                  'https://music.youtube.com/watch?v=' +
-                                  items.snippet.resourceId.videoId +
-                                  '&list=' +
-                                  items.snippet.playlistId
-                              }
-                          > */
-}
-{
-    /* </Link> */
-}
