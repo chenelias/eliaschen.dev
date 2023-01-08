@@ -8,6 +8,7 @@ import { BsPlayFill, BsPauseFill, BsSkipEndFill, BsFillSkipStartFill } from 'rea
 import { SiYoutubemusic } from 'react-icons/si'
 import Link from 'next/link'
 import YouTube, { YouTubePlayer } from 'react-youtube'
+import { ImYoutube2 } from 'react-icons/im'
 // import Musicplayer from './musicplayer'
 let videoElement: YouTubePlayer = null
 const index = () => {
@@ -330,6 +331,17 @@ const index = () => {
                               </div> */}
                           </button>
                       ))}
+                <div className="float-right">
+                    <p className="inline-flex mt-3 text-md items-center">
+                        Power by&nbsp;
+                        <Link href={'https://www.youtube.com/'} target="_blank" area-aria-label="link to youtube.com">
+                            <span className="text-5xl mt-1">
+                                <ImYoutube2 />
+                            </span>
+                        </Link>
+                    </p>
+                </div>
+                <div className="">&nbsp;</div>
             </div>
         </main>
     )
