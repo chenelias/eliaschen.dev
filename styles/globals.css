@@ -99,12 +99,10 @@ img::selection {
 .now.playing .bar {
   display: inline-block;
   position: relative;
-  margin-right: 2px;
-
-  width: 6px;
+  margin-right: 3px;
+  width: 5px;
   height: 1px;
   overflow: hidden;
-  background: #000;
   color: transparent;
   animation-name: pulse;
   animation-duration: 1s;
