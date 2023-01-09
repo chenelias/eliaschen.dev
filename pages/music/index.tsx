@@ -355,7 +355,7 @@ const index = () => {
                                                   key={items.id}
                                                   className="text-2xl mr-[5px] ml-[-14px] group-hover:block"
                                               >
-                                                  <div className="now playing flex mt-7" id="music">
+                                                  <div className="now playing flex mt-7 ml-1" id="music">
                                                       <span className="bar n1 bg-black dark:bg-white">A</span>
                                                       <span className="bar n2 bg-black dark:bg-white">B</span>
                                                       <span className="bar n3 bg-black dark:bg-white">c</span>
