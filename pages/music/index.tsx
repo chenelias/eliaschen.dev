@@ -310,7 +310,6 @@ const index = () => {
                     )}
                 </div>
             </div>
-
             <div>
                 {playeritems && (
                     <div className="flex">
@@ -334,7 +333,20 @@ const index = () => {
                         </Link>
                     </div>
                 )}
-            </div>
+                {playeritems && (
+                    <p className=" text-zinc-300 dark:text-zinc-700 mt-0 text-xs items-center notranslate w-full text-right">
+                        Power by&nbsp;
+                        <Link
+                            href={'https://developers.google.com/youtube/iframe_api_reference'}
+                            className="hover:dark:text-white hover:text-black duration-75"
+                            target="_blank"
+                            area-aria-label=""
+                        >
+                            <span className="text-xs mt-1 ">YoutubeIframePlayer</span>
+                        </Link>
+                    </p>
+                )}
+            </div>{' '}
             {/* // todo: list start here */}
             <ol className="mt-7 mb-[-40px]">
                 {loading || !playList
@@ -404,17 +416,6 @@ const index = () => {
                               </button>
                           </li>
                       ))}
-                <div className="float-right">
-                    <p className="inline-flex mt-3 text-md items-center notranslate">
-                        Power by&nbsp;
-                        <Link href={'https://www.youtube.com/'} target="_blank" area-aria-label="link to youtube.com">
-                            <span className="text-5xl mt-1">
-                                <ImYoutube2 />
-                            </span>
-                        </Link>
-                    </p>
-                </div>
-                <div className="">&nbsp;</div>
             </ol>
         </main>
     )
