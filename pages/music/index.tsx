@@ -27,7 +27,7 @@ const index = () => {
     const [videostatus, setvideostatus] = useState(null)
     function scrollToTop() {
         window.scrollTo({
-            top: 115,
+            top: 187,
             behavior: 'smooth',
         })
     }
@@ -125,7 +125,7 @@ const index = () => {
             <div className="smallsize:flex block">
                 <button
                     aria-label="Play all songs"
-                    onClick={() => musicplayersetup(playList[Math.floor(Math.random() * playListo + 1)])}
+                    onClick={() => musicplayersetup(playList[Math.floor(Math.random() * playListo)])}
                     className="flex items-center rounded-xl bg-[#ce9dff] p-3 mt-2 text-xl text-left font-bold duration-100 hover:bg-[#c081ff] dark:bg-[#9900ff] dark:hover:bg-[#9900ffb2]"
                 >
                     <p className="text-2xl">
@@ -133,22 +133,22 @@ const index = () => {
                     </p>
                     &thinsp;Play random in {playListo} song
                 </button>
-              <button>
-                  <Link
-                      aria-label="View playlist on youtubemusic"
-                      href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
-                      className="smallsize:ml-3 flex items-center rounded-xl bg-red-200 text-left px-3 h-[52px] mt-2 font-bold duration-100 hover:bg-red-300 dark:bg-red-400 dark:hover:bg-red-500"
-                      target={'_blank'}
-                  >
-                      <p className="text-3xl">
-                          <MdPlaylistPlay />
-                      </p>
-                      <div className="block ml-1">
-                          <p className="text-lg">View playlist</p>
-                          <p className="text-xs ml-[2px]">YoutubeMusic</p>
-                      </div>
-                  </Link>
-              </button>
+                <button>
+                    <Link
+                        aria-label="View playlist on youtubemusic"
+                        href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
+                        className="smallsize:ml-3 flex items-center rounded-xl bg-red-200 text-left px-3 h-[52px] mt-2 font-bold duration-100 hover:bg-red-300 dark:bg-red-400 dark:hover:bg-red-500"
+                        target={'_blank'}
+                    >
+                        <p className="text-3xl">
+                            <MdPlaylistPlay />
+                        </p>
+                        <div className="block ml-1">
+                            <p className="text-lg">View playlist</p>
+                            <p className="text-xs ml-[2px]">YoutubeMusic</p>
+                        </div>
+                    </Link>
+                </button>
             </div>
             <div
                 className={`music:flex block bg-purple-50 dark:bg-neutral-800 shadow-xl rounded-lg mt-5 w-full music:h-[220px] h-auto overflow-hidden duration-100 transition-all items-center relative  ${
@@ -340,62 +340,69 @@ const index = () => {
                 {loading || !playList
                     ? LoadDisplay
                     : playList.map((items) => (
-                       <li>
-                           <button
-                               onClick={() => {
-                                   musicplayersetup(items)
-                               }}
-                               key={items.id}
-                               className="cursor-pointer group shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg w-full dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all duration-100  bg-zinc-100 dark:bg-zinc-800 py-2 pr-2 rounded-lg mt-4 items-center flex"
-                           >
-                               <div className="flex w-[25px] items-center px-5 py-1 mr-1 h-auto ml-2 notranslate">
-                                   {playeritems &&
-                                       (playeritems.id === items.id ? (
-                                           <p key={items.id} className="text-2xl mr-[5px] ml-[-14px] group-hover:block">
-                                               <HiVolumeUp />
-                                           </p>
-                                       ) : (
-                                           <div key={items.id}>
-                                               <p className="text-xl block group-hover:hidden ml-[-11px]">
-                                                   {items.snippet.position + 1}
-                                               </p>
-                                               <p className="text-3xl mr-[5px] ml-[-14px] hidden group-hover:block">
-                                                   <BsPlayFill />
-                                               </p>
-                                           </div>
-                                       ))}
-                        
-                                   {!playeritems ? (
-                                       <div>
-                                           <p className="text-xl block group-hover:hidden ml-[-11px]">
-                                               {items.snippet.position + 1}
-                                           </p>
-                                           <p className="text-3xl mr-[5px] ml-[-14px] hidden group-hover:block">
-                                               <BsPlayFill />
-                                           </p>
-                                       </div>
-                                   ) : (
-                                       ''
-                                   )}
-                               </div>
-                               <div className="block text-left">
-                                   <h1 className="font-bold text-xl notranslate">
-                                       {items.snippet.title.split(/[[:(]/)[0]}
-                                   </h1>
-                                   <p className="text-xs ">
-                                       {items.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}
-                                   </p>
-                               </div>
-                               <div className="flex-1"></div>
-                               {/* <div className={`overflow-hidden rounded-lg block !h-[100px] !w-[100px] shrink-0 ml-1`}>
+                          <li>
+                              <button
+                                  onClick={() => {
+                                      musicplayersetup(items)
+                                  }}
+                                  key={items.id}
+                                  className="cursor-pointer group shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg w-full dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all duration-100  bg-zinc-100 dark:bg-zinc-800 py-2 pr-2 rounded-lg mt-4 items-center flex"
+                              >
+                                  <div className="flex w-[25px] items-center px-5 py-1 mr-1 ml-2 notranslate h-[40px]">
+                                      {playeritems &&
+                                          (playeritems.id === items.id ? (
+                                              <p
+                                                  key={items.id}
+                                                  className="text-2xl mr-[5px] ml-[-14px] group-hover:block"
+                                              >
+                                                  <div className="now playing flex mt-7" id="music">
+                                                      <span className="bar n1">A</span>
+                                                      <span className="bar n2">B</span>
+                                                      <span className="bar n3">c</span>
+                                                  </div>
+                                              </p>
+                                          ) : (
+                                              <div key={items.id}>
+                                                  <p className="text-xl block group-hover:hidden ml-[-11px]">
+                                                      {items.snippet.position + 1}
+                                                  </p>
+                                                  <p className="text-3xl mr-[5px] ml-[-14px] hidden group-hover:block">
+                                                      <BsPlayFill />
+                                                  </p>
+                                              </div>
+                                          ))}
+
+                                      {!playeritems ? (
+                                          <div>
+                                              <p className="text-xl block group-hover:hidden ml-[-11px]">
+                                                  {items.snippet.position + 1}
+                                              </p>
+                                              <p className="text-3xl mr-[5px] ml-[-14px] hidden group-hover:block">
+                                                  <BsPlayFill />
+                                              </p>
+                                          </div>
+                                      ) : (
+                                          ''
+                                      )}
+                                  </div>
+                                  <div className="block text-left">
+                                      <h1 className="font-bold text-xl notranslate">
+                                          {items.snippet.title.split(/[[:(]/)[0]}
+                                      </h1>
+                                      <p className="text-xs ">
+                                          {items.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}
+                                      </p>
+                                  </div>
+                                  <div className="flex-1"></div>
+                                  {/* <div className={`overflow-hidden rounded-lg block !h-[100px] !w-[100px] shrink-0 ml-1`}>
                                    <img
                                        className="dragnone musicalbumimg !w-auto !h-[100px]"
                                        src={items.snippet.thumbnails.medium.url}
                                        alt=""
                                    />
                                </div> */}
-                           </button>
-                       </li>
+                              </button>
+                          </li>
                       ))}
                 <div className="float-right">
                     <p className="inline-flex mt-3 text-md items-center notranslate">
