@@ -9,7 +9,7 @@ export default function Document() {
         },
     ]
     return (
-        <Html lang="en">
+        <Html lang="en" style={{ scrollBehavior: 'smooth' }}>
             <Head>
                 <meta charSet="utf-8" />
                 <meta name="theme-color" content="#000" />

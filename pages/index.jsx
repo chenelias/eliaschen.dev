@@ -11,7 +11,7 @@ export default function HomePage() {
                     <h1 className="font-extrabold mt-6 text-4xl md:text-5xl tracking-tight notranslate">Elias Chen</h1>
                     <h2 className="text-gray-700 dark:text-gray-200 mb-1 mt-[-0.1px]">Developer&ensp;//&ensp;Taiwan</h2>
                     <p className="text-gray-600 dark:text-gray-400 mb-16">
-                        Learning about coding and creating something useful for every developers and user
+                        Learning about coding and creating something useful for every developers and users.
                     </p>
                 </div>
                 <div className="flex-1"></div>
@@ -27,7 +27,7 @@ export default function HomePage() {
             <div className="mt-[-40px]">
                 <h1 className="text-3xl font-bold mb-1">Develop skills</h1>
                 <p className="text-md">
-                    &emsp;Web ( React / Next / Astro ), Mobile (ReactNative), Desktop (Electron), C++
+                    &emsp;React&thinsp;/&thinsp;ReactNative&thinsp;/&thinsp;Next&thinsp;/&thinsp;Astro&thinsp;/&thinsp;
                 </p>
             </div>
             <div className="mt-[20px]">

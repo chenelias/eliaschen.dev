@@ -16,6 +16,7 @@ module.exports = {
                 music: '880px',
                 xss: '400px',
                 smallsize: '510px',
+                playbuttton: '450px',
             },
         },
     },

@@ -108,7 +108,6 @@ const PinnedRepos = () => {
         <main>
             <div className="">
                 <div className="grid grid-cols-1 lg:grid-cols-3  w-full gap-6 mt-4">{searchresult}</div>
-
                 <Link href="/projects" className="group float-right mt-5 p-1">
                     <div className="items-center flex w-[210px] text-xl">
                         <p className="float-left">View all my projects</p>
@@ -118,6 +117,7 @@ const PinnedRepos = () => {
                     </div>
                 </Link>
             </div>
+            <div>&thinsp;</div>
         </main>
     )
 }

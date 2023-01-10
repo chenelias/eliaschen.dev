@@ -27,7 +27,7 @@ const index = () => {
     const [videostatus, setvideostatus] = useState(null)
     function scrollToTop() {
         window.scrollTo({
-            top: 187,
+            top: 180,
             behavior: 'smooth',
         })
     }
@@ -63,6 +63,8 @@ const index = () => {
     function musicplayersetup(items) {
         setPlayerItems(items)
         scrollToTop()
+        // document.getElementById('player').style.scrollMarginTop = `30px`
+       
     }
     const opts = {
         height: '0',
@@ -122,7 +124,7 @@ const index = () => {
                 <p className="text-lg mt-1">List of my favorite songs.</p>
             </div>
             {/* // todo: play and viewlist btn start here  */}
-            <div className="smallsize:flex block">
+            <div className="playbuttton:flex block ">
                 <button
                     aria-label="Play all songs"
                     onClick={() => musicplayersetup(playList[Math.floor(Math.random() * playListo)])}
@@ -131,13 +133,13 @@ const index = () => {
                     <p className="text-2xl">
                         <BsPlayFill />
                     </p>
-                    &thinsp;Play random in {playListo} song
+                    &thinsp;Play random song
                 </button>
                 <button>
                     <Link
                         aria-label="View playlist on youtubemusic"
                         href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
-                        className="smallsize:ml-3 flex items-center rounded-xl bg-red-200 text-left px-3 h-[52px] mt-2 font-bold duration-100 hover:bg-red-300 dark:bg-red-400 dark:hover:bg-red-500"
+                        className="playbuttton:ml-3 flex items-center rounded-xl bg-red-200 text-left px-3 h-[52px] mt-2 font-bold duration-100 hover:bg-red-300 dark:bg-red-400 dark:hover:bg-red-500"
                         target={'_blank'}
                     >
                         <p className="text-3xl">
@@ -154,7 +156,7 @@ const index = () => {
                 className={`music:flex block bg-purple-50 dark:bg-neutral-800 shadow-xl rounded-lg mt-5 w-full music:h-[220px] h-auto overflow-hidden duration-100 transition-all items-center relative  ${
                     !playeritems ? '!hidden ' : 'block'
                 } px-[10px] py-[10px]`}
-                id="musictop"
+                id="player"
             >
                 {playeritems && (
                     <YouTube
@@ -334,7 +336,7 @@ const index = () => {
                     </div>
                 )}
                 {playeritems && (
-                    <p className=" text-zinc-300 dark:text-zinc-700 mt-0 text-xs items-center notranslate w-full text-right">
+                    <p className=" text-zinc-300 dark:text-zinc-700 mt-[1px] text-xs items-center notranslate w-full text-right">
                         Power by&nbsp;
                         <Link
                             href={'https://developers.google.com/youtube/iframe_api_reference'}
@@ -348,7 +350,7 @@ const index = () => {
                 )}
             </div>{' '}
             {/* // todo: list start here */}
-            <ol className="mt-7 mb-[-40px]">
+            <ol className="mt-7">
                 {loading || !playList
                     ? LoadDisplay
                     : playList.map((items) => (
