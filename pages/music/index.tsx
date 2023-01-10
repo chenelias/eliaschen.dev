@@ -64,7 +64,6 @@ const index = () => {
         setPlayerItems(items)
         scrollToTop()
         // document.getElementById('player').style.scrollMarginTop = `30px`
-       
     }
     const opts = {
         height: '0',
@@ -113,7 +112,6 @@ const index = () => {
             clearInterval(interval)
         }
     }, [])
-
     return (
         <main>
             <Head>
@@ -263,7 +261,7 @@ const index = () => {
                                 </button>
                             </div>
                             {
-                                <div className="block items-center music:mx-0 mx-4 music:mt-2 mt-3">
+                                <div className="block items-center music:mx-0 mx-4 music:mt-1 mt-3">
                                     {/* <br /> */}
                                     <input
                                         value={currentseconds}
