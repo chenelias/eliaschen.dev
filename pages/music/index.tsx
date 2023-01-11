@@ -8,9 +8,9 @@ import { BsPlayFill, BsPauseFill, BsSkipEndFill, BsFillSkipStartFill } from 'rea
 import { SiYoutubemusic } from 'react-icons/si'
 import Link from 'next/link'
 import YouTube, { YouTubePlayer } from 'react-youtube'
-import { ImYoutube2 } from 'react-icons/im'
+import { CgClose } from 'react-icons/cg'
 import { MdPlaylistPlay } from 'react-icons/md'
-import { HiVolumeUp } from 'react-icons/hi'
+
 // import Musicplayer from './musicplayer'
 let videoElement: YouTubePlayer = null
 const index = () => {
@@ -112,6 +112,21 @@ const index = () => {
             clearInterval(interval)
         }
     }, [])
+    function ControlIcon() {
+        if (videostatus === 2) {
+            return (
+                <p onClick={() => videoElement.target.playVideo()}>
+                    <BsPlayFill />
+                </p>
+            )
+        } else if (videostatus === 1) {
+            return (
+                <p onClick={() => videoElement.target.pauseVideo()}>
+                    <BsPauseFill />
+                </p>
+            )
+        }
+    }
     return (
         <main>
             <Head>
@@ -137,7 +152,7 @@ const index = () => {
                     <Link
                         aria-label="View playlist on youtubemusic"
                         href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
-                        className="playbuttton:ml-3 flex items-center rounded-xl bg-red-200 text-left px-3 h-[52px] mt-2 font-bold duration-100 hover:bg-red-300 dark:bg-red-400 dark:hover:bg-red-500"
+                        className="playbuttton:ml-3 flex items-center rounded-xl bg-zinc-200 text-left px-3 h-[52px] mt-2 font-bold duration-100 hover:bg-zinc-300 dark:bg-zinc-700 dark:hover:bg-zinc-600"
                         target={'_blank'}
                     >
                         <p className="text-3xl">
@@ -156,6 +171,15 @@ const index = () => {
                 } px-[10px] py-[10px]`}
                 id="player"
             >
+                <div className="flex">
+                    <div className="flex-1"></div>
+                    <button
+                        onClick={() => setPlayerItems(null)}
+                        className="music:hidden bg-slate-300 hover:bg-slate-400 dark:bg-zinc-700 dark:hover:bg-zinc-600 duration-100 rounded-full p-1 text-2xl ml-auto"
+                    >
+                        <CgClose />
+                    </button>
+                </div>
                 {playeritems && (
                     <YouTube
                         videoId={playeritems.snippet.resourceId.videoId}
@@ -234,14 +258,8 @@ const index = () => {
                                         <div className="spinner-container">
                                             <div className="loading-spinner !h-[37px] w-[37px]"></div>
                                         </div>
-                                    ) : isPaused ? (
-                                        <p onClick={() => videoElement.target.playVideo()}>
-                                            <BsPlayFill />
-                                        </p>
                                     ) : (
-                                        <p onClick={() => videoElement.target.pauseVideo()}>
-                                            <BsPauseFill />
-                                        </p>
+                                        ControlIcon()
                                     )}
                                 </button>
                                 <button
@@ -321,11 +339,11 @@ const index = () => {
                                 '&list=' +
                                 playeritems.snippet.playlistId
                             }
-                            className={`flex bg-red-100 mt-4 dark:hover:bg-neutral-700 hover:bg-red-200 duration-100  text-zinc-700 dark:text-zinc-300 text-xl dark:bg-neutral-800 rounded-lg py-4 px-3 font-bold items-center w-full ${
+                            className={`flex bg-red-100 mt-4 dark:hover:bg-neutral-700 hover:bg-red-200 duration-100  text-zinc-700 dark:text-zinc-300 text-lg dark:bg-neutral-800 rounded-lg py-2 px-3 font-bold items-center w-full ${
                                 !playeritems ? '!hidden ' : 'block'
                             }`}
                         >
-                            <p className="text-2xl ">
+                            <p className="text-xl ">
                                 <SiYoutubemusic />
                             </p>
                             &nbsp;
