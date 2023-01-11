@@ -27,7 +27,7 @@ const index = () => {
     const [videostatus, setvideostatus] = useState(null)
     function scrollToTop() {
         window.scrollTo({
-            top: 180,
+            top: 10,
             behavior: 'smooth',
         })
     }
