@@ -5,7 +5,7 @@ export default function Body(props) {
     return (
         <main>
             <Head>
-                <title className="notranslate">{'EliasChen - ' + props.title}</title>
+                <title className="notranslate">{props.title + ' - EliasChen'}</title>
             </Head>
             {props.children}
         </main>

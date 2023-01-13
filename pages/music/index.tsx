@@ -1,18 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
-// import Body from '/components/Body'
-import Head from 'next/head'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import Image from 'next/image'
-import {
-    BsPlayFill,
-    BsPauseFill,
-    BsSkipEndFill,
-    BsFillSkipStartFill,
-    BsVolumeMuteFill,
-    BsVolumeOffFill,
-    BsVolumeUpFill,
-} from 'react-icons/bs'
+import Body from '../../components/Body'
+import { BsPlayFill, BsPauseFill, BsSkipEndFill, BsFillSkipStartFill } from 'react-icons/bs'
 import { SiYoutubemusic } from 'react-icons/si'
 import Link from 'next/link'
 import YouTube, { YouTubePlayer } from 'react-youtube'
@@ -142,16 +132,9 @@ const index = () => {
             )
         }
     }
-    // useEffect(() => {
-    //     {
-    //         playeritems && videoElement.target.setVolume(playervolume ? 100 : 0)
-    //     } // todo remove it in new mind
-    // }, [playervolume])
+
     return (
-        <main>
-            <Head>
-                <title>EliasChen - Music</title>
-            </Head>
+        <Body title="Music">
             <div>
                 <h1 className="font-extrabold text-6xl tracking-tight">Music</h1>
                 <p className="text-lg mt-1">List of my favorite songs.</p>
@@ -193,16 +176,17 @@ const index = () => {
             >
                 <div className="flex music:h-0">
                     <div className="flex-1"></div>
-                    <div className="music:block items-center g-red-500 rounded-full hidden h-5 w-5 mr-2">
-                    <button
-                        onClick={() => setPlayerItems(null)}
-                        className="music:flex music:overflow-visible bg-slate-300 hover:bg-slate-400 dark:bg-zinc-700 dark:hover:bg-zinc-600 duration-100 rounded-full p-1 text-xl ml-auto"
+                    <div className="music:block items-center g-red-500 rounded-full h-5 w-5 mr-2">
+                        <button
+                            aiia-label="close musicplayer"
+                            onClick={() => setPlayerItems(null)}
+                            className="music:flex music:overflow-visible bg-slate-300 hover:bg-slate-400 dark:bg-zinc-700 dark:hover:bg-zinc-600 duration-100 rounded-full p-1 text-xl ml-auto"
                         >
-                        <CgClose />
-                    </button>
-                        </div>
+                            <CgClose />
+                        </button>
+                    </div>
                 </div>
-                <div className="flex items-center">
+                <div className="music:flex block items-center">
                     {playeritems && (
                         <YouTube
                             videoId={playeritems.snippet.resourceId.videoId}
@@ -251,7 +235,10 @@ const index = () => {
                                                 className="hover:opacity-70 duration-75"
                                             >
                                                 <p>
-                                                    {playeritems.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}
+                                                    {playeritems.snippet.videoOwnerChannelTitle.replace(
+                                                        / - Topic/g,
+                                                        ' '
+                                                    )}
                                                 </p>
                                             </Link>
                                         </div>
@@ -314,9 +301,9 @@ const index = () => {
                                             }}
                                             step="1"
                                             type="range"
-                                            className="musicplayerrange xss:w-[300px] music:w-[550px] w-[290px] ml-0 music:ml-[-5px] mb-1"
+                                            className="musicplayerrange xss:w-[300px] music:w-[550px] w-[290px] ml-0 music:ml-[-5px]"
                                         />
-                                        <p className="text-[0.5px] !flex music:!hidden ">
+                                        <p className="text-[0.5px] !flex music:!hidden mb-[-10px]">
                                             <br />
                                         </p>
                                         {/* TODO moble controler*/}
@@ -468,7 +455,7 @@ const index = () => {
                           </li>
                       ))}
             </ol>
-        </main>
+        </Body>
     )
 }
 export default index
