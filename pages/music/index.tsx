@@ -4,13 +4,21 @@ import Head from 'next/head'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Image from 'next/image'
-import { BsPlayFill, BsPauseFill, BsSkipEndFill, BsFillSkipStartFill } from 'react-icons/bs'
+import {
+    BsPlayFill,
+    BsPauseFill,
+    BsSkipEndFill,
+    BsFillSkipStartFill,
+    BsVolumeMuteFill,
+    BsVolumeOffFill,
+    BsVolumeUpFill,
+} from 'react-icons/bs'
 import { SiYoutubemusic } from 'react-icons/si'
 import Link from 'next/link'
 import YouTube, { YouTubePlayer } from 'react-youtube'
 import { CgClose } from 'react-icons/cg'
 import { MdPlaylistPlay } from 'react-icons/md'
-
+const tokenkey = process.env.YOUTUBE_TOKEN
 // import Musicplayer from './musicplayer'
 let videoElement: YouTubePlayer = null
 const index = () => {
@@ -25,6 +33,7 @@ const index = () => {
     const [videoduration, setvideoduration] = useState(null)
     const [currentseconds, setcurrentseconds] = useState(null)
     const [videostatus, setvideostatus] = useState(null)
+    const [playervolume, setplayervolume] = useState(true)
     function scrollToTop() {
         window.scrollTo({
             top: 10,
@@ -38,7 +47,7 @@ const index = () => {
     useEffect(() => {
         setLoading(true)
         fetch(
-            `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8&key=AIzaSyC4mJJQYLGdN6Anr4eQkgNUgN_WVyvGHEk&maxResults=1000`,
+            `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8&key=${'AIzaSyC4mJJQYLGdN6Anr4eQkgNUgN_WVyvGHEk'}&maxResults=1000`,
             {}
         )
             .then((res) => res.json())
@@ -125,8 +134,19 @@ const index = () => {
                     <BsPauseFill />
                 </p>
             )
+        } else {
+            return (
+                <div className="spinner-container">
+                    <div className="loading-spinner !h-[37px] w-[37px]"></div>
+                </div>
+            )
         }
     }
+    // useEffect(() => {
+    //     {
+    //         playeritems && videoElement.target.setVolume(playervolume ? 100 : 0)
+    //     } // todo remove it in new mind
+    // }, [playervolume])
     return (
         <main>
             <Head>
@@ -152,7 +172,7 @@ const index = () => {
                     <Link
                         aria-label="View playlist on youtubemusic"
                         href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
-                        className="playbuttton:ml-3 flex items-center rounded-xl bg-zinc-200 text-left px-3 h-[52px] mt-2 font-bold duration-100 hover:bg-zinc-300 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+                        className="playbuttton:ml-3 flex items-center rounded-xl bg-zinc-200 text-left px-3 py-[5px] mt-2 font-bold duration-100 hover:bg-zinc-300 dark:bg-zinc-700 dark:hover:bg-zinc-600"
                         target={'_blank'}
                     >
                         <p className="text-3xl">
@@ -166,166 +186,179 @@ const index = () => {
                 </button>
             </div>
             <div
-                className={`music:flex block bg-purple-50 dark:bg-neutral-800 shadow-xl rounded-lg mt-5 w-full music:h-[220px] h-auto overflow-hidden duration-100 transition-all items-center relative  ${
+                className={`music:block block bg-purple-50 dark:bg-neutral-800 shadow-xl rounded-lg mt-5 w-full music:h-[220px] h-auto overflow-hidden duration-100 transition-all items-center relative  ${
                     !playeritems ? '!hidden ' : 'block'
                 } px-[10px] py-[10px]`}
                 id="player"
             >
-                <div className="flex">
+                <div className="flex music:h-0">
                     <div className="flex-1"></div>
+                    <div className="music:block items-center g-red-500 rounded-full hidden h-5 w-5 mr-2">
                     <button
                         onClick={() => setPlayerItems(null)}
-                        className="music:hidden bg-slate-300 hover:bg-slate-400 dark:bg-zinc-700 dark:hover:bg-zinc-600 duration-100 rounded-full p-1 text-2xl ml-auto"
-                    >
+                        className="music:flex music:overflow-visible bg-slate-300 hover:bg-slate-400 dark:bg-zinc-700 dark:hover:bg-zinc-600 duration-100 rounded-full p-1 text-xl ml-auto"
+                        >
                         <CgClose />
                     </button>
+                        </div>
                 </div>
-                {playeritems && (
-                    <YouTube
-                        videoId={playeritems.snippet.resourceId.videoId}
-                        opts={opts}
-                        onReady={_onReady}
-                        onStateChange={() => {}}
-                        onEnd={() => {
-                            musicplayersetup(
-                                playList[
-                                    playeritems.snippet.position === playListo - 1
-                                        ? 0
-                                        : playeritems.snippet.position + 1
-                                ]
-                            )
-                            setplayerload(true)
-                        }}
-                    />
-                )}
-                {playeritems && (
-                    <div
-                        className={`overflow-hidden !rounded-lg block !h-[200px] !w-[200px] shrink-0 items-center music:mx-0 mx-auto bg-red-200`}
-                    >
-                        <img
-                            className="dragnone musicalbumimg !w-auto !h-[268px] mt-[-34px]"
-                            src={playeritems.snippet.thumbnails.standard.url}
-                            alt=""
-                        />
-                    </div>
-                )}
-                {/* // todo: musicplayer start here */}
-                <div className="block">
+                <div className="flex items-center">
                     {playeritems && (
-                        <div className="music:text-left text-center shrink-0 block items-center py-auto music:ml-[50px] mt-2 music:mt-0">
-                            <div className="flex">
-                                <div className="items-center max-w-[525px] music:mx-0 mx-auto flex">
-                                    <div className="block">
-                                        <h1 className="font-bold text-2xl notranslate">
-                                            {playeritems.snippet.title.split(/[[:(]/)[0]}
-                                        </h1>
-                                        <Link
-                                            target={'_blank'}
-                                            href={
-                                                'https://music.youtube.com/channel/' +
-                                                playeritems.snippet.videoOwnerChannelId
-                                            }
-                                            className="hover:opacity-70 duration-75"
-                                        >
-                                            <p>
-                                                {playeritems.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}
-                                            </p>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="music:ml-[-10px] mt-4 music:mt-2 items-center">
-                                <button
-                                    onClick={() => {
-                                        scrollToTop()
-                                        setPlayerItems(
-                                            playList[
-                                                playeritems.snippet.position === 0
-                                                    ? playListo - 1
-                                                    : playeritems.snippet.position - 1
-                                            ]
-                                        )
-                                    }}
-                                    className="text-4xl p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg"
-                                >
-                                    <BsFillSkipStartFill />
-                                </button>
-                                <button
-                                    onClick={() => setIsPaused(!isPaused)}
-                                    className="text-4xl p-1 items-center hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg music:mx-[30px] mx-[50px]"
-                                >
-                                    {playerload ? (
-                                        <div className="spinner-container">
-                                            <div className="loading-spinner !h-[37px] w-[37px]"></div>
-                                        </div>
-                                    ) : (
-                                        ControlIcon()
-                                    )}
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        scrollToTop()
-                                        setPlayerItems(
-                                            playList[
-                                                playeritems.snippet.position === playListo - 1
-                                                    ? 0
-                                                    : playeritems.snippet.position + 1
-                                            ]
-                                        )
-                                    }}
-                                    className="text-4xl p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg"
-                                >
-                                    <BsSkipEndFill />
-                                </button>
-                            </div>
-                            {
-                                <div className="block items-center music:mx-0 mx-4 music:mt-1 mt-3">
-                                    {/* <br /> */}
-                                    <input
-                                        value={currentseconds}
-                                        min="0"
-                                        max={videoduration}
-                                        onChange={(x) => {
-                                            setvtime(x.target.value)
-                                            videoElement.target.seekTo(x.target.value)
-                                        }}
-                                        step="1"
-                                        type="range"
-                                        className="musicplayerrange xss:w-[300px] music:w-[500px] w-[300px] ml-0 music:ml-[-5px] "
-                                    />
-                                    <p className="text-[0.5px] !flex music:!hidden mt-[-5px]">
-                                        <br />
-                                    </p>
-                                    {/* TODO moble controler*/}
-                                    <p className="music:!hidden !inline-flex text-center mr-3">
-                                        <p>{time}</p>&thinsp;/&thinsp;
-                                        <p>
-                                            {(Math.floor(videoduration / 60) < 10
-                                                ? '0' + Math.floor(videoduration / 60)
-                                                : Math.floor(videoduration / 60)) +
-                                                ':' +
-                                                (Math.floor(videoduration % 60) < 10
-                                                    ? '0' + Math.floor(videoduration % 60)
-                                                    : Math.floor(videoduration % 60))}
-                                        </p>
-                                    </p>
-                                    {/* TODO esktop controler */}
-                                    <p className="music:!flex !hidden !mt-[-7px]">
-                                        <p>{time}</p>&thinsp;/&thinsp;
-                                        <p>
-                                            {(Math.floor(videoduration / 60) < 10
-                                                ? '0' + Math.floor(videoduration / 60)
-                                                : Math.floor(videoduration / 60)) +
-                                                ':' +
-                                                (Math.floor(videoduration % 60) < 10
-                                                    ? '0' + Math.floor(videoduration % 60)
-                                                    : Math.floor(videoduration % 60))}
-                                        </p>
-                                    </p>
-                                </div>
-                            }
+                        <YouTube
+                            videoId={playeritems.snippet.resourceId.videoId}
+                            opts={opts}
+                            onReady={_onReady}
+                            onStateChange={() => {}}
+                            onEnd={() => {
+                                musicplayersetup(
+                                    playList[
+                                        playeritems.snippet.position === playListo - 1
+                                            ? 0
+                                            : playeritems.snippet.position + 1
+                                    ]
+                                )
+                                setplayerload(true)
+                            }}
+                        />
+                    )}
+                    {playeritems && (
+                        <div
+                            className={`overflow-hidden !rounded-lg block !h-[200px] !w-[200px] shrink-0 items-center music:mx-0 mx-auto bg-red-200`}
+                        >
+                            <img
+                                className="dragnone musicalbumimg !w-auto !h-[268px] mt-[-34px]"
+                                src={playeritems.snippet.thumbnails.standard.url}
+                                alt=""
+                            />
                         </div>
                     )}
+                    {/* // todo: musicplayer start here */}
+                    <div className="block">
+                        {playeritems && (
+                            <div className="music:text-left text-center shrink-0 block items-center py-auto music:ml-[50px] mt-2 music:mt-0">
+                                <div className="flex">
+                                    <div className="items-center max-w-[525px] music:mx-0 mx-auto flex">
+                                        <div className="block">
+                                            <h1 className="font-bold text-2xl notranslate">
+                                                {playeritems.snippet.title.split(/[[:(]/)[0]}
+                                            </h1>
+                                            <Link
+                                                target={'_blank'}
+                                                href={
+                                                    'https://music.youtube.com/channel/' +
+                                                    playeritems.snippet.videoOwnerChannelId
+                                                }
+                                                className="hover:opacity-70 duration-75"
+                                            >
+                                                <p>
+                                                    {playeritems.snippet.videoOwnerChannelTitle.replace(/ - Topic/g, ' ')}
+                                                </p>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="music:ml-[-10px] mt-4 music:mt-2 items-center">
+                                    <button
+                                        onClick={() => {
+                                            scrollToTop()
+                                            setPlayerItems(
+                                                playList[
+                                                    playeritems.snippet.position === 0
+                                                        ? playListo - 1
+                                                        : playeritems.snippet.position - 1
+                                                ]
+                                            )
+                                        }}
+                                        className="text-4xl p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg"
+                                    >
+                                        <BsFillSkipStartFill />
+                                    </button>
+                                    <button
+                                        onClick={() => setIsPaused(!isPaused)}
+                                        className="text-4xl p-1 items-center hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg music:mx-[30px] mx-[50px]"
+                                    >
+                                        {playerload ? (
+                                            <div className="spinner-container">
+                                                <div className="loading-spinner !h-[37px] w-[37px]"></div>
+                                            </div>
+                                        ) : (
+                                            ControlIcon()
+                                        )}
+                                    </button>
+                                    <button
+                                        onClick={() => {
+                                            scrollToTop()
+                                            setPlayerItems(
+                                                playList[
+                                                    playeritems.snippet.position === playListo - 1
+                                                        ? 0
+                                                        : playeritems.snippet.position + 1
+                                                ]
+                                            )
+                                        }}
+                                        className="text-4xl p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg"
+                                    >
+                                        <BsSkipEndFill />
+                                    </button>
+                                </div>
+                                {
+                                    <div className="block items-center music:mx-0 mx-4 music:mt-0 mt-2">
+                                        {/* <br /> */}
+                                        <input
+                                            value={currentseconds}
+                                            min="0"
+                                            max={videoduration}
+                                            onChange={(x) => {
+                                                setvtime(x.target.value)
+                                                videoElement.target.seekTo(x.target.value)
+                                            }}
+                                            step="1"
+                                            type="range"
+                                            className="musicplayerrange xss:w-[300px] music:w-[550px] w-[290px] ml-0 music:ml-[-5px] mb-1"
+                                        />
+                                        <p className="text-[0.5px] !flex music:!hidden ">
+                                            <br />
+                                        </p>
+                                        {/* TODO moble controler*/}
+                                        <p className="music:!hidden !inline-flex text-center mr-3">
+                                            <p>{time}</p>&thinsp;/&thinsp;
+                                            <p>
+                                                {(Math.floor(videoduration / 60) < 10
+                                                    ? '0' + Math.floor(videoduration / 60)
+                                                    : Math.floor(videoduration / 60)) +
+                                                    ':' +
+                                                    (Math.floor(videoduration % 60) < 10
+                                                        ? '0' + Math.floor(videoduration % 60)
+                                                        : Math.floor(videoduration % 60))}
+                                            </p>
+                                        </p>
+                                        {/* TODO esktop controler */}
+                                        <p className="music:!flex !hidden !mt-[-7px]">
+                                            <p>{time}</p>&thinsp;/&thinsp;
+                                            <p>
+                                                {(Math.floor(videoduration / 60) < 10
+                                                    ? '0' + Math.floor(videoduration / 60)
+                                                    : Math.floor(videoduration / 60)) +
+                                                    ':' +
+                                                    (Math.floor(videoduration % 60) < 10
+                                                        ? '0' + Math.floor(videoduration % 60)
+                                                        : Math.floor(videoduration % 60))}
+                                            </p>
+                                        </p>
+                                    </div>
+                                }
+                                {/* <div className="flex items-center">
+                                    <div className="music:flex-1 mx-auto"></div>
+                                    <button
+                                        className="p-1 text-3xl hover:opacity-80 "
+                                        onClick={() => setplayervolume(!playervolume)}
+                                    >
+                                        {playervolume ? <BsVolumeUpFill /> : <BsVolumeMuteFill />}
+                                    </button>
+                                </div> */}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
             <div>
@@ -347,7 +380,7 @@ const index = () => {
                                 <SiYoutubemusic />
                             </p>
                             &nbsp;
-                            <p>Listen on youtube music</p>
+                            <p>Playing on youtube music</p>
                         </Link>
                     </div>
                 )}
