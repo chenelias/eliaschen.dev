@@ -173,7 +173,7 @@ input[type="range"] {
   -webkit-appearance: none;
   height: 0px!important;
   width: 0px;
-  z-index: 30;
+  z-index: 10;
   position: relative;
   border-radius: 50%;
   background: #ae5dff;
