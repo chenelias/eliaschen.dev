@@ -17,6 +17,8 @@
         "@fortawesome/react-fontawesome": "^0.2.0",
         "@headlessui/react": "^1.7.4",
         "@reacticons/ionicons": "^6.0.4",
+        "@supabase/auth-helpers-nextjs": "^0.5.2",
+        "@supabase/auth-helpers-react": "^0.3.0",
         "@supabase/supabase-js": "^2.4.0",
         "@tailwindcss/line-clamp": "^0.4.2",
         "astro-icon": "^0.8.0",
