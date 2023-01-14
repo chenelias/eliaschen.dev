@@ -1,7 +1,7 @@
 import React from "react";
-import Body from '/components/Body.tsx'
+
 const index = () => {
-  return <Body title="Guestbook"></Body>;
+  return <div>GuestBook</div>;
 };
 
 export default index;
