@@ -303,35 +303,37 @@ const index = () => {
                                             type="range"
                                             className="musicplayerrange xss:w-[300px] music:w-[550px] w-[290px] ml-0 music:ml-[-5px]"
                                         />
-                                        <p className="text-[0.5px] !flex music:!hidden mb-[-10px]">
+                                        <p className="text-[0.5px] !flex music:!hidden">
                                             <br />
                                         </p>
                                         {/* TODO moble controler*/}
-                                        <p className="music:!hidden !inline-flex text-center mr-3">
-                                            <p>{time}</p>&thinsp;/&thinsp;
-                                            <p>
-                                                {(Math.floor(videoduration / 60) < 10
-                                                    ? '0' + Math.floor(videoduration / 60)
-                                                    : Math.floor(videoduration / 60)) +
-                                                    ':' +
-                                                    (Math.floor(videoduration % 60) < 10
-                                                        ? '0' + Math.floor(videoduration % 60)
-                                                        : Math.floor(videoduration % 60))}
-                                            </p>
-                                        </p>
-                                        {/* TODO esktop controler */}
-                                        <p className="music:!flex !hidden !mt-[-7px]">
-                                            <p>{time}</p>&thinsp;/&thinsp;
-                                            <p>
-                                                {(Math.floor(videoduration / 60) < 10
-                                                    ? '0' + Math.floor(videoduration / 60)
-                                                    : Math.floor(videoduration / 60)) +
-                                                    ':' +
-                                                    (Math.floor(videoduration % 60) < 10
-                                                        ? '0' + Math.floor(videoduration % 60)
-                                                        : Math.floor(videoduration % 60))}
-                                            </p>
-                                        </p>
+                                      <div className="mt-[-5px]">
+                                          <p className="music:!hidden !inline-flex text-center mr-3">
+                                              <p>{time}</p>&thinsp;/&thinsp;
+                                              <p>
+                                                  {(Math.floor(videoduration / 60) < 10
+                                                      ? '0' + Math.floor(videoduration / 60)
+                                                      : Math.floor(videoduration / 60)) +
+                                                      ':' +
+                                                      (Math.floor(videoduration % 60) < 10
+                                                          ? '0' + Math.floor(videoduration % 60)
+                                                          : Math.floor(videoduration % 60))}
+                                              </p>
+                                          </p>
+                                          {/* TODO esktop controler */}
+                                          <p className="music:!flex !hidden !mt-[-7px]">
+                                              <p>{time}</p>&thinsp;/&thinsp;
+                                              <p>
+                                                  {(Math.floor(videoduration / 60) < 10
+                                                      ? '0' + Math.floor(videoduration / 60)
+                                                      : Math.floor(videoduration / 60)) +
+                                                      ':' +
+                                                      (Math.floor(videoduration % 60) < 10
+                                                          ? '0' + Math.floor(videoduration % 60)
+                                                          : Math.floor(videoduration % 60))}
+                                              </p>
+                                          </p>
+                                      </div >
                                     </div>
                                 }
                                 {/* <div className="flex items-center">
