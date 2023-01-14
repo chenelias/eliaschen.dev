@@ -3,9 +3,13 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import PinnedRepos from './PinnedRepos'
 import Body from '../components/Body'
 import RecentlyBlog from './RecentlyBlog'
+import Head from 'next/head'
 export default function HomePage() {
     return (
-        <Body title="Home">
+        <main>
+            <Head>
+                <title>EliasChen - Developer, writer</title>
+            </Head>
             <div className="flex flex-col-reverse sm:flex-row items-start my-5">
                 <div className="flex flex-col pr-8">
                     <h1 className="font-extrabold mt-6 text-4xl md:text-5xl tracking-tight notranslate">Elias Chen</h1>
@@ -42,6 +46,6 @@ export default function HomePage() {
                 <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">Top Projects</h1>
                 <PinnedRepos />
             </div>
-        </Body>
+        </main>
     )
 }
