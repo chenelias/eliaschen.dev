@@ -373,6 +373,19 @@ const [playerload, setplayerload] = React.useState(true)
                         </Link>
                     </div>
                 )}
+                {playeritems && (
+                    <p className=" text-zinc-300 dark:text-zinc-700 mt-[1px] text-xs items-center notranslate w-full text-right">
+                        Power by&nbsp;
+                        <Link
+                            href={'https://developers.google.com/youtube/iframe_api_reference'}
+                            className="hover:dark:text-white hover:text-black duration-75"
+                            target="_blank"
+                            area-aria-label=""
+                        >
+                            <span className="text-xs mt-1 ">YoutubeIframePlayer</span>
+                        </Link>
+                    </p>
+                )}
             </div>{' '}
             {/* // todo: list start here */}
             <ol className="mt-7">
