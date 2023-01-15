@@ -5,9 +5,10 @@ import ColorModeToggle from '/components/ColorModeToggle'
 import NavlinkDropMenu from '../components/NavlinkDropMenu'
 import { NavLinks } from '/components/data/Navlinks'
 import { useRouter } from 'next/router'
+
 const Header = () => {
     const router = useRouter()
-    return (
+  return (
         <header className="fixed w-full pq2 z-50 dark:bg-[rgba(17, 17, 17,0.29)] bg-[rgba(249, 250, 251,0.30)] backdrop-blur-lg header">
             <div className="mx-auto max-w-4xl">
                 <nav className="flex items-center gap-3 text-base m-3">

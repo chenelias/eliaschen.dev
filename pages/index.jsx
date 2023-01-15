@@ -4,8 +4,9 @@ import PinnedRepos from './PinnedRepos'
 import Body from '../components/Body'
 import RecentlyBlog from './RecentlyBlog'
 import Head from 'next/head'
+
 export default function HomePage() {
-    return (
+  return (
         <main>
             <Head>
                 <title>EliasChen - Developer, writer</title>
