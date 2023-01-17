@@ -32,12 +32,12 @@ export default function HomePage() {
             <div className="mt-[-40px]">
                 <h1 className="text-3xl font-bold mb-1">Develop skills</h1>
                 <p className="text-md">
-                    &emsp;React&thinsp;/&thinsp;ReactNative&thinsp;/&thinsp;Next&thinsp;/&thinsp;Astro&thinsp;
+                    &thinsp;React&thinsp;/&thinsp;ReactNative&thinsp;/&thinsp;Next&thinsp;/&thinsp;Astro&thinsp;
                 </p>
             </div>
             <div className="mt-[20px]">
                 <h1 className="text-3xl font-bold mb-1">Hobby</h1>
-                <p className="text-md">&emsp;Develop, Art, Photography, </p>
+                <p className="text-md">&thinsp;Develop, Art, Photography, </p>
             </div>
             <div className="mt-[40px]">
                 <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">Recent Blogs</h1>
