@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
         <main>
             <Head>
-                <title>Elias Chen - Developer, writer</title>
+                <title>EliasChen - Developer, writer</title>
             </Head>
             <div className="flex flex-col-reverse sm:flex-row items-start my-5">
                 <div className="flex flex-col pr-8">
