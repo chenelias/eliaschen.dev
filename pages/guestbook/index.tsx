@@ -1,5 +1,5 @@
 import React from 'react'
-import Body from '/components/Body'
+import Body from '../../components/Body'
 import { createClient } from '@supabase/supabase-js'
 export async function getStaticProps() {
     const supabaseAdmin = createClient(
