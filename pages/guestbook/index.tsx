@@ -39,6 +39,7 @@ function cn(...classes: string[]) {
 //   )
 // }
 
+
 const index = ({ data:data }) => {
     return (
         <Body title="Guestbook">
