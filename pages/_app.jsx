@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
     const [supabase] = useState(() => createBrowserSupabaseClient())
     return (
         <main className="">
-            <SessionContextProvider supabaseClient={supabase} initialSession={pageProps.initialSession}>
+            {/* <SessionContextProvider supabaseClient={supabase} initialSession={pageProps.initialSession}> */}
                 <NextNProgress
                     options={{
                         showSpinner: false,
@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
                     <Component {...pageProps} />
                     <Footer />
                 </main>
-            </SessionContextProvider>
+            {/* </SessionContextProvider> */}
         </main>
     )
 }

@@ -361,7 +361,7 @@ const [playerload, setplayerload] = React.useState(true)
                                 '&list=' +
                                 playeritems.snippet.playlistId
                             }
-                            className={`flex bg-red-100 mt-4 dark:hover:bg-neutral-700 hover:bg-red-200 duration-100  text-zinc-700 dark:text-zinc-300 text-lg dark:bg-neutral-800 rounded-lg py-2 px-3 font-bold items-center w-full ${
+                            className={`flex bg-neutral-200 drop-shadow-md hover:drop-shadow-lg mt-4 dark:hover:bg-neutral-700 hover:bg-neutral-300 duration-100  text-zinc-700 dark:text-zinc-300 text-lg dark:bg-neutral-800 rounded-lg py-2 px-3 font-bold items-center w-full ${
                                 !playeritems ? '!hidden ' : 'block'
                             }`}
                         >
