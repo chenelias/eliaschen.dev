@@ -10,7 +10,7 @@ const AboutPage = () => {
             <div className="mt-5">
                 <p className="font-bold text-xl">Short, 3rd Person</p>
                 <h2 className="text-md ml-4">
-                    EliasChen is a solo developer and loves coding、photography, for now he still keep learning about
+                    EliasChen is a solo developer and loves coding, photography, for now he still keep learning about
                     fullstack development and mobile development.
                 </h2>
             </div>
