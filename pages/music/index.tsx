@@ -8,6 +8,7 @@ import Link from 'next/link'
 import YouTube, { YouTubePlayer } from 'react-youtube'
 import { CgClose } from 'react-icons/cg'
 import { MdPlaylistPlay } from 'react-icons/md'
+import { TiArrowShuffle } from 'react-icons/ti'
 const tokenkey = process.env.YOUTUBE_TOKEN
 // import Musicplayer from './musicplayer'
 let videoElement: YouTubePlayer = null
@@ -16,7 +17,7 @@ const index = () => {
     const [playList, setPlaylist] = React.useState(null)
     const [playListo, setPlaylisto] = React.useState(null)
     // Player
-const [playerload, setplayerload] = React.useState(true)
+    const [playerload, setplayerload] = React.useState(true)
     const [playeritems, setPlayerItems] = React.useState(null)
     const [isPaused, setIsPaused] = useState(false)
     const [time, setvtime] = useState(null)
@@ -33,6 +34,17 @@ const [playerload, setplayerload] = React.useState(true)
     useEffect(() => {
         setplayerload(true)
     }, [playeritems && playeritems])
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
 
     useEffect(() => {
         setLoading(true)
@@ -136,57 +148,60 @@ const [playerload, setplayerload] = React.useState(true)
     return (
         <Body title="Music">
             <div>
-                <h1 className="font-extrabold text-6xl tracking-tight">Music</h1>
-                <p className="text-lg mt-1">List of my favorite songs.</p>
+                <h1 className="text-6xl font-extrabold tracking-tight">Music</h1>
+                <p className="mt-1 text-lg">List of my favorite songs.</p>
             </div>
             {/* // todo: play and viewlist btn start here  */}
-            <div className="playbuttton:flex block ">
+            <div className="block playbuttton:flex ">
                 <button
                     aria-label="Play all songs"
-                    onClick={() => musicplayersetup(playList[Math.floor(Math.random() * playListo)])}
-                    className="flex items-center rounded-xl bg-[#ce9dff] p-3 mt-2 text-xl text-left font-bold duration-100 hover:bg-[#c081ff] dark:bg-[#9900ff] dark:hover:bg-[#9900ffb2]"
+                    onClick={() => {
+                        
+                        musicplayersetup(playList[Math.floor(Math.random() * playListo)])
+                    }}
+                    className="mt-2 flex items-center rounded-xl bg-[#ce9dff] p-3 text-left text-xl font-bold duration-100 hover:bg-[#c081ff] dark:bg-[#9900ff] dark:hover:bg-[#9900ffb2]"
                 >
-                    <p className="text-2xl">
+                    <p className="text-3xl">
                         <BsPlayFill />
-                    </p>
-                    &thinsp;Play random song
+                    </p>&thinsp;Play random song
+                    {/* &thinsp;Shuffle play */}
                 </button>
                 <button>
                     <Link
                         aria-label="View playlist on youtubemusic"
                         href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
-                        className="playbuttton:ml-3 flex items-center rounded-xl bg-zinc-200 text-left px-3 py-[5px] mt-2 font-bold duration-100 hover:bg-zinc-300 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+                        className="mt-2 flex dark:bg-zinc-700 items-center rounded-xl bg-zinc-200 px-3 py-[5px] text-left font-bold duration-100 hover:bg-zinc-300  dark:hover:bg-zinc-600 playbuttton:ml-3"
                         target={'_blank'}
                     >
                         <p className="text-3xl">
                             <MdPlaylistPlay />
                         </p>
-                        <div className="block ml-1">
+                        <div className="ml-1 block">
                             <p className="text-lg">View playlist</p>
-                            <p className="text-xs ml-[2px]">YoutubeMusic</p>
+                            <p className="ml-[2px] text-xs">YoutubeMusic</p>
                         </div>
                     </Link>
                 </button>
             </div>
             <div
-                className={`music:block block bg-purple-50 dark:bg-neutral-800 shadow-xl rounded-lg mt-5 w-full music:h-[220px] h-auto overflow-hidden duration-100 transition-all items-center relative  ${
+                className={`relative mt-5 block h-auto w-full items-center overflow-hidden rounded-lg bg-purple-50 shadow-xl transition-all duration-100 dark:bg-neutral-800 music:block music:h-[220px]  ${
                     !playeritems ? '!hidden ' : 'block'
                 } px-[10px] py-[10px]`}
                 id="player"
             >
                 <div className="flex music:h-0">
                     <div className="flex-1"></div>
-                    <div className="music:block items-center g-red-500 rounded-full h-5 w-5 mr-2">
+                    <div className="g-red-500 mr-2 h-5 w-5 items-center rounded-full music:block">
                         <button
                             aiia-label="close musicplayer"
                             onClick={() => setPlayerItems(null)}
-                            className="music:flex music:overflow-visible bg-slate-300 hover:bg-slate-400 dark:bg-zinc-700 dark:hover:bg-zinc-600 duration-100 rounded-full p-1 text-xl ml-auto"
+                            className="ml-auto rounded-full bg-slate-300 p-1 text-xl duration-100 hover:bg-slate-400 dark:bg-zinc-700 dark:hover:bg-zinc-600 music:flex music:overflow-visible"
                         >
                             <CgClose />
                         </button>
                     </div>
                 </div>
-                <div className="music:flex block items-center">
+                <div className="block items-center music:flex">
                     {playeritems && (
                         <YouTube
                             videoId={playeritems.snippet.resourceId.videoId}
@@ -207,10 +222,10 @@ const [playerload, setplayerload] = React.useState(true)
                     )}
                     {playeritems && (
                         <div
-                            className={`overflow-hidden !rounded-lg block !h-[200px] !w-[200px] shrink-0 items-center music:mx-0 mx-auto bg-red-200`}
+                            className={`mx-auto block !h-[200px] !w-[200px] shrink-0 items-center overflow-hidden !rounded-lg bg-red-200 music:mx-0`}
                         >
                             <img
-                                className="dragnone musicalbumimg !w-auto !h-[268px] mt-[-34px]"
+                                className="dragnone musicalbumimg mt-[-34px] !h-[268px] !w-auto"
                                 src={playeritems.snippet.thumbnails.standard.url}
                                 alt=""
                             />
@@ -219,11 +234,11 @@ const [playerload, setplayerload] = React.useState(true)
                     {/* // todo: musicplayer start here */}
                     <div className="block">
                         {playeritems && (
-                            <div className="music:text-left text-center shrink-0 block items-center py-auto music:ml-[50px] mt-2 music:mt-0">
+                            <div className="py-auto mt-2 block shrink-0 items-center text-center music:ml-[50px] music:mt-0 music:text-left">
                                 <div className="flex">
-                                    <div className="items-center max-w-[525px] music:mx-0 mx-auto flex">
+                                    <div className="mx-auto flex max-w-[525px] items-center music:mx-0">
                                         <div className="block">
-                                            <h1 className="font-bold text-2xl notranslate">
+                                            <h1 className="notranslate text-2xl font-bold">
                                                 {playeritems.snippet.title.split(/[[:(]/)[0]}
                                             </h1>
                                             <Link
@@ -232,7 +247,7 @@ const [playerload, setplayerload] = React.useState(true)
                                                     'https://music.youtube.com/channel/' +
                                                     playeritems.snippet.videoOwnerChannelId
                                                 }
-                                                className="hover:opacity-70 duration-75"
+                                                className="duration-75 hover:opacity-70"
                                             >
                                                 <p>
                                                     {playeritems.snippet.videoOwnerChannelTitle.replace(
@@ -244,7 +259,7 @@ const [playerload, setplayerload] = React.useState(true)
                                         </div>
                                     </div>
                                 </div>
-                                <div className="music:ml-[-10px] mt-4 music:mt-2 items-center">
+                                <div className="mt-4 items-center music:ml-[-10px] music:mt-2">
                                     <button
                                         onClick={() => {
                                             scrollToTop()
@@ -256,13 +271,13 @@ const [playerload, setplayerload] = React.useState(true)
                                                 ]
                                             )
                                         }}
-                                        className="text-4xl p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg"
+                                        className="rounded-lg p-1 text-4xl hover:bg-zinc-200 dark:hover:bg-zinc-700"
                                     >
                                         <BsFillSkipStartFill />
                                     </button>
                                     <button
                                         onClick={() => setIsPaused(!isPaused)}
-                                        className="text-4xl p-1 items-center hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg music:mx-[30px] mx-[50px]"
+                                        className="mx-[50px] items-center rounded-lg p-1 text-4xl hover:bg-zinc-200 dark:hover:bg-zinc-700 music:mx-[30px]"
                                     >
                                         {playerload ? (
                                             <div className="spinner-container">
@@ -283,13 +298,13 @@ const [playerload, setplayerload] = React.useState(true)
                                                 ]
                                             )
                                         }}
-                                        className="text-4xl p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg"
+                                        className="rounded-lg p-1 text-4xl hover:bg-zinc-200 dark:hover:bg-zinc-700"
                                     >
                                         <BsSkipEndFill />
                                     </button>
                                 </div>
                                 {
-                                    <div className="block items-center music:mx-0 mx-4 music:mt-0 mt-2">
+                                    <div className="mx-4 mt-2 block items-center music:mx-0 music:mt-0">
                                         {/* <br /> */}
                                         <input
                                             value={currentseconds}
@@ -301,39 +316,39 @@ const [playerload, setplayerload] = React.useState(true)
                                             }}
                                             step="1"
                                             type="range"
-                                            className="musicplayerrange xss:w-[300px] music:w-[550px] w-[290px] ml-0 music:ml-[-5px]"
+                                            className="musicplayerrange ml-0 w-[290px] xss:w-[300px] music:ml-[-5px] music:w-[550px]"
                                         />
-                                        <p className="text-[0.5px] !flex music:!hidden">
+                                        <p className="!flex text-[0.5px] music:!hidden">
                                             <br />
                                         </p>
                                         {/* TODO moble controler*/}
-                                      <div className="mt-[-5px]">
-                                          <p className="music:!hidden !inline-flex text-center mr-3">
-                                              <p>{time}</p>&thinsp;/&thinsp;
-                                              <p>
-                                                  {(Math.floor(videoduration / 60) < 10
-                                                      ? '0' + Math.floor(videoduration / 60)
-                                                      : Math.floor(videoduration / 60)) +
-                                                      ':' +
-                                                      (Math.floor(videoduration % 60) < 10
-                                                          ? '0' + Math.floor(videoduration % 60)
-                                                          : Math.floor(videoduration % 60))}
-                                              </p>
-                                          </p>
-                                          {/* TODO esktop controler */}
-                                          <p className="music:!flex !hidden !mt-[-7px]">
-                                              <p>{time}</p>&thinsp;/&thinsp;
-                                              <p>
-                                                  {(Math.floor(videoduration / 60) < 10
-                                                      ? '0' + Math.floor(videoduration / 60)
-                                                      : Math.floor(videoduration / 60)) +
-                                                      ':' +
-                                                      (Math.floor(videoduration % 60) < 10
-                                                          ? '0' + Math.floor(videoduration % 60)
-                                                          : Math.floor(videoduration % 60))}
-                                              </p>
-                                          </p>
-                                      </div >
+                                        <div className="mt-[-5px]">
+                                            <p className="mr-3 !inline-flex text-center music:!hidden">
+                                                <p>{time}</p>&thinsp;/&thinsp;
+                                                <p>
+                                                    {(Math.floor(videoduration / 60) < 10
+                                                        ? '0' + Math.floor(videoduration / 60)
+                                                        : Math.floor(videoduration / 60)) +
+                                                        ':' +
+                                                        (Math.floor(videoduration % 60) < 10
+                                                            ? '0' + Math.floor(videoduration % 60)
+                                                            : Math.floor(videoduration % 60))}
+                                                </p>
+                                            </p>
+                                            {/* TODO esktop controler */}
+                                            <p className="!mt-[-7px] !hidden music:!flex">
+                                                <p>{time}</p>&thinsp;/&thinsp;
+                                                <p>
+                                                    {(Math.floor(videoduration / 60) < 10
+                                                        ? '0' + Math.floor(videoduration / 60)
+                                                        : Math.floor(videoduration / 60)) +
+                                                        ':' +
+                                                        (Math.floor(videoduration % 60) < 10
+                                                            ? '0' + Math.floor(videoduration % 60)
+                                                            : Math.floor(videoduration % 60))}
+                                                </p>
+                                            </p>
+                                        </div>
                                     </div>
                                 }
                                 {/* <div className="flex items-center">
@@ -361,7 +376,7 @@ const [playerload, setplayerload] = React.useState(true)
                                 '&list=' +
                                 playeritems.snippet.playlistId
                             }
-                            className={`flex bg-neutral-200 drop-shadow-md hover:drop-shadow-lg mt-4 dark:hover:bg-neutral-700 hover:bg-neutral-300 duration-100  text-zinc-700 dark:text-zinc-300 text-lg dark:bg-neutral-800 rounded-lg py-2 px-3 font-bold items-center w-full ${
+                            className={`mt-4 flex w-full items-center rounded-lg bg-neutral-200 py-2 px-3  text-lg font-bold text-zinc-700 drop-shadow-md duration-100 hover:bg-neutral-300 hover:drop-shadow-lg dark:bg-neutral-800 dark:text-zinc-300 dark:hover:bg-neutral-700 ${
                                 !playeritems ? '!hidden ' : 'block'
                             }`}
                         >
@@ -374,15 +389,15 @@ const [playerload, setplayerload] = React.useState(true)
                     </div>
                 )}
                 {playeritems && (
-                    <p className=" text-zinc-300 dark:text-zinc-700 mt-[1px] text-xs items-center notranslate w-full text-right">
+                    <p className=" notranslate mt-[1px] w-full items-center text-right text-xs text-zinc-300 dark:text-zinc-700">
                         Power by&nbsp;
                         <Link
                             href={'https://developers.google.com/youtube/iframe_api_reference'}
-                            className="hover:dark:text-white hover:text-black duration-75"
+                            className="duration-75 hover:text-black hover:dark:text-white"
                             target="_blank"
                             area-aria-label=""
                         >
-                            <span className="text-xs mt-1 ">YoutubeIframePlayer</span>
+                            <span className="mt-1 text-xs ">YoutubeIframePlayer</span>
                         </Link>
                     </p>
                 )}
@@ -398,16 +413,16 @@ const [playerload, setplayerload] = React.useState(true)
                                       musicplayersetup(items)
                                   }}
                                   key={items.id}
-                                  className="cursor-pointer group shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg w-full dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all duration-100  bg-zinc-100 dark:bg-zinc-800 py-2 pr-2 rounded-lg mt-4 items-center flex"
+                                  className="shodow-black-/10 group mt-4 flex w-full transform cursor-pointer items-center rounded-lg bg-zinc-100 py-2 pr-2  shadow-md transition-all duration-100 hover:shadow-lg hover:shadow-black/10 dark:bg-zinc-800 dark:shadow-zinc-200/10 dark:hover:shadow-zinc-200/10"
                               >
-                                  <div className="flex w-[25px] items-center px-5 py-1 mr-1 ml-2 notranslate h-[40px]">
+                                  <div className="notranslate mr-1 ml-2 flex h-[40px] w-[25px] items-center px-5 py-1">
                                       {playeritems &&
                                           (playeritems.id === items.id ? (
                                               <p
                                                   key={items.id}
-                                                  className="text-2xl mr-[5px] ml-[-14px] group-hover:block"
+                                                  className="mr-[5px] ml-[-14px] text-2xl group-hover:block"
                                               >
-                                                  <div className="now playing flex mt-7 ml-1" id="music">
+                                                  <div className="now playing mt-7 ml-1 flex" id="music">
                                                       <span className="bar n1 bg-black dark:bg-white">A</span>
                                                       <span className="bar n2 bg-black dark:bg-white">B</span>
                                                       <span className="bar n3 bg-black dark:bg-white">c</span>
@@ -415,10 +430,10 @@ const [playerload, setplayerload] = React.useState(true)
                                               </p>
                                           ) : (
                                               <div key={items.id}>
-                                                  <p className="text-xl block group-hover:hidden ml-[-11px]">
+                                                  <p className="ml-[-11px] block text-xl group-hover:hidden">
                                                       {items.snippet.position + 1}
                                                   </p>
-                                                  <p className="text-3xl mr-[5px] ml-[-14px] hidden group-hover:block">
+                                                  <p className="mr-[5px] ml-[-14px] hidden text-3xl group-hover:block">
                                                       <BsPlayFill />
                                                   </p>
                                               </div>
@@ -426,10 +441,10 @@ const [playerload, setplayerload] = React.useState(true)
 
                                       {!playeritems ? (
                                           <div>
-                                              <p className="text-xl block group-hover:hidden ml-[-11px]">
+                                              <p className="ml-[-11px] block text-xl group-hover:hidden">
                                                   {items.snippet.position + 1}
                                               </p>
-                                              <p className="text-3xl mr-[5px] ml-[-14px] hidden group-hover:block">
+                                              <p className="mr-[5px] ml-[-14px] hidden text-3xl group-hover:block">
                                                   <BsPlayFill />
                                               </p>
                                           </div>
@@ -438,7 +453,7 @@ const [playerload, setplayerload] = React.useState(true)
                                       )}
                                   </div>
                                   <div className="block text-left">
-                                      <h1 className="font-bold text-xl notranslate">
+                                      <h1 className="notranslate text-xl font-bold">
                                           {items.snippet.title.split(/[[:(]/)[0]}
                                       </h1>
                                       <p className="text-xs ">
