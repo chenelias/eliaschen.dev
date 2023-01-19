@@ -8,7 +8,7 @@ import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
 
 function MyApp({ Component, pageProps }) {
-    const [supabase] = useState(() => createBrowserSupabaseClient())
+    // const [supabase] = useState(() => createBrowserSupabaseClient())
     return (
         <main className="">
             {/* <SessionContextProvider supabaseClient={supabase} initialSession={pageProps.initialSession}> */}
