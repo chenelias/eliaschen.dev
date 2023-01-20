@@ -55,7 +55,7 @@ const Blog = () => {
                   )
                   .map((data) => (
                       <Link key={data.id} className={`cursor-pointer block`} href={data.url}>
-                          <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform  transition-all w-full w-max-xl p-5 my-2 rounded-lg bg-gradient-to-r dark:bg-zinc-800 bg-slate-200">
+                          <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform  transition-all w-full w-max-xl p-4 my-4 rounded-lg bg-gradient-to-r dark:bg-zinc-800 bg-slate-200">
                               <p className="text-md items-center flex  text-zinc-500">
                                   <p className="mr-1">#{data.tag_list[0]}</p>
                                   <p className="mr-1">#{data.tag_list[1]}</p>

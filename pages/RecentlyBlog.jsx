@@ -76,16 +76,16 @@ const PinnedRepos = () => {
                     <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
                         <div>
                             <p className="text-zinc-400 text-xs uppercase ml-[2px] notranslate">{blog.type_of}</p>
-                            <h1 className="dark:text-zinc-300 text-zinc-900 font-extrabold w-full tracking-tight text-3xl">
+                            <h1 className="dark:text-zinc-300 text-zinc-900 font-extrabold w-full tracking-tight text-3xl mb-[-10px]">
                                 {blog.title}
                             </h1>
                         </div>
                         <div className=" lg:h-[130px]">
-                            <p className="line-clamp-3">{blog.description}</p>
+                            <p className="line-clamp-2">{blog.description}</p>
                         </div>
 
                         <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block">
-                            <div className="flex text-xs p-1 ml-[-3px]">
+                            <div className="flex flex-wrap text-xs p-1 ml-[-3px]">
                                 <p className="mr-1">#{blog.tag_list[0]}</p>
                                 <p className="mr-1">#{blog.tag_list[1]}</p>
                                 <p className="mr-1">#{blog.tag_list[2]}</p>
