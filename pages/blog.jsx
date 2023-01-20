@@ -7,7 +7,7 @@ import { BiTimeFive } from 'react-icons/bi'
 import { HiOutlineTrash } from 'react-icons/hi'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-const index = () => {
+const Blog = () => {
     const [search, setSearch] = React.useState('')
     const [articles, setArticles] = React.useState(null)
     const [load, setLoad] = React.useState(true)
@@ -153,4 +153,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Blog

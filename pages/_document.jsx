@@ -12,7 +12,6 @@ export default function Document() {
     return (
         <Html lang="en" style={{ scrollBehavior: 'smooth' }}>
             <Head>
-            <title>EliasChen - Developer, writer</title>
                 <meta charSet="utf-8" />
                 <meta name="theme-color" content="#000" />
                 <link

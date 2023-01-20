@@ -2,7 +2,7 @@ import React from 'react'
 import Body from '/components/Body.tsx'
 import { MediaLinks } from '/components/data/MediaLinks'
 import IonIcon from '@reacticons/ionicons'
-const LinksPage = () => {
+const Link = () => {
     return (
         <Body title="Links">
             <h1 className="font-extrabold text-6xl tracking-tight">Links</h1>
@@ -31,4 +31,4 @@ const LinksPage = () => {
     )
 }
 
-export default LinksPage
+export default Link

@@ -3,7 +3,7 @@ import Body from '/components/Body.tsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import 'react-loading-skeleton/dist/skeleton.css'
-const AboutPage = () => {
+const About = () => {
     return (
         <Body title="About">
             <h1 className="font-extrabold text-6xl tracking-tight">About Me</h1>
@@ -42,4 +42,4 @@ const AboutPage = () => {
     )
 }
 
-export default AboutPage
+export default About

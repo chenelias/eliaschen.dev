@@ -9,7 +9,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 const tokenkey = process.env.GITHUB_TOKEN
 
-const index = ({ repodata }) => {
+const Project = ({ repodata }) => {
     const [focusSearch, setFocusSearch] = useState(false)
     const [repoSearch, setRepoSearch] = useState('')
     const [data, setData] = useState(null)
@@ -176,4 +176,4 @@ const index = ({ repodata }) => {
     )
 }
 
-export default index
+export default Project

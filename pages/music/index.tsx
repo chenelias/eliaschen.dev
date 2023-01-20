@@ -163,7 +163,7 @@ function shuffle(array) {
                 >
                     <p className="text-3xl">
                         <BsPlayFill />
-                    </p>&thinsp;Play random song
+                    </p>&thinsp;Play
                     {/* &thinsp;Shuffle play */}
                 </button>
                 <button>
@@ -376,7 +376,7 @@ function shuffle(array) {
                                 '&list=' +
                                 playeritems.snippet.playlistId
                             }
-                            className={`mt-4 flex w-full items-center rounded-lg bg-neutral-200 py-2 px-3  text-lg font-bold text-zinc-700 drop-shadow-md duration-100 hover:bg-neutral-300 hover:drop-shadow-lg dark:bg-neutral-800 dark:text-zinc-300 dark:hover:bg-neutral-700 ${
+                            className={`mt-4 flex w-full items-center rounded-lg bg-neutral-200 py-2 px-3  text-lg font-bold text-zinc-700 drop-shadow-md duration-100 hover:bg-neutral-300  dark:bg-neutral-800 dark:text-zinc-300 dark:hover:bg-neutral-700 ${
                                 !playeritems ? '!hidden ' : 'block'
                             }`}
                         >
