@@ -152,7 +152,7 @@ function shuffle(array) {
                 <p className="mt-1 text-lg">List of my favorite songs.</p>
             </div>
             {/* // todo: play and viewlist btn start here  */}
-            <div className="block playbuttton:flex ">
+            <div className="flex ">
                 <button
                     aria-label="Play all songs"
                     onClick={() => {
@@ -163,14 +163,14 @@ function shuffle(array) {
                 >
                     <p className="text-3xl">
                         <BsPlayFill />
-                    </p>&thinsp;Play
+                    </p>
                     {/* &thinsp;Shuffle play */}
                 </button>
                 <button>
                     <Link
                         aria-label="View playlist on youtubemusic"
                         href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
-                        className="mt-2 flex dark:bg-zinc-700 items-center rounded-xl bg-zinc-200 px-3 py-[5px] text-left font-bold duration-100 hover:bg-zinc-300  dark:hover:bg-zinc-600 playbuttton:ml-3"
+                        className="mt-2 flex dark:bg-zinc-700 items-center rounded-xl bg-zinc-200 px-3 py-[5px] text-left font-bold duration-100 hover:bg-zinc-300  dark:hover:bg-zinc-600 ml-3"
                         target={'_blank'}
                     >
                         <p className="text-3xl">
