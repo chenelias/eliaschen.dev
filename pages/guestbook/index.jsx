@@ -4,6 +4,7 @@ import Body from "/components/Body";
 import { BsGithub } from "react-icons/bs";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { BsGoogle } from "react-icons/bs";
+import {GoSignOut} from "react-icons/go"
 
 function GuestBookPage({ guestbook }) {
   const { data: session } = useSession();
@@ -102,20 +103,22 @@ function GuestBookPage({ guestbook }) {
           session ? "block" : "hidden"
         }`}
       >
-        <div className="mb-2 flex items-center">
-          {session &&
-          session.user.image.includes(
-            "https://lh3.googleusercontent.com/",
-            0
-          ) ? (
-            <BsGoogle />
-          ) : (
-            <BsGithub />
-          )}
-          &thinsp;
-          <p className="text-md font-bold">{session && session.user.name}</p>
-          &nbsp;
-          <p className="text-md">({session && session.user.email})</p>
+        <div className="mb-2 block flex-wrap items-center">
+         <div className="flex items-center">
+           {session &&
+           session.user.image.includes(
+             "https://lh3.googleusercontent.com/",
+             0
+           ) ? (
+             <BsGoogle />
+           ) : (
+             <BsGithub />
+           )}
+           &thinsp;
+           <p className="text-md font-bold">{session && session.user.name}</p>
+         </div>
+          
+          <p className="text-md">{session && session.user.email}</p>
         </div>
         <div className="block">
           <input
@@ -171,7 +174,7 @@ function GuestBookPage({ guestbook }) {
                 className="hover:bg-neutral-200 hover:dark:bg-neutral-800 hover:drop-shadow-md duration-100 rounded-lg p-3 my-2"
               >
                 <p className="">{guestbook.message}</p>
-                <div className="flex dark:text-zinc-500 text-zinc-400">
+                <div className="flex flex-wrap dark:text-zinc-500 text-zinc-400 items-center">
                   <p className="text-zinc-600 dark:text-zinc-400">
                     {guestbook.username}
                   </p>
@@ -193,7 +196,7 @@ function GuestBookPage({ guestbook }) {
                       /
                     </p>
                     <button
-                      className="text-red-600 hover:text-red-500 duration-100"
+                      className="text-red-600 hover:text-red-500 dark:text-red-400 dark:hover:text-red-500 duration-100"
                       onClick={() => {
                         removedata(guestbook.id);
                       }}
