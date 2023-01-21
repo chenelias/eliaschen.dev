@@ -99,8 +99,9 @@ const Music = () => {
     // setplayerload(false)
     setIsPaused(false);
     setvtime(0);
-    videoElement.target.playVideo();
+    videoElement.target.unMute();
     videoElement.target.setVolume(100); // todo remove it in new mind
+    videoElement.target.playVideo();
     setvideoduration(videoElement.target.getDuration());
   };
   function musicplayersetup(items) {
