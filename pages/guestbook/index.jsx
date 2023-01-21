@@ -1,7 +1,6 @@
 import React from "react";
 import { supabase } from "/lib/supabaseClient.js";
 import Body from "/components/Body";
-import { signInWithGitHub } from "../login.js";
 function GuestBookPage({ guestbook }) {
   function GithubAuth() {
     supabase.auth.signIn({
@@ -36,7 +35,7 @@ function GuestBookPage({ guestbook }) {
     fetchguestbook();
   }, []);
   const uploaddata = async (e) => {
-    let { data, error } = await supabase.from("guestbook").insert([
+    let { data } = await supabase.from("guestbook").insert([
       {
         message,
         username,
@@ -55,13 +54,6 @@ function GuestBookPage({ guestbook }) {
 
   return (
     <Body title="Guestbook">
-      <div className="mb-6">
-        <h1 className="font-extrabold text-6xl tracking-tight">Guestbook</h1>
-        <p className="text-md mt-1">
-          Leave a message for me and other visitors here!
-        </p>
-        <h1>{signInWithGitHub}</h1>
-      </div>
       <div className="p-3 dark:bg-neutral-800 bg-neutral-200 drop-shadow-lg rounded-lg block mb-5">
         <div className="flex">
           <input
@@ -101,7 +93,7 @@ function GuestBookPage({ guestbook }) {
             .map((guestbook) => (
               <li
                 key={guestbook.id}
-                className="hover:bg-neutral-200 hover:dark:bg-neutral-800 hover:drop-shadow-lg duration-100 rounded-lg p-3 my-2"
+                className="hover:bg-neutral-200 hover:dark:bg-neutral-800 hover:drop-shadow-md duration-100 rounded-lg p-3 my-2"
               >
                 <p className="">{guestbook.message}</p>
                 <div className="flex dark:text-zinc-500 text-zinc-400">
