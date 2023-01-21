@@ -1,15 +1,16 @@
 import React from "react";
 import { supabase } from "/lib/supabaseClient.js";
-import Link from 'next/link'
+import Link from "next/link";
 import Body from "/components/Body";
-import {signInWithGitHub} from '../login.js'
+import { signInWithGitHub } from "../login.js";
+let nameofuser = 'rubychen'
 function GuestBookPage({ guestbook }) {
   function GithubAuth() {
     supabase.auth.signIn({
       provider: "github",
     });
   }
-  React.useEffect(() => {}, []);
+
   return (
     <Body title="GuestBook">
       <div className="mb-6">
@@ -37,17 +38,27 @@ function GuestBookPage({ guestbook }) {
           className="p-2 w-full text-lg rounded-lg h-[130px] dark:bg-neutral-900 bg-neutral-100"
         ></textarea>
         <div className="flex w-full">
-          <button className="p-2 dark:bg-neutral-900 rounded-lg w-full hover:drop-shadow-md duration-100 mt-3 bg-neutral-100">
+          <button
+            // onClick={updateProfile('rubychen')}
+            className="p-2 dark:bg-neutral-900 rounded-lg w-full hover:drop-shadow-md duration-100 mt-3 bg-neutral-100"
+          >
             Send It
           </button>
         </div>
       </div>
-      <ul>
+      <ul className="">
         {guestbook.map((guestbook) => (
-          <div>
-            <li key={guestbook.id}>{guestbook.username}</li>
+          <li
+            key={guestbook.id}
+            className="hover:bg-neutral-200 hover:dark:bg-neutral-800 hover:drop-shadow-lg duration-100 rounded-lg p-3 my-4"
+          >
             <p>{guestbook.message}</p>
-          </div>
+            <div className="flex dark:text-zinc-600 text-zinc-500">
+              <p>{guestbook.username}</p>
+              <p className="mx-1">/</p>
+              <p>{guestbook.date}</p>
+            </div>
+          </li>
         ))}
       </ul>
     </Body>
@@ -56,6 +67,14 @@ function GuestBookPage({ guestbook }) {
 
 export async function getServerSideProps() {
   let { data } = await supabase.from("guestbook").select();
+  return {
+    props: {
+      guestbook: data,
+    },
+  };
+}
+export async function updloaddata() {
+  let { data } = await supabase.from("guestbook").upload();
   return {
     props: {
       guestbook: data,

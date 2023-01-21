@@ -188,8 +188,8 @@ input[type="range"] {
 
 ::-moz-range-thumb {
   background: #ae5dff;
-  height: 30px;
-  width: 20px;
+  height: 0px;
+  width: 0px;
   border-radius: 10px !important;
   box-shadow: -500px 0 0 500px #ae5dff;
   box-sizing: border-box;
