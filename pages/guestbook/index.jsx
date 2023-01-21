@@ -1,8 +1,6 @@
 import React from "react";
 import { supabase } from "/lib/supabaseClient.js";
-import Link from "next/link";
 import Body from "/components/Body";
-// import getServerSideProps from './CallServer'
 import { signInWithGitHub } from "../login.js";
 function GuestBookPage({ guestbook }) {
   function GithubAuth() {
@@ -37,9 +35,6 @@ function GuestBookPage({ guestbook }) {
   React.useState(() => {
     fetchguestbook();
   }, []);
-  // React.useState(() => {
-  //   fetchguestbook();
-  // }, [guestbookdata]);
   const uploaddata = async (e) => {
     let { data, error } = await supabase.from("guestbook").insert([
       {
@@ -59,7 +54,7 @@ function GuestBookPage({ guestbook }) {
   };
 
   return (
-    <Body title="GuestBook">
+    <Body title="Guestbook">
       <div className="mb-6">
         <h1 className="font-extrabold text-6xl tracking-tight">Guestbook</h1>
         <p className="text-md mt-1">
@@ -110,7 +105,9 @@ function GuestBookPage({ guestbook }) {
               >
                 <p className="">{guestbook.message}</p>
                 <div className="flex dark:text-zinc-500 text-zinc-400">
-                  <p className="text-zinc-600 ">{guestbook.username}</p>
+                  <p className="text-zinc-600 dark:text-zinc-400">
+                    {guestbook.username}
+                  </p>
                   <p className="mx-1 text-zinc-300 dark:text-neutral-700">/</p>
                   <p>{guestbook.date}</p>
                   <p className="mx-1 text-zinc-300 dark:text-neutral-700">/</p>
