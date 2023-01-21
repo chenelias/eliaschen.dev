@@ -171,8 +171,8 @@ input[type="range"] {
 
 ::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 10px !important;
-  width: 10px;
+  height: 0px;
+  width: 0px;
   z-index: 10;
   position: relative;
   border-radius: 10px;
