@@ -50,7 +50,7 @@ const privacypolicy = () => {
         their confidentiality obligations, and take necessary inspection
         procedures to ensure that they will actually comply. <br />
         4. External links of the website
-        <br />
+        <br /> 
         The web pages of this website provide network links to other websites,
         and you can also click to enter other websites through the links
         provided on this website. However, the linked website does not apply to
