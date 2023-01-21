@@ -67,15 +67,6 @@ function GuestBookPage({ guestbook }) {
         </p>
         <h1>{signInWithGitHub}</h1>
       </div>
-      {/* <div className="p-3 dark:bg-neutral-800 bg-neutral-200 drop-shadow-lg rounded-lg block mb-5">
-        <div className="flex w-full">
-          <Link href="/login">
-            <button className="p-2 dark:bg-neutral-900 rounded-lg hover:drop-shadow-md duration-100 mt-3 bg-neutral-100">
-              Login
-            </button>
-          </Link>
-        </div>
-      </div> */}
       <div className="p-3 dark:bg-neutral-800 bg-neutral-200 drop-shadow-lg rounded-lg block mb-5">
         <div className="flex">
           <input
