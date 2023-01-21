@@ -3,7 +3,7 @@ import { supabase } from "/lib/supabaseClient.js";
 import Body from "/components/Body";
 import { BsGithub } from "react-icons/bs";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { GrSend } from "react-icons/gr";
+import { BsGoogle } from "react-icons/bs";
 
 function GuestBookPage({ guestbook }) {
   const { data: session } = useSession();
@@ -88,6 +88,13 @@ function GuestBookPage({ guestbook }) {
             <BsGithub />
             &thinsp;Github
           </button>
+          <button
+            onClick={() => signIn("google")}
+            className="bg-blue-600 hover:bg-blue-700 items-center flex font-bold text-lg text-white dark:text-white px-2 py-2 rounded-lg duration-100 ml-2"
+          >
+            <BsGoogle />
+            &thinsp;Google
+          </button>
         </div>
       </div>
       <div
@@ -95,7 +102,17 @@ function GuestBookPage({ guestbook }) {
           session ? "block" : "hidden"
         }`}
       >
-        <div className="mb-2 flex">
+        <div className="mb-2 flex items-center">
+          {session &&
+          session.user.image.includes(
+            "https://lh3.googleusercontent.com/",
+            0
+          ) ? (
+            <BsGoogle />
+          ) : (
+            <BsGithub />
+          )}
+          &thinsp;
           <p className="text-md font-bold">{session && session.user.name}</p>
           &nbsp;
           <p className="text-md">({session && session.user.email})</p>
@@ -129,7 +146,7 @@ function GuestBookPage({ guestbook }) {
               Send It
             </button>
             <button
-              onClick={() => signOut("github")}
+              onClick={() => signOut()}
               className="py-1 mt-2 ml-2 dark:bg-neutral-900 h-10 rounded-lg w-[130px] hover:drop-shadow-md duration-100 bg-neutral-100"
             >
               Sign out
