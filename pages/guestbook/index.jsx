@@ -126,7 +126,6 @@ function GuestBookPage({ guestbook }) {
             type="text"
             className="px-2 w-full text-lg rounded-lg h-10 dark:bg-neutral-900 bg-neutral-100"
           ></input>
-
           <div className="flex">
             <button
               onClick={() => {
