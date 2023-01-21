@@ -13,14 +13,14 @@
 }
 
 *:focus-visible {
-  outline: solid 3px #ce9dff;
+  outline: solid 3px #c891ff;
   /* border: #ce9dff 3px solid; */
   border-radius: 5px;
   /* padding: 1px; */
 }
 
 *::selection {
-  background-color: #c38ff7;
+  background-color: #ddbbff;
   /* color: #fff; */
 }
 

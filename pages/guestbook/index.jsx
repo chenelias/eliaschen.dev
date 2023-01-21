@@ -16,10 +16,30 @@ function GuestBookPage({ guestbook }) {
   const [date, setdate] = React.useState(null);
   const [messagenull, setmessagenull] = React.useState(false);
   const [loading, setloading] = React.useState(true);
+  const [guestbookdata, setguestbookdata] = React.useState(null);
+  const [guestbookerrors, setguestbookerrors] = React.useState(null);
+
   function getdate() {
     console.log(new Date().toISOString().toLocaleString().slice(0, 10));
     setdate(new Date().toISOString().toLocaleString().slice(0, 10));
   }
+  const fetchguestbook = async () => {
+    setloading(true);
+    const { data, error } = await supabase.from("guestbook").select();
+    if (error) {
+      alert("error to fetch guestbook data");
+      setguestbookerrors(error);
+    }
+    if (data) {
+      setguestbookdata(data);
+    }
+  };
+  React.useState(() => {
+    fetchguestbook();
+  }, []);
+  // React.useState(() => {
+  //   fetchguestbook();
+  // }, [guestbookdata]);
   const uploaddata = async (e) => {
     let { data, error } = await supabase.from("guestbook").insert([
       {
@@ -28,18 +48,16 @@ function GuestBookPage({ guestbook }) {
         date: new Date().toISOString().toLocaleString().slice(0, 10),
       },
     ]);
+    fetchguestbook();
   };
-  // const getserverprops = async () => {
-  //   let { data } = await supabase.from("guestbook").select();
-  //    return {
-  //      props: {
-  //        guestbook: data,
-  //       },
-  //     };
-  //   }
-  React.useEffect(() => {
-    setloading(false);
-  }, [guestbook !== null]);
+  const removedata = async (removeid) => {
+    const { data } = await supabase
+      .from("guestbook")
+      .delete()
+      .eq("id", removeid);
+    fetchguestbook();
+  };
+
   return (
     <Body title="GuestBook">
       <div className="mb-6">
@@ -49,7 +67,7 @@ function GuestBookPage({ guestbook }) {
         </p>
         <h1>{signInWithGitHub}</h1>
       </div>
-      <div className="p-3 dark:bg-neutral-800 bg-neutral-200 drop-shadow-lg rounded-lg block mb-5">
+      {/* <div className="p-3 dark:bg-neutral-800 bg-neutral-200 drop-shadow-lg rounded-lg block mb-5">
         <div className="flex w-full">
           <Link href="/login">
             <button className="p-2 dark:bg-neutral-900 rounded-lg hover:drop-shadow-md duration-100 mt-3 bg-neutral-100">
@@ -57,7 +75,7 @@ function GuestBookPage({ guestbook }) {
             </button>
           </Link>
         </div>
-      </div>
+      </div> */}
       <div className="p-3 dark:bg-neutral-800 bg-neutral-200 drop-shadow-lg rounded-lg block mb-5">
         <div className="flex">
           <input
@@ -74,6 +92,7 @@ function GuestBookPage({ guestbook }) {
               getdate();
               message && uploaddata();
               messageinput.current.value = "";
+              setmessage(null);
               // getServerSideProps();
             }}
             className="py-2 dark:bg-neutral-900 h-10 rounded-lg w-[140px] ml-2 hover:drop-shadow-md duration-100 bg-neutral-100"
@@ -90,36 +109,42 @@ function GuestBookPage({ guestbook }) {
         </p>
       </div>
       <ul className="">
-        {guestbook
-          .sort((a, b) => (a.id < b.id ? 1 : -1))
-          .map((guestbook) => (
-            <li
-              key={guestbook.id}
-              className="hover:bg-neutral-200 hover:dark:bg-neutral-800 hover:drop-shadow-lg duration-100 rounded-lg p-3 my-2"
-            >
-              <p>{guestbook.message}</p>
-              <div className="flex dark:text-zinc-600 text-zinc-500">
-                <p>{guestbook.username}</p>
-                <p className="mx-1">/</p>
-                <p>{guestbook.date}</p>
-                <p className="mx-1">/</p>
-                <button className="text-red-600 hover:text-red-500 duration-100">
-                  Delete
-                </button>
-              </div>
-            </li>
-          ))}
+        {guestbookdata &&
+          guestbookdata
+            .sort((a, b) => (a.id < b.id ? 1 : -1))
+            .map((guestbook) => (
+              <li
+                key={guestbook.id}
+                className="hover:bg-neutral-200 hover:dark:bg-neutral-800 hover:drop-shadow-lg duration-100 rounded-lg p-3 my-2"
+              >
+                <p className="">{guestbook.message}</p>
+                <div className="flex dark:text-zinc-500 text-zinc-400">
+                  <p className="text-zinc-600 ">{guestbook.username}</p>
+                  <p className="mx-1 text-zinc-300 dark:text-neutral-700">/</p>
+                  <p>{guestbook.date}</p>
+                  <p className="mx-1 text-zinc-300 dark:text-neutral-700">/</p>
+                  <button
+                    className="text-red-600 hover:text-red-500 duration-100"
+                    onClick={() => {
+                      removedata(guestbook.id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </li>
+            ))}
       </ul>
     </Body>
   );
 }
-export async function getServerSideProps() {
-  let { data } = await supabase.from("guestbook").select();
-  return {
-    props: {
-      guestbook: data,
-    },
-  };
-}
+// export async function getServerSideProps() {
+//   let { data } = await supabase.from("guestbook").select();
+//   return {
+//     props: {
+//       guestbook: data,
+//     },
+//   };
+// }
 
 export default GuestBookPage;
