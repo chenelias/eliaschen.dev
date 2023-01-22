@@ -4,6 +4,7 @@ import Header from "./Header";
 import NextNProgress from "nextjs-progressbar";
 import "/styles/globals.css";
 import { SessionProvider } from "next-auth/react";
+import { Analytics } from "@vercel/analytics/react";
 
 function MyApp({ Component, pageProps, session }) {
   return (
@@ -22,6 +23,7 @@ function MyApp({ Component, pageProps, session }) {
       <main className="pt-20 px-[15px] xs:px-[25px] mx-auto max-w-4xl">
         <SessionProvider session={session}>
           <Component {...pageProps} />
+          <Analytics />
         </SessionProvider>
         <Footer />
       </main>
