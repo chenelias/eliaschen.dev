@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <main>
       <Head>
-        <title>Elias Chen - Developer, writer</title>
+        <title>EliasChen - Developer, writer</title>
       </Head>
 
       <div className="xs:ml-0 ml-2">
