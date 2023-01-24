@@ -4,11 +4,10 @@ import Body from "/components/Body";
 import { BsGithub } from "react-icons/bs";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { BsGoogle } from "react-icons/bs";
-import {GoSignOut} from "react-icons/go"
+import { GoSignOut } from "react-icons/go";
 
 function GuestBookPage({ guestbook }) {
   const { data: session } = useSession();
-  console.log(session);
   const messageinput = React.useRef();
   const [message, setmessage] = React.useState(null);
   const [username, setusername] = React.useState("");
@@ -21,7 +20,6 @@ function GuestBookPage({ guestbook }) {
   const [guestbooktime, setguestbooktime] = React.useState(null);
 
   function getdate() {
-    console.log(new Date().toISOString().toLocaleString().slice(0, 10));
     setdate(new Date().toISOString().toLocaleString().slice(0, 10));
   }
   const fetchguestbook = async () => {
@@ -83,6 +81,7 @@ function GuestBookPage({ guestbook }) {
         <p className="text-lg mb-1 font-bold">Sign in</p>
         <div className="flex">
           <button
+          aria-label="Sign in with Github"
             onClick={() => signIn("github")}
             className="bg-[#2f3338] hover:bg-[#4f5257] items-center flex font-bold text-lg text-white dark:text-white px-2 py-2 rounded-lg duration-100"
           >
@@ -90,6 +89,7 @@ function GuestBookPage({ guestbook }) {
             &thinsp;Github
           </button>
           <button
+          aria-label="Sign in with google"
             onClick={() => signIn("google")}
             className="bg-blue-600 hover:bg-blue-700 items-center flex font-bold text-lg text-white dark:text-white px-2 py-2 rounded-lg duration-100 ml-2"
           >
@@ -104,21 +104,19 @@ function GuestBookPage({ guestbook }) {
         }`}
       >
         <div className="mb-2 block flex-wrap items-center">
-         <div className="flex items-center">
-           {session &&
-           session.user.image.includes(
-             "https://lh3.googleusercontent.com/",
-             0
-           ) ? (
-             <BsGoogle />
-           ) : (
-             <BsGithub />
-           )}
-           &thinsp;
-           <p className="text-md font-bold">{session && session.user.name}</p>
-         </div>
-          
-          <p className="text-md">{session && session.user.email}</p>
+          {/* <div className="flex items-center">
+            {session &&
+            session.user.image.includes(
+              "https://lh3.googleusercontent.com/",
+              0
+            ) ? (
+              <BsGoogle />
+            ) : (
+              <BsGithub />
+            )}
+            &thinsp;
+            <p className="text-md font-bold">{session && session.user.name}</p>
+          </div> */}
         </div>
         <div className="block">
           <input
@@ -127,11 +125,12 @@ function GuestBookPage({ guestbook }) {
             onChange={(x) => setmessage(x.target.value)}
             placeholder="Your message..."
             type="text"
+            aria-label="Type your message here"
             className="px-2 w-full text-lg rounded-lg h-10 dark:bg-neutral-900 bg-neutral-100"
           ></input>
-          
           <div className="flex">
             <button
+            aria-label="send your message"
               onClick={() => {
                 !message ? setmessagenull(true) : setmessagenull(false);
                 getCurrentTime();
@@ -149,6 +148,7 @@ function GuestBookPage({ guestbook }) {
               Send It
             </button>
             <button
+            aria-label="Sign out your account"
               onClick={() => signOut()}
               className="py-1 mt-2 ml-2 dark:bg-neutral-900 h-10 rounded-lg w-[130px] hover:drop-shadow-md duration-100 bg-neutral-100"
             >
@@ -196,6 +196,7 @@ function GuestBookPage({ guestbook }) {
                       /
                     </p>
                     <button
+                    aria-label="Delete your message"
                       className="text-red-600 hover:text-red-500 dark:text-red-400 dark:hover:text-red-500 duration-100"
                       onClick={() => {
                         removedata(guestbook.id);
