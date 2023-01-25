@@ -56,7 +56,7 @@ const Blog = () => {
                   .map((data) => (
                       <Link key={data.id} className={`cursor-pointer block`} href={data.url}>
                           <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform  transition-all w-full w-max-xl p-4 my-4 rounded-lg bg-gradient-to-r dark:bg-zinc-800 bg-slate-200">
-                              <p className="text-md items-center flex  text-zinc-500">
+                              <p className="text-md items-center flex flex-wrap  text-zinc-500">
                                   <p className="mr-1">#{data.tag_list[0]}</p>
                                   <p className="mr-1">#{data.tag_list[1]}</p>
                                   <p className="mr-1">#{data.tag_list[2]}</p>
@@ -65,7 +65,7 @@ const Blog = () => {
                               <p className="font-extrabold text-4xl">{data.title}</p>
                               <div className="flex items-center mt-1">
                                   <dir className="flex-1"></dir>
-                                  <div className="flex">
+                                  <div className="flex flex-wrap">
                                       <p className="text-xl flex items-center ml-3 ">
                                           <p className="text-lg">
                                               <MdFavorite />
