@@ -51,7 +51,6 @@ const PinnedRepos = () => {
             {LoadingSkeleton}
         </div>
     )
-    // fetch blog data
     useEffect(() => {
         setLoading(true)
         fetch('https://gh-pinned-repos.egoist.dev/?username=chenelias', {})

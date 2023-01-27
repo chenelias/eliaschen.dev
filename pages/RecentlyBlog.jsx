@@ -67,14 +67,19 @@ const PinnedRepos = () => {
       {LoadingSkeleton}
     </div>
   );
-  useEffect(() => {
+  const fetchblog = async () => {
     setLoading(true);
-    fetch("https://dev.to/api/articles?username=eliaschen", {})
+    await fetch("https://dev.to/api/articles?username=eliaschen", {})
       .then((res) => res.json())
       .then((data) => {
         setData(data);
         setLoading(false);
+        console.log(data);
       });
+  };
+  useEffect(() => {
+    fetchblog();
+    
   }, []);
   if (isLoading) return loadingdisplay;
   if (!data) return loadingdisplay;
