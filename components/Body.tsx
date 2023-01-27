@@ -10,9 +10,4 @@ export default function Body(props) {
             {props.children}
         </main>
     )
-}
-
-
-
-
- 
+} 
