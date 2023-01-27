@@ -4,7 +4,8 @@ import Body from "/components/Body";
 import { BsGithub } from "react-icons/bs";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { BsGoogle } from "react-icons/bs";
-import { GoSignOut } from "react-icons/go";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function GuestBookPage({ guestbook }) {
   const { data: session } = useSession();
@@ -81,7 +82,7 @@ function GuestBookPage({ guestbook }) {
         <p className="text-lg mb-1 font-bold">Sign in</p>
         <div className="flex">
           <button
-          aria-label="Sign in with Github"
+            aria-label="Sign in with Github"
             onClick={() => signIn("github")}
             className="bg-[#2f3338] hover:bg-[#4f5257] items-center flex font-bold text-lg text-white dark:text-white px-2 py-2 rounded-lg duration-100"
           >
@@ -89,7 +90,7 @@ function GuestBookPage({ guestbook }) {
             &thinsp;Github
           </button>
           <button
-          aria-label="Sign in with google"
+            aria-label="Sign in with google"
             onClick={() => signIn("google")}
             className="bg-blue-600 hover:bg-blue-700 items-center flex font-bold text-lg text-white dark:text-white px-2 py-2 rounded-lg duration-100 ml-2"
           >
@@ -130,7 +131,7 @@ function GuestBookPage({ guestbook }) {
           ></input>
           <div className="flex">
             <button
-            aria-label="send your message"
+              aria-label="send your message"
               onClick={() => {
                 !message ? setmessagenull(true) : setmessagenull(false);
                 getCurrentTime();
@@ -148,7 +149,7 @@ function GuestBookPage({ guestbook }) {
               Send It
             </button>
             <button
-            aria-label="Sign out your account"
+              aria-label="Sign out your account"
               onClick={() => signOut()}
               className="py-1 mt-2 ml-2 dark:bg-neutral-900 h-10 rounded-lg w-[130px] hover:drop-shadow-md duration-100 bg-neutral-100"
             >
@@ -165,7 +166,7 @@ function GuestBookPage({ guestbook }) {
         </p>
       </div>
       <ul className="">
-        {guestbookdata &&
+        {guestbookdata ? (
           guestbookdata
             .sort((a, b) => (a.id < b.id ? 1 : -1))
             .map((guestbook) => (
@@ -196,7 +197,7 @@ function GuestBookPage({ guestbook }) {
                       /
                     </p>
                     <button
-                    aria-label="Delete your message"
+                      aria-label="Delete your message"
                       className="text-red-600 hover:text-red-500 dark:text-red-400 dark:hover:text-red-500 duration-100"
                       onClick={() => {
                         removedata(guestbook.id);
@@ -207,7 +208,17 @@ function GuestBookPage({ guestbook }) {
                   </div>
                 </div>
               </li>
-            ))}
+            ))
+        ) : (
+          <Skeleton
+            baseColor="#202020"
+            highlightColor="#444"
+            count={4}
+            height={70}
+            borderRadius={8}
+            className="my-2"
+          />
+        )}
       </ul>
     </Body>
   );
