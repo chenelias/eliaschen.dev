@@ -3,10 +3,8 @@ import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
-import { BiGitRepoForked } from "react-icons/bi";
 import { BsArrowRight } from "react-icons/bs";
-import { BiTimeFive } from "react-icons/bi";
-import { AiFillTags, AiFillRead, AiOutlineComment } from "react-icons/ai";
+import { AiOutlineComment } from "react-icons/ai";
 const PinnedRepos = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
@@ -79,7 +77,6 @@ const PinnedRepos = () => {
   };
   useEffect(() => {
     fetchblog();
-    
   }, []);
   if (isLoading) return loadingdisplay;
   if (!data) return loadingdisplay;

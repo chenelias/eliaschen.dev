@@ -105,19 +105,6 @@ function GuestBookPage({ guestbook }) {
         }`}
       >
         <div className="mb-2 block flex-wrap items-center">
-          {/* <div className="flex items-center">
-            {session &&
-            session.user.image.includes(
-              "https://lh3.googleusercontent.com/",
-              0
-            ) ? (
-              <BsGoogle />
-            ) : (
-              <BsGithub />
-            )}
-            &thinsp;
-            <p className="text-md font-bold">{session && session.user.name}</p>
-          </div> */}
         </div>
         <div className="block">
           <input
@@ -223,13 +210,4 @@ function GuestBookPage({ guestbook }) {
     </Body>
   );
 }
-// export async function getServerSideProps() {
-//   let { data } = await supabase.from("guestbook").select();
-//   return {
-//     props: {
-//       guestbook: data,
-//     },
-//   };
-// }
-
 export default GuestBookPage;

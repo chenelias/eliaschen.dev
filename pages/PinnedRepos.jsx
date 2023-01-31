@@ -60,6 +60,7 @@ const PinnedRepos = () => {
                 setLoading(false)
             })
     }, [])
+    
     if (isLoading) return loadingdisplay
     if (!data) return loadingdisplay
     var searchresult = data.map((repo) => (

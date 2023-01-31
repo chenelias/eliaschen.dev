@@ -1,7 +1,6 @@
 import Image from "next/image";
 import "react-loading-skeleton/dist/skeleton.css";
 import PinnedRepos from "./PinnedRepos";
-import Body from "../components/Body";
 import RecentlyBlog from "./RecentlyBlog";
 import Head from "next/head";
 
