@@ -9,7 +9,7 @@ const About = () => {
             <h1 className="font-extrabold text-6xl tracking-tight">About Me</h1>
             <div className="mt-5">
                 <h2 className="text-lg">
-          Elias is a writer, developer, and font end developer. He spends his days tinkering with code and creating beautiful fonts that help people communicate more effectively. He loves traveling and exploring new places, and he's always looking for ways to connect with others. Elias is passionate about making the world a better.
+          Elias is a writer, developer from Taiwan. He want's creating something useful for every developers and users in addition to coding, he also writing article on <Link href={'https://ithelp.ithome.com.tw/users/20157673'} className="decoration-2 decoration-wavy">IT Help Help</Link> and <Link href={'https://dev.to/eliaschen/'} className="decoration-2 decoration-wavy">Dev.to</Link>
                 </h2>
             </div>
             <br />
