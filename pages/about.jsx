@@ -8,10 +8,8 @@ const About = () => {
         <Body title="About">
             <h1 className="font-extrabold text-6xl tracking-tight">About Me</h1>
             <div className="mt-5">
-                <p className="font-bold text-xl">Short, 3rd Person</p>
-                <h2 className="text-md ml-4">
-                    EliasChen is a solo developer and loves coding, photography for now he still keep learning about
-                    fullstack development and mobile development.
+                <h2 className="text-lg">
+          Elias is a writer, developer, and font end developer. He spends his days tinkering with code and creating beautiful fonts that help people communicate more effectively. He loves traveling and exploring new places, and he's always looking for ways to connect with others. Elias is passionate about making the world a better.
                 </h2>
             </div>
             <br />
