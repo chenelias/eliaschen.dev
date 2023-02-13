@@ -154,7 +154,18 @@ const Music = () => {
       );
     }
   }
-
+  useEffect(() => {
+    document.addEventListener("keypress", detectKeyDown, true);
+  });
+  const detectKeyDown = (e) => {
+    if (e.key === " " && videostatus === 1) {
+      scrollToTop();
+      videoElement.target.pauseVideo();
+    } else if (e.key === " " && videostatus === 2) {
+      scrollToTop();
+      videoElement.target.playVideo();
+    }
+  };
   return (
     <Body title="Music">
       <div>
