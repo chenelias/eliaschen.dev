@@ -429,25 +429,35 @@ const Music = () => {
                   <div className="notranslate mr-1 ml-2 flex h-[40px] w-[25px] items-center px-5 py-1">
                     {playeritems &&
                       (playeritems.id === items.id ? (
-                        <p
-                          key={items.id}
-                          className="mr-[5px] ml-[-14px] text-2xl group-hover:block"
-                        >
-                          <div
-                            className="now playing mt-7 ml-1 flex"
-                            id="music"
+                        videostatus === 1 ? (
+                          <p
+                            key={items.id}
+                            className="mr-[5px] ml-[-14px] text-2xl group-hover:block"
                           >
-                            <span className="bar n1 bg-black dark:bg-white">
-                              A
-                            </span>
-                            <span className="bar n2 bg-black dark:bg-white">
-                              B
-                            </span>
-                            <span className="bar n3 bg-black dark:bg-white">
-                              c
-                            </span>
-                          </div>
-                        </p>
+                            <div
+                              className="now playing mt-7 ml-1 flex"
+                              id="music"
+                            >
+                              <span className="bar n1 bg-black dark:bg-white"></span>
+                              <span className="bar n2 bg-black dark:bg-white"></span>
+                              <span className="bar n3 bg-black dark:bg-white"></span>
+                            </div>
+                          </p>
+                        ) : (
+                          <p
+                            key={items.id}
+                            className="mr-[5px] ml-[-14px] text-2xl group-hover:block"
+                          >
+                            <div
+                              className="items-center mt-7 ml-1 flex"
+                              id="music"
+                            >
+                              <span className="bg-black dark:bg-white h-[1px] w-[5px] mr-[3px]"></span>
+                              <span className="bg-black dark:bg-white h-[1px] w-[5px] mr-[3px]"></span>
+                              <span className="bg-black dark:bg-white h-[1px] w-[5px] mr-[3px]"></span>
+                            </div>
+                          </p>
+                        )
                       ) : (
                         <div key={items.id}>
                           <p className="ml-[-11px] block text-xl group-hover:hidden">
