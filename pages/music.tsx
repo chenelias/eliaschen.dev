@@ -404,7 +404,7 @@ const Music = () => {
                 <SiYoutubemusic />
               </p>
               &nbsp;
-              <p>Playing on youtube music</p>
+              <p>Playing on Youtube Music</p>
             </Link>
           </div>
         )}
