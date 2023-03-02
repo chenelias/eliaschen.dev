@@ -29,7 +29,7 @@ const About = () => {
         </h2>
       </div>
       <br />
-      <div className="mt-5">
+      {/* <div className="mt-5">
         <p className="text-3xl font-bold">Headshots</p>
         <div className="mt-2 about:inline-flex block">
           <div>
@@ -51,7 +51,7 @@ const About = () => {
             />
           </Link>
         </div>
-      </div>
+      </div> */}
     </Body>
   );
 };
