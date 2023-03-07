@@ -7,7 +7,7 @@ const Link = () => {
     <Body title="Links">
       <h1 className="font-extrabold text-6xl tracking-tight">Links</h1>
       <p className="text-lg">All my profile links to find me on the web.</p>
-      <div class="mt-7">
+      <div class="mt-8">
         {MediaLinks.map((links) => (
           <a
             href={links.url}
