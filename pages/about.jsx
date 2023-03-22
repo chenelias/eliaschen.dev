@@ -12,13 +12,13 @@ const About = () => {
           Elias is a writer and developer from Taiwan. He wants to create
           something useful for every developer and user in addition to coding,
           he also writs articles on&nbsp;
-          <Link
+          {/* <Link
             href={"https://ithelp.ithome.com.tw/users/20157673"}
             className="underline decoration-2 decoration-wavy font-bold underline-offset-6"
           >
             IT Help Help
           </Link>{" "}
-          and{" "}
+          and{" "} */}
           <Link
             href={"https://dev.to/eliaschen/"}
             className="underline decoration-2 decoration-wavy font-bold underline-offset-6"
