@@ -6,7 +6,7 @@ import "/styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import { Analytics } from "@vercel/analytics/react";
 import RouteTransitions from "../components/RouteTransitions";
-import SiteTransitions from "../components/SiteTransitions";
+// import SiteTransitions from "../components/SiteTransitions";
 
 function MyApp({ Component, pageProps, session }) {
   return (
