@@ -25,13 +25,14 @@ function MyApp({ Component, pageProps, session }) {
       <Header />
       {/* <SiteTransitions> */}
       <motion.div
-        initial={{ y: 300, opacity: 0 }}
+        initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        exit={{ y: -300, opacity: 0 }}
+        exit={{ y: -50, opacity: 0 }}
         transition={{
           // type: "spring",
           // stiffness: 400,
           // damping: 10,
+          duration: 0.4,
         }}
       >
         <RouteTransitions>
