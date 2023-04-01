@@ -24,6 +24,7 @@
     "@tailwindcss/line-clamp": "^0.4.2",
     "@vercel/analytics": "^0.1.8",
     "astro-icon": "^0.8.0",
+    "framer-motion": "^10.10.0",
     "ionicons": "^6.0.4",
     "kbar": "^0.1.0-beta.38",
     "next": "13.0.3",

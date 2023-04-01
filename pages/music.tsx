@@ -201,7 +201,7 @@ const Music = () => {
               <p className="ml-[2px] text-xs">YoutubeMusic</p>
             </div>
           </Link>
-        </button>
+        </button>  
       </div>
       <div
         className={`relative mt-5 block h-auto w-full items-center overflow-hidden rounded-lg bg-purple-50 shadow-xl transition-all duration-100 dark:bg-neutral-800 music:block music:h-[220px]  ${
