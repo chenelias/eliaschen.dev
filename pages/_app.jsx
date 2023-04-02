@@ -1,17 +1,22 @@
 import "../styles/globals.css";
 import Footer from "./Footer";
 import Header from "./Header";
+import Script from "next/script";
 import NextNProgress from "nextjs-progressbar";
 import "/styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import { Analytics } from "@vercel/analytics/react";
 import RouteTransitions from "../components/RouteTransitions";
-// import SiteTransitions from "../components/SiteTransitions";
+import Head from "next/head";
 import { motion } from "framer-motion";
 
 function MyApp({ Component, pageProps, session }) {
   return (
     <main className="">
+      <Script
+        src="https://www.eliaschen.dev/theme.js"
+        strategy="beforeInteractive"
+      />
       <NextNProgress
         options={{
           showSpinner: false,
@@ -22,19 +27,19 @@ function MyApp({ Component, pageProps, session }) {
         height={3}
         showOnShallow={false}
       />
-      <Header />
-      {/* <SiteTransitions> */}
       <motion.div
-        initial={{ y: 50, opacity: 0 }}
+        initial={{ y: 40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        exit={{ y: -50, opacity: 0 }}
+        exit={{ y: -40, opacity: 0 }}
         transition={{
           // type: "spring",
           // stiffness: 400,
           // damping: 10,
-          duration: 0.4,
+          duration: 0.5,
         }}
       >
+        <Header />
+        {/* <SiteTransitions> */}
         <RouteTransitions>
           <main className="pt-20 px-[15px] xs:px-[25px] mx-auto max-w-4xl">
             <SessionProvider session={session}>
@@ -44,7 +49,6 @@ function MyApp({ Component, pageProps, session }) {
             <Footer />
           </main>
         </RouteTransitions>
-        {/* </SiteTransitions> */}
       </motion.div>
     </main>
   );
