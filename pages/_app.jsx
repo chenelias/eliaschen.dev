@@ -13,10 +13,6 @@ import { motion } from "framer-motion";
 function MyApp({ Component, pageProps, session }) {
   return (
     <main className="">
-      <Script
-        src="https://www.eliaschen.dev/theme.js"
-        strategy="beforeInteractive"
-      />
       <NextNProgress
         options={{
           showSpinner: false,
@@ -43,6 +39,10 @@ function MyApp({ Component, pageProps, session }) {
         <RouteTransitions>
           <main className="pt-20 px-[15px] xs:px-[25px] mx-auto max-w-4xl">
             <SessionProvider session={session}>
+              <Script
+                src="https://www.eliaschen.dev/theme.js"
+                strategy="beforeInteractive"
+              />
               <Component {...pageProps} />
               <Analytics />
             </SessionProvider>
