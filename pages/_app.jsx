@@ -10,6 +10,7 @@ import RouteTransitions from "../components/RouteTransitions";
 import Head from "next/head";
 import { motion } from "framer-motion";
 
+
 function MyApp({ Component, pageProps, session }) {
   return (
     <main className="">
