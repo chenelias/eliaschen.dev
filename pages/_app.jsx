@@ -23,10 +23,12 @@ function MyApp({ Component, pageProps, session }) {
         height={3}
         showOnShallow={false}
       />
+        <Header />
+        {/* <SiteTransitions> */}
       <motion.div
-        initial={{ y: 40, opacity: 0 }}
+        initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        exit={{ y: -40, opacity: 0 }}
+        exit={{ y: -50, opacity: 0 }}
         transition={{
           // type: "spring",
           // stiffness: 400,
@@ -34,8 +36,6 @@ function MyApp({ Component, pageProps, session }) {
           duration: 0.5,
         }}
       >
-        <Header />
-        {/* <SiteTransitions> */}
         <RouteTransitions>
           <main className="pt-20 px-[15px] xs:px-[25px] mx-auto max-w-4xl">
             <SessionProvider session={session}>
