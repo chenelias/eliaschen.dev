@@ -21,8 +21,8 @@ export default function HomePage() {
               Developer&ensp;//&ensp;Taiwan
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-16">
-              Learning about coding and creating something useful for every
-              developers and users.
+              Learn about coding and creating something useful for every
+              developer and user.
             </p>
           </div>
           <div className="flex-1"></div>
