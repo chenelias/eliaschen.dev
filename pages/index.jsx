@@ -10,7 +10,6 @@ export default function HomePage() {
       <Head>
         <title>EliasChen - Developer, writer</title>
       </Head>
-
       <div className="xs:ml-0 ml-2">
         <div className="flex flex-col-reverse sm:flex-row items-start my-5 ">
           <div className="flex flex-col pr-8">
