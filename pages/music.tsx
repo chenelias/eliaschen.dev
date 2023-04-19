@@ -29,7 +29,7 @@ const Music = () => {
   const [videoduration, setvideoduration] = useState(null);
   const [currentseconds, setcurrentseconds] = useState(null);
   const [videostatus, setvideostatus] = useState(null);
-  const [playervolume, setplayervolume] = useState(true);
+  // const [playervolume, setplayervolume] = useState(true);
   function scrollToTop() {
     window.scrollTo({
       top: 10,
@@ -39,6 +39,7 @@ const Music = () => {
   useEffect(() => {
     setplayerload(true);
   }, [playeritems && playeritems]);
+
   function shuffle(array) {
     let currentIndex = array.length,
       randomIndex;
@@ -50,7 +51,6 @@ const Music = () => {
         array[currentIndex],
       ];
     }
-
     return array;
   }
 
@@ -101,15 +101,17 @@ const Music = () => {
     setvtime(0);
     videoElement.target.unMute();
     videoElement.target.setVolume(100); // todo remove it in new mind
-    videoElement.target.playVideo();
     setvideoduration(videoElement.target.getDuration());
+    videoElement.target.playVideo();
   };
+
   function musicplayersetup(items) {
     setPlayerItems(items);
     // videoElement.target.setVolume(100);
     scrollToTop();
     // document.getElementById('player').style.scrollMarginTop = `30px`
   }
+  // player timeline time display TODO: simplified the function
   function secondsToHms(d) {
     d = Number(d);
     var h = Math.floor(d / 3600);
@@ -201,7 +203,7 @@ const Music = () => {
               <p className="ml-[2px] text-xs">YoutubeMusic</p>
             </div>
           </Link>
-        </button>  
+        </button>
       </div>
       <div
         className={`relative mt-5 block h-auto w-full items-center overflow-hidden rounded-lg bg-purple-50 shadow-xl transition-all duration-100 dark:bg-neutral-800 music:block music:h-[220px]  ${
@@ -227,7 +229,9 @@ const Music = () => {
               videoId={playeritems.snippet.resourceId.videoId}
               opts={opts}
               onReady={_onReady}
-              onStateChange={() => {}}
+              onStateChange={() => {
+                console.log("hello");
+              }}
               onEnd={() => {
                 musicplayersetup(
                   playList[
@@ -409,19 +413,25 @@ const Music = () => {
           </div>
         )}
         {playeritems && (
-          <p className=" notranslate mt-[1px] w-full items-center text-right text-xs text-zinc-300 dark:text-zinc-700">
-            Power by&nbsp;
-            <Link
-              href={
-                "https://developers.google.com/youtube/iframe_api_reference"
-              }
-              className="duration-75 hover:text-black hover:dark:text-white"
-              target="_blank"
-              area-aria-label=""
-            >
-              <span className="mt-1 text-xs ">YoutubeIframePlayer</span>
-            </Link>
-          </p>
+          <div className="flex">
+            <p className="mt-[1px] text-[14px] text-zinc-300 items-center flex dark:text-zinc-600">
+              Browsers without autoplay are not supported
+            </p>
+            <div className="flex-1"></div>
+            {/* <p className=" notranslate mt-[1px] items-center text-right text-xs text-zinc-300 dark:text-zinc-700">
+              Power by&nbsp;
+              <Link
+                href={
+                  "https://developers.google.com/youtube/iframe_api_reference"
+                }
+                className="duration-75 hover:text-black hover:dark:text-white"
+                target="_blank"
+                area-aria-label=""
+              >
+                <span className="mt-1 text-xs ">YoutubeIframePlayer</span>
+              </Link>
+            </p> */}
+          </div>
         )}
       </div>{" "}
       {/* // todo: list start here */}

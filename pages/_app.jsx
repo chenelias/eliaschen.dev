@@ -9,6 +9,7 @@ import { Analytics } from "@vercel/analytics/react";
 import RouteTransitions from "../components/RouteTransitions";
 import Head from "next/head";
 import { motion } from "framer-motion";
+// import "../components/SiteTransitions";
 
 function MyApp({ Component, pageProps, session }) {
   return (
