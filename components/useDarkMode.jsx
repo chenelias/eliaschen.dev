@@ -18,7 +18,7 @@ function useDarkMode() {
 
     root.classList.remove(colorTheme);
     root.classList.add(theme);
-
+    document.documentElement.className = theme;
     if (typeof window !== "undefined") {
       localStorage.setItem("theme", theme);
     }
