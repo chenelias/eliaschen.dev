@@ -1,4 +1,5 @@
 import React from 'react'
+
 export const MediaLinks = [
     {
         name: 'Github',
@@ -15,7 +16,7 @@ export const MediaLinks = [
     {
         name: 'Twitter',
         username: 'chenelias5',
-        url: 'https://twitter.com/chenelias5',
+        url: 'https://twitter.com/eliaschen_dev',
         icon: 'logo-twitter',
     },
     {
