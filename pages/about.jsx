@@ -52,6 +52,8 @@ const About = () => {
           </Link>
         </div>
       </div> */}
+      
+
     </Body>
   );
 };
