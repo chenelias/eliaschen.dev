@@ -15,7 +15,7 @@ export const MediaLinks = [
     },
     {
         name: 'Twitter',
-        username: 'chenelias5',
+        username: 'eliaschen_dev',
         url: 'https://twitter.com/eliaschen_dev',
         icon: 'logo-twitter',
     },
