@@ -414,9 +414,9 @@ const Music = () => {
         )}
         {playeritems && (
           <div className="flex">
-            <p className="mt-[1px] text-[14px] text-zinc-300 items-center flex dark:text-zinc-600">
-              Browsers without media autoplay are not supported
-            </p>
+
+
+
             <div className="flex-1"></div>
             {/* <p className=" notranslate mt-[1px] items-center text-right text-xs text-zinc-300 dark:text-zinc-700">
               Power by&nbsp;
