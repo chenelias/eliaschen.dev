@@ -37,7 +37,7 @@ export default function HomePage() {
         <div className="mt-[-40px]">
           <h1 className="text-3xl font-bold mb-1">Develop skills</h1>
           <p className="text-md">
-            &thinsp;React&thinsp;/&thinsp;ReactNative&thinsp;/&thinsp;Next&thinsp;/&thinsp;Astro&thinsp;
+            &thinsp;React&thinsp;/&thinsp;Next&thinsp;/&thinsp;Astro&thinsp;
           </p>
         </div>
         <div className="mt-[20px]">
