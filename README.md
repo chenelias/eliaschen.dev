@@ -17,6 +17,7 @@ My personal site made with Nextjs, Tailwindcss\
 - [NextAuth](https://next-auth.js.org/) **(Authentication for Next.js)**
 - [Supabase](https://supabase.com/) **(open source Firebase alternative)**
 - [react-youtube](https://www.npmjs.com/package/react-youtube) **(youtube iframe player for react)**
+- [Framer Motion](https://www.framer.com/motion/) **(Pages route transition)**
 
 ## 🌐API
 
