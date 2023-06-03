@@ -27,7 +27,7 @@ export const MediaLinks = [
     },
     {
         name: 'Instagram',
-        username: 'EliasChen',
+        username: 'codechen9810',
         url: 'https://www.instagram.com/codechen9810/',
         icon: 'logo-instagram',
     },
