@@ -21,7 +21,7 @@ export const MediaLinks = [
     },
     {
         name: 'Facebook',
-        username: 'EliasChen',
+        username: 'eliaschen.dev',
         url: 'https://www.facebook.com/people/Elias-Chen/100074943037854/',
         icon: 'logo-facebook',
     },
