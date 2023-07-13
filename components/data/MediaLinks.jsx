@@ -27,14 +27,8 @@ export const MediaLinks = [
     },
     {
         name: 'Instagram',
-        username: 'codechen9810',
+        username: 'eliaschen.dev',
         url: 'https://www.instagram.com/codechen9810/',
         icon: 'logo-instagram',
     },
-    // {
-    //     name: 'Discord',
-    //     username: 'rubychen5555#7854',
-    //     url: 'https://discord.com/channels/rubychen5555#7854',
-    //     icon: 'logo-discord',
-    // },
 ]
