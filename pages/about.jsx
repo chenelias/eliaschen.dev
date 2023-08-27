@@ -10,7 +10,7 @@ const About = () => {
       <div className="mt-5">
         <h2 className="text-lg">
           I'm a middle school student in Taiwan, I regard coding as a hobby.
-          I write articles on&nbsp;
+          Besides coding I also love design, sometimes I write articles on&nbsp;
           {/* <Link
             href={"https://ithelp.ithome.com.tw/users/20157673"}
             className="underline decoration-2 decoration-wavy font-bold underline-offset-6"
