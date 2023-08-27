@@ -9,9 +9,8 @@ const About = () => {
       <h1 className="font-extrabold text-6xl tracking-tight">About Me</h1>
       <div className="mt-5">
         <h2 className="text-lg">
-          Elias is a writer and developer from Taiwan. He wants to create
-          something useful for every developer and user in addition to coding,
-          he also writes articles on&nbsp;
+          I'm a middle school student in Taiwan, I regard coding as a hobby.
+          I writes articles on&nbsp;
           {/* <Link
             href={"https://ithelp.ithome.com.tw/users/20157673"}
             className="underline decoration-2 decoration-wavy font-bold underline-offset-6"
