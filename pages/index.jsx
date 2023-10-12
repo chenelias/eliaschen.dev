@@ -20,7 +20,7 @@ export default function HomePage() {
               Developer&ensp;//&ensp;Taiwan
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-16">
-     A middle school student live in Taiwan, and write code as a hobby.
+     A student live in Taiwan, and coding as a hobby.
             </p>
           </div>
           <div className="flex-1"></div>
