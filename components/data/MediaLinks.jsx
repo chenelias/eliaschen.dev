@@ -14,9 +14,9 @@ export const MediaLinks = [
         icon: 'code-outline',
     },
     {
-        name: 'Twitter',
+        name: 'X',
         username: 'eliaschen_dev',
-        url: 'https://twitter.com/eliaschen_dev',
+        url: 'https://x.com/eliaschen_dev',
         icon: 'logo-twitter',
     },
     {
