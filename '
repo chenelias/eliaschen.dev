@@ -44,7 +44,7 @@ export default function HomePage() {
           <p className="text-md">&thinsp;Develop, Art, Photography</p>
         </div>
       </div>
-      <div className="mt-[40px] mb-[20px]">
+      <div className="mt-[40px]">
         <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">
           Recent Blogs
         </h1>
