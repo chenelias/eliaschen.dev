@@ -35,18 +35,16 @@ export default function HomePage() {
         </div>
         <div className="mt-[-40px]">
           <h1 className="text-3xl font-bold mb-1">Skills</h1>
-          <p className="text-md">
-            javascript / cpp / rust
-          </p>
+          <p className="text-md">Javascript / React / Rust</p>
         </div>
         <div className="mt-[20px]">
           <h1 className="text-3xl font-bold mb-1">Hobby</h1>
-          <p className="text-md">&thinsp;Develop, Art, Photography</p>
+          <p className="text-md">&thinsp;Develop, Photography</p>
         </div>
       </div>
       <div className="mt-[40px] mb-[20px]">
         <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">
-          Recent Blogs
+          Blogs
         </h1>
         <RecentlyBlog />
       </div>

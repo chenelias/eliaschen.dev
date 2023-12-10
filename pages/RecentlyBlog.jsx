@@ -135,9 +135,9 @@ const PinnedRepos = () => {
         </div>
 
         <Link href="/blog" className="group float-right mt-5 p-1">
-          <div className="items-center flex w-[200px]  text-xl">
+          <div className="items-center flex w-[210px]  text-xl">
             <p className="float-left">View all my articles</p>
-            <div className="ml-1 group-hover:ml-3 duration-200">
+            <div className="ml-2 group-hover:ml-4 duration-200">
               <BsArrowRight />
             </div>
           </div>
