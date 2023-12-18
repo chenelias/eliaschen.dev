@@ -48,12 +48,12 @@ export default function HomePage() {
         </h1>
         <RecentlyBlog />
       </div>
-      {/* <div className="mt-[70px]"> */}
-      {/*   <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold"> */}
-      {/*     Top Projects */}
-      {/*   </h1> */}
-      {/*   <PinnedRepos /> */}
-      {/* </div> */}
+      <div className="mt-[70px]">
+        <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">
+          Top Projects
+        </h1>
+        <PinnedRepos />
+      </div>
     </main>
   );
 }
