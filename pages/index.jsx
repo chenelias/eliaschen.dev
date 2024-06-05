@@ -8,7 +8,7 @@ export default function HomePage() {
   return (
     <main>
       <Head>
-        <title>EliasChen - Developer, writer</title>
+        <title>EliasChen - Developer</title>
       </Head>
       <div className="xs:ml-0 ml-2">
         <div className="flex flex-col-reverse sm:flex-row items-start my-5 ">
@@ -35,11 +35,11 @@ export default function HomePage() {
         </div>
         <div className="mt-[-40px]">
           <h1 className="text-3xl font-bold mb-1">Skills</h1>
-          <p className="text-md">Javascript / React / Rust</p>
+          <p className="text-md">Javascript / Next.js / Svelte</p>
         </div>
         <div className="mt-[20px]">
           <h1 className="text-3xl font-bold mb-1">Hobby</h1>
-          <p className="text-md">&thinsp;Develop, Photography</p>
+          <p className="text-md">&thinsp;Develop, Photography, Writing</p>
         </div>
       </div>
       <div className="mt-[40px] mb-[20px]">
@@ -50,7 +50,7 @@ export default function HomePage() {
       </div>
       <div className="mt-[70px]">
         <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">
-          Top Projects
+          Projects
         </h1>
         <PinnedRepos />
       </div>
