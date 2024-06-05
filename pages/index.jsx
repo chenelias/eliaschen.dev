@@ -33,10 +33,10 @@ export default function HomePage() {
             />
           </div>
         </div>
-        <div className="mt-[-40px]">
-          <h1 className="text-3xl font-bold mb-1">Skills</h1>
-          <p className="text-md">Javascript / Next.js / Svelte</p>
-        </div>
+        {/* <div className="mt-[-40px]"> */}
+        {/*   <h1 className="text-3xl font-bold mb-1">Skills</h1> */}
+        {/*   <p className="text-md">Javascript / Next.js / Svelte</p> */}
+        {/* </div> */}
         <div className="mt-[20px]">
           <h1 className="text-3xl font-bold mb-1">Hobby</h1>
           <p className="text-md">&thinsp;Develop, Photography, Writing</p>
