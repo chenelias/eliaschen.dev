@@ -35,11 +35,13 @@ export default function HomePage() {
         </div>
         <div className="mt-[-40px]">
           <h1 className="text-3xl font-bold mb-1">Skills</h1>
-          <p className="text-md">Front-end / Mobile Develop / Linux</p>
+          <p className="text-lg">
+            &thinsp;Front-end / Mobile App Development / Linux
+          </p>
         </div>
         <div className="mt-[20px]">
           <h1 className="text-3xl font-bold mb-1">Hobby</h1>
-          <p className="text-md">&thinsp;Coding, Photography, Writing</p>
+          <p className="text-lg">&thinsp;Coding, Photography, Writing</p>
         </div>
       </div>
       <div className="mt-[40px] mb-[20px]">

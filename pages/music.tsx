@@ -173,7 +173,7 @@ const Music = () => {
     <Body title="Music">
       <div>
         <h1 className="text-6xl font-extrabold tracking-tight">Music</h1>
-        <p className="mt-1 text-lg">List of my favorite songs.</p>
+        <p className="mt-1 text-lg">Tunes I vibe with</p>
       </div>
       {/* // todo: play and viewlist btn start here  */}
       <div className="flex ">
