@@ -9,7 +9,7 @@ const PinnedRepos = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const LoadingSkeleton = (
-    <div className="lg:h-[390px] bg-gradient-to-r from-gray-400 to-black dark:from-gray-400 dark:to-zinc-600 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-xl hover:scale-[103%] dark:hover:shadow-zinc-200/20 hover:shadow-black/20 duration-300">
+    <div className="lg:h-[390px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-600 dark:to-pink-900 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-xl hover:scale-[103%] dark:hover:shadow-zinc-200/20 hover:shadow-black/20 duration-300">
       <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
         <div>
           <Skeleton
@@ -90,7 +90,7 @@ const PinnedRepos = () => {
         target="_blank"
         href={blog.url}
       >
-        <div className="lg:h-[390px] bg-gradient-to-r from-gray-400 to-black dark:from-gray-400 dark:to-zinc-600 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-xl hover:scale-[101%] dark:hover:shadow-zinc-200/20 hover:shadow-black/20 duration-300">
+        <div className="lg:h-[390px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-600 dark:to-pink-900 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-xl hover:scale-[101%] dark:hover:shadow-zinc-200/20 hover:shadow-black/20 duration-300">
           <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
             <div>
               <p className="text-zinc-400 text-xs uppercase ml-[2px] notranslate">

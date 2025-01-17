@@ -9,7 +9,7 @@ const PinnedRepos = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const LoadingSkeleton = (
-    <div className="lg:h-[280px] bg-gradient-to-r from-purple-400 to-orange-500 dark:from-purple-500 dark:to-orange-700 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 duration-300">
+    <div className="lg:h-[280px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-700 dark:to-pink-800 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 duration-300">
       <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
         <div>
           <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">
@@ -84,7 +84,7 @@ const PinnedRepos = () => {
       aria-label={"github repository " + repo.repo}
     >
       {/* from-purple-400 to-orange-500 dark:from-purple-500 dark:to-orange-700  */}
-      <div className="lg:h-[250px] bg-gradient-to-r from-purple-300 to-neutral-600 dark:from-purple-900 dark:to-neutral-600 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-xl hover:scale-[101%] dark:hover:shadow-zinc-200/20 hover:shadow-black/20 duration-300">
+      <div className="lg:h-[250px] bg-gradient-to-r from-purple-300 to-purple-400 dark:from-purple-700 dark:to-purple-900 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-xl hover:scale-[101%] dark:hover:shadow-zinc-200/20 hover:shadow-black/20 duration-300">
         <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
           <div>
             <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">

@@ -58,7 +58,7 @@ const Music = () => {
     setLoading(true);
     fetch(
       `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8&key=${"AIzaSyC4mJJQYLGdN6Anr4eQkgNUgN_WVyvGHEk"}&maxResults=1000`,
-      {}
+      {},
     )
       .then((res) => res.json())
       .then((data) => {
@@ -120,7 +120,8 @@ const Music = () => {
     var hDisplay = h > 0 ? h + ":" : "";
     var mDisplay = m >= 0 ? (m < 10 ? "0" + m + ":" : m + ":") : "0:";
     var sDisplay = s >= 0 ? (s < 10 ? "0" + s : +s) : "";
-    return hDisplay + mDisplay + sDisplay;``
+    return hDisplay + mDisplay + sDisplay;
+    ``;
   }
   useEffect(() => {
     const interval = setInterval(async () => {
@@ -238,7 +239,7 @@ const Music = () => {
                     playeritems.snippet.position === playListo - 1
                       ? 0
                       : playeritems.snippet.position + 1
-                  ]
+                  ],
                 );
                 setplayerload(true);
               }}
@@ -276,7 +277,7 @@ const Music = () => {
                         <p>
                           {playeritems.snippet.videoOwnerChannelTitle.replace(
                             / - Topic/g,
-                            " "
+                            " ",
                           )}
                         </p>
                       </Link>
@@ -292,7 +293,7 @@ const Music = () => {
                           playeritems.snippet.position === 0
                             ? playListo - 1
                             : playeritems.snippet.position - 1
-                        ]
+                        ],
                       );
                     }}
                     className="rounded-lg p-1 text-4xl hover:bg-zinc-200 dark:hover:bg-zinc-700"
@@ -319,7 +320,7 @@ const Music = () => {
                           playeritems.snippet.position === playListo - 1
                             ? 0
                             : playeritems.snippet.position + 1
-                        ]
+                        ],
                       );
                     }}
                     className="rounded-lg p-1 text-4xl hover:bg-zinc-200 dark:hover:bg-zinc-700"
@@ -414,9 +415,6 @@ const Music = () => {
         )}
         {playeritems && (
           <div className="flex">
-
-
-
             <div className="flex-1"></div>
             {/* <p className=" notranslate mt-[1px] items-center text-right text-xs text-zinc-300 dark:text-zinc-700">
               Power by&nbsp;
@@ -510,7 +508,7 @@ const Music = () => {
                     <p className="text-xs ">
                       {items.snippet.videoOwnerChannelTitle.replace(
                         / - Topic/g,
-                        " "
+                        " ",
                       )}
                     </p>
                   </div>

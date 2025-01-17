@@ -18,12 +18,12 @@ export const NavLinks = [
   },
   {
     title: "Guestbook",
-    link: "/guestbook",
+    link: "/unavailable",
   },
-  {
-    title: "About",
-    link: "/about",
-  },
+  // {
+  //   title: "About",
+  //   link: "/about",
+  // },
   {
     title: "",
     link: "/",
