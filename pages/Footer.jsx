@@ -4,7 +4,7 @@ import { BsGithub } from 'react-icons/bs'
 export default function Footer() {
   return (
     <footer>
-      <div className="mb-[20px] mt-[60px] block minxs:flex max-w-full">
+      <div className="mb-[20px] mt-[90px] block minxs:flex max-w-full">
         <p className="text-md notranslate">
           &copy;&ensp;{new Date().getFullYear()}&thinsp;EliasChen.&thinsp;All
           rights reserved.

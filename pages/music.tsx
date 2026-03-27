@@ -13,14 +13,13 @@ import Link from "next/link";
 import YouTube, { YouTubePlayer } from "react-youtube";
 import { CgClose } from "react-icons/cg";
 import { MdPlaylistPlay } from "react-icons/md";
-import { TiArrowShuffle } from "react-icons/ti";
-const tokenkey = process.env.YOUTUBE_TOKEN;
-// import Musicplayer from './musicplayer'
 let videoElement: YouTubePlayer = null;
-const Music = () => {
-  const [loading, setLoading] = React.useState(true);
-  const [playList, setPlaylist] = React.useState(null);
-  const [playListo, setPlaylisto] = React.useState(null);
+const Music = ({ initialPlaylist }) => {
+  const [loading, setLoading] = React.useState(false);
+  const [playList, setPlaylist] = React.useState(initialPlaylist || []);
+  const [playListo, setPlaylisto] = React.useState(
+    Array.isArray(initialPlaylist) ? initialPlaylist.length : 0
+  );
   // Player
   const [playerload, setplayerload] = React.useState(true);
   const [playeritems, setPlayerItems] = React.useState(null);
@@ -54,19 +53,6 @@ const Music = () => {
     return array;
   }
 
-  useEffect(() => {
-    setLoading(true);
-    fetch(
-      `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8&key=${"AIzaSyC4mJJQYLGdN6Anr4eQkgNUgN_WVyvGHEk"}&maxResults=1000`,
-      {},
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setPlaylist(data.items);
-        setPlaylisto(data.pageInfo.totalResults);
-        setLoading(false);
-      });
-  }, []);
   const LoadDisplay = (
     <div>
       <Skeleton
@@ -173,7 +159,7 @@ const Music = () => {
     <Body title="Music">
       <div>
         <h1 className="text-6xl font-extrabold tracking-tight">Music</h1>
-        <p className="mt-1 text-lg">Tunes I vibe with</p>
+        <p className="mt-1 text-lg">A collection of my favorite tunes</p>
       </div>
       {/* // todo: play and viewlist btn start here  */}
       <div className="flex ">
@@ -239,7 +225,7 @@ const Music = () => {
                     playeritems.snippet.position === playListo - 1
                       ? 0
                       : playeritems.snippet.position + 1
-                  ],
+                  ]
                 );
                 setplayerload(true);
               }}
@@ -277,7 +263,7 @@ const Music = () => {
                         <p>
                           {playeritems.snippet.videoOwnerChannelTitle.replace(
                             / - Topic/g,
-                            " ",
+                            " "
                           )}
                         </p>
                       </Link>
@@ -293,7 +279,7 @@ const Music = () => {
                           playeritems.snippet.position === 0
                             ? playListo - 1
                             : playeritems.snippet.position - 1
-                        ],
+                        ]
                       );
                     }}
                     className="rounded-lg p-1 text-4xl hover:bg-zinc-200 dark:hover:bg-zinc-700"
@@ -320,7 +306,7 @@ const Music = () => {
                           playeritems.snippet.position === playListo - 1
                             ? 0
                             : playeritems.snippet.position + 1
-                        ],
+                        ]
                       );
                     }}
                     className="rounded-lg p-1 text-4xl hover:bg-zinc-200 dark:hover:bg-zinc-700"
@@ -508,7 +494,7 @@ const Music = () => {
                     <p className="text-xs ">
                       {items.snippet.videoOwnerChannelTitle.replace(
                         / - Topic/g,
-                        " ",
+                        " "
                       )}
                     </p>
                   </div>
@@ -528,3 +514,34 @@ const Music = () => {
   );
 };
 export default Music;
+
+export const getServerSideProps = async () => {
+  const apiKey = process.env.YOUTUBE_API_KEY;
+  const playlistId =
+    process.env.YOUTUBE_PLAYLIST_ID || "PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8";
+
+  if (!apiKey) {
+    return {
+      props: {
+        initialPlaylist: [],
+      },
+    };
+  }
+
+  const query = new URLSearchParams({
+    part: "snippet",
+    playlistId,
+    key: apiKey,
+    maxResults: "1000",
+  });
+  const response = await fetch(
+    `https://www.googleapis.com/youtube/v3/playlistItems?${query.toString()}`
+  );
+  const data = response.ok ? await response.json() : { items: [] };
+
+  return {
+    props: {
+      initialPlaylist: Array.isArray(data?.items) ? data.items : [],
+    },
+  };
+};

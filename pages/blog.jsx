@@ -1,16 +1,19 @@
 import React from "react";
 import Body from "/components/Body.tsx";
 import Link from "next/link";
-import { AiFillTags, AiFillRead, AiOutlineComment } from "react-icons/ai";
-import { MdFavorite } from "react-icons/md";
+import { AiFillRead, AiOutlineComment } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { HiOutlineTrash } from "react-icons/hi";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-const Blog = () => {
+
+const hasText = (value) => typeof value === "string" && value.trim().length > 0;
+
+const Blog = ({ initialArticles }) => {
   const [search, setSearch] = React.useState("");
-  const [articles, setArticles] = React.useState(null);
-  const [load, setLoad] = React.useState(true);
+  const [articles, setArticles] = React.useState(initialArticles || []);
+  const [load, setLoad] = React.useState(false);
   const [focusSearch, setFocusSearch] = React.useState();
   const [resultnone, setresultnone] = React.useState(false);
   const LoadDisplay = (
@@ -33,15 +36,6 @@ const Blog = () => {
     setSearch("");
     document.querySelector(".SearchInput").value = "";
   }
-  React.useEffect(() => {
-    setLoad(true);
-    fetch("https://dev.to/api/articles?username=eliaschen", {})
-      .then((res) => res.json())
-      .then((data) => {
-        setArticles(data);
-        setLoad(false);
-      });
-  }, []);
   var blogdisplay =
     load || !articles
       ? LoadDisplay
@@ -50,65 +44,69 @@ const Blog = () => {
             (data) =>
               data.title.toUpperCase().includes(search) ||
               data.title.toLowerCase().includes(search) ||
-              data.tags.toLowerCase().includes(search) ||
-              data.tags.toUpperCase().includes(search) ||
-              data.tags.includes(search) ||
+              (data.tags && data.tags.toLowerCase().includes(search)) ||
+              (data.tags && data.tags.toUpperCase().includes(search)) ||
+              (data.tags && data.tags.includes(search)) ||
               data.title.includes(search)
           )
           .map((data) => (
             <Link
               key={data.id}
-              className={`cursor-pointer block`}
+              aria-label={"link of article " + data.title}
+              className="group cursor-pointer block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2"
               href={data.url}
             >
-              <div className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform  transition-all w-full w-max-xl p-4 my-4 rounded-lg bg-gradient-to-r dark:bg-zinc-800 bg-slate-200">
-                <p className="text-md items-center flex flex-wrap  text-zinc-500">
-                  <p className="mr-1">#{data.tag_list[0]}</p>
-                  <p className="mr-1">#{data.tag_list[1]}</p>
-                  <p className="mr-1">#{data.tag_list[2]}</p>
-                  <p className="mr-1">#{data.tag_list[3]}</p>
-                </p>
-                <p className="font-extrabold text-4xl">{data.title}</p>
-                <div className="flex items-center mt-1">
-                  <dir className="flex-1"></dir>
-                  <div className="flex flex-wrap">
-                    <p className="text-xl flex items-center ml-3 ">
-                      <p className="text-lg">
-                        <MdFavorite />
-                      </p>
-                      {data.public_reactions_count}
-                    </p>
-                    <p className="text-xl flex items-center ml-3">
-                      <p className="text-lg">
-                        <AiOutlineComment />
-                      </p>
-                      {data.comments_count}
-                    </p>
+              <article className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all w-full w-max-xl p-4 my-4 rounded-lg dark:bg-zinc-800 bg-slate-200">
+                <div>
+                  {hasText(data.title) && (
+                    <h2 className="dark:text-zinc-300 text-zinc-900 font-extrabold w-full tracking-tight text-3xl mb-[-10px]">
+                      {data.title}
+                    </h2>
+                  )}
+                </div>
 
-                    <p className="text-xl flex items-center ml-3 whitespace-nowrap">
-                      <p className="text-lg">
+                <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block mt-3">
+                  <ul className="flex flex-wrap text-xs p-1 ml-[-3px]">
+                    {(Array.isArray(data.tag_list) ? data.tag_list : [])
+                      .filter((tag) => hasText(tag))
+                      .slice(0, 4)
+                      .map((tag) => (
+                        <span key={`${data.id}-${tag}`} className="mr-1">
+                          #{tag}
+                        </span>
+                      ))}
+                  </ul>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
+                    <p className="items-center flex text-lg font-bold">
+                      <MdOutlineFavoriteBorder />
+                      &thinsp;{data.public_reactions_count}
+                    </p>
+                    <p className="items-center flex text-lg font-bold">
+                      <AiOutlineComment />
+                      &thinsp;{data.comments_count}
+                    </p>
+                    {typeof data.reading_time_minutes === "number" && (
+                      <p className="items-center flex text-lg font-bold whitespace-nowrap">
                         <AiFillRead />
+                        &thinsp;{data.reading_time_minutes}&thinsp;min
                       </p>
-                      &thinsp;
-                      {data.reading_time_minutes}&thinsp;min
-                    </p>
-                    <p className="text-lg flex items-center ml-3 whitespace-nowrap">
-                      <p className="text-lg">
+                    )}
+                    {hasText(data.readable_publish_date) && (
+                      <p className="items-center flex text-lg font-bold whitespace-nowrap">
                         <BiTimeFive />
+                        &thinsp;{data.readable_publish_date}
                       </p>
-                      &thinsp;
-                      <p className="">{data.readable_publish_date}</p>
-                    </p>
+                    )}
                   </div>
                 </div>
-              </div>
+              </article>
             </Link>
           ));
   return (
     <Body title="Blog">
       <div>
         <h1 className="font-extrabold text-6xl tracking-tight">Blog</h1>
-        <div class="relative w-full mt-6">
+        <div className="relative w-full mt-6">
           <input
             onChange={(x) => InputonChange(x.target.value)}
             aria-label="Search articles"
@@ -131,16 +129,16 @@ const Blog = () => {
               ""
             )}
             <svg
-              class="h-[25px] w-[25px] mr-2 text-gray-400 dark:text-gray-300"
+              className="h-[25px] w-[25px] mr-2 text-gray-400 dark:text-gray-300"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               ></path>
             </svg>
@@ -162,3 +160,14 @@ const Blog = () => {
 };
 
 export default Blog;
+
+export const getServerSideProps = async () => {
+  const response = await fetch("https://dev.to/api/articles?username=eliaschen");
+  const initialArticles = response.ok ? await response.json() : [];
+
+  return {
+    props: {
+      initialArticles: Array.isArray(initialArticles) ? initialArticles : [],
+    },
+  };
+};

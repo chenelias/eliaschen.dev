@@ -5,10 +5,6 @@ export const NavLinks = [
     link: "/blog",
   },
   {
-    title: "Project",
-    link: "/projects",
-  },
-  {
     title: "Links",
     link: "/links",
   },
@@ -17,13 +13,9 @@ export const NavLinks = [
     link: "/music",
   },
   {
-    title: "Guestbook",
-    link: "/unavailable",
+    title: "About",
+    link: "/about",
   },
-  // {
-  //   title: "About",
-  //   link: "/about",
-  // },
   {
     title: "",
     link: "/",
