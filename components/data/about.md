@@ -3,7 +3,7 @@ Currently, I’m sharpening my app dev skills and **diving into cloud services**
 
 ## Competition Experiences in Taiwan
 
-- **3rd Place**, 48th WorldSkills & 3rd WordSkills Asia Competition selection – Mobile Application Development
+- **3rd Place**, 48th WorldSkills & 3rd WordSkills Asia Competitior selection – Mobile Application Development
 - **1st Place**, 55th National Skills Competition – Mobile Application Development
 - **3rd Place**, 55th Regional Skills Competition (Northern Division) – Mobile Application Development
 
