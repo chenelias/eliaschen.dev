@@ -7,6 +7,7 @@ const Link = () => {
       <div class="mt-8">
         {MediaLinks.map((links) => (
           <a
+            key={links.url || links.name}
             href={links.url}
             aria-label={"Link of eliaschen's " + links.name}
             target="_blank"

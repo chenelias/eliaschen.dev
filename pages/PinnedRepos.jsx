@@ -64,6 +64,7 @@ const PinnedRepos = ({ data = [] }) => {
   if (!data || data.length === 0) return loadingdisplay;
   var searchresult = data.map((repo) => (
     <Link
+      key={repo.link || repo.repo}
       className="group cursor-pointer block"
       target="_blank"
       href={repo.link}

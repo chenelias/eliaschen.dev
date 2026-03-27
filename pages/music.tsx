@@ -218,9 +218,6 @@ const Music = ({ initialPlaylist }) => {
               videoId={playeritems.snippet.resourceId.videoId}
               opts={opts}
               onReady={_onReady}
-              onStateChange={() => {
-                console.log("hello");
-              }}
               onEnd={() => {
                 musicplayersetup(
                   playList[
@@ -425,22 +422,18 @@ const Music = ({ initialPlaylist }) => {
         {loading || !playList
           ? LoadDisplay
           : playList.map((items) => (
-              <li>
+              <li key={items.id}>
                 <button
                   onClick={() => {
                     musicplayersetup(items);
                   }}
-                  key={items.id}
                   className="shodow-black-/10 group mt-4 flex w-full transform cursor-pointer items-center rounded-lg bg-zinc-100 py-2 pr-2  shadow-md transition-all duration-100 hover:shadow-lg hover:shadow-black/10 dark:bg-zinc-800 dark:shadow-zinc-200/10 dark:hover:shadow-zinc-200/10"
                 >
                   <div className="notranslate mr-1 ml-2 flex h-[40px] w-[25px] items-center px-5 py-1">
                     {playeritems &&
                       (playeritems.id === items.id ? (
                         videostatus === 1 ? (
-                          <p
-                            key={items.id}
-                            className="mr-[5px] ml-[-14px] text-2xl group-hover:block"
-                          >
+                          <p className="mr-[5px] ml-[-14px] text-2xl group-hover:block">
                             <div
                               className="now playing mt-7 ml-1 flex"
                               id="music"
@@ -451,10 +444,7 @@ const Music = ({ initialPlaylist }) => {
                             </div>
                           </p>
                         ) : (
-                          <p
-                            key={items.id}
-                            className="mr-[5px] ml-[-14px] text-2xl group-hover:block"
-                          >
+                          <p className="mr-[5px] ml-[-14px] text-2xl group-hover:block">
                             <div
                               className="items-center mt-7 ml-1 flex"
                               id="music"
@@ -466,7 +456,7 @@ const Music = ({ initialPlaylist }) => {
                           </p>
                         )
                       ) : (
-                        <div key={items.id}>
+                        <div>
                           <p className="ml-[-11px] block text-xl group-hover:hidden">
                             {items.snippet.position + 1}
                           </p>
