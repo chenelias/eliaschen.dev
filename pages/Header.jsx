@@ -14,13 +14,13 @@ const Header = () => {
         <div className="rounded-2xl border border-black/10 bg-[rgba(249,250,251,0.68)] shadow-[0_6px_18px_rgba(2,6,23,0.08)] backdrop-blur-lg dark:border-white/10 dark:bg-[rgba(17,17,17,0.62)] dark:shadow-[0_6px_18px_rgba(2,6,23,0.28)]">
           <nav className="flex items-center gap-3 px-3 py-2 text-base">
             <Link href="/" className="group">
-              <h2 className="font-bold text-xl flex gap-1 tracking-tighter items-center notranslate">
-                <span className=" text-3xl !mt-[2px] duration-150 group-hover:rotate-[17.5deg]">
+              <h2 className="font-bold text-base flex gap-1 tracking-tighter items-center notranslate">
+                <span className=" text-2xl !mt-[2px] duration-150 group-hover:rotate-[17.5deg]">
                   <FaSlackHash />
                 </span>
               </h2>
             </Link>
-            <div className="headernav text-lg hidden md:inline-flex">
+            <div className="headernav text-sm hidden md:inline-flex">
               {NavLinks.map((links) => (
                 <Link
                   key={links.link}

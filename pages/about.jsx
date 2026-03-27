@@ -13,13 +13,13 @@ const About = ({ aboutContent }) => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
       >
-        <h1 className="about-handwrite font-extrabold text-6xl tracking-tight">About Me</h1>
-        <div className="about-handwrite about-handwrite-content mt-5 space-y-4 text-lg leading-relaxed">
+        <h1 className="about-handwrite font-extrabold text-[3rem] tracking-tight">About Me</h1>
+        <div className="about-handwrite about-handwrite-content mt-5 space-y-4 text-base leading-loose">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
               h2: ({ children }) => (
-                <h2 className="py-1 text-2xl text-purple-300 font-bold tracking-tight">{children}</h2>
+                <h2 className="py-1 text-lg text-purple-300 font-bold tracking-tight">{children}</h2>
               ),
               p: ({ children }) => <p>{children}</p>,
               ul: ({ children }) => <ul className="space-y-2">{children}</ul>,

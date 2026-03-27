@@ -59,13 +59,13 @@ const Blog = ({ initialArticles }) => {
               <article className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all w-full w-max-xl p-4 my-4 rounded-lg dark:bg-zinc-800 bg-slate-200">
                 <div>
                   {hasText(data.title) && (
-                    <h2 className="dark:text-zinc-300 text-zinc-900 font-extrabold w-full tracking-tight text-3xl mb-[-10px]">
+                    <h2 className="dark:text-zinc-300 text-zinc-900 font-extrabold w-full tracking-tight text-xl mb-[-10px]">
                       {data.title}
                     </h2>
                   )}
                 </div>
 
-                <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block mt-3">
+                <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-sm items-center font-semibold block mt-3">
                   <ul className="flex flex-wrap text-xs p-1 ml-[-3px]">
                     {(Array.isArray(data.tag_list) ? data.tag_list : [])
                       .filter((tag) => hasText(tag))
@@ -77,22 +77,22 @@ const Blog = ({ initialArticles }) => {
                       ))}
                   </ul>
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
-                    <p className="items-center flex text-lg font-bold">
+                    <p className="items-center flex text-base font-bold">
                       <MdOutlineFavoriteBorder />
                       &thinsp;{data.public_reactions_count}
                     </p>
-                    <p className="items-center flex text-lg font-bold">
+                    <p className="items-center flex text-base font-bold">
                       <AiOutlineComment />
                       &thinsp;{data.comments_count}
                     </p>
                     {typeof data.reading_time_minutes === "number" && (
-                      <p className="items-center flex text-lg font-bold whitespace-nowrap">
+                      <p className="items-center flex text-base font-bold whitespace-nowrap">
                         <AiFillRead />
                         &thinsp;{data.reading_time_minutes}&thinsp;min
                       </p>
                     )}
                     {hasText(data.readable_publish_date) && (
-                      <p className="items-center flex text-lg font-bold whitespace-nowrap">
+                      <p className="items-center flex text-base font-bold whitespace-nowrap">
                         <BiTimeFive />
                         &thinsp;{data.readable_publish_date}
                       </p>
@@ -105,7 +105,7 @@ const Blog = ({ initialArticles }) => {
   return (
     <Body title="Blog">
       <div>
-        <h1 className="about-handwrite font-extrabold text-6xl tracking-tight">Blog</h1>
+        <h1 className="about-handwrite font-extrabold text-[3rem] tracking-tight">Blog</h1>
         <div className="relative w-full mt-6">
           <input
             onChange={(x) => InputonChange(x.target.value)}

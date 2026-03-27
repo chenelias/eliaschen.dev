@@ -75,7 +75,7 @@ const PinnedRepos = ({ data = [] }) => {
         <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
           <div>
             {hasText(repo.repo) && (
-              <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">
+              <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-xl">
                 {repo.repo}
               </h1>
             )}

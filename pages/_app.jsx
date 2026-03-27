@@ -1,5 +1,4 @@
 import "../styles/globals.css";
-import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import Script from "next/script";
@@ -69,7 +68,6 @@ const SEO_BY_PATH = {
 };
 
 function MyApp({ Component, pageProps }) {
-  const [isCustomFontReady, setIsCustomFontReady] = useState(false);
   const router = useRouter();
 
   const currentPath = router.pathname || "/";
@@ -80,38 +78,6 @@ function MyApp({ Component, pageProps }) {
   };
   const canonicalUrl = `${SITE_URL}${currentPath === "/" ? "" : currentPath}`;
   const ogImageUrl = `${SITE_URL}${DEFAULT_OG_IMAGE}`;
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const markReady = () => {
-      if (isMounted) {
-        setIsCustomFontReady(true);
-      }
-    };
-
-    if (typeof document === "undefined" || !document.fonts) {
-      markReady();
-      return () => {
-        isMounted = false;
-      };
-    }
-
-    const ensureFontLoaded = async () => {
-      try {
-        await document.fonts.load('1em "Chenyuluoyan"', "Elias Chen");
-        await document.fonts.ready;
-      } finally {
-        markReady();
-      }
-    };
-
-    ensureFontLoaded();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   return (
     <main className="">
@@ -146,31 +112,27 @@ function MyApp({ Component, pageProps }) {
         height={3}
         showOnShallow={false}
       />
-      {isCustomFontReady ? (
-        <motion.div
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -40, opacity: 0 }}
-          transition={{
-            // type: "spring",
-            // stiffness: 400,
-            // damping: 10,
-            duration: 0.5,
-          }}
-        >
-          <Header />
-          {/* <SiteTransitions> */}
-          <RouteTransitions>
-            <main className="pt-24 md:pt-28 px-[20px] xs:px-[25px] mx-auto max-w-4xl">
-              <Component {...pageProps} />
-              <Analytics />
-              <Footer />
-            </main>
-          </RouteTransitions>
-        </motion.div>
-      ) : (
-        <main className="pt-24 md:pt-28 px-[20px] xs:px-[25px] mx-auto max-w-4xl" />
-      )}
+      <motion.div
+        initial={{ y: 40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -40, opacity: 0 }}
+        transition={{
+          // type: "spring",
+          // stiffness: 400,
+          // damping: 10,
+          duration: 0.5,
+        }}
+      >
+        <Header />
+        {/* <SiteTransitions> */}
+        <RouteTransitions>
+          <main className="pt-24 md:pt-28 px-[20px] xs:px-[25px] mx-auto max-w-4xl">
+            <Component {...pageProps} />
+            <Analytics />
+            <Footer />
+          </main>
+        </RouteTransitions>
+      </motion.div>
     </main>
   );
 }

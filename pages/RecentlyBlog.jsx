@@ -20,7 +20,7 @@ const RecentlyBlog = ({ data = [] }) => {
             count="1"
             highlightColor="#666"
           />
-          <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">
+          <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-xl">
             <Skeleton
               className="rounded-lg"
               height="50px"
@@ -47,14 +47,7 @@ const RecentlyBlog = ({ data = [] }) => {
           baseColor="#202020"
           highlightColor="#666"
         />
-        <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block">
-          {/* <Skeleton
-                        className="rounded-lg"
-                        baseColor="#202020"
-                        count="1"
-                        width="100px"
-                        highlightColor="#666"
-                    /> */}
+        <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-sm items-center font-semibold block">
         </div>
       </div>
     </div>
@@ -86,12 +79,12 @@ const RecentlyBlog = ({ data = [] }) => {
                 </p>
               )}
               {hasText(blog.title) && (
-                <h1 className="dark:text-zinc-300 text-zinc-900 font-extrabold w-full tracking-tight text-3xl mb-[-10px]">
+                <h1 className="dark:text-zinc-300 text-zinc-900 font-extrabold w-full tracking-tight text-xl mb-[-10px]">
                   {blog.title}
                 </h1>
               )}
             </div>
-            <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block pt-3">
+            <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-sm items-center font-semibold block pt-3">
               <ul className="flex flex-wrap text-xs p-1 ml-[-3px]">
                 {(Array.isArray(blog.tag_list) ? blog.tag_list : [])
                   .filter((tag) => hasText(tag))
@@ -103,12 +96,12 @@ const RecentlyBlog = ({ data = [] }) => {
                   ))}
               </ul>
               <div className="flex">
-                <p className="items-center flex text-lg font-bold">
+                <p className="items-center flex text-base font-bold">
                   <MdOutlineFavoriteBorder />
                   &thinsp;{blog.public_reactions_count}
                 </p>
                 &ensp;
-                <p className="items-center flex text-lg font-bold">
+                <p className="items-center flex text-base font-bold">
                   <AiOutlineComment />
                   &thinsp;{blog.comments_count}
                 </p>
@@ -126,7 +119,7 @@ const RecentlyBlog = ({ data = [] }) => {
         </div>
 
         <Link href="/blog" className="group float-right mt-5 p-1">
-          <div className="flex w-auto items-center gap-2 text-2xl">
+          <div className="flex w-auto items-center gap-2 text-xl">
             <p className="about-handwrite whitespace-nowrap">View all my articles</p>
             <div className="transition-transform duration-200 group-hover:translate-x-2">
               <BsArrowRight />
