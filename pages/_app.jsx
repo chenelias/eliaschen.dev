@@ -9,8 +9,6 @@ import { Analytics } from "@vercel/analytics/react";
 import RouteTransitions from "../components/RouteTransitions";
 import Head from "next/head";
 import { motion } from "framer-motion";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 // import "../components/SiteTransitions";
 
 function MyApp({ Component, pageProps }) {
@@ -87,19 +85,7 @@ function MyApp({ Component, pageProps }) {
           </RouteTransitions>
         </motion.div>
       ) : (
-        <main className="pt-24 md:pt-28 px-[15px] xs:px-[25px] mx-auto max-w-4xl">
-          <div className="home-scaffold mt-2 min-h-[70vh] space-y-8 pb-8" aria-hidden="true">
-            <Skeleton height={58} width={320} />
-            <div className="space-y-6">
-              <Skeleton height={40} width="100%" />
-              <Skeleton height={40} width="95%" />
-              <Skeleton height={40} width="98%" />
-              <Skeleton height={40} width="92%" />
-              <Skeleton height={40} width="96%" />
-              <Skeleton height={40} width="90%" />
-            </div>
-          </div>
-        </main>
+        <main className="pt-24 md:pt-28 px-[15px] xs:px-[25px] mx-auto max-w-4xl" />
       )}
     </main>
   );

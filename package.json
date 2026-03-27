@@ -23,6 +23,7 @@
     "framer-motion": "^10.10.0",
     "ionicons": "^6.0.4",
     "kbar": "^0.1.0-beta.38",
+    "lucide-react": "^1.7.0",
     "next": "13.0.3",
     "next-sitemap": "^3.1.43",
     "nextjs-progressbar": "^0.0.16",

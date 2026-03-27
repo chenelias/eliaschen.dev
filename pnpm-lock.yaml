@@ -41,6 +41,9 @@ importers:
       kbar:
         specifier: ^0.1.0-beta.38
         version: 0.1.0-beta.45(@types/react@18.3.18)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      lucide-react:
+        specifier: ^1.7.0
+        version: 1.7.0(react@18.2.0)
       next:
         specifier: 13.0.3
         version: 13.0.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -792,6 +795,11 @@ packages:
 
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
+
+  lucide-react@1.7.0:
+    resolution: {integrity: sha512-yI7BeItCLZJTXikmK4KNUGCKoGzSvbKlfCvw44bU4fXAL6v3gYS4uHD1jzsLkfwODYwI6Drw5Tu9Z5ulDe0TSg==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
@@ -2028,6 +2036,10 @@ snapshots:
       js-tokens: 4.0.0
 
   lru-cache@10.4.3: {}
+
+  lucide-react@1.7.0(react@18.2.0):
+    dependencies:
+      react: 18.2.0
 
   markdown-table@3.0.4: {}
 
