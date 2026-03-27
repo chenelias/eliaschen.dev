@@ -14,9 +14,6 @@ My personal site made with Nextjs, Tailwindcss\
 - [react-loading-skeleton](https://www.npmjs.com/package/react-loading-skeleton) **(Make beautiful animated loading skeletons when data still fetching)**
 - [Headless-ui](https://headlessui.com/) **(Beautifully ui components built with tailwindcss)**
 - [react-youtube](https://www.npmjs.com/package/react-youtube) **(youtube iframe player for react)**
-- [NextAuth](https://next-auth.js.org/) **(Authentication for Next.js)**
-- [Supabase](https://supabase.com/) **(open source Firebase alternative)**
-- [react-youtube](https://www.npmjs.com/package/react-youtube) **(youtube iframe player for react)**
 - [Framer Motion](https://www.framer.com/motion/) **(Pages route transition)**
 
 ## 🌐API

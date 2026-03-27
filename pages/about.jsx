@@ -1,59 +1,56 @@
 import React from "react";
+import fs from "fs";
+import path from "path";
 import Body from "/components/Body.tsx";
-import Image from "next/image";
-import Link from "next/link";
-import "react-loading-skeleton/dist/skeleton.css";
-const About = () => {
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { motion } from "framer-motion";
+const About = ({ aboutContent }) => {
   return (
     <Body title="About">
-      <h1 className="font-extrabold text-6xl tracking-tight">About Me</h1>
-      <div className="mt-5">
-        <h2 className="text-lg">
-          I'm a middle school student in Taiwan, I regard coding as a hobby.
-          Besides coding I also love painting, sometimes I write articles
-          on&nbsp;
-          {/* <Link
-            href={"https://ithelp.ithome.com.tw/users/20157673"}
-            className="underline decoration-2 decoration-wavy font-bold underline-offset-6"
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+      >
+        <h1 className="about-handwrite font-extrabold text-6xl tracking-tight">About Me</h1>
+        <div className="about-handwrite about-handwrite-content mt-5 space-y-4 text-lg leading-relaxed">
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              h2: ({ children }) => (
+                <h2 className="py-1 text-2xl text-purple-300 font-bold tracking-tight">{children}</h2>
+              ),
+              p: ({ children }) => <p>{children}</p>,
+              ul: ({ children }) => <ul className="space-y-2">{children}</ul>,
+              li: ({ children }) => (
+                <li className="flex items-start gap-2">
+                  <span aria-hidden="true" className="mt-[1px] font-semibold">
+                    &gt;
+                  </span>
+                  <span>{children}</span>
+                </li>
+              ),
+            }}
           >
-            IT Help Help
-          </Link>{" "}
-          and{" "} */}
-          <Link
-            href={"https://dev.to/eliaschen/"}
-            className="underline decoration-2 decoration-wavy font-bold underline-offset-6"
-          >
-            Dev.to
-          </Link>{" "}
-          .
-        </h2>
-      </div>
-      <br />
-      {/* <div className="mt-5">
-        <p className="text-3xl font-bold">Headshots</p>
-        <div className="mt-2 about:inline-flex block">
-          <div>
-            <Link href={"/eliaschen.jpg"}>
-              <Image
-                className="rounded-xl !mr-3 mb-3 !h-[250px] !w-auto"
-                src={require("/public/eliaschen.jpg")}
-                alt="EliasChen"
-                placeholder="blur"
-              />
-            </Link>
-          </div>
-          <Link href={"/eliaschen-origin.jpg"}>
-            <Image
-              className="rounded-xl mb-3 !h-[250px] !w-auto"
-              src={require("/public/eliaschen-origin.jpg")}
-              alt="EliasChen"
-              placeholder="blur"
-            />
-          </Link>
+            {aboutContent}
+          </ReactMarkdown>
         </div>
-      </div> */}
+        <br />
+      </motion.div>
     </Body>
   );
+};
+
+export const getStaticProps = async () => {
+  const aboutPath = path.join(process.cwd(), "components", "data", "about.md");
+  const aboutContent = fs.readFileSync(aboutPath, "utf8");
+
+  return {
+    props: {
+      aboutContent,
+    },
+  };
 };
 
 export default About;

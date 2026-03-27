@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { BsArrowRight } from "react-icons/bs";
 import { AiOutlineComment } from "react-icons/ai";
-const PinnedRepos = () => {
-  const [data, setData] = useState(null);
-  const [isLoading, setLoading] = useState(false);
+
+const hasText = (value) => typeof value === "string" && value.trim().length > 0;
+
+const RecentlyBlog = ({ data = [] }) => {
   const LoadingSkeleton = (
-    <div className="lg:h-[390px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-600 dark:to-pink-900 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-xl hover:scale-[103%] dark:hover:shadow-zinc-200/20 hover:shadow-black/20 duration-300">
-      <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
+    <div className="lg:h-[330px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-600 dark:to-pink-900 w-full p-[4px] rounded-xl home-card-shadow home-card-shadow-hover hover:scale-[103%] duration-300">
+      <div className="flex h-full flex-col justify-between cursor-pointer p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg">
         <div>
           <Skeleton
             className="rounded-lg"
@@ -29,7 +30,7 @@ const PinnedRepos = () => {
             />
           </h1>
         </div>
-        <div className="lg:h-[200px]">
+        <div className="flex-1 py-3">
           <p className="line-clamp-3 ">
             {" "}
             <Skeleton
@@ -59,27 +60,13 @@ const PinnedRepos = () => {
     </div>
   );
   const loadingdisplay = (
-    <div className="grid grid-cols-1 lg:grid-cols-3  w-full gap-6 mt-4">
+    <div className="home-scaffold grid grid-cols-1 lg:grid-cols-3  w-full gap-6 mt-4">
       {LoadingSkeleton}
       {LoadingSkeleton}
       {LoadingSkeleton}
     </div>
   );
-  const fetchblog = async () => {
-    setLoading(true);
-    await fetch("https://dev.to/api/articles?username=eliaschen", {})
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-        console.log(data);
-      });
-  };
-  useEffect(() => {
-    fetchblog();
-  }, []);
-  if (isLoading) return loadingdisplay;
-  if (!data) return loadingdisplay;
+  if (!data || data.length === 0) return loadingdisplay;
   var searchresult = data
     .filter((item, index) => index < 3)
     .map((blog) => (
@@ -90,26 +77,30 @@ const PinnedRepos = () => {
         target="_blank"
         href={blog.url}
       >
-        <div className="lg:h-[390px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-600 dark:to-pink-900 w-full p-[4px] rounded-xl shadow-lg shodow-black-/5 dark:shadow-zinc-200/5 hover:shadow-xl hover:scale-[101%] dark:hover:shadow-zinc-200/20 hover:shadow-black/20 duration-300">
-          <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
+        <div className="lg:h-[330px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-600 dark:to-pink-900 w-full p-[4px] rounded-xl home-card-shadow home-card-shadow-hover hover:scale-[101%] duration-300">
+          <div className="flex h-full flex-col justify-between cursor-pointer p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg">
             <div>
-              <p className="text-zinc-400 text-xs uppercase ml-[2px] notranslate">
-                {blog.type_of}
-              </p>
-              <h1 className="dark:text-zinc-300 text-zinc-900 font-extrabold w-full tracking-tight text-3xl mb-[-10px]">
-                {blog.title}
-              </h1>
+              {hasText(blog.type_of) && (
+                <p className="text-zinc-400 text-xs uppercase ml-[2px] notranslate">
+                  {blog.type_of}
+                </p>
+              )}
+              {hasText(blog.title) && (
+                <h1 className="dark:text-zinc-300 text-zinc-900 font-extrabold w-full tracking-tight text-3xl mb-[-10px]">
+                  {blog.title}
+                </h1>
+              )}
             </div>
-            <div className=" lg:h-[130px]">
-              <p className="line-clamp-2">{blog.description}</p>
-            </div>
-
-            <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block">
+            <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block pt-3">
               <ul className="flex flex-wrap text-xs p-1 ml-[-3px]">
-                <p className="mr-1">#{blog.tag_list[0]}</p>
-                <p className="mr-1">#{blog.tag_list[1]}</p>
-                <p className="mr-1">#{blog.tag_list[2]}</p>
-                <p className="mr-1">#{blog.tag_list[3]}</p>
+                {(Array.isArray(blog.tag_list) ? blog.tag_list : [])
+                  .filter((tag) => hasText(tag))
+                  .slice(0, 4)
+                  .map((tag) => (
+                    <p key={`${blog.id}-${tag}`} className="mr-1">
+                      #{tag}
+                    </p>
+                  ))}
               </ul>
               <div className="flex">
                 <p className="items-center flex text-lg font-bold">
@@ -135,9 +126,9 @@ const PinnedRepos = () => {
         </div>
 
         <Link href="/blog" className="group float-right mt-5 p-1">
-          <div className="items-center flex w-[210px]  text-xl">
-            <p className="float-left">View all my articles</p>
-            <div className="ml-2 group-hover:ml-4 duration-200">
+          <div className="flex w-auto items-center gap-2 text-2xl">
+            <p className="about-handwrite whitespace-nowrap">View all my articles</p>
+            <div className="transition-transform duration-200 group-hover:translate-x-2">
               <BsArrowRight />
             </div>
           </div>
@@ -147,4 +138,4 @@ const PinnedRepos = () => {
   );
 };
 
-export default PinnedRepos;
+export default RecentlyBlog;

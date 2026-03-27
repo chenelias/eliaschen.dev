@@ -2,12 +2,14 @@ import { Html, Main, Head, NextScript } from "next/document";
 import Script from "next/script";
 
 export default function Document() {
+  const siteDescription =
+    "A kitten passionate about computer science and eager to step out of its comfort zone.";
   const headdata = [
     {
       image:
         "https://www.eliaschen.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Feliaschen.d614d9a1.jpg&w=640&q=75",
       url: "https://www.eliaschen.dev/",
-      description: "Just a kitty who's obsessed with CS.",
+      description: siteDescription,
       title: "EliasChen - Developer",
     },
   ];
@@ -27,7 +29,7 @@ export default function Document() {
         />
         <meta
           name="description"
-          content="Just a kitty who's obsessed with CS."
+          content={siteDescription}
         />
         <meta
           name="keywords"
