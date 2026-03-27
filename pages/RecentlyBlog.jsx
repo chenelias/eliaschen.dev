@@ -10,8 +10,8 @@ const hasText = (value) => typeof value === "string" && value.trim().length > 0;
 
 const RecentlyBlog = ({ data = [] }) => {
   const LoadingSkeleton = (
-    <div className="lg:h-[390px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-600 dark:to-pink-900 w-full p-[4px] rounded-xl home-card-shadow home-card-shadow-hover hover:scale-[103%] duration-300">
-      <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
+    <div className="lg:h-[330px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-600 dark:to-pink-900 w-full p-[4px] rounded-xl home-card-shadow home-card-shadow-hover hover:scale-[103%] duration-300">
+      <div className="flex h-full flex-col justify-between cursor-pointer p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg">
         <div>
           <Skeleton
             className="rounded-lg"
@@ -30,7 +30,7 @@ const RecentlyBlog = ({ data = [] }) => {
             />
           </h1>
         </div>
-        <div className="lg:h-[200px]">
+        <div className="flex-1 py-3">
           <p className="line-clamp-3 ">
             {" "}
             <Skeleton
@@ -77,8 +77,8 @@ const RecentlyBlog = ({ data = [] }) => {
         target="_blank"
         href={blog.url}
       >
-        <div className="lg:h-[390px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-600 dark:to-pink-900 w-full p-[4px] rounded-xl home-card-shadow home-card-shadow-hover hover:scale-[101%] duration-300">
-          <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
+        <div className="lg:h-[330px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-600 dark:to-pink-900 w-full p-[4px] rounded-xl home-card-shadow home-card-shadow-hover hover:scale-[101%] duration-300">
+          <div className="flex h-full flex-col justify-between cursor-pointer p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg">
             <div>
               {hasText(blog.type_of) && (
                 <p className="text-zinc-400 text-xs uppercase ml-[2px] notranslate">
@@ -91,7 +91,7 @@ const RecentlyBlog = ({ data = [] }) => {
                 </h1>
               )}
             </div>
-            <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block mt-3">
+            <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block pt-3">
               <ul className="flex flex-wrap text-xs p-1 ml-[-3px]">
                 {(Array.isArray(blog.tag_list) ? blog.tag_list : [])
                   .filter((tag) => hasText(tag))
@@ -126,9 +126,9 @@ const RecentlyBlog = ({ data = [] }) => {
         </div>
 
         <Link href="/blog" className="group float-right mt-5 p-1">
-          <div className="items-center flex w-[210px]  text-xl">
-            <p className="float-left">View all my articles</p>
-            <div className="ml-2 group-hover:ml-4 duration-200">
+          <div className="flex w-auto items-center gap-2 text-2xl">
+            <p className="about-handwrite whitespace-nowrap">View all my articles</p>
+            <div className="transition-transform duration-200 group-hover:translate-x-2">
               <BsArrowRight />
             </div>
           </div>

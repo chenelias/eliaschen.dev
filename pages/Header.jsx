@@ -18,10 +18,9 @@ const Header = () => {
                 <span className=" text-3xl !mt-[2px] duration-150 group-hover:rotate-[17.5deg]">
                   <FaSlackHash />
                 </span>
-                EliasChen
               </h2>
             </Link>
-            <div className="headernav ml-1 text-lg hidden md:inline-flex">
+            <div className="headernav text-lg hidden md:inline-flex">
               {NavLinks.map((links) => (
                 <Link
                   key={links.link}

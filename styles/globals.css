@@ -10,7 +10,7 @@
 @font-face {
   font-family: "Chenyuluoyan";
   src: url("/ChenYuluoyan-2.0-Thin.ttf") format("truetype");
-  font-display: swap;
+  font-display: block;
 }
 
 :root.light {
@@ -136,8 +136,15 @@ img::selection {
 }
 
 .home-scaffold .react-loading-skeleton {
+  --base-color: #e5e7eb;
+  --highlight-color: #f3f4f6;
   position: relative;
   overflow: hidden;
+}
+
+.dark .home-scaffold .react-loading-skeleton {
+  --base-color: #27272a;
+  --highlight-color: #3f3f46;
 }
 
 .home-scaffold .react-loading-skeleton::after {

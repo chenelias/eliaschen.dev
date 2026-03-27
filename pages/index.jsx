@@ -15,10 +15,10 @@ export default function HomePage({ pinnedRepos, recentBlogs }) {
       <div className="xs:ml-0 ml-2">
         <div className="flex flex-col-reverse sm:flex-row items-start my-5 ">
           <div className="flex flex-col pr-8">
-            <h1 className="font-extrabold mt-6 text-4xl md:text-5xl tracking-tight notranslate">
+            <h1 className="about-handwrite font-black mt-6 text-5xl md:text-6xl tracking-tight notranslate">
               Elias Chen
             </h1>
-            <h2 className="text-gray-700 dark:text-gray-200 mb-1 mt-[-0.1px]">
+            <h2 className="about-handwrite text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-1 mt-[-0.1px]">
               YI-KAI CHEN&ensp;//&ensp;Developer
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-16">
@@ -36,14 +36,14 @@ export default function HomePage({ pinnedRepos, recentBlogs }) {
           </div>
         </div>
         <div className="mt-[-40px]">
-          <h1 className="text-3xl font-bold mb-1">Skills</h1>
+          <h1 className="about-handwrite text-3xl md:text-4xl font-bold mb-1">Skills</h1>
           <p className="text-lg">
             &thinsp;Full-Stack Development / Mobile App Development / DevOps
           </p>
         </div>
         <Link href="/about" className="group inline-block mt-5 p-1">
           <div className="items-center flex w-[150px] text-lg whitespace-nowrap">
-            <p className="whitespace-nowrap">Learn more about me</p>
+            <p className="about-handwrite text-xl md:text-2xl whitespace-nowrap">Learn more about me</p>
             <div className="ml-2 transition-transform duration-200 group-hover:translate-x-2">
               <BsArrowRight />
             </div>
@@ -51,13 +51,13 @@ export default function HomePage({ pinnedRepos, recentBlogs }) {
         </Link>
       </div>
       <div className="mt-[50px]">
-        <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">
+        <h1 className="about-handwrite tracking-tighter text-5xl mb-6 font-extrabold">
           Featured Projects
         </h1>
         <PinnedRepos data={pinnedRepos} />
       </div>
       <div className="mt-[40px] mb-[20px]">
-        <h1 className="tracking-tighter  text-4xl mb-6 font-extrabold">
+        <h1 className="about-handwrite tracking-tighter text-5xl mb-6 font-extrabold">
           Blogs
         </h1>
         <RecentlyBlog data={recentBlogs} />

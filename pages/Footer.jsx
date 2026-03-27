@@ -6,8 +6,10 @@ export default function Footer() {
     <footer>
       <div className="mb-[20px] mt-[90px] block minxs:flex max-w-full">
         <p className="text-md notranslate">
-          &copy;&ensp;{new Date().getFullYear()}&thinsp;EliasChen.&thinsp;All
-          rights reserved.
+          &copy;&ensp;
+          <span>{new Date().getFullYear()}</span>
+          <span className="mx-1 inline-block">EliasChen.</span>
+          <span>All rights reserved.</span>
         </p>
         <div className="flex-1"></div>
         <div className="text-md">

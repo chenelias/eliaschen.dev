@@ -3,7 +3,7 @@ import { MediaLinks } from "/components/data/MediaLinks";
 const Link = () => {
   return (
     <Body title="Links">
-      <h1 className="font-extrabold text-6xl tracking-tight">Links</h1>
+      <h1 className="about-handwrite font-extrabold text-6xl tracking-tight">Links</h1>
       <div class="mt-8">
         {MediaLinks.map((links) => (
           <a

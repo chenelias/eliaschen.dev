@@ -158,7 +158,9 @@ const Music = ({ initialPlaylist }) => {
   return (
     <Body title="Music">
       <div>
-        <h1 className="text-6xl font-extrabold tracking-tight">Music</h1>
+        <h1 className="about-handwrite text-6xl font-extrabold tracking-tight">
+          Music
+        </h1>
         <p className="mt-1 text-lg">A collection of my favorite tunes</p>
       </div>
       {/* // todo: play and viewlist btn start here  */}
