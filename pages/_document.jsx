@@ -7,7 +7,7 @@ export default function Document() {
   const headdata = [
     {
       image:
-        "https://www.eliaschen.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Feliaschen.d614d9a1.jpg&w=640&q=75",
+        "https://www.eliaschen.dev/eliaschen-500.png",
       url: "https://www.eliaschen.dev/",
       description: siteDescription,
       title: "EliasChen - Developer",
