@@ -12,15 +12,15 @@ export default function Footer() {
           <span>All rights reserved.</span>
         </p>
         <div className="flex-1"></div>
-        <div className="text-md">
+        <div className="text-md mt-3 minxs:mt-0">
           <Link
             alt="Link of eliaschen's github home page (open in new tab)"
-            className=" text-gray-500 hover:text-gray-900 dark:hover:text-white transition items-center inline-flex"
+            className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition items-center inline-flex gap-1.5"
             target="_blank"
             href="https://github.com/chenelias/"
           >
             <BsGithub />
-            &thinsp;GitHub
+            GitHub
           </Link>
         </div>
       </div>

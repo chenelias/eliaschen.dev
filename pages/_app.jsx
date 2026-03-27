@@ -161,7 +161,7 @@ function MyApp({ Component, pageProps }) {
           <Header />
           {/* <SiteTransitions> */}
           <RouteTransitions>
-            <main className="pt-24 md:pt-28 px-[15px] xs:px-[25px] mx-auto max-w-4xl">
+            <main className="pt-24 md:pt-28 px-[20px] xs:px-[25px] mx-auto max-w-4xl">
               <Component {...pageProps} />
               <Analytics />
               <Footer />
@@ -169,7 +169,7 @@ function MyApp({ Component, pageProps }) {
           </RouteTransitions>
         </motion.div>
       ) : (
-        <main className="pt-24 md:pt-28 px-[15px] xs:px-[25px] mx-auto max-w-4xl" />
+        <main className="pt-24 md:pt-28 px-[20px] xs:px-[25px] mx-auto max-w-4xl" />
       )}
     </main>
   );
