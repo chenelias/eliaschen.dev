@@ -1,5 +1,8 @@
-I'm a **curious kitten with an iron heart**, originally from _Hsinchu, Taiwan_, but **currently a _high schooler_ in _Taipei_**. I've been hooked on coding since 2nd grade for interest, starting with self-taught web front-end development then moving into back-end, DevOps and a bit of cybersecurity. Since starting high school, I’ve been **focusing on mobile app development** to prepare for becoming a WorldSkills competitor while expanding my social network. \
-Currently, I’m sharpening my app development skills while learning to use cloud services like AWS. I’m also working on some side projects, hoping to one day become a professional software developer and **use my skills to empower those in need**.
+I’m a curious and highly determined high schooler from Hsinchu, Taiwan, currently studying in Taipei. I have been passionate about coding since second grade, starting with self-taught web front-end development and gradually expanding into back-end development, DevOps, and cybersecurity.
+
+Since starting high school, I have focused on mobile app development in preparation for becoming a WorldSkills competitor, while also actively expanding my network in the tech community.
+
+Currently, I am sharpening my app development skills while learning to use cloud services such as AWS. I am also working on several side projects, with the goal of becoming a professional software developer and using my skills to empower those in need.
 
 ## Competition Experiences in Taiwan
 

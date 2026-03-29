@@ -13,8 +13,8 @@ const About = ({ aboutContent }) => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
       >
-        <h1 className="about-handwrite font-extrabold text-[3rem] tracking-tight">About Me</h1>
-        <div className="about-handwrite about-handwrite-content mt-5 space-y-4 text-base leading-loose">
+        <h1 className="font-extrabold text-[3rem] tracking-tight">About Me</h1>
+        <div className="mt-5 space-y-4 text-base leading-loose">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
@@ -25,7 +25,7 @@ const About = ({ aboutContent }) => {
               ul: ({ children }) => <ul className="space-y-2">{children}</ul>,
               li: ({ children }) => (
                 <li className="flex items-start gap-2">
-                  <span aria-hidden="true" className="mt-[1px] font-semibold">
+                  <span aria-hidden="true" className="font-semibold">
                     &gt;
                   </span>
                   <span>{children}</span>

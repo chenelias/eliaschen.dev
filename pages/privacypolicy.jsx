@@ -3,7 +3,7 @@ import React from "react";
 const privacypolicy = () => {
   return (
     <div className="">
-      <h1 className="about-handwrite text-[3rem] mb-5 font-extrabold">Privacy & Policy</h1>
+      <h1 className="text-[3rem] mb-5 font-extrabold">Privacy & Policy</h1>
       <p>
         Welcome to &quot;EliasChen.dev&quot;. In order to allow you to use the services
         and information of this website with peace of mind, hereby explain to

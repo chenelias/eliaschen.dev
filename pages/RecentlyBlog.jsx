@@ -119,8 +119,8 @@ const RecentlyBlog = ({ data = [] }) => {
         </div>
 
         <Link href="/blog" className="group float-right mt-5 p-1">
-          <div className="flex w-auto items-center gap-2 text-xl">
-            <p className="about-handwrite whitespace-nowrap">View all my articles</p>
+          <div className="flex w-auto items-center gap-2 text-lg">
+            <p className="whitespace-nowrap">View all my articles</p>
             <div className="transition-transform duration-200 group-hover:translate-x-2">
               <BsArrowRight />
             </div>
