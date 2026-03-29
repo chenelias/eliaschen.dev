@@ -1,71 +1,48 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import "react-loading-skeleton/dist/skeleton.css";
-import PinnedRepos from "./PinnedRepos";
-import RecentlyBlog from "./RecentlyBlog";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 
-const PINNED_REPOS_API =
-  "https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/?username=chenelias";
-const RECENT_BLOGS_API = "https://dev.to/api/articles?username=eliaschen";
+// Dynamically import data-fetching components - they load on client side
+// while the hero section renders immediately
+const FeaturedProjects = dynamic(() => import("./FeaturedProjects"), {
+  ssr: false,
+  loading: () => (
+    <div className="mt-[50px]">
+      <h1 className="tracking-tighter text-2xl mb-3 font-extrabold">
+        Featured Projects
+      </h1>
+      <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-6 mt-4">
+        {[...Array(3)].map((_, i) => (
+          <div key={i} className="lg:h-[250px] bg-gradient-to-r from-purple-300 to-purple-400 dark:from-purple-700 dark:to-purple-900 w-full p-[4px] rounded-xl animate-pulse">
+            <div className="h-full dark:bg-zinc-800 bg-slate-200 rounded-lg" />
+          </div>
+        ))}
+      </div>
+    </div>
+  ),
+});
+
+const FeaturedBlogs = dynamic(() => import("./FeaturedBlogs"), {
+  ssr: false,
+  loading: () => (
+    <div className="mt-[40px] mb-[20px]">
+      <h1 className="tracking-tighter text-2xl mb-3 font-extrabold">
+        Blogs
+      </h1>
+      <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-6 mt-4">
+        {[...Array(3)].map((_, i) => (
+          <div key={i} className="lg:h-[330px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-600 dark:to-pink-900 w-full p-[4px] rounded-xl animate-pulse">
+            <div className="h-full dark:bg-zinc-800 bg-slate-200 rounded-lg" />
+          </div>
+        ))}
+      </div>
+    </div>
+  ),
+});
 
 export default function HomePage() {
-  const [pinnedRepos, setPinnedRepos] = useState([]);
-  const [recentBlogs, setRecentBlogs] = useState([]);
-  const [isPinnedLoading, setIsPinnedLoading] = useState(true);
-  const [isBlogLoading, setIsBlogLoading] = useState(true);
-  const featuredRepos = pinnedRepos.slice(0, 3);
-  const featuredBlogs = recentBlogs.slice(0, 3);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    const loadPinnedRepos = async () => {
-      try {
-        const pinnedRes = await fetch(PINNED_REPOS_API, { signal: controller.signal });
-        if (!pinnedRes.ok || controller.signal.aborted) return;
-        const pinnedData = await pinnedRes.json();
-        if (!controller.signal.aborted) {
-          setPinnedRepos(Array.isArray(pinnedData) ? pinnedData : []);
-        }
-      } catch {
-        if (!controller.signal.aborted) {
-          setPinnedRepos([]);
-        }
-      } finally {
-        if (!controller.signal.aborted) {
-          setIsPinnedLoading(false);
-        }
-      }
-    };
-
-    const loadRecentBlogs = async () => {
-      try {
-        const blogRes = await fetch(RECENT_BLOGS_API, { signal: controller.signal });
-        if (!blogRes.ok || controller.signal.aborted) return;
-        const blogData = await blogRes.json();
-        if (!controller.signal.aborted) {
-          setRecentBlogs(Array.isArray(blogData) ? blogData : []);
-        }
-      } catch {
-        if (!controller.signal.aborted) {
-          setRecentBlogs([]);
-        }
-      } finally {
-        if (!controller.signal.aborted) {
-          setIsBlogLoading(false);
-        }
-      }
-    };
-
-    loadPinnedRepos();
-    loadRecentBlogs();
-
-    return () => controller.abort();
-  }, []);
-
   return (
     <main>
       <Head>
@@ -109,18 +86,8 @@ export default function HomePage() {
           </div>
         </Link>
       </div>
-      <div className="mt-[50px]">
-        <h1 className="tracking-tighter text-2xl mb-3 font-extrabold">
-          Featured Projects
-        </h1>
-        <PinnedRepos data={featuredRepos} loading={isPinnedLoading} />
-      </div>
-      <div className="mt-[40px] mb-[20px]">
-        <h1 className="tracking-tighter text-2xl mb-3 font-extrabold">
-          Blogs
-        </h1>
-        <RecentlyBlog data={featuredBlogs} loading={isBlogLoading} />
-      </div>
+      <FeaturedProjects />
+      <FeaturedBlogs />
     </main>
   );
 }

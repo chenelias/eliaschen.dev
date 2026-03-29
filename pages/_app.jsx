@@ -3,13 +3,11 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Script from "next/script";
 import NextNProgress from "nextjs-progressbar";
-import "/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import RouteTransitions from "../components/RouteTransitions";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-// import "../components/SiteTransitions";
 
 const SITE_URL = "https://www.eliaschen.dev";
 const DEFAULT_OG_IMAGE = "/eliaschen-png-500x500.png";
