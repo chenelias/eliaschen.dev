@@ -351,8 +351,10 @@ export default function MusicPlayer() {
                       min="0"
                       max={videoduration || 0}
                       onChange={(x) => {
-                        setvtime(x.target.value);
-                        videoElement.target.seekTo(x.target.value);
+                        const newSeconds = Number(x.target.value);
+                        setcurrentseconds(newSeconds);
+                        setvtime(secondsToHms(newSeconds));
+                        videoElement.target.seekTo(newSeconds);
                       }}
                       step="1"
                       type="range"
@@ -362,30 +364,36 @@ export default function MusicPlayer() {
                       <br />
                     </p>
                     <div className="mt-[-5px]">
-                      <p className="mr-3 !inline-flex text-center music:!hidden">
-                        <span>{time}</span>&thinsp;/&thinsp;
-                        <span>
-                          {(Math.floor((videoduration || 0) / 60) < 10
-                            ? "0" + Math.floor((videoduration || 0) / 60)
-                            : Math.floor((videoduration || 0) / 60)) +
-                            ":" +
-                            (Math.floor((videoduration || 0) % 60) < 10
-                              ? "0" + Math.floor((videoduration || 0) % 60)
-                              : Math.floor((videoduration || 0) % 60))}
-                        </span>
-                      </p>
-                      <p className="!mt-[-7px] !hidden music:!flex">
-                        <span>{time}</span>&thinsp;/&thinsp;
-                        <span>
-                          {(Math.floor((videoduration || 0) / 60) < 10
-                            ? "0" + Math.floor((videoduration || 0) / 60)
-                            : Math.floor((videoduration || 0) / 60)) +
-                            ":" +
-                            (Math.floor((videoduration || 0) % 60) < 10
-                              ? "0" + Math.floor((videoduration || 0) % 60)
-                              : Math.floor((videoduration || 0) % 60))}
-                        </span>
-                      </p>
+                      {videoduration && videoduration > 0 ? (
+                        <>
+                          <p className="mr-3 !inline-flex text-center text-base font-medium music:!hidden">
+                            <span>{time || "00:00"}</span>&thinsp;/&thinsp;
+                            <span>
+                              {(Math.floor(videoduration / 60) < 10
+                                ? "0" + Math.floor(videoduration / 60)
+                                : Math.floor(videoduration / 60)) +
+                                ":" +
+                                (Math.floor(videoduration % 60) < 10
+                                  ? "0" + Math.floor(videoduration % 60)
+                                  : Math.floor(videoduration % 60))}
+                            </span>
+                          </p>
+                          <p className="!mt-[-7px] !hidden text-base font-medium music:!flex">
+                            <span>{time || "00:00"}</span>&thinsp;/&thinsp;
+                            <span>
+                              {(Math.floor(videoduration / 60) < 10
+                                ? "0" + Math.floor(videoduration / 60)
+                                : Math.floor(videoduration / 60)) +
+                                ":" +
+                                (Math.floor(videoduration % 60) < 10
+                                  ? "0" + Math.floor(videoduration % 60)
+                                  : Math.floor(videoduration % 60))}
+                            </span>
+                          </p>
+                        </>
+                      ) : (
+                        <p className="text-base font-medium text-zinc-400">Loading...</p>
+                      )}
                     </div>
                   </div>
                 }
