@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import "react-loading-skeleton/dist/skeleton.css";
 import PinnedRepos from "./PinnedRepos";
 import RecentlyBlog from "./RecentlyBlog";
@@ -6,7 +7,65 @@ import Head from "next/head";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 
-export default function HomePage({ pinnedRepos, recentBlogs }) {
+const PINNED_REPOS_API =
+  "https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/?username=chenelias";
+const RECENT_BLOGS_API = "https://dev.to/api/articles?username=eliaschen";
+
+export default function HomePage() {
+  const [pinnedRepos, setPinnedRepos] = useState([]);
+  const [recentBlogs, setRecentBlogs] = useState([]);
+  const [isPinnedLoading, setIsPinnedLoading] = useState(true);
+  const [isBlogLoading, setIsBlogLoading] = useState(true);
+  const featuredRepos = pinnedRepos.slice(0, 3);
+  const featuredBlogs = recentBlogs.slice(0, 3);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const loadPinnedRepos = async () => {
+      try {
+        const pinnedRes = await fetch(PINNED_REPOS_API, { signal: controller.signal });
+        if (!pinnedRes.ok || controller.signal.aborted) return;
+        const pinnedData = await pinnedRes.json();
+        if (!controller.signal.aborted) {
+          setPinnedRepos(Array.isArray(pinnedData) ? pinnedData : []);
+        }
+      } catch {
+        if (!controller.signal.aborted) {
+          setPinnedRepos([]);
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsPinnedLoading(false);
+        }
+      }
+    };
+
+    const loadRecentBlogs = async () => {
+      try {
+        const blogRes = await fetch(RECENT_BLOGS_API, { signal: controller.signal });
+        if (!blogRes.ok || controller.signal.aborted) return;
+        const blogData = await blogRes.json();
+        if (!controller.signal.aborted) {
+          setRecentBlogs(Array.isArray(blogData) ? blogData : []);
+        }
+      } catch {
+        if (!controller.signal.aborted) {
+          setRecentBlogs([]);
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsBlogLoading(false);
+        }
+      }
+    };
+
+    loadPinnedRepos();
+    loadRecentBlogs();
+
+    return () => controller.abort();
+  }, []);
+
   return (
     <main>
       <Head>
@@ -54,33 +113,14 @@ export default function HomePage({ pinnedRepos, recentBlogs }) {
         <h1 className="tracking-tighter text-2xl mb-3 font-extrabold">
           Featured Projects
         </h1>
-        <PinnedRepos data={pinnedRepos} />
+        <PinnedRepos data={featuredRepos} loading={isPinnedLoading} />
       </div>
       <div className="mt-[40px] mb-[20px]">
         <h1 className="tracking-tighter text-2xl mb-3 font-extrabold">
           Blogs
         </h1>
-        <RecentlyBlog data={recentBlogs} />
+        <RecentlyBlog data={featuredBlogs} loading={isBlogLoading} />
       </div>
     </main>
   );
 }
-
-export const getServerSideProps = async () => {
-  const [pinnedRes, blogRes] = await Promise.all([
-    fetch("https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/?username=chenelias"),
-    fetch("https://dev.to/api/articles?username=eliaschen"),
-  ]);
-
-  const [pinnedRepos, recentBlogs] = await Promise.all([
-    pinnedRes.ok ? pinnedRes.json() : [],
-    blogRes.ok ? blogRes.json() : [],
-  ]);
-
-  return {
-    props: {
-      pinnedRepos: Array.isArray(pinnedRepos) ? pinnedRepos : [],
-      recentBlogs: Array.isArray(recentBlogs) ? recentBlogs : [],
-    },
-  };
-};

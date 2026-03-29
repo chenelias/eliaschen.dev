@@ -7,7 +7,7 @@ import { BiGitRepoForked } from "react-icons/bi";
 
 const hasText = (value) => typeof value === "string" && value.trim().length > 0;
 
-const PinnedRepos = ({ data = [] }) => {
+const PinnedRepos = ({ data = [], loading = false }) => {
   const LoadingSkeleton = (
     <div className="lg:h-[280px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-700 dark:to-pink-800 w-full p-[4px] rounded-xl home-card-shadow duration-300">
       <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
@@ -15,9 +15,7 @@ const PinnedRepos = ({ data = [] }) => {
           <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">
             <Skeleton
               className="rounded-lg"
-              baseColor="#202020"
               count="1"
-              highlightColor="#666"
             />
           </h1>
         </div>
@@ -27,25 +25,19 @@ const PinnedRepos = ({ data = [] }) => {
             <Skeleton
               className="rounded-lg"
               count="3"
-              baseColor="#202020"
-              highlightColor="#666"
             />
           </p>
         </div>
         <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block">
           <Skeleton
             className="rounded-lg"
-            baseColor="#202020"
             width="130px"
             count="1"
-            highlightColor="#666"
           />
           <Skeleton
             className="rounded-lg"
-            baseColor="#202020"
             count="1"
             width="100px"
-            highlightColor="#666"
           />
         </div>
       </div>
@@ -56,12 +48,16 @@ const PinnedRepos = ({ data = [] }) => {
       {LoadingSkeleton}
       {LoadingSkeleton}
       {LoadingSkeleton}
-      {LoadingSkeleton}
-      {LoadingSkeleton}
-      {LoadingSkeleton}
     </div>
   );
-  if (!data || data.length === 0) return loadingdisplay;
+  if (loading) return loadingdisplay;
+  if (!data || data.length === 0) {
+    return (
+      <div className="mt-4 rounded-lg border border-black/10 dark:border-white/10 p-4 text-sm text-zinc-500 dark:text-zinc-400">
+        No featured projects available right now.
+      </div>
+    );
+  }
   var searchresult = data.map((repo) => (
     <Link
       key={repo.link || repo.repo}

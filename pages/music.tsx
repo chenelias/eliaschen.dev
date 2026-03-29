@@ -55,14 +55,7 @@ const Music = ({ initialPlaylist }) => {
 
   const LoadDisplay = (
     <div>
-      <Skeleton
-        className="my-2"
-        count={5}
-        borderRadius="10px"
-        height="80px"
-        baseColor="#202020"
-        highlightColor="#666"
-      />
+      <Skeleton className="my-2" count={5} borderRadius="10px" height="80px" />
     </div>
   );
   const opts = {
