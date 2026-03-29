@@ -1,4 +1,3 @@
-import React from "react";
 export const NavLinks = [
   {
     title: "Blog",
