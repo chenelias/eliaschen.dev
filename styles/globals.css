@@ -7,6 +7,16 @@
   color-scheme: light;
 }
 
+.react-loading-skeleton {
+  --base-color: #e5e7eb;
+  --highlight-color: #f3f4f6;
+}
+
+.dark .react-loading-skeleton {
+  --base-color: #27272a;
+  --highlight-color: #3f3f46;
+}
+
 :root.dark {
   color-scheme: dark;
 }
