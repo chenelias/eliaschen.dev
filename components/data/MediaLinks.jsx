@@ -6,16 +6,10 @@ export const MediaLinks = [
     icon: "logo-github",
   },
   {
-    name: "DEV Community",
-    username: "eliaschen",
-    url: "https://dev.to/eliaschen/",
-    icon: "code-outline",
-  },
-  {
-    name: "X",
-    username: "eliaschen_dev",
-    url: "https://x.com/eliaschen_dev",
-    icon: "logo-twitter",
+    name: "Instagram",
+    username: "eliaschen.dev",
+    url: "https://www.instagram.com/eliaschen.dev/",
+    icon: "logo-instagram",
   },
   {
     name: "Facebook",
@@ -24,9 +18,9 @@ export const MediaLinks = [
     icon: "logo-facebook",
   },
   {
-    name: "Instagram",
-    username: "eliaschen.dev",
-    url: "https://www.instagram.com/eliaschen.dev/",
-    icon: "logo-instagram",
+    name: "DEV Community",
+    username: "eliaschen",
+    url: "https://dev.to/eliaschen/",
+    icon: "code-outline",
   },
 ];
