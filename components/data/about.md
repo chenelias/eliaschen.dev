@@ -1,8 +1,6 @@
-I’m a curious and highly determined high schooler from Hsinchu, Taiwan, currently studying in Taipei. I have been passionate about coding since second grade, starting with self-taught web front-end development and gradually expanding into back-end development, DevOps, and cybersecurity.
+I’m a curious high schooler from Hsinchu, Taiwan, currently studying in Taipei. I have been passionate about coding since second grade, starting with self-taught web front-end development and gradually expanding into back-end development, DevOps, and a bit of cybersecurity.
 
-Since starting high school, I have focused on mobile app development in preparation for becoming a WorldSkills competitor, while also actively expanding my network in the tech community.
-
-Currently, I am sharpening my app development skills while learning to use cloud services such as AWS. I am also working on several side projects, with the goal of becoming a professional software developer and using my skills to empower those in need.
+Since starting high school, I have focused on mobile app development in preparation for becoming a WorldSkills competitor, while also actively expanding my network in the tech community. I am currently advancing my mobile app development expertise and learning cloud computing through several active side projects.
 
 ## Experiences
 

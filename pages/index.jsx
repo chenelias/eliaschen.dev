@@ -58,7 +58,7 @@ export default function HomePage() {
               YI-KAI CHEN&ensp;//&ensp;Developer
             </h2>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-16">
-              A high schooler in Taiwan passionate about computer science and eager to step out of my comfort zone.
+              A high schooler in Taiwan all about software development and cats. 
             </p>
           </div>
           <div className="flex-1"></div>
