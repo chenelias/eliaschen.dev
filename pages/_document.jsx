@@ -3,7 +3,7 @@ import Script from "next/script";
 
 export default function Document() {
   const siteDescription =
-    "A high schooler in Taiwan passionate about computer science and eager to step out of their comfort zone.";
+    "A high schooler in Taiwan passionate about computer science and eager to step out of my comfort zone.";
   const headdata = [
     {
       image:

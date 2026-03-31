@@ -4,20 +4,14 @@ Since starting high school, I have focused on mobile app development in preparat
 
 Currently, I am sharpening my app development skills while learning to use cloud services such as AWS. I am also working on several side projects, with the goal of becoming a professional software developer and using my skills to empower those in need.
 
-## Competition Experiences in Taiwan
+## Experiences
 
 - **3rd Place**, 48th WorldSkills & 3rd WordSkills Asia Competitior selection – Mobile Application Development
 - **1st Place**, 55th National Skills Competition – Mobile Application Development
 - **3rd Place**, 55th Regional Skills Competition (Northern Division) – Mobile Application Development
-- AIS3 2024 Pre-exam
-
-## HACKATHON
-
-- [HACKATHON with Lewis 2024](https://hackathon.lewismenelaws.com/)
-
-## Community Involvement
-
 - [SITCON (Students’ Information Technology Conference) 2026](https://sitcon.org/2026) – **Dev Team**
+- [HACKATHON with Lewis 2024](https://hackathon.lewismenelaws.com/)
+- AIS3 2024 Pre-exam
 
 ## Certification
 

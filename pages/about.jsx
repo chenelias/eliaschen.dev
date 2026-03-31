@@ -21,6 +21,16 @@ const About = ({ aboutContent }) => {
               h2: ({ children }) => (
                 <h2 className="py-1 text-lg text-purple-300 font-bold tracking-tight">{children}</h2>
               ),
+              a: ({ href, children }) => (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4"
+                >
+                  {children}
+                </a>
+              ),
               p: ({ children }) => <p>{children}</p>,
               ul: ({ children }) => <ul className="space-y-2">{children}</ul>,
               li: ({ children }) => (
