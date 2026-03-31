@@ -26,7 +26,7 @@ export default function Document() {
         ></link>
         <link
           rel="shortcut icon"
-          href="https://www.eliaschen.dev/eliaschen-500.png"
+          href="https://www.eliaschen.dev/favicon.ico"
         />
         <meta
           name="description"
