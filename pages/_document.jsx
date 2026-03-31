@@ -13,6 +13,7 @@ export default function Document() {
       title: "EliasChen - Developer",
     },
   ];
+
   return (
     <Html lang="en" style={{ scrollBehavior: "smooth" }}>
       <Head>
@@ -25,7 +26,7 @@ export default function Document() {
         ></link>
         <link
           rel="shortcut icon"
-          href="https://www.eliaschen.dev/eliaschen-png-500x500.png"
+          href="https://www.eliaschen.dev/eliaschen-500.png"
         />
         <meta
           name="description"
