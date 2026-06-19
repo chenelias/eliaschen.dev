@@ -1,4 +1,3 @@
-import React from "react";
 import fs from "fs";
 import path from "path";
 import Body from "/components/Body.tsx";
@@ -19,7 +18,9 @@ const About = ({ aboutContent }) => {
             remarkPlugins={[remarkGfm]}
             components={{
               h2: ({ children }) => (
-                <h2 className="py-1 text-lg text-purple-300 font-bold tracking-tight">{children}</h2>
+                <h2 className="py-1 text-lg text-purple-300 font-bold tracking-tight">
+                  {children}
+                </h2>
               ),
               a: ({ href, children }) => (
                 <a

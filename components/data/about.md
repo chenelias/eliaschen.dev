@@ -4,13 +4,14 @@ Since starting high school, I have focused on mobile app development. At the sam
 
 ## Experiences
 
-- **3rd Place**, 48th WorldSkills & 3rd WordSkills Asia competitor selection – Mobile Application Development
-- **1st Place**, 55th National Skills Competition – Mobile Application Development
-- **3rd Place**, 55th Regional Skills Competition (Northern Division) – Mobile Application Development
+- Merit Award, 2026 Taipei Captial Cup WorldSkills Competition – Mobile Application Development
 - [SITCON (Students’ Information Technology Conference) 2026](https://sitcon.org/2026) – **Dev Team**
+- 3rd Place, 48th WorldSkills & 3rd WordSkills Asia competitor selection – Mobile Application Development
+- 1st Place, 55th National Skills Competition – Mobile Application Development
+- 3rd Place, 55th Regional Skills Competition (Northern Division) – Mobile Application Development
 - [HACKATHON with Lewis 2024](https://hackathon.lewismenelaws.com/)
 - AIS3 2024 Pre-exam
 
 ## Certification
 
-- TOEIC® Listening and Reading Test (2026 March) – **Score: 805**
+- TOEIC® Listening and Reading Test (2026 March) – Score: 805
