@@ -4,7 +4,7 @@ Since starting high school, I have focused on mobile app development. At the sam
 
 ## Experiences
 
-- Merit Award, 2026 Taipei Captial Cup WorldSkills Competition – Mobile Application Development
+- Merit Award, 2026 Taipei Capital Cup WorldSkills Competition – Mobile Application Development
 - [SITCON (Students’ Information Technology Conference) 2026](https://sitcon.org/2026) – **Dev Team**
 - 3rd Place, 48th WorldSkills & 3rd WordSkills Asia competitor selection – Mobile Application Development
 - 1st Place, 55th National Skills Competition – Mobile Application Development
