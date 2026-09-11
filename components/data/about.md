@@ -14,4 +14,4 @@ Since starting high school, I have focused on mobile app development. At the sam
 
 ## Certification
 
-- TOEIC® Listening and Reading Test (2026 March) – Score: 805
+- TOEIC® Listening and Reading Test (2026 August) – Score: 945
