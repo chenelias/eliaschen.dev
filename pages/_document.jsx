@@ -1,23 +1,9 @@
 import { Html, Main, Head, NextScript } from "next/document";
-import Script from "next/script";
 
 export default function Document() {
-  const siteDescription =
-    "A high schooler in Taiwan passionate about computer science and eager to step out of my comfort zone.";
-  const headdata = [
-    {
-      image:
-        "https://www.eliaschen.dev/eliaschen-500.png",
-      url: "https://www.eliaschen.dev/",
-      description: siteDescription,
-      title: "EliasChen - Developer",
-    },
-  ];
-
   return (
     <Html lang="en" style={{ scrollBehavior: "smooth" }}>
       <Head>
-        <Script src="../components/useDarkMode.jsx" />
         <meta charSet="utf-8" />
         <meta name="theme-color" content="#000" />
         <link
@@ -29,32 +15,11 @@ export default function Document() {
           href="https://www.eliaschen.dev/favicon.ico"
         />
         <meta
-          name="description"
-          content={siteDescription}
-        />
-        <meta
           name="keywords"
           content="eliaschen, EliasChen, Elias Chen, elias chen, elias, chen, font-end developer"
         />
         <meta name="author" content="Elias Chen" />
-        {/* og: */}
-        <meta
-          property="og:image"
-          content="https://www.eliaschen.dev/eliaschen-500.png"
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={headdata.url} />
-        <meta property="og:title" content={headdata.title} />
-        <meta property="og:description" content={headdata.description} />
-        {/* twitter: */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={headdata.url} />
-        <meta property="twitter:title" content={headdata.title} />
-        <meta property="twitter:description" content={headdata.description} />
-        <meta
-          property="twitter:image"
-          content="https://www.eliaschen.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Feliaschen.d614d9a1.jpg&w=640&q=75"
-        />
+        {/* og:/twitter: tags live in _app.jsx, per route. */}
       </Head>
       <body className="dark:bg-[#111111] bg-[#f9fafb] dark:text-white duration-75">
         <Main />

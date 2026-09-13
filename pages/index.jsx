@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import ExperienceCard from "../components/ExperienceCard";
@@ -32,9 +31,6 @@ const FeaturedProjects = dynamic(() => import("./FeaturedProjects"), {
 export default function HomePage({ aboutContent }) {
   return (
     <main>
-      <Head>
-        <title>EliasChen - Developer</title>
-      </Head>
       <div className="xs:ml-0 ml-2">
         <div className="flex flex-col-reverse sm:flex-row items-start sm:items-center gap-5 mt-5">
           <div className="flex flex-col">
@@ -48,12 +44,20 @@ export default function HomePage({ aboutContent }) {
               A high schooler in Taiwan, obsessed with cats.
             </p>
           </div>
-          <div className="w-[130px] sm:w-[140px] shrink-0 sm:ml-auto">
+          <div className="w-[130px] sm:w-[140px] shrink-0 sm:ml-auto relative overflow-hidden rounded-full">
+            {/* Out-of-focus copy, scaled up so the blur never pulls the
+                image's own edge inward and leaves a gap. Decorative only. */}
+            <Image
+              src={require("/public/eliaschen.jpg")}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover scale-105 blur-[4px]"
+            />
             <Image
               placeholder="blur"
               src={require("/public/eliaschen.jpg")}
               alt="eliaschen"
-              className="w-auto rounded-full"
+              className="relative w-auto avatar-focus"
             />
           </div>
         </div>

@@ -10,13 +10,14 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 const SITE_URL = "https://www.eliaschen.dev";
-const DEFAULT_OG_IMAGE = "/eliaschen-png-500x500.png";
+// Landscape, for the summary_large_image card; a 500x500 square gets cropped.
+const DEFAULT_OG_IMAGE = "/ogimage.jpg";
 
 const SEO_BY_PATH = {
   "/": {
     title: "EliasChen - Developer",
     description:
-      "Elias Chen's personal website featuring projects, blog posts, music picks, and development journey.",
+      "Elias Chen (YI-KAI CHEN), a high schooler in Taipei working on machine learning and mobile app development. Featured projects, skills competition experiences, and interests.",
   },
   "/blog": {
     title: "Blog - EliasChen",
@@ -49,9 +50,9 @@ const SEO_BY_PATH = {
     title: "Pinned Repos - EliasChen",
     description: "Pinned repositories showcase route for eliaschen.dev.",
   },
-  "/RecentlyBlog": {
-    title: "Recently Blog - EliasChen",
-    description: "Recent blog card showcase route for eliaschen.dev.",
+  "/FeaturedProjects": {
+    title: "Featured Projects - EliasChen",
+    description: "Featured projects showcase route for eliaschen.dev.",
   },
 };
 
@@ -84,6 +85,9 @@ function MyApp({ Component, pageProps }) {
         />
         <meta key="og:url" property="og:url" content={canonicalUrl} />
         <meta key="og:image" property="og:image" content={ogImageUrl} />
+        <meta key="og:image:width" property="og:image:width" content="3173" />
+        <meta key="og:image:height" property="og:image:height" content="1913" />
+        <meta key="og:locale" property="og:locale" content="en_US" />
 
         <meta
           key="twitter:card"

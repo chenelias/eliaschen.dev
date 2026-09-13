@@ -22,8 +22,9 @@
 }
 
 * {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-wrap: break-word;
@@ -158,19 +159,27 @@ img::selection {
 }
 
 .home-card-shadow {
-  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08), 0 0 22px rgba(15, 23, 42, 0.16);
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.08),
+    0 0 22px rgba(15, 23, 42, 0.16);
 }
 
 .dark .home-card-shadow {
-  box-shadow: 0 0 0 1px rgba(228, 228, 231, 0.1), 0 0 22px rgba(9, 9, 11, 0.5);
+  box-shadow:
+    0 0 0 1px rgba(228, 228, 231, 0.1),
+    0 0 22px rgba(9, 9, 11, 0.5);
 }
 
 .home-card-shadow-hover:hover {
-  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.12), 0 0 30px rgba(15, 23, 42, 0.2);
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.12),
+    0 0 30px rgba(15, 23, 42, 0.2);
 }
 
 .dark .home-card-shadow-hover:hover {
-  box-shadow: 0 0 0 1px rgba(228, 228, 231, 0.15), 0 0 30px rgba(9, 9, 11, 0.62);
+  box-shadow:
+    0 0 0 1px rgba(228, 228, 231, 0.15),
+    0 0 30px rgba(9, 9, 11, 0.62);
 }
 
 .now.playing .bar {
@@ -301,4 +310,34 @@ input[type="range"] {
 
 ::-ms-tooltip {
   display: none;
+}
+
+/* Progressive-blur avatar, visionOS style: the photo stays fully opaque but
+   goes out of focus toward its edges. Two stacked copies of the same image —
+   a gaussian-blurred one underneath, a sharp one on top — with this mask
+   fading the sharp layer out so the blurred layer shows through at the rim.
+   The mask controls focus here, not transparency; nothing behind the avatar
+   shows through. `closest-side` pins the falloff to the circle's edge, and
+   the multi-stop ramp keeps the focus transition from banding. */
+.avatar-focus {
+  -webkit-mask-image: radial-gradient(
+    circle closest-side at 50% 50%,
+    #000 34%,
+    rgba(0, 0, 0, 0.92) 48%,
+    rgba(0, 0, 0, 0.72) 60%,
+    rgba(0, 0, 0, 0.45) 72%,
+    rgba(0, 0, 0, 0.2) 84%,
+    rgba(0, 0, 0, 0.05) 93%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle closest-side at 50% 50%,
+    #000 34%,
+    rgba(0, 0, 0, 0.92) 48%,
+    rgba(0, 0, 0, 0.72) 60%,
+    rgba(0, 0, 0, 0.45) 72%,
+    rgba(0, 0, 0, 0.2) 84%,
+    rgba(0, 0, 0, 0.05) 93%,
+    transparent 100%
+  );
 }

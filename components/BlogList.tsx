@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { AiFillRead, AiOutlineComment } from "react-icons/ai";
-import { BiTimeFive } from "react-icons/bi";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
-import { HiOutlineTrash } from "react-icons/hi";
+import { CgClose } from "react-icons/cg";
+import { FiSearch } from "react-icons/fi";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { parseDevToArticles, type DevToArticle } from "./data/api";
@@ -16,7 +16,6 @@ export default function BlogList() {
   const [search, setSearch] = useState("");
   const [articles, setArticles] = useState<DevToArticle[]>([]);
   const [loading, setLoading] = useState(true);
-  const [focusSearch, setFocusSearch] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -50,142 +49,123 @@ export default function BlogList() {
   }, []);
 
   const LoadDisplay = (
-    <div className="p-5 ">
-      <Skeleton
-        height="122px"
-        count={3}
-        className="w-full my-2 rounded-lg"
-        borderRadius="10px"
-      />
+    <div className="flex flex-col gap-3">
+      {[...Array(3)].map((_, i) => (
+        <div
+          key={i}
+          className="border-[1px] border-zinc-200 dark:border-zinc-800 rounded-lg p-3"
+        >
+          <Skeleton className="rounded-md" height="20px" width="70%" />
+          <Skeleton className="rounded-md mt-2" height="14px" count={2} />
+        </div>
+      ))}
     </div>
   );
 
-  function InputonChange(x: string) {
-    setSearch(x);
-    setFocusSearch(x !== "");
-  }
-
-  function clearicon() {
-    setSearch("");
-    const input = document.querySelector<HTMLInputElement>(".SearchInput");
-    if (input) input.value = "";
-  }
-
+  const query = search.trim().toLowerCase();
   const filteredArticles = articles.filter(
-    (data) =>
-      data.title.toUpperCase().includes(search) ||
-      data.title.toLowerCase().includes(search) ||
-      (data.tags && data.tags.toLowerCase().includes(search)) ||
-      (data.tags && data.tags.toUpperCase().includes(search)) ||
-      (data.tags && data.tags.includes(search)) ||
-      data.title.includes(search),
+    (article) =>
+      query === "" ||
+      article.title.toLowerCase().includes(query) ||
+      (article.tags ?? "").toLowerCase().includes(query),
   );
 
-  const blogdisplay = loading
-    ? LoadDisplay
-    : filteredArticles.map((data) => (
-        <Link
-          key={data.id}
-          aria-label={"link of article " + data.title}
-          className="group cursor-pointer block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2"
-          href={data.url}
-        >
-          <article className="shadow-md shodow-black-/10 dark:shadow-zinc-200/10 hover:shadow-lg dark:hover:shadow-zinc-200/10 hover:shadow-black/10 transform transition-all w-full w-max-xl p-4 my-4 rounded-lg dark:bg-zinc-800 bg-slate-200">
-            <div>
-              {hasText(data.title) && (
-                <h2 className="dark:text-zinc-300 text-zinc-900 font-extrabold w-full tracking-tight text-xl mb-[-10px]">
-                  {data.title}
-                </h2>
-              )}
-            </div>
-
-            <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-sm items-center font-semibold block mt-3">
-              <ul className="flex flex-wrap text-xs p-1 ml-[-3px]">
-                {data.tag_list
-                  .filter((tag) => hasText(tag))
-                  .slice(0, 4)
-                  .map((tag) => (
-                    <span key={`${data.id}-${tag}`} className="mr-1">
-                      #{tag}
-                    </span>
-                  ))}
-              </ul>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
-                <p className="items-center flex text-base font-bold">
-                  <MdOutlineFavoriteBorder />
-                  &thinsp;{data.public_reactions_count}
-                </p>
-                <p className="items-center flex text-base font-bold">
-                  <AiOutlineComment />
-                  &thinsp;{data.comments_count}
-                </p>
-                {typeof data.reading_time_minutes === "number" && (
-                  <p className="items-center flex text-base font-bold whitespace-nowrap">
-                    <AiFillRead />
-                    &thinsp;{data.reading_time_minutes}&thinsp;min
-                  </p>
-                )}
-                {hasText(data.readable_publish_date) && (
-                  <p className="items-center flex text-base font-bold whitespace-nowrap">
-                    <BiTimeFive />
-                    &thinsp;{data.readable_publish_date}
-                  </p>
-                )}
-              </div>
-            </div>
-          </article>
-        </Link>
-      ));
+  const stat = (icon: React.ReactNode, label: React.ReactNode) => (
+    <p className="flex items-center gap-1 !m-0">
+      {icon}
+      {label}
+    </p>
+  );
 
   return (
     <div>
-      <div className="relative w-full mt-6">
+      <div className="relative mt-6">
+        <FiSearch
+          aria-hidden="true"
+          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 dark:text-zinc-500 text-zinc-400"
+        />
         <input
-          onChange={(x) => InputonChange(x.target.value)}
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
           aria-label="Search articles"
           type="text"
           placeholder="Search articles"
-          className="SearchInput block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
+          className="w-full rounded-lg border-[1px] border-zinc-200 dark:border-zinc-800 bg-transparent py-2 pl-9 pr-9 text-sm dark:text-zinc-200 text-zinc-900 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 transition duration-200 focus:border-purple-400 dark:focus:border-purple-500 focus:outline-none"
         />
-        <div className=" absolute right-0 h-[41px] top-0 py-[8px] rounded-md flex items-center">
-          {search !== "" ? (
-            <button
-              aria-label="delete input box value"
-              className="mr-[4px] text-red-600 p-[1px] text-[27px] dark:hover:bg-slate-700 rounded-md hover:bg-slate-200 transition-all"
-              onClick={() => clearicon()}
-            >
-              <span className="">
-                <HiOutlineTrash />
-              </span>
-            </button>
-          ) : (
-            ""
-          )}
-          <svg
-            className="h-[25px] w-[25px] mr-2 text-gray-400 dark:text-gray-300"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        {search !== "" && (
+          <button
+            type="button"
+            aria-label="Clear search"
+            onClick={() => setSearch("")}
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 dark:text-zinc-500 text-zinc-400 transition duration-200 hover:text-zinc-900 dark:hover:text-zinc-200"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            ></path>
-          </svg>
-        </div>
-      </div>
-      <div className="mt-10">
-        {!loading && filteredArticles.length === 0 ? (
-          <h1 className=" text-2xl font-bold text-center">
-            No articles found.
-          </h1>
-        ) : (
-          ""
+            <CgClose className="h-4 w-4" />
+          </button>
         )}
-        {blogdisplay}
+      </div>
+
+      <div className="mt-6">
+        {loading ? (
+          LoadDisplay
+        ) : filteredArticles.length === 0 ? (
+          <p className="py-10 text-center text-sm dark:text-zinc-400 text-zinc-500">
+            No articles found.
+          </p>
+        ) : (
+          <ul className="flex flex-col gap-3 !p-0">
+            {filteredArticles.map((article) => (
+              <li key={article.id} className="list-none">
+                <Link
+                  className="group block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
+                  href={article.url}
+                  aria-label={"link of article " + article.title}
+                >
+                  <article className="p-3 flex flex-col gap-2 border-[1px] border-zinc-200 dark:border-zinc-800 rounded-lg transition duration-200 group-hover:-translate-y-[0.15rem] group-hover:shadow-lg">
+                    <div className="flex justify-between items-baseline gap-3">
+                      <h2 className="font-bold tracking-tight dark:text-zinc-200 text-zinc-900 leading-snug !m-0">
+                        {article.title}
+                      </h2>
+                      {hasText(article.readable_publish_date) && (
+                        <p className="text-xs font-code whitespace-nowrap dark:text-zinc-400 text-zinc-500 !m-0">
+                          {article.readable_publish_date}
+                        </p>
+                      )}
+                    </div>
+
+                    {article.tag_list.length > 0 && (
+                      <div className="flex flex-wrap gap-1">
+                        {article.tag_list
+                          .filter((tag) => hasText(tag))
+                          .slice(0, 4)
+                          .map((tag) => (
+                            <span
+                              key={`${article.id}-${tag}`}
+                              className="rounded-md px-1 py-[2px] text-[10px] font-bold dark:bg-purple-900/50 dark:text-purple-200 bg-purple-200 text-purple-900"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                      </div>
+                    )}
+
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold dark:text-zinc-400 text-zinc-500">
+                      {stat(
+                        <MdOutlineFavoriteBorder />,
+                        article.public_reactions_count,
+                      )}
+                      {stat(<AiOutlineComment />, article.comments_count)}
+                      {typeof article.reading_time_minutes === "number" &&
+                        stat(
+                          <AiFillRead />,
+                          `${article.reading_time_minutes} min`,
+                        )}
+                    </div>
+                  </article>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

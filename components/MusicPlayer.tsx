@@ -73,8 +73,16 @@ export default function MusicPlayer() {
   }, [playeritems]);
 
   const LoadDisplay = (
-    <div>
-      <Skeleton className="my-2" count={5} borderRadius="10px" height="80px" />
+    <div className="flex flex-col gap-3">
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className="rounded-lg border-[1px] border-zinc-200 p-3 dark:border-zinc-800"
+        >
+          <Skeleton className="rounded-md" height="18px" width="55%" />
+          <Skeleton className="mt-1 rounded-md" height="12px" width="30%" />
+        </div>
+      ))}
     </div>
   );
 
@@ -177,7 +185,7 @@ export default function MusicPlayer() {
   return (
     <>
       {/* Play and viewlist buttons */}
-      <div className="flex ">
+      <div className="flex items-stretch gap-3">
         <button
           aria-label="Play all songs"
           onClick={() => {
@@ -186,35 +194,33 @@ export default function MusicPlayer() {
             }
           }}
           disabled={loading || playList.length === 0}
-          className="mt-2 flex items-center rounded-xl bg-[#ce9dff] p-3 text-left text-xl font-bold duration-100 hover:bg-[#c081ff] dark:bg-[#9900ff] dark:hover:bg-[#9900ffb2] disabled:opacity-50"
+          className="mt-2 flex items-center rounded-lg bg-purple-200 px-4 text-left text-3xl font-bold text-purple-900 transition duration-200 hover:bg-purple-300 disabled:opacity-50 dark:bg-purple-900/50 dark:text-purple-200 dark:hover:bg-purple-900/80"
         >
-          <p className="text-3xl">
-            <BsPlayFill />
-          </p>
+          <BsPlayFill />
         </button>
-        <button>
-          <Link
-            aria-label="View playlist on youtubemusic"
-            href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
-            className="mt-2 flex dark:bg-zinc-700 items-center rounded-xl bg-zinc-200 px-3 py-[5px] text-left font-bold duration-100 hover:bg-zinc-300  dark:hover:bg-zinc-600 ml-3"
-            target={"_blank"}
-          >
-            <p className="text-3xl">
-              <MdPlaylistPlay />
-            </p>
-            <div className="ml-1 block">
-              <p className="text-lg">View playlist</p>
-              <p className="ml-[2px] text-xs">YoutubeMusic</p>
-            </div>
-          </Link>
-        </button>
+        <Link
+          aria-label="View playlist on youtubemusic"
+          href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
+          className="mt-2 flex items-center gap-1 rounded-lg border-[1px] border-zinc-200 px-3 py-2 text-left font-bold transition duration-200 hover:-translate-y-[0.15rem] hover:shadow-lg dark:border-zinc-800"
+          target={"_blank"}
+        >
+          <span className="text-3xl">
+            <MdPlaylistPlay />
+          </span>
+          <span className="block">
+            <span className="block leading-snug">View playlist</span>
+            <span className="block text-xs text-zinc-500 dark:text-zinc-400">
+              YoutubeMusic
+            </span>
+          </span>
+        </Link>
       </div>
 
       {/* Player */}
       <div
-        className={`relative mt-5 block h-auto w-full items-center overflow-hidden rounded-lg bg-purple-50 shadow-xl transition-all duration-100 dark:bg-neutral-800 music:block music:h-[220px]  ${
+        className={`relative mt-5 block h-auto w-full items-center overflow-hidden rounded-lg border-[1px] border-zinc-200 p-3 transition-all duration-100 dark:border-zinc-800 music:block music:h-[220px] ${
           !playeritems ? "!hidden " : "block"
-        } px-[10px] py-[10px]`}
+        }`}
         id="player"
       >
         <div className="flex music:h-0">
@@ -223,7 +229,7 @@ export default function MusicPlayer() {
             <button
               aria-label="close musicplayer"
               onClick={() => setPlayerItems(null)}
-              className="ml-auto rounded-full bg-slate-300 p-1 text-xl duration-100 hover:bg-slate-400 dark:bg-zinc-700 dark:hover:bg-zinc-600 music:flex music:overflow-visible"
+              className="ml-auto rounded-md p-1 text-xl text-zinc-400 transition duration-200 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-200 music:flex music:overflow-visible"
             >
               <CgClose />
             </button>
@@ -249,7 +255,7 @@ export default function MusicPlayer() {
           )}
           {playeritems && (
             <div
-              className={`mx-auto block !h-[200px] !w-[200px] shrink-0 items-center overflow-hidden !rounded-lg bg-red-200 music:mx-0`}
+              className={`mx-auto block !h-[200px] !w-[200px] shrink-0 items-center overflow-hidden !rounded-lg bg-zinc-100 dark:bg-zinc-800 music:mx-0`}
             >
               <img
                 className="dragnone musicalbumimg mt-[-34px] !h-[268px] !w-auto"
@@ -298,13 +304,13 @@ export default function MusicPlayer() {
                         ],
                       );
                     }}
-                    className="rounded-lg p-1 text-4xl hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                    className="rounded-lg p-1 text-4xl transition duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-800"
                   >
                     <BsFillSkipStartFill />
                   </button>
                   <button
                     onClick={() => setIsPaused(!isPaused)}
-                    className="mx-[50px] items-center rounded-lg p-1 text-4xl hover:bg-zinc-200 dark:hover:bg-zinc-700 music:mx-[30px]"
+                    className="mx-[50px] items-center rounded-lg p-1 text-4xl transition duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 music:mx-[30px]"
                   >
                     {playerload ? (
                       <div className="spinner-container">
@@ -325,7 +331,7 @@ export default function MusicPlayer() {
                         ],
                       );
                     }}
-                    className="rounded-lg p-1 text-4xl hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                    className="rounded-lg p-1 text-4xl transition duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-800"
                   >
                     <BsSkipEndFill />
                   </button>
@@ -346,41 +352,14 @@ export default function MusicPlayer() {
                       type="range"
                       className="musicplayerrange ml-0 w-[290px] xss:w-[300px] music:ml-[-5px] music:w-[550px]"
                     />
-                    <p className="!flex text-[0.5px] music:!hidden">
-                      <br />
-                    </p>
-                    <div className="mt-[-5px]">
+                    <div className="mt-1 font-code text-xs text-zinc-500 dark:text-zinc-400">
                       {videoduration && videoduration > 0 ? (
-                        <>
-                          <p className="mr-3 !inline-flex text-center text-base font-medium music:!hidden">
-                            <span>{time || "00:00"}</span>&thinsp;/&thinsp;
-                            <span>
-                              {(Math.floor(videoduration / 60) < 10
-                                ? "0" + Math.floor(videoduration / 60)
-                                : Math.floor(videoduration / 60)) +
-                                ":" +
-                                (Math.floor(videoduration % 60) < 10
-                                  ? "0" + Math.floor(videoduration % 60)
-                                  : Math.floor(videoduration % 60))}
-                            </span>
-                          </p>
-                          <p className="!mt-[-7px] !hidden text-base font-medium music:!flex">
-                            <span>{time || "00:00"}</span>&thinsp;/&thinsp;
-                            <span>
-                              {(Math.floor(videoduration / 60) < 10
-                                ? "0" + Math.floor(videoduration / 60)
-                                : Math.floor(videoduration / 60)) +
-                                ":" +
-                                (Math.floor(videoduration % 60) < 10
-                                  ? "0" + Math.floor(videoduration % 60)
-                                  : Math.floor(videoduration % 60))}
-                            </span>
-                          </p>
-                        </>
-                      ) : (
-                        <p className="text-base font-medium text-zinc-400">
-                          Loading...
+                        <p className="!m-0">
+                          <span>{time || "00:00"}</span>&thinsp;/&thinsp;
+                          <span>{secondsToHms(videoduration)}</span>
                         </p>
+                      ) : (
+                        <p className="!m-0">Loading...</p>
                       )}
                     </div>
                   </div>
@@ -403,7 +382,7 @@ export default function MusicPlayer() {
                 "&list=" +
                 playeritems.snippet.playlistId
               }
-              className={`mt-4 flex w-full items-center rounded-lg bg-neutral-200 py-2 px-3  text-lg font-bold text-zinc-700 drop-shadow-md duration-100 hover:bg-neutral-300  dark:bg-neutral-800 dark:text-zinc-300 dark:hover:bg-neutral-700 ${
+              className={`mt-4 flex w-full items-center rounded-lg border-[1px] border-zinc-200 py-2 px-3 font-bold text-zinc-700 transition duration-200 hover:-translate-y-[0.15rem] hover:shadow-lg dark:border-zinc-800 dark:text-zinc-300 ${
                 !playeritems ? "!hidden " : "block"
               }`}
             >
@@ -418,82 +397,72 @@ export default function MusicPlayer() {
       </div>
 
       {/* Playlist */}
-      <ol className="mt-7">
+      <ol className="mt-7 flex flex-col gap-3 !p-0">
         {loading
           ? LoadDisplay
-          : playList.map((items) => (
-              <li key={items.id}>
-                <button
-                  onClick={() => {
-                    musicplayersetup(items);
-                  }}
-                  className="shodow-black-/10 group mt-4 flex w-full transform cursor-pointer items-center rounded-lg bg-zinc-100 py-2 pr-2  shadow-md transition-all duration-100 hover:shadow-lg hover:shadow-black/10 dark:bg-zinc-800 dark:shadow-zinc-200/10 dark:hover:shadow-zinc-200/10"
-                >
-                  <div className="notranslate mr-1 ml-2 flex h-[40px] w-[25px] items-center px-5 py-1">
-                    {playeritems &&
-                      (playeritems.id === items.id ? (
-                        videostatus === 1 ? (
-                          <p className="mr-[5px] ml-[-14px] text-2xl group-hover:block">
-                            <div
-                              className="now playing mt-7 ml-1 flex"
-                              id="music"
-                            >
+          : playList.map((items) => {
+              const isCurrent = playeritems?.id === items.id;
+
+              return (
+                <li key={items.id} className="list-none">
+                  <button
+                    onClick={() => {
+                      musicplayersetup(items);
+                    }}
+                    className="group flex w-full items-center gap-3 rounded-lg border-[1px] border-zinc-200 p-3 text-left transition duration-200 hover:-translate-y-[0.15rem] hover:shadow-lg dark:border-zinc-800"
+                  >
+                    <div className="notranslate flex h-[30px] w-7 shrink-0 items-center justify-center">
+                      {isCurrent ? (
+                        // Bars grow upward off their baseline (see the `pulse`
+                        // keyframes), so the row has to anchor them to the bottom.
+                        <div
+                          className={
+                            (videostatus === 1 ? "now playing" : "flex") +
+                            " flex h-full items-end"
+                          }
+                          id="music"
+                        >
+                          {videostatus === 1 ? (
+                            <>
                               <span className="bar n1 bg-black dark:bg-white"></span>
                               <span className="bar n2 bg-black dark:bg-white"></span>
                               <span className="bar n3 bg-black dark:bg-white"></span>
-                            </div>
-                          </p>
-                        ) : (
-                          <p className="mr-[5px] ml-[-14px] text-2xl group-hover:block">
-                            <div
-                              className="items-center mt-7 ml-1 flex"
-                              id="music"
-                            >
-                              <span className="bg-black dark:bg-white h-[1px] w-[5px] mr-[3px]"></span>
-                              <span className="bg-black dark:bg-white h-[1px] w-[5px] mr-[3px]"></span>
-                              <span className="bg-black dark:bg-white h-[1px] w-[5px] mr-[3px]"></span>
-                            </div>
-                          </p>
-                        )
-                      ) : (
-                        <div>
-                          <p className="ml-[-11px] block text-xl group-hover:hidden">
-                            {items.snippet.position + 1}
-                          </p>
-                          <p className="mr-[5px] ml-[-14px] hidden text-3xl group-hover:block">
-                            <BsPlayFill />
-                          </p>
+                            </>
+                          ) : (
+                            <>
+                              <span className="mr-[3px] h-[1px] w-[5px] bg-black dark:bg-white"></span>
+                              <span className="mr-[3px] h-[1px] w-[5px] bg-black dark:bg-white"></span>
+                              <span className="mr-[3px] h-[1px] w-[5px] bg-black dark:bg-white"></span>
+                            </>
+                          )}
                         </div>
-                      ))}
-
-                    {!playeritems ? (
-                      <div>
-                        <p className="ml-[-11px] block text-xl group-hover:hidden">
-                          {items.snippet.position + 1}
-                        </p>
-                        <p className="mr-[5px] ml-[-14px] hidden text-3xl group-hover:block">
-                          <BsPlayFill />
-                        </p>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                  <div className="block text-left">
-                    <h1 className="notranslate text-xl font-bold">
-                      {items.snippet.title.split(/[[:(]/)[0]}
-                    </h1>
-                    <p className="text-xs ">
-                      {items.snippet.videoOwnerChannelTitle.replace(
-                        / - Topic/g,
-                        " ",
+                      ) : (
+                        <>
+                          <span className="block text-sm font-code text-zinc-500 group-hover:hidden dark:text-zinc-400">
+                            {items.snippet.position + 1}
+                          </span>
+                          <span className="hidden text-2xl group-hover:block">
+                            <BsPlayFill />
+                          </span>
+                        </>
                       )}
-                    </p>
-                  </div>
-                  <div className="flex-1"></div>
-                </button>
-              </li>
-            ))}
+                    </div>
+
+                    <div className="min-w-0">
+                      <h2 className="notranslate truncate font-bold leading-snug tracking-tight text-zinc-900 dark:text-zinc-200">
+                        {items.snippet.title.split(/[[:(]/)[0]}
+                      </h2>
+                      <p className="truncate text-xs text-zinc-500 dark:text-zinc-400">
+                        {items.snippet.videoOwnerChannelTitle.replace(
+                          / - Topic/g,
+                          " ",
+                        )}
+                      </p>
+                    </div>
+                  </button>
+                </li>
+              );
+            })}
       </ol>
     </>
   );

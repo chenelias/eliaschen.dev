@@ -6,8 +6,16 @@ import Body from "../components/Body";
 const MusicPlayer = dynamic(() => import("../components/MusicPlayer"), {
   ssr: false,
   loading: () => (
-    <div>
-      <Skeleton className="my-2" count={5} borderRadius="10px" height="80px" />
+    <div className="mt-7 flex flex-col gap-3">
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className="rounded-lg border-[1px] border-zinc-200 p-3 dark:border-zinc-800"
+        >
+          <Skeleton className="rounded-md" height="18px" width="55%" />
+          <Skeleton className="mt-1 rounded-md" height="12px" width="30%" />
+        </div>
+      ))}
     </div>
   ),
 });
