@@ -37,7 +37,7 @@ export const Experiences: Experience[] = [
     url: "https://sitcon.org/2026",
   },
   {
-    name: "48th WSC & 3rd WSA 2nd Competitor Selection",
+    name: "48th WorldSkills & 3rd WSA 2nd Competitor Selection",
     description: "Mobile Application Development",
     date: "2025.09",
   },
@@ -48,7 +48,7 @@ export const Experiences: Experience[] = [
     url: "https://coscup.org/2025",
   },
   {
-    name: "48th WSC & 3rd WSA Competitor Selection",
+    name: "48th WorldSkills & 3rd WSA Competitor Selection",
     result: "3rd Place",
     description: "Mobile Application Development",
     date: "2025.07",
