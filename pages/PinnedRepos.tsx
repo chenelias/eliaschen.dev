@@ -15,20 +15,18 @@ interface PinnedReposProps {
 }
 
 const PinnedRepos = ({ data = [], loading = false }: PinnedReposProps) => {
-  // Mirrors the real card below: same gradient, height, padding and type
-  // scale, so nothing shifts or changes color when the data lands.
   const LoadingSkeleton = (
     <div className="home-card-shadow w-full rounded-xl bg-gradient-to-r from-purple-300 to-purple-400 p-[4px] duration-300 dark:from-purple-700 dark:to-purple-900 lg:h-[190px]">
       <div className="flex h-full flex-col gap-2 rounded-lg bg-slate-200 p-3 dark:bg-zinc-800">
         <div className="text-lg">
           <Skeleton className="rounded-lg" width="70%" />
         </div>
-        <div className="text-sm lg:h-[80px]">
-          <Skeleton className="rounded-lg" count={3} />
+        <div className="text-sm lg:h-[80px] h-[30px]">
+          <Skeleton className="rounded-lg" count={2} />
         </div>
         <div className="text-sm">
-          <Skeleton className="rounded-lg" width="110px" />
-          <Skeleton className="rounded-lg" width="80px" />
+          <Skeleton className="rounded-lg" width="45%" />
+          <Skeleton className="rounded-lg" width="32%" />
         </div>
       </div>
     </div>
@@ -40,6 +38,7 @@ const PinnedRepos = ({ data = [], loading = false }: PinnedReposProps) => {
       ))}
     </div>
   );
+
   if (loading) return loadingdisplay;
   if (!data || data.length === 0) {
     return (

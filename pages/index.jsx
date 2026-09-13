@@ -18,7 +18,7 @@ const FeaturedProjects = dynamic(() => import("./FeaturedProjects"), {
         {[...Array(3)].map((_, i) => (
           <div
             key={i}
-            className="w-full animate-pulse rounded-xl bg-gradient-to-r from-purple-300 to-purple-400 p-[4px] dark:from-purple-700 dark:to-purple-900 lg:h-[190px]"
+            className="h-[170px] w-full animate-pulse rounded-xl bg-gradient-to-r from-purple-300 to-purple-400 p-[4px] dark:from-purple-700 dark:to-purple-900 lg:h-[190px]"
           >
             <div className="h-full rounded-lg bg-slate-200 dark:bg-zinc-800" />
           </div>
