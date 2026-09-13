@@ -40,7 +40,7 @@ export default function FeaturedProjects() {
   }, []);
 
   return (
-    <div className="mt-[50px]">
+    <div>
       <h1 className="tracking-tighter text-2xl mb-3 font-extrabold">
         Featured Projects
       </h1>

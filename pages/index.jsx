@@ -5,13 +5,13 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import ExperienceCard from "../components/ExperienceCard";
+import { Experiences } from "../components/data/experiences";
 
-// Dynamically import data-fetching components - they load on client side
-// while the hero section renders immediately
 const FeaturedProjects = dynamic(() => import("./FeaturedProjects"), {
   ssr: false,
   loading: () => (
-    <div className="mt-[50px]">
+    <div>
       <h1 className="tracking-tighter text-2xl mb-3 font-extrabold">
         Featured Projects
       </h1>
@@ -19,7 +19,7 @@ const FeaturedProjects = dynamic(() => import("./FeaturedProjects"), {
         {[...Array(3)].map((_, i) => (
           <div
             key={i}
-            className="lg:h-[250px] bg-gradient-to-r from-purple-300 to-purple-400 dark:from-purple-700 dark:to-purple-900 w-full p-[4px] rounded-xl animate-pulse"
+            className="lg:h-[190px] bg-gradient-to-r from-purple-300 to-purple-400 dark:from-purple-700 dark:to-purple-900 w-full p-[4px] rounded-xl animate-pulse"
           >
             <div className="h-full dark:bg-zinc-800 bg-slate-200 rounded-lg" />
           </div>
@@ -36,7 +36,7 @@ export default function HomePage({ aboutContent }) {
         <title>EliasChen - Developer</title>
       </Head>
       <div className="xs:ml-0 ml-2">
-        <div className="flex flex-col-reverse sm:flex-row items-start sm:items-center gap-5 my-5">
+        <div className="flex flex-col-reverse sm:flex-row items-start sm:items-center gap-5 mt-5">
           <div className="flex flex-col">
             <h1 className="font-black text-4xl tracking-tight notranslate">
               Elias Chen
@@ -57,13 +57,13 @@ export default function HomePage({ aboutContent }) {
             />
           </div>
         </div>
-        <div className="mt-6">
-          <div className="space-y-4 text-base leading-loose">
+        <div className="mt-10 flex flex-col gap-10">
+          <div className="text-base leading-loose">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
                 h2: ({ children }) => (
-                  <h2 className="py-1 text-lg text-purple-300 font-bold tracking-tight">
+                  <h2 className="mt-10 first:mt-0 py-1 text-lg text-purple-300 font-bold tracking-tight">
                     {children}
                   </h2>
                 ),
@@ -77,8 +77,10 @@ export default function HomePage({ aboutContent }) {
                     {children}
                   </a>
                 ),
-                p: ({ children }) => <p>{children}</p>,
-                ul: ({ children }) => <ul className="space-y-2">{children}</ul>,
+                p: ({ children }) => <p className="mt-1">{children}</p>,
+                ul: ({ children }) => (
+                  <ul className="mt-1 space-y-2">{children}</ul>
+                ),
                 li: ({ children }) => (
                   <li className="flex items-start gap-2">
                     <span aria-hidden="true" className="font-semibold">
@@ -92,9 +94,21 @@ export default function HomePage({ aboutContent }) {
               {aboutContent}
             </ReactMarkdown>
           </div>
+
+          <FeaturedProjects />
+
+          <div>
+            <h2 className="py-1 text-lg text-purple-300 font-bold tracking-tight">
+              Experiences
+            </h2>
+            <ul className="mt-3 flex flex-col gap-3">
+              {Experiences.map((experience) => (
+                <ExperienceCard key={experience.name} {...experience} />
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-      <FeaturedProjects />
     </main>
   );
 }
