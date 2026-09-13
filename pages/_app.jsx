@@ -18,20 +18,10 @@ const SEO_BY_PATH = {
     description:
       "Elias Chen's personal website featuring projects, blog posts, music picks, and development journey.",
   },
-  "/about": {
-    title: "About - EliasChen",
-    description:
-      "Learn more about Elias Chen, background, interests, and what drives the work behind this site.",
-  },
   "/blog": {
     title: "Blog - EliasChen",
     description:
       "Read development notes, ideas, and technical articles written by Elias Chen.",
-  },
-  "/links": {
-    title: "Links - EliasChen",
-    description:
-      "Find Elias Chen across platforms, social links, and developer profiles.",
   },
   "/music": {
     title: "Music - EliasChen",
@@ -87,13 +77,25 @@ function MyApp({ Component, pageProps }) {
         <meta key="og:type" property="og:type" content="website" />
         <meta key="og:site_name" property="og:site_name" content="EliasChen" />
         <meta key="og:title" property="og:title" content={seo.title} />
-        <meta key="og:description" property="og:description" content={seo.description} />
+        <meta
+          key="og:description"
+          property="og:description"
+          content={seo.description}
+        />
         <meta key="og:url" property="og:url" content={canonicalUrl} />
         <meta key="og:image" property="og:image" content={ogImageUrl} />
 
-        <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
+        <meta
+          key="twitter:card"
+          name="twitter:card"
+          content="summary_large_image"
+        />
         <meta key="twitter:title" name="twitter:title" content={seo.title} />
-        <meta key="twitter:description" name="twitter:description" content={seo.description} />
+        <meta
+          key="twitter:description"
+          name="twitter:description"
+          content={seo.description}
+        />
         <meta key="twitter:image" name="twitter:image" content={ogImageUrl} />
       </Head>
       <Script

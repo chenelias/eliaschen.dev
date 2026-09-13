@@ -101,12 +101,9 @@ const PinnedRepos = ({ data = [], loading = false }) => {
   });
   return (
     <main>
-      <div className="">
-        <div className="grid grid-cols-1 lg:grid-cols-3  w-full gap-6 mt-4">
-          {searchresult}
-        </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3  w-full gap-6 mt-4">
+        {searchresult}
       </div>
-      <div>&thinsp;</div>
     </main>
   );
 };
