@@ -2,8 +2,7 @@
 import { useEffect, useState } from "react";
 import PinnedRepos from "./PinnedRepos";
 
-const PINNED_REPOS_API =
-  "https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/?username=chenelias";
+const PINNED_REPOS_API = "https://pinned.berrysauce.dev/get/chenelias";
 
 export default function FeaturedProjects() {
   const [pinnedRepos, setPinnedRepos] = useState([]);
@@ -15,7 +14,9 @@ export default function FeaturedProjects() {
 
     const loadPinnedRepos = async () => {
       try {
-        const pinnedRes = await fetch(PINNED_REPOS_API, { signal: controller.signal });
+        const pinnedRes = await fetch(PINNED_REPOS_API, {
+          signal: controller.signal,
+        });
         if (!pinnedRes.ok || controller.signal.aborted) return;
         const pinnedData = await pinnedRes.json();
         if (!controller.signal.aborted) {

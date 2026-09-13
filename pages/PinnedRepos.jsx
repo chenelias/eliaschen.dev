@@ -13,32 +13,18 @@ const PinnedRepos = ({ data = [], loading = false }) => {
       <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
         <div>
           <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-2xl">
-            <Skeleton
-              className="rounded-lg"
-              count="1"
-            />
+            <Skeleton className="rounded-lg" count="1" />
           </h1>
         </div>
         <div className=" lg:h-[140px]">
           <p className="line-clamp-5 ">
             {" "}
-            <Skeleton
-              className="rounded-lg"
-              count="3"
-            />
+            <Skeleton className="rounded-lg" count="3" />
           </p>
         </div>
         <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block">
-          <Skeleton
-            className="rounded-lg"
-            width="130px"
-            count="1"
-          />
-          <Skeleton
-            className="rounded-lg"
-            count="1"
-            width="100px"
-          />
+          <Skeleton className="rounded-lg" width="130px" count="1" />
+          <Skeleton className="rounded-lg" count="1" width="100px" />
         </div>
       </div>
     </div>
@@ -58,56 +44,61 @@ const PinnedRepos = ({ data = [], loading = false }) => {
       </div>
     );
   }
-  var searchresult = data.map((repo) => (
-    <Link
-      key={repo.link || repo.repo}
-      className="group cursor-pointer block"
-      target="_blank"
-      href={repo.link}
-      aria-label={"github repository " + repo.repo}
-    >
-      {/* from-purple-400 to-orange-500 dark:from-purple-500 dark:to-orange-700  */}
-      <div className="lg:h-[250px] bg-gradient-to-r from-purple-300 to-purple-400 dark:from-purple-700 dark:to-purple-900 w-full p-[4px] rounded-xl home-card-shadow home-card-shadow-hover hover:scale-[101%] duration-300">
-        <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
-          <div>
-            {hasText(repo.repo) && (
-              <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-xl">
-                {repo.repo}
-              </h1>
-            )}
-          </div>
-          <div className=" lg:h-[130px]">
-            {hasText(repo.description) && (
-              <p className="line-clamp-4 ">{repo.description}</p>
-            )}
-          </div>
+  var searchresult = data.map((repo) => {
+    const repoName = `${repo.author}/${repo.name}`;
+    const repoLink = `https://github.com/${repoName}`;
 
-          <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block">
-            <div className="flex">
-              <p className="items-center flex text-lg font-bold">
-                <MdOutlineFavoriteBorder />
-                &thinsp;{repo.stars}
-              </p>
-              &ensp;
-              <p className="items-center flex text-lg font-bold">
-                <BiGitRepoForked />
-                &thinsp;{repo.forks}
-              </p>
+    return (
+      <Link
+        key={repoName}
+        className="group cursor-pointer block"
+        target="_blank"
+        href={repoLink}
+        aria-label={"github repository " + repo.repo}
+      >
+        {/* from-purple-400 to-orange-500 dark:from-purple-500 dark:to-orange-700  */}
+        <div className="lg:h-[250px] bg-gradient-to-r from-purple-300 to-purple-400 dark:from-purple-700 dark:to-purple-900 w-full p-[4px] rounded-xl home-card-shadow home-card-shadow-hover hover:scale-[101%] duration-300">
+          <div className="flex flex-col cursor-pointer gap-4 p-4 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
+            <div>
+              {hasText(repo.name) && (
+                <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-xl">
+                  {repo.name}
+                </h1>
+              )}
             </div>
-            {hasText(repo.language) && (
-              <div className="flex gap-2 items-center">
-                <div
-                  style={{ backgroundColor: repo.languageColor }}
-                  className="rounded-full h-[15px] w-[15px] border-1"
-                ></div>
-                <p className="inline-flex items-center">{repo.language}</p>
+            <div className=" lg:h-[130px]">
+              {hasText(repo.description) && (
+                <p className="line-clamp-4 ">{repo.description}</p>
+              )}
+            </div>
+
+            <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-base items-center font-semibold block">
+              <div className="flex">
+                <p className="items-center flex text-lg font-bold">
+                  <MdOutlineFavoriteBorder />
+                  &thinsp;{repo.stars}
+                </p>
+                &ensp;
+                <p className="items-center flex text-lg font-bold">
+                  <BiGitRepoForked />
+                  &thinsp;{repo.forks}
+                </p>
               </div>
-            )}
+              {hasText(repo.language) && (
+                <div className="flex gap-2 items-center">
+                  <div
+                    style={{ backgroundColor: repo.languageColor }}
+                    className="rounded-full h-[15px] w-[15px] border-1"
+                  ></div>
+                  <p className="inline-flex items-center">{repo.language}</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </Link>
-  ));
+      </Link>
+    );
+  });
   return (
     <main>
       <div className="">

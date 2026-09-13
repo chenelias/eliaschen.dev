@@ -15,7 +15,10 @@ const FeaturedProjects = dynamic(() => import("./FeaturedProjects"), {
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-6 mt-4">
         {[...Array(3)].map((_, i) => (
-          <div key={i} className="lg:h-[250px] bg-gradient-to-r from-purple-300 to-purple-400 dark:from-purple-700 dark:to-purple-900 w-full p-[4px] rounded-xl animate-pulse">
+          <div
+            key={i}
+            className="lg:h-[250px] bg-gradient-to-r from-purple-300 to-purple-400 dark:from-purple-700 dark:to-purple-900 w-full p-[4px] rounded-xl animate-pulse"
+          >
             <div className="h-full dark:bg-zinc-800 bg-slate-200 rounded-lg" />
           </div>
         ))}
@@ -28,12 +31,13 @@ const FeaturedBlogs = dynamic(() => import("./FeaturedBlogs"), {
   ssr: false,
   loading: () => (
     <div className="mt-[40px] mb-[20px]">
-      <h1 className="tracking-tighter text-2xl mb-3 font-extrabold">
-        Blogs
-      </h1>
+      <h1 className="tracking-tighter text-2xl mb-3 font-extrabold">Blogs</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-6 mt-4">
         {[...Array(3)].map((_, i) => (
-          <div key={i} className="lg:h-[330px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-600 dark:to-pink-900 w-full p-[4px] rounded-xl animate-pulse">
+          <div
+            key={i}
+            className="lg:h-[330px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-600 dark:to-pink-900 w-full p-[4px] rounded-xl animate-pulse"
+          >
             <div className="h-full dark:bg-zinc-800 bg-slate-200 rounded-lg" />
           </div>
         ))}
@@ -58,7 +62,7 @@ export default function HomePage() {
               YI-KAI CHEN&ensp;//&ensp;Developer
             </h2>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-16">
-              A high schooler in Taiwan all about software development and cats. 
+              A high schooler in Taiwan all about software development and cats.
             </p>
           </div>
           <div className="flex-1"></div>
@@ -74,12 +78,15 @@ export default function HomePage() {
         <div className="mt-[-40px]">
           <h1 className="text-xl font-medium mb-1">Interested in</h1>
           <p className="text-sm">
-            &thinsp;Full-Stack Development / Mobile App Development / Cloud Computing
+            &thinsp;Full-Stack Development / Mobile App Development / Cloud
+            Computing
           </p>
         </div>
         <Link href="/about" className="group inline-block mt-5 p-1">
           <div className="items-center flex w-[150px] text-sm whitespace-nowrap">
-            <p className="text-base md:text-lg whitespace-nowrap">Learn more about me</p>
+            <p className="text-base md:text-lg whitespace-nowrap">
+              Learn more about me
+            </p>
             <div className="ml-2 transition-transform duration-200 group-hover:translate-x-2">
               <BsArrowRight />
             </div>
