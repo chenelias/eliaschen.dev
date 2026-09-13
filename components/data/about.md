@@ -11,7 +11,3 @@ Since starting high school, I have focused on mobile app development. At the sam
 - 3rd Place, 55th Regional Skills Competition (Northern Division) – Mobile Application Development
 - [HACKATHON with Lewis 2024](https://hackathon.lewismenelaws.com/)
 - AIS3 2024 Pre-exam
-
-## Certification
-
-- TOEIC® Listening and Reading Test (2026 August) – Score: 945
