@@ -75,7 +75,7 @@ export const Experiences: Experience[] = [
     name: "Hackathon with Lewis 2024",
     result: "Qualified",
     date: "2024.08",
-    url: "https://hackathon.lewismenelaws.com/",
+    url: "https://github.com/chenelias/lewis-hackathon",
   },
   {
     name: "AIS3 Pre-exam",
