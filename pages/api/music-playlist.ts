@@ -1,8 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import {
+  isRecord,
+  parsePlaylistItems,
+  type PlaylistItem,
+} from "../../components/data/api";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<PlaylistItem[]>,
 ) {
   const apiKey = process.env.YOUTUBE_API_KEY;
   const playlistId =
@@ -21,15 +26,16 @@ export default async function handler(
     });
 
     const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/playlistItems?${query.toString()}`
+      `https://www.googleapis.com/youtube/v3/playlistItems?${query.toString()}`,
     );
 
     if (!response.ok) {
       return res.status(200).json([]);
     }
 
-    const data = await response.json();
-    return res.status(200).json(Array.isArray(data?.items) ? data.items : []);
+    const data: unknown = await response.json();
+    const items = isRecord(data) ? data.items : undefined;
+    return res.status(200).json(parsePlaylistItems(items));
   } catch {
     return res.status(200).json([]);
   }

@@ -13,24 +13,9 @@ import Link from "next/link";
 import YouTube, { YouTubePlayer } from "react-youtube";
 import { CgClose } from "react-icons/cg";
 import { MdPlaylistPlay } from "react-icons/md";
+import { parsePlaylistItems, type PlaylistItem } from "./data/api";
 
 let videoElement: YouTubePlayer = null;
-
-interface PlaylistItem {
-  id: string;
-  snippet: {
-    title: string;
-    position: number;
-    resourceId: { videoId: string };
-    playlistId: string;
-    videoOwnerChannelId: string;
-    videoOwnerChannelTitle: string;
-    thumbnails: {
-      standard: { url: string };
-      medium: { url: string };
-    };
-  };
-}
 
 export default function MusicPlayer() {
   const [loading, setLoading] = useState(true);
@@ -55,10 +40,11 @@ export default function MusicPlayer() {
           signal: controller.signal,
         });
         if (!res.ok || controller.signal.aborted) return;
-        const data = await res.json();
-        if (!controller.signal.aborted && Array.isArray(data)) {
-          setPlaylist(data);
-          setPlaylisto(data.length);
+        const data: unknown = await res.json();
+        if (!controller.signal.aborted) {
+          const items = parsePlaylistItems(data);
+          setPlaylist(items);
+          setPlaylisto(items.length);
         }
       } catch {
         if (!controller.signal.aborted) {
@@ -255,7 +241,7 @@ export default function MusicPlayer() {
                     playeritems.snippet.position === playListo - 1
                       ? 0
                       : playeritems.snippet.position + 1
-                  ]
+                  ],
                 );
                 setplayerload(true);
               }}
@@ -293,7 +279,7 @@ export default function MusicPlayer() {
                         <p>
                           {playeritems.snippet.videoOwnerChannelTitle.replace(
                             / - Topic/g,
-                            " "
+                            " ",
                           )}
                         </p>
                       </Link>
@@ -309,7 +295,7 @@ export default function MusicPlayer() {
                           playeritems.snippet.position === 0
                             ? playListo - 1
                             : playeritems.snippet.position - 1
-                        ]
+                        ],
                       );
                     }}
                     className="rounded-lg p-1 text-4xl hover:bg-zinc-200 dark:hover:bg-zinc-700"
@@ -336,7 +322,7 @@ export default function MusicPlayer() {
                           playeritems.snippet.position === playListo - 1
                             ? 0
                             : playeritems.snippet.position + 1
-                        ]
+                        ],
                       );
                     }}
                     className="rounded-lg p-1 text-4xl hover:bg-zinc-200 dark:hover:bg-zinc-700"
@@ -392,7 +378,9 @@ export default function MusicPlayer() {
                           </p>
                         </>
                       ) : (
-                        <p className="text-base font-medium text-zinc-400">Loading...</p>
+                        <p className="text-base font-medium text-zinc-400">
+                          Loading...
+                        </p>
                       )}
                     </div>
                   </div>
@@ -498,7 +486,7 @@ export default function MusicPlayer() {
                     <p className="text-xs ">
                       {items.snippet.videoOwnerChannelTitle.replace(
                         / - Topic/g,
-                        " "
+                        " ",
                       )}
                     </p>
                   </div>

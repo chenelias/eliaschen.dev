@@ -7,12 +7,14 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { HiOutlineTrash } from "react-icons/hi";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { parseDevToArticles, type DevToArticle } from "./data/api";
 
-const hasText = (value) => typeof value === "string" && value.trim().length > 0;
+const hasText = (value: string | undefined): value is string =>
+  typeof value === "string" && value.trim().length > 0;
 
 export default function BlogList() {
   const [search, setSearch] = useState("");
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState<DevToArticle[]>([]);
   const [loading, setLoading] = useState(true);
   const [focusSearch, setFocusSearch] = useState(false);
 
@@ -21,13 +23,16 @@ export default function BlogList() {
 
     const loadArticles = async () => {
       try {
-        const res = await fetch("https://dev.to/api/articles?username=eliaschen", {
-          signal: controller.signal,
-        });
+        const res = await fetch(
+          "https://dev.to/api/articles?username=eliaschen",
+          {
+            signal: controller.signal,
+          },
+        );
         if (!res.ok || controller.signal.aborted) return;
-        const data = await res.json();
+        const data: unknown = await res.json();
         if (!controller.signal.aborted) {
-          setArticles(Array.isArray(data) ? data : []);
+          setArticles(parseDevToArticles(data));
         }
       } catch {
         if (!controller.signal.aborted) {
@@ -48,21 +53,22 @@ export default function BlogList() {
     <div className="p-5 ">
       <Skeleton
         height="122px"
-        count="3"
+        count={3}
         className="w-full my-2 rounded-lg"
         borderRadius="10px"
       />
     </div>
   );
 
-  function InputonChange(x) {
+  function InputonChange(x: string) {
     setSearch(x);
     setFocusSearch(x !== "");
   }
 
   function clearicon() {
     setSearch("");
-    document.querySelector(".SearchInput").value = "";
+    const input = document.querySelector<HTMLInputElement>(".SearchInput");
+    if (input) input.value = "";
   }
 
   const filteredArticles = articles.filter(
@@ -72,7 +78,7 @@ export default function BlogList() {
       (data.tags && data.tags.toLowerCase().includes(search)) ||
       (data.tags && data.tags.toUpperCase().includes(search)) ||
       (data.tags && data.tags.includes(search)) ||
-      data.title.includes(search)
+      data.title.includes(search),
   );
 
   const blogdisplay = loading
@@ -95,7 +101,7 @@ export default function BlogList() {
 
             <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-sm items-center font-semibold block mt-3">
               <ul className="flex flex-wrap text-xs p-1 ml-[-3px]">
-                {(Array.isArray(data.tag_list) ? data.tag_list : [])
+                {data.tag_list
                   .filter((tag) => hasText(tag))
                   .slice(0, 4)
                   .map((tag) => (

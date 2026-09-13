@@ -1,11 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import PinnedRepos from "./PinnedRepos";
+import { parsePinnedRepos, type PinnedRepo } from "../components/data/api";
 
 const PINNED_REPOS_API = "https://pinned.berrysauce.dev/get/chenelias";
 
 export default function FeaturedProjects() {
-  const [pinnedRepos, setPinnedRepos] = useState([]);
+  const [pinnedRepos, setPinnedRepos] = useState<PinnedRepo[]>([]);
   const [isPinnedLoading, setIsPinnedLoading] = useState(true);
   const featuredRepos = pinnedRepos.slice(0, 3);
 
@@ -18,9 +19,9 @@ export default function FeaturedProjects() {
           signal: controller.signal,
         });
         if (!pinnedRes.ok || controller.signal.aborted) return;
-        const pinnedData = await pinnedRes.json();
+        const pinnedData: unknown = await pinnedRes.json();
         if (!controller.signal.aborted) {
-          setPinnedRepos(Array.isArray(pinnedData) ? pinnedData : []);
+          setPinnedRepos(parsePinnedRepos(pinnedData));
         }
       } catch {
         if (!controller.signal.aborted) {
