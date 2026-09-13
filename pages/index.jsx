@@ -36,8 +36,8 @@ export default function HomePage({ aboutContent }) {
         <title>EliasChen - Developer</title>
       </Head>
       <div className="xs:ml-0 ml-2">
-        <div className="flex flex-col-reverse sm:flex-row items-start sm:items-center my-5 ">
-          <div className="flex flex-col pr-8">
+        <div className="flex flex-col-reverse sm:flex-row items-start sm:items-center gap-5 my-5">
+          <div className="flex flex-col">
             <h1 className="font-black text-4xl tracking-tight notranslate">
               Elias Chen
             </h1>
@@ -48,8 +48,7 @@ export default function HomePage({ aboutContent }) {
               A high schooler in Taiwan, obsessed with cats.
             </p>
           </div>
-          <div className="flex-1"></div>
-          <div className="w-[130px] sm:w-[140px] relative my-[-15px] sm:my-0 sm:mx-0 mx-[-10px] ">
+          <div className="w-[130px] sm:w-[140px] shrink-0 sm:ml-auto">
             <Image
               placeholder="blur"
               src={require("/public/eliaschen.jpg")}
