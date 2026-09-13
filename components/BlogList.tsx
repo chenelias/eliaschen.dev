@@ -53,10 +53,10 @@ export default function BlogList() {
       {[...Array(3)].map((_, i) => (
         <div
           key={i}
-          className="border-[1px] border-zinc-200 dark:border-zinc-800 rounded-lg p-3"
+          className="rounded-lg border border-zinc-200 p-3 dark:border-zinc-800"
         >
           <Skeleton className="rounded-md" height="20px" width="70%" />
-          <Skeleton className="rounded-md mt-2" height="14px" count={2} />
+          <Skeleton className="mt-2 rounded-md" height="14px" count={2} />
         </div>
       ))}
     </div>
@@ -71,7 +71,7 @@ export default function BlogList() {
   );
 
   const stat = (icon: React.ReactNode, label: React.ReactNode) => (
-    <p className="flex items-center gap-1 !m-0">
+    <p className="!m-0 flex items-center gap-1">
       {icon}
       {label}
     </p>
@@ -82,7 +82,7 @@ export default function BlogList() {
       <div className="relative mt-6">
         <FiSearch
           aria-hidden="true"
-          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 dark:text-zinc-500 text-zinc-400"
+          className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-zinc-400 dark:text-zinc-500"
         />
         <input
           value={search}
@@ -90,16 +90,16 @@ export default function BlogList() {
           aria-label="Search articles"
           type="text"
           placeholder="Search articles"
-          className="w-full rounded-lg border-[1px] border-zinc-200 dark:border-zinc-800 bg-transparent py-2 pl-9 pr-9 text-sm dark:text-zinc-200 text-zinc-900 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 transition duration-200 focus:border-purple-400 dark:focus:border-purple-500 focus:outline-none"
+          className="w-full rounded-lg border border-zinc-200 bg-transparent px-9 py-2 text-sm text-zinc-900 transition duration-200 placeholder:text-zinc-400 focus:border-purple-400 focus:outline-none dark:border-zinc-800 dark:text-zinc-200 dark:placeholder:text-zinc-600 dark:focus:border-purple-500"
         />
         {search !== "" && (
           <button
             type="button"
             aria-label="Clear search"
             onClick={() => setSearch("")}
-            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 dark:text-zinc-500 text-zinc-400 transition duration-200 hover:text-zinc-900 dark:hover:text-zinc-200"
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-zinc-400 transition duration-200 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-200"
           >
-            <CgClose className="h-4 w-4" />
+            <CgClose className="size-4" />
           </button>
         )}
       </div>
@@ -108,7 +108,7 @@ export default function BlogList() {
         {loading ? (
           LoadDisplay
         ) : filteredArticles.length === 0 ? (
-          <p className="py-10 text-center text-sm dark:text-zinc-400 text-zinc-500">
+          <p className="py-10 text-center text-sm text-zinc-500 dark:text-zinc-400">
             No articles found.
           </p>
         ) : (
@@ -120,13 +120,13 @@ export default function BlogList() {
                   href={article.url}
                   aria-label={"link of article " + article.title}
                 >
-                  <article className="p-3 flex flex-col gap-2 border-[1px] border-zinc-200 dark:border-zinc-800 rounded-lg transition duration-200 group-hover:-translate-y-[0.15rem] group-hover:shadow-lg">
-                    <div className="flex justify-between items-baseline gap-3">
-                      <h2 className="font-bold tracking-tight dark:text-zinc-200 text-zinc-900 leading-snug !m-0">
+                  <article className="flex flex-col gap-2 rounded-lg border border-zinc-200 p-3 transition duration-200 group-hover:-translate-y-[0.15rem] group-hover:shadow-lg dark:border-zinc-800">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <h2 className="!m-0 font-bold leading-snug tracking-tight text-zinc-900 dark:text-zinc-200">
                         {article.title}
                       </h2>
                       {hasText(article.readable_publish_date) && (
-                        <p className="text-xs font-code whitespace-nowrap dark:text-zinc-400 text-zinc-500 !m-0">
+                        <p className="!m-0 whitespace-nowrap font-code text-xs text-zinc-500 dark:text-zinc-400">
                           {article.readable_publish_date}
                         </p>
                       )}
@@ -140,7 +140,7 @@ export default function BlogList() {
                           .map((tag) => (
                             <span
                               key={`${article.id}-${tag}`}
-                              className="rounded-md px-1 py-[2px] text-[10px] font-bold dark:bg-purple-900/50 dark:text-purple-200 bg-purple-200 text-purple-900"
+                              className="rounded-md bg-purple-200 px-1 py-[2px] text-[10px] font-bold text-purple-900 dark:bg-purple-900/50 dark:text-purple-200"
                             >
                               {tag}
                             </span>
@@ -148,7 +148,7 @@ export default function BlogList() {
                       </div>
                     )}
 
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold dark:text-zinc-400 text-zinc-500">
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
                       {stat(
                         <MdOutlineFavoriteBorder />,
                         article.public_reactions_count,

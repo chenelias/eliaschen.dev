@@ -10,7 +10,7 @@ const MusicPlayer = dynamic(() => import("../components/MusicPlayer"), {
       {[...Array(5)].map((_, i) => (
         <div
           key={i}
-          className="rounded-lg border-[1px] border-zinc-200 p-3 dark:border-zinc-800"
+          className="rounded-lg border border-zinc-200 p-3 dark:border-zinc-800"
         >
           <Skeleton className="rounded-md" height="18px" width="55%" />
           <Skeleton className="mt-1 rounded-md" height="12px" width="30%" />

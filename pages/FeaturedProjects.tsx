@@ -41,7 +41,7 @@ export default function FeaturedProjects() {
 
   return (
     <div>
-      <h1 className="tracking-tighter text-2xl mb-3 font-extrabold">
+      <h1 className="mb-3 text-2xl font-extrabold tracking-tighter">
         Featured Projects
       </h1>
       <PinnedRepos data={featuredRepos} loading={isPinnedLoading} />

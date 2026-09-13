@@ -130,7 +130,7 @@ function MyApp({ Component, pageProps }) {
         <Header />
         {/* <SiteTransitions> */}
         <RouteTransitions>
-          <main className="pt-24 md:pt-28 px-[20px] xs:px-[25px] mx-auto max-w-4xl">
+          <main className="mx-auto max-w-4xl px-[20px] pt-24 xs:px-[25px] md:pt-28">
             <Component {...pageProps} />
             <Analytics />
             <Footer />

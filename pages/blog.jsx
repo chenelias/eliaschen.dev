@@ -10,10 +10,10 @@ const BlogList = dynamic(() => import("../components/BlogList"), {
       {[...Array(3)].map((_, i) => (
         <div
           key={i}
-          className="border-[1px] border-zinc-200 dark:border-zinc-800 rounded-lg p-3"
+          className="rounded-lg border border-zinc-200 p-3 dark:border-zinc-800"
         >
           <Skeleton className="rounded-md" height="20px" width="70%" />
-          <Skeleton className="rounded-md mt-2" height="14px" count={2} />
+          <Skeleton className="mt-2 rounded-md" height="14px" count={2} />
         </div>
       ))}
     </div>
@@ -24,7 +24,7 @@ const Blog = () => {
   return (
     <Body title="Blog">
       <div>
-        <h1 className="font-extrabold text-[3rem] tracking-tight">Blog</h1>
+        <h1 className="text-[3rem] font-extrabold tracking-tight">Blog</h1>
         <BlogList />
       </div>
     </Body>

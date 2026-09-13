@@ -21,7 +21,7 @@ export default function Document() {
         <meta name="author" content="Elias Chen" />
         {/* og:/twitter: tags live in _app.jsx, per route. */}
       </Head>
-      <body className="dark:bg-[#111111] bg-[#f9fafb] dark:text-white duration-75">
+      <body className="bg-[#f9fafb] duration-75 dark:bg-[#111111] dark:text-white">
         <Main />
         <NextScript />
       </body>

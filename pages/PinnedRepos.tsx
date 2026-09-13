@@ -15,38 +15,35 @@ interface PinnedReposProps {
 }
 
 const PinnedRepos = ({ data = [], loading = false }: PinnedReposProps) => {
+  // Mirrors the real card below: same gradient, height, padding and type
+  // scale, so nothing shifts or changes color when the data lands.
   const LoadingSkeleton = (
-    <div className="lg:h-[190px] bg-gradient-to-r from-pink-300 to-pink-400 dark:from-pink-700 dark:to-pink-800 w-full p-[4px] rounded-xl home-card-shadow duration-300">
-      <div className="flex flex-col cursor-pointer gap-2 p-3 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
-        <div>
-          <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-lg">
-            <Skeleton className="rounded-lg" count={1} />
-          </h1>
+    <div className="home-card-shadow w-full rounded-xl bg-gradient-to-r from-purple-300 to-purple-400 p-[4px] duration-300 dark:from-purple-700 dark:to-purple-900 lg:h-[190px]">
+      <div className="flex h-full flex-col gap-2 rounded-lg bg-slate-200 p-3 dark:bg-zinc-800">
+        <div className="text-lg">
+          <Skeleton className="rounded-lg" width="70%" />
         </div>
-        <div className="lg:h-[80px]">
-          <p className="line-clamp-3 text-sm">
-            {" "}
-            <Skeleton className="rounded-lg" count={2} />
-          </p>
+        <div className="text-sm lg:h-[80px]">
+          <Skeleton className="rounded-lg" count={3} />
         </div>
-        <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-sm items-center font-semibold block">
-          <Skeleton className="rounded-lg" width="130px" count={1} />
-          <Skeleton className="rounded-lg" count={1} width="100px" />
+        <div className="text-sm">
+          <Skeleton className="rounded-lg" width="110px" />
+          <Skeleton className="rounded-lg" width="80px" />
         </div>
       </div>
     </div>
   );
   const loadingdisplay = (
-    <div className="home-scaffold grid grid-cols-1 lg:grid-cols-3  w-full gap-6 mt-4">
-      {LoadingSkeleton}
-      {LoadingSkeleton}
-      {LoadingSkeleton}
+    <div className="home-scaffold mt-4 grid w-full  grid-cols-1 gap-6 lg:grid-cols-3">
+      {[...Array(3)].map((_, i) => (
+        <React.Fragment key={i}>{LoadingSkeleton}</React.Fragment>
+      ))}
     </div>
   );
   if (loading) return loadingdisplay;
   if (!data || data.length === 0) {
     return (
-      <div className="mt-4 rounded-lg border border-black/10 dark:border-white/10 p-4 text-sm text-zinc-500 dark:text-zinc-400">
+      <div className="mt-4 rounded-lg border border-black/10 p-4 text-sm text-zinc-500 dark:border-white/10 dark:text-zinc-400">
         No featured projects available right now.
       </div>
     );
@@ -58,17 +55,17 @@ const PinnedRepos = ({ data = [], loading = false }: PinnedReposProps) => {
     return (
       <Link
         key={repoName}
-        className="group cursor-pointer block"
+        className="group block cursor-pointer"
         target="_blank"
         href={repoLink}
         aria-label={"github repository " + repoName}
       >
         {/* from-purple-400 to-orange-500 dark:from-purple-500 dark:to-orange-700  */}
-        <div className="lg:h-[190px] bg-gradient-to-r from-purple-300 to-purple-400 dark:from-purple-700 dark:to-purple-900 w-full p-[4px] rounded-xl home-card-shadow home-card-shadow-hover hover:scale-[101%] duration-300">
-          <div className="flex flex-col cursor-pointer gap-2 p-3 dark:bg-zinc-800 bg-slate-200 rounded-lg h-full">
+        <div className="home-card-shadow home-card-shadow-hover w-full rounded-xl bg-gradient-to-r from-purple-300 to-purple-400 p-[4px] duration-300 hover:scale-[101%] dark:from-purple-700 dark:to-purple-900 lg:h-[190px]">
+          <div className="flex h-full cursor-pointer flex-col gap-2 rounded-lg bg-slate-200 p-3 dark:bg-zinc-800">
             <div>
               {hasText(repo.name) && (
-                <h1 className="dark:text-zinc-300 text-zinc-900 font-bold w-full tracking-tight text-lg">
+                <h1 className="w-full text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-300">
                   {repo.name}
                 </h1>
               )}
@@ -79,23 +76,23 @@ const PinnedRepos = ({ data = [], loading = false }: PinnedReposProps) => {
               )}
             </div>
 
-            <div className="dark:text-zinc-400 text-zinc-500 gap-2 text-sm items-center font-semibold block">
+            <div className="block items-center gap-2 text-sm font-semibold text-zinc-500 dark:text-zinc-400">
               <div className="flex">
-                <p className="items-center flex text-base font-bold">
+                <p className="flex items-center text-base font-bold">
                   <MdOutlineFavoriteBorder />
                   &thinsp;{repo.stars}
                 </p>
                 &ensp;
-                <p className="items-center flex text-base font-bold">
+                <p className="flex items-center text-base font-bold">
                   <BiGitRepoForked />
                   &thinsp;{repo.forks}
                 </p>
               </div>
               {hasText(repo.language) && (
-                <div className="flex gap-2 items-center">
+                <div className="flex items-center gap-2">
                   <div
                     style={{ backgroundColor: repo.languageColor }}
-                    className="rounded-full h-[12px] w-[12px] border-1"
+                    className="h-[12px] w-[12px] rounded-full"
                   ></div>
                   <p className="inline-flex items-center">{repo.language}</p>
                 </div>
@@ -108,7 +105,7 @@ const PinnedRepos = ({ data = [], loading = false }: PinnedReposProps) => {
   });
   return (
     <main>
-      <div className="grid grid-cols-1 lg:grid-cols-3  w-full gap-6 mt-4">
+      <div className="mt-4 grid w-full  grid-cols-1 gap-6 lg:grid-cols-3">
         {searchresult}
       </div>
     </main>

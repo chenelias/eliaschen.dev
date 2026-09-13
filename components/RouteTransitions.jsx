@@ -32,7 +32,7 @@ const RouteTransitions = ({ children }) => {
   const { asPath } = useRouter();
 
   return (
-    <div className="effect-2">
+    <div>
       <AnimatePresence initial={false} mode="wait">
         <motion.div
           key={asPath}

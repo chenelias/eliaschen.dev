@@ -9,7 +9,7 @@ function useDarkMode() {
           ? "dark"
           : "light"
         : localStorage.theme
-      : "light"
+      : "light",
   );
   const colorTheme = theme === "dark" ? "light" : "dark";
 

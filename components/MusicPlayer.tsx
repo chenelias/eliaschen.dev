@@ -77,7 +77,7 @@ export default function MusicPlayer() {
       {[...Array(5)].map((_, i) => (
         <div
           key={i}
-          className="rounded-lg border-[1px] border-zinc-200 p-3 dark:border-zinc-800"
+          className="rounded-lg border border-zinc-200 p-3 dark:border-zinc-800"
         >
           <Skeleton className="rounded-md" height="18px" width="55%" />
           <Skeleton className="mt-1 rounded-md" height="12px" width="30%" />
@@ -130,14 +130,16 @@ export default function MusicPlayer() {
   }
 
   useEffect(() => {
-    const interval = setInterval(async () => {
+    // The time readout is whole seconds, so polling faster than this buys
+    // nothing and re-renders the player on every tick.
+    const interval = setInterval(() => {
       if (videoElement) {
-        let videoseconds = Math.floor(videoElement.target.getCurrentTime());
+        const videoseconds = Math.floor(videoElement.target.getCurrentTime());
         setvtime(secondsToHms(videoseconds));
         setcurrentseconds(videoseconds);
         setvideostatus(videoElement.target.getPlayerState());
       }
-    }, 0);
+    }, 250);
     return () => {
       clearInterval(interval);
     };
@@ -165,13 +167,6 @@ export default function MusicPlayer() {
     }
   }
 
-  useEffect(() => {
-    document.addEventListener("keypress", detectKeyDown, true);
-    return () => {
-      document.removeEventListener("keypress", detectKeyDown, true);
-    };
-  });
-
   const detectKeyDown = (e: KeyboardEvent) => {
     if (e.key === " " && videostatus === 1) {
       scrollToTop();
@@ -181,6 +176,15 @@ export default function MusicPlayer() {
       videoElement.target.playVideo();
     }
   };
+
+  useEffect(() => {
+    document.addEventListener("keypress", detectKeyDown, true);
+    return () => {
+      document.removeEventListener("keypress", detectKeyDown, true);
+    };
+    // Re-bound when the handler's captured playback state changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [videostatus]);
 
   return (
     <>
@@ -201,7 +205,7 @@ export default function MusicPlayer() {
         <Link
           aria-label="View playlist on youtubemusic"
           href="https://music.youtube.com/playlist?list=PLyOL_RMmwqydRtzTaTuzHc7GCXlAR2aO8"
-          className="mt-2 flex items-center gap-1 rounded-lg border-[1px] border-zinc-200 px-3 py-2 text-left font-bold transition duration-200 hover:-translate-y-[0.15rem] hover:shadow-lg dark:border-zinc-800"
+          className="mt-2 flex items-center gap-1 rounded-lg border border-zinc-200 px-3 py-2 text-left font-bold transition duration-200 hover:-translate-y-[0.15rem] hover:shadow-lg dark:border-zinc-800"
           target={"_blank"}
         >
           <span className="text-3xl">
@@ -218,14 +222,14 @@ export default function MusicPlayer() {
 
       {/* Player */}
       <div
-        className={`relative mt-5 block h-auto w-full items-center overflow-hidden rounded-lg border-[1px] border-zinc-200 p-3 transition-all duration-100 dark:border-zinc-800 music:block music:h-[220px] ${
+        className={`relative mt-5 block h-auto w-full items-center overflow-hidden rounded-lg border border-zinc-200 p-3 transition-all duration-100 dark:border-zinc-800 music:block music:h-[220px] ${
           !playeritems ? "!hidden " : "block"
         }`}
         id="player"
       >
         <div className="flex music:h-0">
           <div className="flex-1"></div>
-          <div className="g-red-500 mr-2 h-5 w-5 items-center rounded-full music:block">
+          <div className="mr-2 size-5 items-center rounded-full music:block">
             <button
               aria-label="close musicplayer"
               onClick={() => setPlayerItems(null)}
@@ -267,7 +271,7 @@ export default function MusicPlayer() {
           {/* Music player controls */}
           <div className="block">
             {playeritems && (
-              <div className="py-auto mt-2 block shrink-0 items-center text-center music:ml-[50px] music:mt-0 music:text-left">
+              <div className="mt-2 block shrink-0 items-center text-center music:ml-[50px] music:mt-0 music:text-left">
                 <div className="flex">
                   <div className="mx-auto flex max-w-[525px] items-center music:mx-0">
                     <div className="block">
@@ -382,7 +386,7 @@ export default function MusicPlayer() {
                 "&list=" +
                 playeritems.snippet.playlistId
               }
-              className={`mt-4 flex w-full items-center rounded-lg border-[1px] border-zinc-200 py-2 px-3 font-bold text-zinc-700 transition duration-200 hover:-translate-y-[0.15rem] hover:shadow-lg dark:border-zinc-800 dark:text-zinc-300 ${
+              className={`mt-4 flex w-full items-center rounded-lg border border-zinc-200 px-3 py-2 font-bold text-zinc-700 transition duration-200 hover:-translate-y-[0.15rem] hover:shadow-lg dark:border-zinc-800 dark:text-zinc-300 ${
                 !playeritems ? "!hidden " : "block"
               }`}
             >
@@ -409,7 +413,7 @@ export default function MusicPlayer() {
                     onClick={() => {
                       musicplayersetup(items);
                     }}
-                    className="group flex w-full items-center gap-3 rounded-lg border-[1px] border-zinc-200 p-3 text-left transition duration-200 hover:-translate-y-[0.15rem] hover:shadow-lg dark:border-zinc-800"
+                    className="group flex w-full items-center gap-3 rounded-lg border border-zinc-200 p-3 text-left transition duration-200 hover:-translate-y-[0.15rem] hover:shadow-lg dark:border-zinc-800"
                   >
                     <div className="notranslate flex h-[30px] w-7 shrink-0 items-center justify-center">
                       {isCurrent ? (
@@ -430,15 +434,15 @@ export default function MusicPlayer() {
                             </>
                           ) : (
                             <>
-                              <span className="mr-[3px] h-[1px] w-[5px] bg-black dark:bg-white"></span>
-                              <span className="mr-[3px] h-[1px] w-[5px] bg-black dark:bg-white"></span>
-                              <span className="mr-[3px] h-[1px] w-[5px] bg-black dark:bg-white"></span>
+                              <span className="mr-[3px] h-px w-[5px] bg-black dark:bg-white"></span>
+                              <span className="mr-[3px] h-px w-[5px] bg-black dark:bg-white"></span>
+                              <span className="mr-[3px] h-px w-[5px] bg-black dark:bg-white"></span>
                             </>
                           )}
                         </div>
                       ) : (
                         <>
-                          <span className="block text-sm font-code text-zinc-500 group-hover:hidden dark:text-zinc-400">
+                          <span className="block font-code text-sm text-zinc-500 group-hover:hidden dark:text-zinc-400">
                             {items.snippet.position + 1}
                           </span>
                           <span className="hidden text-2xl group-hover:block">

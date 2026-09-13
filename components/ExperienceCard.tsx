@@ -28,24 +28,24 @@ export default function ExperienceCard({
           : "")
       }
     >
-      <div className="flex flex-col gap-1 min-w-0">
-        <h3 className="font-bold tracking-tight dark:text-zinc-200 text-zinc-900 leading-snug !m-0">
+      <div className="flex min-w-0 flex-col gap-1">
+        <h3 className="!m-0 font-bold leading-snug tracking-tight text-zinc-900 dark:text-zinc-200">
           {name}
         </h3>
 
         {hasText(description) && (
-          <p className="text-sm leading-normal dark:text-zinc-400 text-zinc-600 !m-0">
+          <p className="!m-0 text-sm leading-normal text-zinc-600 dark:text-zinc-400">
             {description}
           </p>
         )}
         {hasText(result) && (
-          <p className="self-start rounded-md px-1 py-[2px] text-[10px] font-bold dark:bg-purple-900/50 dark:text-purple-200 bg-purple-200 text-purple-900">
+          <p className="self-start rounded-md bg-purple-200 px-1 py-[2px] text-[10px] font-bold text-purple-900 dark:bg-purple-900/50 dark:text-purple-200">
             {result}
           </p>
         )}
       </div>
       {hasText(date) && (
-        <p className="text-xs font-code whitespace-nowrap dark:text-zinc-400 text-zinc-500 !m-0">
+        <p className="!m-0 whitespace-nowrap font-code text-xs text-zinc-500 dark:text-zinc-400">
           {date}
         </p>
       )}

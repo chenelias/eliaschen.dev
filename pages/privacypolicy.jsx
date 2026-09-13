@@ -3,12 +3,12 @@ import React from "react";
 const privacypolicy = () => {
   return (
     <div className="">
-      <h1 className="text-[3rem] mb-5 font-extrabold">Privacy & Policy</h1>
+      <h1 className="mb-5 text-[3rem] font-extrabold">Privacy & Policy</h1>
       <p>
-        Welcome to &quot;EliasChen.dev&quot;. In order to allow you to use the services
-        and information of this website with peace of mind, hereby explain to
-        you the privacy protection policy of this website to protect your rights
-        and interests. Please read the following content carefully:
+        Welcome to &quot;EliasChen.dev&quot;. In order to allow you to use the
+        services and information of this website with peace of mind, hereby
+        explain to you the privacy protection policy of this website to protect
+        your rights and interests. Please read the following content carefully:
         <br />
         1. Scope of application of privacy protection policy
         <br /> Privacy protection policy content, including how this website
@@ -50,7 +50,7 @@ const privacypolicy = () => {
         their confidentiality obligations, and take necessary inspection
         procedures to ensure that they will actually comply. <br />
         4. External links of the website
-        <br /> 
+        <br />
         The web pages of this website provide network links to other websites,
         and you can also click to enter other websites through the links
         provided on this website. However, the linked website does not apply to
