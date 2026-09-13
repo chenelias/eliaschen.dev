@@ -21,7 +21,7 @@ export const Experiences: Experience[] = [
   {
     name: "SITCON Hackathon 2026",
     description: "3-day GEN-AI hackathon by SITCON x FUTUREMODE",
-    url: "https://hackathon2026.sitcon.org",
+    url: "https://github.com/chenelias/Wristch",
     date: "2026.09",
   },
   {
